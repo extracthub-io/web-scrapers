@@ -1,4 +1,4 @@
-# Web Scrapers: Google Search Scraper, YouTube Scraper & more (ready-to-use scraping API)
+# Web Scrapers: Google Search Scraper, YouTube Scraper, YouTube Transcript Scraper & more (ready-to-use scraping API)
 
 A growing collection of **ready-to-use web scrapers** that turn web pages into clean JSON. Every scraper here
 is a published [ExtractHub](https://extracthub.io) extractor: send a URL, get structured data back. No
@@ -11,6 +11,7 @@ API, or let an **AI agent** (Claude, Cursor, any MCP client) call them for you.
 |---|---|---|---|
 | [Google Search Scraper (SERP)](scrapers/google-search-scraper/) | organic results incl. videos, People also ask, related searches, next page | [@extracthub1/google-serp](https://extracthub.io/extractor/@extracthub1/google-serp) | $0.0025 |
 | [YouTube Video Scraper](scrapers/youtube-video-scraper/) | title, description, channel, subscribers, views, likes, duration, publish date, keywords | [@extracthub1/youtube-video](https://extracthub.io/extractor/@extracthub1/youtube-video) | $0.0025 |
+| [YouTube Transcript Scraper](scrapers/youtube-transcript-scraper/) | full video transcript: timestamped caption segments (start, duration, text) | [@extracthub1/youtube-transcript](https://extracthub.io/extractor/@extracthub1/youtube-transcript) | $0.0035 |
 | [Quotes to Scrape Scraper](scrapers/quotes-to-scrape-scraper/) | quotes, authors, tags, pagination (practice site) | [@extracthub1/quotes-toscrape-list](https://extracthub.io/extractor/@extracthub1/quotes-toscrape-list) | $0.0005 |
 | [Books to Scrape Scraper](scrapers/books-to-scrape-scraper/) | book titles, prices, links, images (practice site) | [@extracthub1/books-to-scrape](https://extracthub.io/extractor/@extracthub1/books-to-scrape) | $0.0005 |
 

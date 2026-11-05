@@ -29,7 +29,8 @@ Each scraper has an id like `@extracthub1/google-serp`. Always call it with a **
 ## 3. Call it
 
 `GET https://api.extracthub.io/api/extractor/extract?extractor_id=<pinned id>&target_url=<page URL>`
-with the header `X-API-Key: <your key>`. URL-encode both parameters.
+with the header `X-API-Key: <your key>` or `Authorization: Bearer <your key>` (use one, not both).
+URL-encode both parameters.
 
 ### curl
 

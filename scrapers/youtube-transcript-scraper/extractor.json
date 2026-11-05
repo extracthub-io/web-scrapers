@@ -1,0 +1,92 @@
+{
+  "name": "YouTube - video transcript",
+  "description": "Transcript (captions) of a YouTube video (www.youtube.com/watch?v=...): timestamped segments with start time, duration and text. Plays the video in a browser with captions on and captures the caption file the YouTube player loads (JavaScript tier).",
+  "slug": "youtube-transcript",
+  "visibility": "public",
+  "url": "https://www.youtube.com/watch?v=iG9CE55wbtY&hl=en",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "captureXhr": true,
+  "xhrUrlFilter": "/api/timedtext",
+  "proxyCountry": "US",
+  "category": "entertainment",
+  "tags": [
+    "youtube",
+    "transcript",
+    "captions",
+    "subtitles"
+  ],
+  "browserActions": [
+    {
+      "type": "wait",
+      "wait_time_s": 3
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "button.ytp-large-play-button"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 3
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "button.ytp-subtitles-button[aria-pressed=\"false\"]"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 6
+    }
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "sourceType": "json",
+    "fields": [
+      {
+        "name": "captionsStatus",
+        "jsonPath": "[0].status_code"
+      },
+      {
+        "name": "transcript",
+        "jsonPath": "[0].response_body",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "segments",
+              "jsonPath": "events[*]",
+              "includePosition": true,
+              "subFields": [
+                {
+                  "name": "startMs",
+                  "jsonPath": "tStartMs"
+                },
+                {
+                  "name": "durationMs",
+                  "jsonPath": "dDurationMs"
+                },
+                {
+                  "name": "text",
+                  "jsonPath": "segs[*].utf8",
+                  "transforms": [
+                    "joinWithSpace",
+                    "normalizeWhitespace"
+                  ],
+                  "required": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

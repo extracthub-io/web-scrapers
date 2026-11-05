@@ -1,0 +1,67 @@
+{
+  "captionsStatus": 200,
+  "transcript": {
+    "segments": [
+      {
+        "position": 1,
+        "startMs": 27103,
+        "durationMs": 2575,
+        "text": "Good morning. How are you?"
+      },
+      {
+        "position": 2,
+        "startMs": 29702,
+        "durationMs": 1403,
+        "text": "(Audience) Good."
+      },
+      {
+        "position": 3,
+        "startMs": 31129,
+        "durationMs": 1668,
+        "text": "It's been great, hasn't it?"
+      },
+      {
+        "position": 4,
+        "startMs": 33408,
+        "durationMs": 2321,
+        "text": "I've been blown away by the whole thing."
+      },
+      {
+        "position": 5,
+        "startMs": 35753,
+        "durationMs": 1492,
+        "text": "In fact, I'm leaving."
+      },
+      {
+        "position": 6,
+        "startMs": 37269,
+        "durationMs": 3906,
+        "text": "(Laughter)"
+      },
+      {
+        "position": 7,
+        "startMs": 43096,
+        "durationMs": 3567,
+        "text": "There have been three themes running through the conference,"
+      },
+      {
+        "position": 8,
+        "startMs": 46687,
+        "durationMs": 2286,
+        "text": "which are relevant to what I want to talk about."
+      },
+      {
+        "position": 426,
+        "startMs": 1158557,
+        "durationMs": 1185,
+        "text": "Thank you very much."
+      },
+      {
+        "position": 427,
+        "startMs": 1159766,
+        "durationMs": 5447,
+        "text": "(Applause)"
+      }
+    ]
+  }
+}
