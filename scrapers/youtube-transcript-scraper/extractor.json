@@ -64,6 +64,7 @@
               "name": "segments",
               "jsonPath": "events[*]",
               "includePosition": true,
+              "required": true,
               "subFields": [
                 {
                   "name": "startMs",
@@ -85,7 +86,8 @@
               ]
             }
           ]
-        }
+        },
+        "required": true
       }
     ]
   }
