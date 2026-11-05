@@ -1,6 +1,6 @@
 {
   "name": "Google Maps - places search",
-  "description": "Places from a Google Maps search (www.google.com/maps/search/<query>): name, Google Maps place URL, rating, review count, category, address, opening-hours status, phone and website, with their position in the results. Renders the page in a browser (JavaScript tier); returns the first batch of results Google Maps loads (about 20).",
+  "description": "Places from a Google Maps search (www.google.com/maps/search/<query>): name, Google Maps place URL, place ID, coordinates, rating, review count, category, address, opening-hours status, phone, website and hotel price, with their position in the results. Renders the page in a browser (JavaScript tier); returns the first batch of results Google Maps loads (about 20).",
   "slug": "google-maps-search",
   "visibility": "public",
   "url": "https://www.google.com/maps/search/plumbers+in+denver+co?hl=en&gl=us",
@@ -59,6 +59,34 @@
               "transforms": ["toAbsoluteUrl"]
             },
             {
+              "name": "placeId",
+              "selector": "a.hfpxzc",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [{ "between": ["!19s", "!"] }, { "before": "?" }]
+            },
+            {
+              "name": "cid",
+              "selector": "a.hfpxzc",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [{ "between": ["!1s", "!"] }]
+            },
+            {
+              "name": "latitude",
+              "selector": "a.hfpxzc",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [{ "between": ["!3d", "!"] }, "toNumber"]
+            },
+            {
+              "name": "longitude",
+              "selector": "a.hfpxzc",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [{ "between": ["!4d", "!"] }, "toNumber"]
+            },
+            {
               "name": "rating",
               "selector": "span.MW4etd",
               "transforms": ["toNumber"]
@@ -93,12 +121,23 @@
               "name": "website",
               "selector": "a[data-value=\"Website\"]",
               "extract": "attributeValue",
-              "attributeName": "href"
+              "attributeName": "href",
+              "transforms": [{ "removeQueryParams": ["utm_*", "fbclid", "gclid"] }]
             },
             {
               "name": "price",
               "selector": "div.wcldff",
               "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+            },
+            {
+              "name": "priceCurrency",
+              "selector": "div.wcldff",
+              "transforms": ["normalizeWhitespace", { "before": " " }]
+            },
+            {
+              "name": "priceAmount",
+              "selector": "div.wcldff",
+              "transforms": ["normalizeWhitespace", "parseCompactNumber"]
             },
             {
               "name": "amenities",

@@ -1,7 +1,7 @@
 # Google Maps Scraper (places search)
 
-Turn a Google Maps search into JSON: every place in the results with its name, Google Maps link, rating,
-review count, category, address, opening status, phone and website. Good for local lead lists, competitor
+Turn a Google Maps search into JSON: every place in the results with its name, Google Maps link, place ID,
+coordinates, rating, review count, category, address, opening status, phone and website. Good for local lead lists, competitor
 maps and store locators. One API call per search, no Google Maps API key needed.
 
 **Catalog:** [extracthub.io/extractor/@extracthub1/google-maps-search](https://extracthub.io/extractor/@extracthub1/google-maps-search)
@@ -25,15 +25,21 @@ Write the query with `+` for spaces, e.g. `plumbers+in+denver+co` or `coffee+sho
 | `places[]` | array | places in the order Google Maps lists them |
 | `places[].position` | number | rank in the results (1 = first) |
 | `places[].name` | string | business name |
-| `places[].placeUrl` | string \| null | Google Maps link to the place. It also contains the coordinates (`!3d<lat>!4d<lng>`) and the place ID (`!19s<ChIJ...>`) |
+| `places[].placeUrl` | string \| null | Google Maps link to the place |
+| `places[].placeId` | string \| null | Google place ID, e.g. `ChIJXQdbzlF5bIcRisJQL72gJFI` (works with the Google Places API and `https://www.google.com/maps/place/?q=place_id:<id>`) |
+| `places[].cid` | string \| null | Google Maps feature ID, e.g. `0x876c7951ce5b075d:0x5224a0bd2f50c28a` |
+| `places[].latitude` | number \| null | latitude of the place |
+| `places[].longitude` | number \| null | longitude of the place |
 | `places[].rating` | number \| null | average star rating (1 to 5) |
 | `places[].reviewCount` | number \| null | number of reviews |
 | `places[].category` | string \| null | main category, e.g. `Plumber`, `Coffee shop` |
 | `places[].address` | string \| null | street address as shown in the list (`null` for service-area businesses without a public address) |
 | `places[].openStatus` | string \| null | opening status at fetch time, e.g. `Open 24 hours`, `Closed · Opens 7 AM` |
 | `places[].phone` | string \| null | phone number, when the list shows it |
-| `places[].website` | string \| null | the business website, when the list shows it |
+| `places[].website` | string \| null | the business website, when the list shows it (`utm_*`, `fbclid` and `gclid` parameters removed) |
 | `places[].price` | string \| null | hotels: price per night as shown, e.g. `COP 207K` (the currency follows the location Google sees) |
+| `places[].priceCurrency` | string \| null | hotels: the currency code before the amount, e.g. `COP` (`null` when the price is written with a symbol, such as `$120`) |
+| `places[].priceAmount` | number \| null | hotels: the amount as a number, e.g. `207000` for `207K` |
 | `places[].amenities` | string[] | hotels: amenities shown in the list, e.g. `Pool`, `Free Wi-Fi`; empty for other places |
 
 Full example: [sample-output.json](sample-output.json) (plumbers in Denver, CO).
@@ -68,6 +74,12 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
   Batches retry it once automatically.
 - **Results are from a US location** (`proxyCountry: US`). "Near me" queries are relative to that location,
   so always name the city or area in the query.
+
+## Versions
+
+- **1.1.0:** adds `placeId`, `cid`, `latitude`, `longitude`, `priceCurrency` and `priceAmount`; removes
+  tracking parameters from `website`. No breaking changes: callers on `@1` get it automatically.
+- **1.0.0:** first release.
 
 ## Files
 
