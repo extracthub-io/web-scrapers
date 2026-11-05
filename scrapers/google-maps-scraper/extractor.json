@@ -1,0 +1,114 @@
+{
+  "name": "Google Maps - places search",
+  "description": "Places from a Google Maps search (www.google.com/maps/search/<query>): name, Google Maps place URL, rating, review count, category, address, opening-hours status, phone and website, with their position in the results. Renders the page in a browser (JavaScript tier); returns the first batch of results Google Maps loads (about 20).",
+  "slug": "google-maps-search",
+  "visibility": "public",
+  "url": "https://www.google.com/maps/search/plumbers+in+denver+co?hl=en&gl=us",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "google-maps",
+    "places",
+    "local-business",
+    "maps",
+    "leads"
+  ],
+  "browserActions": [
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "div[role=\"feed\"] a[href*=\"/maps/place/\"]"
+      },
+      "timeout_s": 15,
+      "on_error": "skip"
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 2
+    }
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "places",
+        "selector": "div[role=\"feed\"] div.Nv2PK",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a.hfpxzc",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": ["normalizeWhitespace"],
+              "required": true
+            },
+            {
+              "name": "placeUrl",
+              "selector": "a.hfpxzc",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": ["toAbsoluteUrl"]
+            },
+            {
+              "name": "rating",
+              "selector": "span.MW4etd",
+              "transforms": ["toNumber"]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "span.UY7F9",
+              "transforms": ["extractNumber"]
+            },
+            {
+              "name": "category",
+              "selector": "div.W4Efsd > div.W4Efsd:first-child > span:first-child > span",
+              "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+            },
+            {
+              "name": "address",
+              "selector": "div.W4Efsd > div.W4Efsd:first-child > span:not(:first-child) > span:not([aria-hidden]):not(.google-symbols)",
+              "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+            },
+            {
+              "name": "openStatus",
+              "selector": "div.W4Efsd > div.W4Efsd > span:first-child > span > span",
+              "isArray": true,
+              "transforms": ["joinWithSpace", "normalizeWhitespace", "nullIfEmpty"]
+            },
+            {
+              "name": "phone",
+              "selector": "span.UsdlK",
+              "transforms": ["normalizeWhitespace"]
+            },
+            {
+              "name": "website",
+              "selector": "a[data-value=\"Website\"]",
+              "extract": "attributeValue",
+              "attributeName": "href"
+            },
+            {
+              "name": "price",
+              "selector": "div.wcldff",
+              "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+            },
+            {
+              "name": "amenities",
+              "selector": "span.gSamH",
+              "isArray": true,
+              "transforms": ["normalizeWhitespace", "compact"]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
