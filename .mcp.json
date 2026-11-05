@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "extracthub": {
+      "type": "http",
+      "url": "https://api.extracthub.io/mcp",
+      "headers": {
+        "Authorization": "Bearer ${EXTRACTHUB_API_KEY}"
+      }
+    }
+  }
+}

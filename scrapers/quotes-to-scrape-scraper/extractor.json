@@ -1,0 +1,75 @@
+{
+  "name": "Quotes to Scrape - quote list page",
+  "description": "Every quote on a quotes.toscrape.com list page (text, author, author page URL, tags) plus the next-page URL.",
+  "slug": "quotes-toscrape-list",
+  "visibility": "public",
+  "url": "https://quotes.toscrape.com/",
+  "method": "GET",
+  "useProxy": false,
+  "renderJavascript": false,
+  "category": "other",
+  "tags": [
+    "quotes",
+    "list",
+    "demo"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "quotes",
+        "selector": "div.col-md-8 > div.quote[itemscope]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "text",
+              "selector": "span[itemprop=\"text\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "author",
+              "selector": "small[itemprop=\"author\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "author_url",
+              "selector": "a[href^=\"/author/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "tags",
+              "selector": "div.tags a.tag",
+              "isArray": true,
+              "extract": "textContent",
+              "transforms": [
+                "trim",
+                "compact"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "ul.pager li.next a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

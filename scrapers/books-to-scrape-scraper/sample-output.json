@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "title": "A Light in the Attic",
+      "price": 51.77,
+      "link": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html",
+      "image": "https://books.toscrape.com/media/cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg"
+    },
+    {
+      "title": "Tipping the Velvet",
+      "price": 53.74,
+      "link": "https://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html",
+      "image": "https://books.toscrape.com/media/cache/26/0c/260c6ae16bce31c8f8c95daddd9f4a1c.jpg"
+    },
+    {
+      "title": "Soumission",
+      "price": 50.1,
+      "link": "https://books.toscrape.com/catalogue/soumission_998/index.html",
+      "image": "https://books.toscrape.com/media/cache/3e/ef/3eef99c9d9adef34639f510662022830.jpg"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Secrets: the API key lives here (see docs/ai-agents.md)
+.claude/settings.local.json
+
+# Local tooling (install the skill from its own repo, see docs/ai-agents.md)
+.claude/skills/
+.playwright-mcp/
+
+# Saved third-party pages used while building scrapers, and internal notes
+samples/
+notes/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

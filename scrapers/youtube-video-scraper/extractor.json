@@ -1,0 +1,214 @@
+{
+  "name": "YouTube - video page",
+  "description": "Metadata of a YouTube video watch page (www.youtube.com/watch?v=...): video id, URL, title, channel name / id / URL, subscriber count and view count (from the embedded ytInitialData), plus full description, duration, like count, publish date, category, keywords, thumbnail, live and family-safe flags (from ytInitialPlayerResponse). When YouTube shows its bot check (playabilityStatus LOGIN_REQUIRED) the player fields are null; retry for the full set. Fetched through the proxy, no JavaScript.",
+  "slug": "youtube-video",
+  "visibility": "public",
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&hl=en",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "entertainment",
+  "tags": [
+    "youtube",
+    "video",
+    "media"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "videoId",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "currentVideoEndpoint.watchEndpoint.videoId"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "currentVideoEndpoint.commandMetadata.webCommandMetadata.url"
+        ],
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "title",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.title.runs[0].text",
+          "contents.twoColumnWatchNextResults.results.results.contents[1].videoPrimaryInfoRenderer.title.runs[0].text",
+          "contents.twoColumnWatchNextResults.results.results.contents[2].videoPrimaryInfoRenderer.title.runs[0].text",
+          "contents.twoColumnWatchNextResults.results.results.contents[3].videoPrimaryInfoRenderer.title.runs[0].text"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "videoDetails.shortDescription"
+        ]
+      },
+      {
+        "name": "channelName",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "contents.twoColumnWatchNextResults.results.results.contents[0].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.title.runs[0].text",
+          "contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.title.runs[0].text",
+          "contents.twoColumnWatchNextResults.results.results.contents[2].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.title.runs[0].text",
+          "contents.twoColumnWatchNextResults.results.results.contents[3].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.title.runs[0].text"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "channelId",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "contents.twoColumnWatchNextResults.results.results.contents[0].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.navigationEndpoint.browseEndpoint.browseId",
+          "contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.navigationEndpoint.browseEndpoint.browseId",
+          "contents.twoColumnWatchNextResults.results.results.contents[2].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.navigationEndpoint.browseEndpoint.browseId",
+          "contents.twoColumnWatchNextResults.results.results.contents[3].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.navigationEndpoint.browseEndpoint.browseId"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "channelUrl",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "contents.twoColumnWatchNextResults.results.results.contents[0].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.navigationEndpoint.browseEndpoint.canonicalBaseUrl",
+          "contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.navigationEndpoint.browseEndpoint.canonicalBaseUrl",
+          "contents.twoColumnWatchNextResults.results.results.contents[2].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.navigationEndpoint.browseEndpoint.canonicalBaseUrl",
+          "contents.twoColumnWatchNextResults.results.results.contents[3].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.navigationEndpoint.browseEndpoint.canonicalBaseUrl"
+        ],
+        "transforms": [
+          "coalesce",
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "subscriberCount",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "contents.twoColumnWatchNextResults.results.results.contents[0].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.subscriberCountText.simpleText",
+          "contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.subscriberCountText.simpleText",
+          "contents.twoColumnWatchNextResults.results.results.contents[2].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.subscriberCountText.simpleText",
+          "contents.twoColumnWatchNextResults.results.results.contents[3].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.subscriberCountText.simpleText"
+        ],
+        "transforms": [
+          "coalesce",
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "viewCount",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.originalViewCount",
+          "contents.twoColumnWatchNextResults.results.results.contents[1].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.originalViewCount",
+          "contents.twoColumnWatchNextResults.results.results.contents[2].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.originalViewCount",
+          "contents.twoColumnWatchNextResults.results.results.contents[3].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.originalViewCount"
+        ],
+        "transforms": [
+          "coalesce",
+          "toInteger"
+        ]
+      },
+      {
+        "name": "durationSeconds",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "videoDetails.lengthSeconds"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "likeCount",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "microformat.playerMicroformatRenderer.likeCount"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "publishDate",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "microformat.playerMicroformatRenderer.publishDate"
+        ]
+      },
+      {
+        "name": "category",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "microformat.playerMicroformatRenderer.category"
+        ]
+      },
+      {
+        "name": "keywords",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "videoDetails.keywords"
+        ]
+      },
+      {
+        "name": "thumbnailUrl",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "microformat.playerMicroformatRenderer.thumbnail.thumbnails[0].url"
+        ]
+      },
+      {
+        "name": "isLive",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "videoDetails.isLiveContent"
+        ]
+      },
+      {
+        "name": "isFamilySafe",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "microformat.playerMicroformatRenderer.isFamilySafe"
+        ]
+      },
+      {
+        "name": "playabilityStatus",
+        "selector": "script#__window__ytInitialPlayerResponse",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "playabilityStatus.status"
+        ]
+      }
+    ]
+  }
+}

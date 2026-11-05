@@ -1,0 +1,112 @@
+{
+  "name": "Google Search - results page (SERP)",
+  "description": "Organic web results incl. video result cards (title, Google redirect URL, direct URL for videos, displayed URL / video meta, source, snippet), People also ask questions, related searches and next-page URL of a Google web search results page (www.google.com/search?q=...). Fetched through the proxy without JavaScript.",
+  "slug": "google-serp",
+  "visibility": "public",
+  "url": "https://www.google.com/search?q=tesla&hl=en&gl=us",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "research",
+  "tags": [
+    "google",
+    "serp",
+    "search"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "organicResults",
+        "selector": "#rso div.tF2Cxc, #rso div.PmEWq",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": "h3",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a[jsname=\"UWckNb\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "directUrl",
+              "selector": "div.WVV5ke[data-surl]",
+              "extract": "attributeValue",
+              "attributeName": "data-surl"
+            },
+            {
+              "name": "displayedUrl",
+              "selector": "cite[role=\"text\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "source",
+              "selector": "span.VuuXrf",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "snippet",
+              "selector": [
+                "div[data-sncf]",
+                "div.VwiC3b"
+              ],
+              "combineStrategy": "first",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "peopleAlsoAsk",
+        "selector": "div.related-question-pair span.CSkcDe",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "relatedSearches",
+        "selector": "#bres a.ngTNl",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a#pnnext[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}
