@@ -1,0 +1,440 @@
+{
+  "name": "Zillow - property details",
+  "description": "Zillow property page (homedetails): zpid, address, coordinates, price, status, price cut, beds, baths, living area, at-a-glance facts, full description, Zestimate and rent Zestimate, days on Zillow, views, saves, MLS number, brokerage, all facts and features by category, price history and tax history.",
+  "slug": "zillow-property",
+  "url": "https://www.zillow.com/homedetails/5130-E-1st-Ave-Denver-CO-80220/68048074_zpid/",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "browserActions": [
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "[data-testid=\"home-info\"]"
+      },
+      "timeout_s": 15
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div:has(> p[data-testid=\"property-description\"]) > button"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "scroll_to_bottom",
+      "timeout_s": 15,
+      "on_error": "skip"
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 3
+    }
+  ],
+  "category": "real-estate",
+  "tags": [
+    "zillow",
+    "real estate",
+    "property",
+    "zestimate",
+    "home details"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "zpid",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "before": "_zpid"
+          },
+          {
+            "after": {
+              "text": "/",
+              "last": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "url"
+        ]
+      },
+      {
+        "name": "address",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.name"
+        ],
+        "required": true
+      },
+      {
+        "name": "streetAddress",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.address.streetAddress"
+        ]
+      },
+      {
+        "name": "city",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.address.addressLocality"
+        ]
+      },
+      {
+        "name": "state",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.address.addressRegion"
+        ]
+      },
+      {
+        "name": "zipcode",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.address.postalCode"
+        ]
+      },
+      {
+        "name": "latitude",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.geo.latitude"
+        ]
+      },
+      {
+        "name": "longitude",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.geo.longitude"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.price"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.priceCurrency"
+        ]
+      },
+      {
+        "name": "status",
+        "selector": "[data-testid=\"home-status\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ],
+        "excludeTags": [
+          "svg"
+        ]
+      },
+      {
+        "name": "priceChange",
+        "selector": "[data-testid=\"price-change\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "beds",
+        "selector": "[data-testid=\"desktop-bed-bath-sqft\"] [data-testid=\"bed-bath-sqft-text__value\"]",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "extractNumber",
+          {
+            "nth": 1
+          }
+        ]
+      },
+      {
+        "name": "baths",
+        "selector": "[data-testid=\"desktop-bed-bath-sqft\"] [data-testid=\"bed-bath-sqft-text__value\"]",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "extractNumber",
+          {
+            "nth": 2
+          }
+        ]
+      },
+      {
+        "name": "livingArea",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.floorSize.value"
+        ]
+      },
+      {
+        "name": "homeType",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemOffered.[\"@type\"]"
+        ]
+      },
+      {
+        "name": "atAGlance",
+        "selector": "[data-testid=\"at-a-glance\"] div[role=\"listitem\"]",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "p[data-testid=\"property-description\"]",
+        "extract": "textContent",
+        "transforms": [
+          "trim",
+          "nullIfEmpty"
+        ],
+        "textSeparator": "\n"
+      },
+      {
+        "name": "zestimate",
+        "selector": "[data-testid=\"primary-zestimate\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "rentZestimate",
+        "selector": "[data-testid=\"rent-zestimate\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "daysOnZillow",
+        "selector": "[data-testid=\"listed-stats-test-id\"] dl",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "before": " day"
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "views",
+        "selector": "[data-testid=\"listed-stats-test-id\"] dl",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "between": [
+              "on Zillow ",
+              " views"
+            ]
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "saves",
+        "selector": "[data-testid=\"listed-stats-test-id\"] dl",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "between": [
+              "views ",
+              " saves"
+            ]
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "mlsId",
+        "selector": "title",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "MLS #"
+          },
+          {
+            "before": " |"
+          },
+          "trim"
+        ]
+      },
+      {
+        "name": "brokerage",
+        "selector": "[data-testid=\"attribution-BROKER\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "facts",
+        "selector": "[data-testid=\"fact-category\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "category",
+              "selector": "h6",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "items",
+              "selector": "li",
+              "extract": "textContent",
+              "isArray": true,
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "priceHistory",
+        "selector": "tr[label^=\"Date:\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "date",
+              "selector": "[data-testid=\"date-info\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "event",
+              "selector": "td:nth-child(2)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "price",
+              "selector": "[data-testid=\"price-money-cell\"] > span:first-child > span:first-child",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "changePercent",
+              "selector": "[data-testid=\"percent-display\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "pricePerSqft",
+              "selector": "[data-testid=\"price-money-cell\"] > span:nth-child(2)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "extractPrice"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "taxHistory",
+        "selector": "tr:not([label])",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "year",
+              "selector": "td:first-child",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "toNumber"
+              ]
+            },
+            {
+              "name": "propertyTax",
+              "selector": "[data-testid=\"tax-money-cell\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "extractPrice"
+              ],
+              "required": true,
+              "excludeTags": [
+                "span"
+              ]
+            },
+            {
+              "name": "taxAssessment",
+              "selector": "td:nth-child(3)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "before": " "
+                },
+                "extractPrice"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

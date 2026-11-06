@@ -1,0 +1,81 @@
+{
+  "name": "Zillow - search results",
+  "description": "Zillow search results page (city, ZIP, neighborhood): total result count, pages, next page link, and the listings on the page (41 per page) as schema.org RealEstateListing objects with address, price, bedrooms, floor size, coordinates, photo and link.",
+  "slug": "zillow-search",
+  "url": "https://www.zillow.com/denver-co/",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "real-estate",
+  "tags": [
+    "zillow",
+    "real estate",
+    "listings",
+    "homes for sale",
+    "property"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "searchTitle",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.searchPageState.cat1.searchList.listResultsTitle"
+        ]
+      },
+      {
+        "name": "totalResults",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.searchPageState.cat1.searchList.totalResultCount"
+        ]
+      },
+      {
+        "name": "resultsPerPage",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.searchPageState.cat1.searchList.resultsPerPage"
+        ]
+      },
+      {
+        "name": "totalPages",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.searchPageState.cat1.searchList.totalPages"
+        ]
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.searchPageState.cat1.searchList.pagination.nextUrl"
+        ],
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "listings",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "itemListElement"
+        ],
+        "isArray": true,
+        "transforms": [
+          "compact",
+          "first"
+        ],
+        "required": true
+      }
+    ]
+  }
+}

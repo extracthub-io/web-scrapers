@@ -1,0 +1,162 @@
+{
+  "searchTitle": "Denver CO Real Estate & Homes For Sale",
+  "totalResults": 3675,
+  "resultsPerPage": 41,
+  "totalPages": 20,
+  "nextPageUrl": "https://www.zillow.com/denver-co/2_p/",
+  "listings": [
+    {
+      "@context": "https://schema.org",
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@context": "https://schema.org",
+        "@type": [
+          "RealEstateListing",
+          "Product"
+        ],
+        "@id": "https://www.zillow.com/homedetails/5130-E-1st-Ave-Denver-CO-80220/68048074_zpid/",
+        "name": "5130 E 1st Avenue, Denver, CO 80220",
+        "url": "https://www.zillow.com/homedetails/5130-E-1st-Ave-Denver-CO-80220/68048074_zpid/",
+        "image": "https://photos.zillowstatic.com/fp/5b0fc5f6b91637880886f4bb9f7879f4-p_e.jpg",
+        "inLanguage": "en-US",
+        "offers": {
+          "@context": "https://schema.org",
+          "@type": "Offer",
+          "itemOffered": {
+            "@context": "https://schema.org",
+            "@type": "SingleFamilyResidence",
+            "name": "5130 E 1st Avenue, Denver, CO 80220",
+            "floorSize": {
+              "@context": "https://schema.org",
+              "@type": "QuantitativeValue",
+              "value": 4871
+            },
+            "numberOfBedrooms": 4,
+            "address": {
+              "@context": "https://schema.org",
+              "@type": "PostalAddress",
+              "streetAddress": "5130 E 1st Avenue",
+              "addressLocality": "Denver",
+              "addressRegion": "CO",
+              "postalCode": "80220"
+            },
+            "geo": {
+              "@context": "https://schema.org",
+              "@type": "GeoCoordinates",
+              "latitude": 39.717556,
+              "longitude": -104.92714
+            },
+            "url": "https://www.zillow.com/homedetails/5130-E-1st-Ave-Denver-CO-80220/68048074_zpid/"
+          },
+          "price": 2249000,
+          "priceCurrency": "USD",
+          "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@context": "https://schema.org",
+        "@type": [
+          "RealEstateListing",
+          "Product"
+        ],
+        "@id": "https://www.zillow.com/homedetails/650-N-Williams-St-Denver-CO-80218/13331758_zpid/",
+        "name": "650 N Williams Street, Denver, CO 80218",
+        "url": "https://www.zillow.com/homedetails/650-N-Williams-St-Denver-CO-80218/13331758_zpid/",
+        "image": "https://photos.zillowstatic.com/fp/d2f36f7ed10339393b69dd47c724d5be-p_e.jpg",
+        "inLanguage": "en-US",
+        "offers": {
+          "@context": "https://schema.org",
+          "@type": "Offer",
+          "itemOffered": {
+            "@context": "https://schema.org",
+            "@type": "SingleFamilyResidence",
+            "name": "650 N Williams Street, Denver, CO 80218",
+            "floorSize": {
+              "@context": "https://schema.org",
+              "@type": "QuantitativeValue",
+              "value": 2893
+            },
+            "numberOfBedrooms": 5,
+            "address": {
+              "@context": "https://schema.org",
+              "@type": "PostalAddress",
+              "streetAddress": "650 N Williams Street",
+              "addressLocality": "Denver",
+              "addressRegion": "CO",
+              "postalCode": "80218"
+            },
+            "geo": {
+              "@context": "https://schema.org",
+              "@type": "GeoCoordinates",
+              "latitude": 39.72654,
+              "longitude": -104.96554
+            },
+            "url": "https://www.zillow.com/homedetails/650-N-Williams-St-Denver-CO-80218/13331758_zpid/"
+          },
+          "price": 1250000,
+          "priceCurrency": "USD",
+          "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@context": "https://schema.org",
+        "@type": [
+          "RealEstateListing",
+          "Product"
+        ],
+        "@id": "https://www.zillow.com/homedetails/2516-W-Hillside-Ave-Denver-CO-80219/67455905_zpid/",
+        "name": "2516 W Hillside Avenue, Denver, CO 80219",
+        "url": "https://www.zillow.com/homedetails/2516-W-Hillside-Ave-Denver-CO-80219/67455905_zpid/",
+        "image": "https://photos.zillowstatic.com/fp/cd127ccfb00207826d2c2b52f6bcaa7a-p_e.jpg",
+        "inLanguage": "en-US",
+        "offers": {
+          "@context": "https://schema.org",
+          "@type": "Offer",
+          "itemOffered": {
+            "@context": "https://schema.org",
+            "@type": "SingleFamilyResidence",
+            "name": "2516 W Hillside Avenue, Denver, CO 80219",
+            "floorSize": {
+              "@context": "https://schema.org",
+              "@type": "QuantitativeValue",
+              "value": 2784
+            },
+            "numberOfBedrooms": 5,
+            "address": {
+              "@context": "https://schema.org",
+              "@type": "PostalAddress",
+              "streetAddress": "2516 W Hillside Avenue",
+              "addressLocality": "Denver",
+              "addressRegion": "CO",
+              "postalCode": "80219"
+            },
+            "geo": {
+              "@context": "https://schema.org",
+              "@type": "GeoCoordinates",
+              "latitude": 39.670795,
+              "longitude": -105.01637
+            },
+            "url": "https://www.zillow.com/homedetails/2516-W-Hillside-Ave-Denver-CO-80219/67455905_zpid/"
+          },
+          "price": 675000,
+          "priceCurrency": "USD",
+          "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    }
+  ]
+}

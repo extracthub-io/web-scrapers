@@ -1,0 +1,120 @@
+{
+  "zpid": "68048074",
+  "url": "https://www.zillow.com/homedetails/5130-E-1st-Ave-Denver-CO-80220/68048074_zpid/",
+  "address": "5130 E 1st Avenue, Denver, CO 80220",
+  "streetAddress": "5130 E 1st Avenue",
+  "city": "Denver",
+  "state": "CO",
+  "zipcode": "80220",
+  "latitude": 39.717556,
+  "longitude": -104.92714,
+  "price": 2249000,
+  "currency": "USD",
+  "status": "For sale",
+  "priceChange": null,
+  "beds": 4,
+  "baths": 5,
+  "livingArea": 4871,
+  "homeType": "SingleFamilyResidence",
+  "atAGlance": [
+    "Single Family Residence",
+    "Built in 2005",
+    "6,250 Square Feet Lot",
+    "$2,151,000 Zestimate ®",
+    "$462/sqft"
+  ],
+  "description": "Situated just steps from Carson Elementary and Temple Emanuel and a short stroll to Robinson & Cranmer Park, this Mediterranean-style Hilltop residence delivers the character of an established neighborhood with the comfort of a move-in-ready home. An open floor plan showcases oversized arched windows, coffered and beamed ceilings, classic wainscoting, rich hardwood floors, and abundant natural light. The chef's kitchen features professional-grade appliances, quartz countertops, an expansive island, and a butler's pantry connecting to the formal dining room. Upstairs, three spacious bedrooms include a luxurious primary suite with a five-piece bath, while a versatile loft could be enclosed to create a fifth bedroom. The finished lower level offers a generous media and recreation room, wine cellar, wet bar, and private guest room. Designed for effortless indoor-outdoor entertaining, the home features a backyard, covered patio with remote-controlled heaters, built-in barbecue, outdoor refrigerator, and whole-home speaker system. Recent improvements include a DaVinci roof, refreshed interior and exterior paint, updated lighting and LED fixtures, new HVAC systems and water heaters, refreshed landscaping, exterior uplighting, a redone driveway, and a finished garage with epoxy flooring and custom storage.",
+  "zestimate": 2151000,
+  "rentZestimate": 7818,
+  "daysOnZillow": 7,
+  "views": 2106,
+  "saves": 148,
+  "mlsId": "3246872",
+  "brokerage": "The Agency - Denver",
+  "facts": [
+    {
+      "category": "Bedrooms & bathrooms",
+      "items": [
+        "Bedrooms: 4",
+        "Bathrooms: 5",
+        "Full bathrooms: 3",
+        "3/4 bathrooms: 1",
+        "1/2 bathrooms: 1",
+        "Main level bathrooms: 1"
+      ]
+    },
+    {
+      "category": "Bedroom",
+      "items": [
+        "Level: Upper"
+      ]
+    },
+    {
+      "category": "Bedroom",
+      "items": [
+        "Features: Primary Suite",
+        "Level: Upper"
+      ]
+    },
+    {
+      "category": "Bedroom",
+      "items": [
+        "Level: Upper"
+      ]
+    }
+  ],
+  "priceHistory": [
+    {
+      "date": "10/29/2026",
+      "event": "Listed for sale",
+      "price": 2249000,
+      "changePercent": "+10.5%",
+      "pricePerSqft": 462
+    },
+    {
+      "date": "11/30/2023",
+      "event": "Sold",
+      "price": 2035000,
+      "changePercent": "-2.9%",
+      "pricePerSqft": 418
+    },
+    {
+      "date": "10/23/2023",
+      "event": "Pending sale",
+      "price": 2095000,
+      "changePercent": null,
+      "pricePerSqft": 430
+    },
+    {
+      "date": "10/20/2023",
+      "event": "Price change",
+      "price": 2095000,
+      "changePercent": "-8.7%",
+      "pricePerSqft": 430
+    },
+    {
+      "date": "9/16/2023",
+      "event": "Listed for sale",
+      "price": 2295000,
+      "changePercent": "+170%",
+      "pricePerSqft": 471
+    }
+  ],
+  "taxHistory": [
+    {
+      "year": 2025,
+      "propertyTax": 11699,
+      "taxAssessment": 161470
+    },
+    {
+      "year": 2024,
+      "propertyTax": 11445,
+      "taxAssessment": 147710
+    },
+    {
+      "year": 2023,
+      "propertyTax": 9431,
+      "taxAssessment": 151850
+    }
+  ]
+}
