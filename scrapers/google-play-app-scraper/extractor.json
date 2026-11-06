@@ -1,0 +1,146 @@
+{
+  "name": "Google Play - app page",
+  "description": "Details of a Google Play app page (play.google.com/store/apps/details?id=...): app id, name, developer, category, rating, exact rating count, downloads, content rating, price, ads / in-app purchase notices, last update date, short and full description, icon and screenshots. Fetched through the proxy, no JavaScript.",
+  "slug": "google-play-app",
+  "visibility": "public",
+  "url": "https://play.google.com/store/apps/details?id=com.spotify.music&hl=en&gl=US",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "other",
+  "tags": ["google-play", "android", "apps", "app-store", "aso"],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "appId",
+        "selector": "link[rel=\"canonical\"][href*=\"id=\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [{ "after": "id=" }, { "split": "&" }, "first"]
+      },
+      {
+        "name": "name",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["name"],
+        "required": true
+      },
+      {
+        "name": "developer",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["author.name"]
+      },
+      {
+        "name": "developerWebsite",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["author.url"]
+      },
+      {
+        "name": "developerUrl",
+        "selector": "div.Vbfug a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": ["toAbsoluteUrl"]
+      },
+      {
+        "name": "category",
+        "selector": "[itemprop=\"genre\"] span",
+        "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+      },
+      {
+        "name": "categoryId",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["applicationCategory"]
+      },
+      {
+        "name": "rating",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["aggregateRating.ratingValue"],
+        "transforms": ["toNumber"]
+      },
+      {
+        "name": "ratingCount",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["aggregateRating.ratingCount"],
+        "transforms": ["toNumber"]
+      },
+      {
+        "name": "downloads",
+        "selector": "div.l8YSdd div.wVqUob",
+        "isArray": true,
+        "excludeTags": ["i"],
+        "transforms": ["joinWithSpace", "normalizeWhitespace", { "before": " Downloads" }, { "split": " " }, "last"]
+      },
+      {
+        "name": "downloadsMin",
+        "selector": "div.l8YSdd div.wVqUob",
+        "isArray": true,
+        "excludeTags": ["i"],
+        "transforms": ["joinWithSpace", "normalizeWhitespace", { "before": " Downloads" }, { "split": " " }, "last", "parseCompactNumber"]
+      },
+      {
+        "name": "contentRating",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["contentRating"]
+      },
+      {
+        "name": "price",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["offers[0].price"],
+        "transforms": ["toNumber"]
+      },
+      {
+        "name": "currency",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["offers[0].priceCurrency"]
+      },
+      {
+        "name": "notices",
+        "selector": "span.UIuSk",
+        "isArray": true,
+        "transforms": ["normalizeWhitespace", "compact"]
+      },
+      {
+        "name": "updated",
+        "selector": "div.TKjAsc div.xg1aie",
+        "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+      },
+      {
+        "name": "summary",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["description"]
+      },
+      {
+        "name": "description",
+        "selector": "div.bARER[data-g-id=\"description\"]",
+        "textSeparator": "\n",
+        "transforms": ["trim", "nullIfEmpty"]
+      },
+      {
+        "name": "icon",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": ["image"]
+      },
+      {
+        "name": "screenshots",
+        "selector": "img[data-screenshot-index][src]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "src",
+        "transforms": ["unique"]
+      }
+    ]
+  }
+}

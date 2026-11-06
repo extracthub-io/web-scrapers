@@ -1,0 +1,163 @@
+{
+  "name": "Google local results (places list)",
+  "description": "Places from Google's local results page (google.com/search?q=<query>&tbm=lcl): name, rating, review count, category, price range, address or service area, years in business, opening-hours status, phone and Google knowledge-graph ID, with their position, plus the next-page URL (20 places per page). No JavaScript rendering needed.",
+  "slug": "google-local-results",
+  "visibility": "public",
+  "url": "https://www.google.com/search?q=plumbers+in+denver+co&tbm=lcl&hl=en&gl=us",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "google",
+    "local-business",
+    "places",
+    "leads",
+    "google-local"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "places",
+        "selector": "div.VkpGBb",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "div.rllt__details > div[role=\"heading\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "kgmid",
+              "selector": "div[id^=\"pv-\"]",
+              "extract": "attributeValue",
+              "attributeName": "id",
+              "transforms": [
+                {
+                  "after": "pv-"
+                }
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "span.yi40Hd",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "span.RDApEe",
+              "transforms": [
+                {
+                  "between": [
+                    "(",
+                    ")"
+                  ]
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "category",
+              "selector": "div.rllt__details > div:nth-child(2)",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "split": "&middot;"
+                },
+                "last",
+                {
+                  "split": "·"
+                },
+                "last"
+              ]
+            },
+            {
+              "name": "priceRange",
+              "selector": "div.rllt__details > div:nth-child(2) > span:nth-child(2)",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "yearsInBusiness",
+              "selector": "div.rllt__details > div:nth-child(3)",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "before": " years in business"
+                },
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "address",
+              "selector": "div.rllt__details > div:nth-child(3)",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "split": "&middot;"
+                },
+                "last",
+                {
+                  "split": "·"
+                },
+                "last",
+                "nullIfEmpty"
+              ],
+              "excludeTags": [
+                "span"
+              ]
+            },
+            {
+              "name": "openStatus",
+              "selector": "div.rllt__details > div:not(:first-child):not(:nth-child(2)):not(.pJ3Ci) > span:first-child",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "phone",
+              "selector": "div.rllt__details > div:not(:first-child):not(:nth-child(2)):not(.pJ3Ci)",
+              "isArray": true,
+              "transforms": [
+                "joinWithSpace",
+                "extractPhone"
+              ]
+            },
+            {
+              "name": "reviewSnippet",
+              "selector": "div.rllt__details > div.pJ3Ci span.uDyWh",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a#pnnext[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

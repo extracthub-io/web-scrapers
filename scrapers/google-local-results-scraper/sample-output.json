@@ -1,0 +1,75 @@
+{
+  "places": [
+    {
+      "position": 1,
+      "name": "Speed plumbing",
+      "kgmid": "/g/11wc5ynb_p",
+      "rating": 5,
+      "reviewCount": 273,
+      "category": "Plumber",
+      "priceRange": null,
+      "yearsInBusiness": 5,
+      "address": "Denver, CO",
+      "openStatus": "Open 24 hours",
+      "phone": "(720) 670-6361",
+      "reviewSnippet": "\"Speed Plumbing came and did a beautiful and fast repair.\""
+    },
+    {
+      "position": 2,
+      "name": "Brothers Plumbing, Heating & Electric",
+      "kgmid": "/g/1tgf3p_j",
+      "rating": 4.7,
+      "reviewCount": 9300,
+      "category": "Plumber",
+      "priceRange": null,
+      "yearsInBusiness": 45,
+      "address": "Denver, CO",
+      "openStatus": "Open · Closes 8 PM",
+      "phone": "(720) 994-7132",
+      "reviewSnippet": "\"Ethan promptly diagnosed the problem and cleared the drain pipe.\""
+    },
+    {
+      "position": 3,
+      "name": "Applewood Plumbing Heating & Electric",
+      "kgmid": "/g/1thcn7t5",
+      "rating": 4.8,
+      "reviewCount": 18000,
+      "category": "Plumber",
+      "priceRange": null,
+      "yearsInBusiness": 50,
+      "address": "Denver, CO",
+      "openStatus": "Open · Closes 10 PM",
+      "phone": "(303) 444-1633",
+      "reviewSnippet": "\"Jakob was prompt and did a thorough and fantastic job fixing our toilet.\""
+    },
+    {
+      "position": 4,
+      "name": "Time Plumbing, Heating & Electric Denver",
+      "kgmid": "/g/1tfw3jh7",
+      "rating": 4.6,
+      "reviewCount": 792,
+      "category": "Plumber",
+      "priceRange": null,
+      "yearsInBusiness": 40,
+      "address": "Denver, CO",
+      "openStatus": "Open 24 hours",
+      "phone": "(303) 758-6237",
+      "reviewSnippet": "\"Nate was here 2 1/2 hours and fixed the leak.\""
+    },
+    {
+      "position": 5,
+      "name": "B.C. Plumbing Services",
+      "kgmid": "/g/11y755vnzt",
+      "rating": 5,
+      "reviewCount": 100,
+      "category": "Plumber",
+      "priceRange": null,
+      "yearsInBusiness": null,
+      "address": null,
+      "openStatus": "Open 24 hours",
+      "phone": "(720) 668-4042",
+      "reviewSnippet": "\"He did an amazing job replacing the faucet in my kitchen sink.\""
+    }
+  ],
+  "nextPageUrl": "https://www.google.com/search?q=plumbers+in+denver+co&sca_esv=d05caf2a46dfadf9&hl=en&gl=us&udm=local&sxsrf=AKL5yDi7OVFSgKEwfw8xqmy4lPfUBj10lQ:1793929344239&ei=gDDtauWSDqCtkdUP-KGJuAM&start=20&sa=N&sstk=AYl2yk-YLEL5PJ3vlRKq722uA7bXyqNq3tKFVkODpCyBduBMY_8BNeUi1SsBmgQUvXASa86KNSNjSoP_Tqi67sxB8KZKwa2147Ojlw&ved=2ahUKEwjl0sLKm_KXAxWgVqQEHfhQAjcQ8NMDegQISxAN"
+}

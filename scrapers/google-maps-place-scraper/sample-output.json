@@ -1,0 +1,49 @@
+{
+  "name": "Epoch Coffee",
+  "category": "Coffee shop",
+  "hotelClass": null,
+  "rating": 4.5,
+  "reviewCount": 2536,
+  "address": "221 W N Loop Blvd, Austin, TX 78751",
+  "phone": "(512) 454-3762",
+  "phoneInternational": "+15124543762",
+  "website": "http://www.epochcoffee.com/",
+  "plusCode": "879G+C5 Austin, Texas",
+  "openStatus": "Open 24 hours",
+  "hours": [
+    {
+      "day": "Thursday",
+      "hours": "Open 24 hours"
+    },
+    {
+      "day": "Friday",
+      "hours": "Open 24 hours"
+    },
+    {
+      "day": "Saturday",
+      "hours": "Open 24 hours"
+    },
+    {
+      "day": "Sunday",
+      "hours": "Open 24 hours"
+    },
+    {
+      "day": "Monday",
+      "hours": "12 AM to 11:30 PM"
+    },
+    {
+      "day": "Tuesday",
+      "hours": "Open 24 hours"
+    },
+    {
+      "day": "Wednesday (Veterans Day)",
+      "hours": "Open 24 hours, Hours might differ"
+    }
+  ],
+  "description": "Cool, vibrant small-chain cafe featuring nibbles, tea & carefully brewed espresso drinks.",
+  "placeId": "ChIJG-gJw2vKRIYROWi2uwOp8QE",
+  "cid": "0x8644ca6bc309e81b:0x1f1a903bbb66839",
+  "kgmid": "/g/1v76_180",
+  "latitude": 30.3186037,
+  "longitude": -97.7245402
+}

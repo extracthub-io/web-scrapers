@@ -68,7 +68,8 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
   - Services (plumbers, electricians, ...): phone and website are usually included.
   - Restaurants, cafes, dentists, ...: phone and website are often `null` in the list.
   - Hotels: no address or opening hours, but `price` and `amenities` instead.
-  Open the `placeUrl` for full place details.
+  For full details (phone, website, hours) run the [Google Maps Place Scraper](../google-maps-place-scraper/)
+  on each `placeUrl`.
 - **No results = failed request:** if the page has no result list (a bot check, or a query that goes
   straight to a single place), the call fails with HTTP 422 `required_fields_missing` and is still charged.
   Batches retry it once automatically.

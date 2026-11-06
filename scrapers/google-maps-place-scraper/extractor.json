@@ -1,0 +1,304 @@
+{
+  "name": "Google Maps - place details",
+  "description": "Details of a Google Maps place page (www.google.com/maps/place/...): name, category, rating, review count, full address, phone, website, Plus Code, opening status and weekly hours, description, place ID, coordinates and the top reviews shown on the page. Renders the page in a browser (JavaScript tier). Pairs with @extracthub1/google-maps-search: feed its placeUrl here.",
+  "slug": "google-maps-place",
+  "visibility": "public",
+  "url": "https://www.google.com/maps/place/Time+Plumbing,+Heating+%26+Electric+Denver/data=!4m7!3m6!1s0x876c7951ce5b075d:0x5224a0bd2f50c28a!8m2!3d39.7259254!4d-105.018292!16s%2Fg%2F1tfw3jh7!19sChIJXQdbzlF5bIcRisJQL72gJFI?authuser=0&hl=en&gl=us",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "google-maps",
+    "places",
+    "local-business",
+    "maps",
+    "leads"
+  ],
+  "browserActions": [
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "h1.DUwDvf"
+      },
+      "timeout_s": 15,
+      "on_error": "skip"
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 2
+    }
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "h1.DUwDvf",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ],
+        "required": true
+      },
+      {
+        "name": "category",
+        "selector": "button.DkEaL",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "hotelClass",
+        "selector": "span.mgr77e > span > span:not(.fjHK4)",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "before": "-star"
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "div.F7nice > span:first-child > span[aria-hidden]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": "div.F7nice span[role=\"img\"][aria-label$=\"reviews\"]",
+        "extract": "attributeValue",
+        "attributeName": "aria-label",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "address",
+        "selector": "button[data-item-id=\"address\"] div.Io6YTe",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "phone",
+        "selector": "button[data-item-id^=\"phone:tel:\"] div.Io6YTe",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "phoneInternational",
+        "selector": "button[data-item-id^=\"phone:tel:\"]",
+        "extract": "attributeValue",
+        "attributeName": "data-item-id",
+        "transforms": [
+          {
+            "after": "phone:tel:"
+          }
+        ]
+      },
+      {
+        "name": "website",
+        "selector": "a[data-item-id=\"authority\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "utm_*",
+              "fbclid",
+              "gclid"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "plusCode",
+        "selector": "button[data-item-id=\"oloc\"] div.Io6YTe",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "openStatus",
+        "selector": [
+          "span.ZDu9vd",
+          "button[data-item-id=\"oh\"] div.Io6YTe"
+        ],
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ],
+        "combineStrategy": "first"
+      },
+      {
+        "name": "hours",
+        "selector": "table.eK4R0e tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "day",
+              "selector": "td.ylH6lf",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "hours",
+              "selector": "td.mxowUb[aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "description",
+        "selector": "div.PYvSYb",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "placeId",
+        "selector": "link[href^=\"/maps/preview/place\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "%214s"
+          },
+          {
+            "between": [
+              "%215s",
+              "%21"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "cid",
+        "selector": "link[href^=\"/maps/preview/place\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "%211s",
+              "%21"
+            ]
+          },
+          "decodeUri"
+        ]
+      },
+      {
+        "name": "kgmid",
+        "selector": "link[href^=\"/maps/preview/place\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "%214s",
+              "%21"
+            ]
+          },
+          "decodeUri"
+        ]
+      },
+      {
+        "name": "latitude",
+        "selector": "link[href^=\"/maps/preview/place\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "%214m2%213d",
+              "%21"
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "longitude",
+        "selector": "link[href^=\"/maps/preview/place\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "%214m2%213d"
+          },
+          {
+            "between": [
+              "%214d",
+              "%21"
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "topReviews",
+        "selector": "div.jftiEf[data-review-id]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "author",
+              "selector": "div.d4r55",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "rating",
+              "selector": "span.kvMYJc[aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "date",
+              "selector": "span.rsqaWe",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "text",
+              "selector": "span.wiI7pd",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

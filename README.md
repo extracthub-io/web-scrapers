@@ -1,4 +1,4 @@
-# Web Scrapers: Google Search Scraper, Google Maps Scraper, YouTube Scraper, YouTube Transcript Scraper & more (ready-to-use scraping API)
+# Web Scrapers: Google Search Scraper, Google Maps Scraper, Google Play Scraper, YouTube Scraper, YouTube Transcript Scraper & more (ready-to-use scraping API)
 
 A growing collection of **ready-to-use web scrapers** that turn web pages into clean JSON. Every scraper here
 is a published [ExtractHub](https://extracthub.io) extractor: send a URL, get structured data back. No
@@ -11,6 +11,10 @@ API, or let an **AI agent** (Claude, Cursor, any MCP client) call them for you.
 |---|---|---|---|
 | [Google Search Scraper (SERP)](scrapers/google-search-scraper/) | organic results incl. videos, People also ask, related searches, next page | [@extracthub1/google-serp](https://extracthub.io/extractor/@extracthub1/google-serp) | $0.0025 |
 | [Google Maps Scraper (places search)](scrapers/google-maps-scraper/) | places from a Maps search: name, place link, place ID, coordinates, rating, reviews, category, address, open status, phone, website, hotel price | [@extracthub1/google-maps-search](https://extracthub.io/extractor/@extracthub1/google-maps-search) | $0.0035 |
+| [Google Maps Place Scraper (place details)](scrapers/google-maps-place-scraper/) | one place: full address, phone, website, hours, Plus Code, place ID, coordinates, top reviews | [@extracthub1/google-maps-place](https://extracthub.io/extractor/@extracthub1/google-maps-place) | $0.0035 |
+| [Google Local Results Scraper](scrapers/google-local-results-scraper/) | places from Google's local results, 20 per page with next page: name, rating, reviews, category, address, phone, years in business | [@extracthub1/google-local-results](https://extracthub.io/extractor/@extracthub1/google-local-results) | $0.0025 |
+| [Google Play App Scraper](scrapers/google-play-app-scraper/) | app page: rating, rating count, downloads, developer, category, price, update date, description, screenshots | [@extracthub1/google-play-app](https://extracthub.io/extractor/@extracthub1/google-play-app) | $0.0025 |
+| [YouTube Channel Videos Scraper](scrapers/youtube-channel-videos-scraper/) | channel info + about 120 latest videos: title, views, publish date, duration | [@extracthub1/youtube-channel-videos](https://extracthub.io/extractor/@extracthub1/youtube-channel-videos) | $0.0035 |
 | [YouTube Video Scraper](scrapers/youtube-video-scraper/) | title, description, channel, subscribers, views, likes, duration, publish date, keywords | [@extracthub1/youtube-video](https://extracthub.io/extractor/@extracthub1/youtube-video) | $0.0025 |
 | [YouTube Transcript Scraper](scrapers/youtube-transcript-scraper/) | full video transcript: timestamped caption segments (start, duration, text) | [@extracthub1/youtube-transcript](https://extracthub.io/extractor/@extracthub1/youtube-transcript) | $0.0035 |
 | [Quotes to Scrape Scraper](scrapers/quotes-to-scrape-scraper/) | quotes, authors, tags, pagination (practice site) | [@extracthub1/quotes-toscrape-list](https://extracthub.io/extractor/@extracthub1/quotes-toscrape-list) | $0.0005 |

@@ -1,0 +1,57 @@
+{
+  "channelName": "Marques Brownlee",
+  "channelId": "UCBJycsmduvYEL83R_U4JriQ",
+  "channelUrl": "https://www.youtube.com/channel/UCBJycsmduvYEL83R_U4JriQ",
+  "handle": "@mkbhd",
+  "description": "MKBHD: Quality Tech Videos | YouTuber | Geek | Consumer Electronics | Tech Head | Internet Personality!\n\nbusiness@MKBHD.com\n\nNYC",
+  "avatar": "https://yt3.googleusercontent.com/qu4TmIaYUlS41-dJ9gZ7DUR3nilvmB5_11i6OKSdvNnBNiyOusZP1bMN6ICnuxtjFBb6ioKgRQ=s900-c-k-c0x00ffffff-no-rj",
+  "subscriberCount": 21400000,
+  "videoCount": 1800,
+  "videos": [
+    {
+      "position": 1,
+      "videoId": "g6Die8gVFn0",
+      "url": "https://www.youtube.com/watch?v=g6Die8gVFn0",
+      "title": "OLED iPad Mini is The Most Apple Product They've Ever Appled",
+      "viewCount": 9300000,
+      "published": "2 days ago",
+      "duration": "13:00"
+    },
+    {
+      "position": 2,
+      "videoId": "2reQut8WNGc",
+      "url": "https://www.youtube.com/watch?v=2reQut8WNGc",
+      "title": "Macbook PROLED XDR Impressions: They Said They Wouldn't!",
+      "viewCount": 11000000,
+      "published": "7 days ago",
+      "duration": "10:54"
+    },
+    {
+      "position": 3,
+      "videoId": "ESABTN4VtrA",
+      "url": "https://www.youtube.com/watch?v=ESABTN4VtrA",
+      "title": "iPhone Duo Review: First Generation Fun!",
+      "viewCount": 13000000,
+      "published": "2 weeks ago",
+      "duration": "29:05"
+    },
+    {
+      "position": 4,
+      "videoId": "scwlR0QHGOk",
+      "url": "https://www.youtube.com/watch?v=scwlR0QHGOk",
+      "title": "The NEW Tesla Roadster: My Honest Reaction",
+      "viewCount": 12000000,
+      "published": "2 weeks ago",
+      "duration": "22:45"
+    },
+    {
+      "position": 5,
+      "videoId": "QVv3mQzlrN0",
+      "url": "https://www.youtube.com/watch?v=QVv3mQzlrN0",
+      "title": "Apple Homeview Impressions: Not Convinced!",
+      "viewCount": 11000000,
+      "published": "3 weeks ago",
+      "duration": "11:47"
+    }
+  ]
+}

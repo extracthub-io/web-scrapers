@@ -1,0 +1,209 @@
+{
+  "name": "YouTube - channel videos",
+  "description": "Latest videos of a YouTube channel (www.youtube.com/@handle/videos): channel name, id, handle, description, subscriber and video counts, plus the videos with id, URL, title, view count, relative publish date and duration, newest first, with their position. Renders the page in a browser and scrolls it to load more than the first 30 videos (JavaScript tier).",
+  "slug": "youtube-channel-videos",
+  "visibility": "public",
+  "url": "https://www.youtube.com/@mkbhd/videos?hl=en&gl=US",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "category": "entertainment",
+  "tags": [
+    "youtube",
+    "channel",
+    "videos",
+    "media"
+  ],
+  "browserActions": [
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "ytd-rich-item-renderer"
+      },
+      "timeout_s": 15,
+      "on_error": "skip"
+    },
+    {
+      "type": "scroll",
+      "x": 0,
+      "y": 10000
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 2
+    },
+    {
+      "type": "scroll",
+      "x": 0,
+      "y": 10000
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 2
+    },
+    {
+      "type": "scroll",
+      "x": 0,
+      "y": 10000
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 2
+    }
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "channelName",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "metadata.channelMetadataRenderer.title"
+        ],
+        "required": true
+      },
+      {
+        "name": "channelId",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "metadata.channelMetadataRenderer.externalId"
+        ]
+      },
+      {
+        "name": "channelUrl",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "metadata.channelMetadataRenderer.channelUrl"
+        ]
+      },
+      {
+        "name": "handle",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "header.pageHeaderRenderer.content.pageHeaderViewModel.metadata.contentMetadataViewModel.metadataRows[0].metadataParts[0].text.content"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "metadata.channelMetadataRenderer.description"
+        ]
+      },
+      {
+        "name": "avatar",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "metadata.channelMetadataRenderer.avatar.thumbnails[0].url"
+        ]
+      },
+      {
+        "name": "subscriberCount",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "header.pageHeaderRenderer.content.pageHeaderViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[0].text.content"
+        ],
+        "transforms": [
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "videoCount",
+        "selector": "script#__window__ytInitialData",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "header.pageHeaderRenderer.content.pageHeaderViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[1].text.content"
+        ],
+        "transforms": [
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "videos",
+        "selector": "ytd-rich-grid-renderer ytd-rich-item-renderer",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "videoId",
+              "selector": "div.ytLockupViewModelHost[class*=\"content-id-\"]",
+              "extract": "attributeValue",
+              "attributeName": "class",
+              "transforms": [
+                {
+                  "after": "content-id-"
+                },
+                {
+                  "split": " "
+                },
+                "first"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.ytLockupMetadataViewModelTitle[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl",
+                {
+                  "removeQueryParams": [
+                    "pp"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "title",
+              "selector": "h3[title]",
+              "extract": "attributeValue",
+              "attributeName": "title",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "viewCount",
+              "selector": "span[aria-label$=\" views\"]",
+              "transforms": [
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "published",
+              "selector": "span.ytContentMetadataViewModelMetadataTextLastPart[aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "duration",
+              "selector": "badge-shape div.ytBadgeShapeText",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
