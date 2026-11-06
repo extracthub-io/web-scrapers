@@ -54,7 +54,7 @@ e.g. `https://www.trustpilot.com/review/wise.com`.
 | `reviews[].replyDate` | string \| null | reply time (ISO 8601) |
 | `nextPageUrl` | string \| null | link to the next page |
 
-Full example: [sample-output.json](sample-output.json) (Wise, page 2; shortened to 3 reviews, reviewer names
+Full example: [sample-output.json](sample-output.json) (Wise; shortened to 3 reviews, reviewer names
 replaced by initials).
 
 ## Quick start

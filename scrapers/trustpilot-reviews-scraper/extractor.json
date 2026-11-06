@@ -2,7 +2,7 @@
   "name": "Trustpilot - company reviews",
   "description": "Trustpilot company review page: company name, TrustScore, review counts, rating distribution, categories and the reviews on the page (author, country, rating, title, text, dates, company reply) with the next page link.",
   "slug": "trustpilot-reviews",
-  "url": "https://www.trustpilot.com/review/www.amazon.com",
+  "url": "https://www.trustpilot.com/review/wise.com",
   "method": "GET",
   "useProxy": true,
   "renderJavascript": false,
