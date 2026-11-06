@@ -1,0 +1,33 @@
+{
+  "fullName": "microsoft/vscode",
+  "owner": "microsoft",
+  "name": "vscode",
+  "repoId": 41881900,
+  "description": "Visual Studio Code",
+  "website": "https://code.visualstudio.com",
+  "topics": [
+    "editor",
+    "electron",
+    "microsoft",
+    "typescript",
+    "visual-studio-code"
+  ],
+  "stars": 194758,
+  "forks": 44405,
+  "watchers": 3556,
+  "license": "MIT License",
+  "licenseSpdx": "MIT",
+  "defaultBranch": "main",
+  "latestCommitSha": "4a19f6c0f9b684582be71e1aea16de39b40d4f0b",
+  "commitCount": 170624,
+  "releaseCount": 252,
+  "tagCount": 403,
+  "openIssues": 5000,
+  "openPullRequests": 3100,
+  "createdAt": "2015-09-03T20:23:38.000Z",
+  "isFork": false,
+  "isArchived": false,
+  "isTemplate": false,
+  "isOrg": true,
+  "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4"
+}

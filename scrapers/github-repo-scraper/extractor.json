@@ -1,0 +1,239 @@
+{
+  "name": "GitHub - repository page",
+  "description": "Public GitHub repository page: owner, name, description, website, topics, stars, forks, watchers, license, default branch, commits, releases, open issues and pull requests, creation date and flags.",
+  "slug": "github-repo",
+  "url": "https://github.com/microsoft/vscode",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "category": "other",
+  "tags": [
+    "github",
+    "repository",
+    "open source",
+    "stars",
+    "developer tools"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "fullName",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.watch.watchData.repositoryName"
+        ],
+        "required": true
+      },
+      {
+        "name": "owner",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewLayoutRoute.repo.ownerLogin",
+          "payload.sidebarAbout.ownerLogin"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "name",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewLayoutRoute.repo.name",
+          "payload.sidebarAbout.repoName"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "repoId",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewLayoutRoute.repo.id"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.description"
+        ]
+      },
+      {
+        "name": "website",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.website"
+        ]
+      },
+      {
+        "name": "topics",
+        "selector": "a[href^=\"/topics/\"]",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "unique"
+        ]
+      },
+      {
+        "name": "stars",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.stargazerCount"
+        ]
+      },
+      {
+        "name": "forks",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.forksCount"
+        ]
+      },
+      {
+        "name": "watchers",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.watcherCount"
+        ]
+      },
+      {
+        "name": "license",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.repo.license.name"
+        ]
+      },
+      {
+        "name": "licenseSpdx",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.repo.license.spdxId"
+        ]
+      },
+      {
+        "name": "defaultBranch",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewLayoutRoute.repo.defaultBranch"
+        ]
+      },
+      {
+        "name": "latestCommitSha",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewRepoRoute.refInfo.currentOid"
+        ]
+      },
+      {
+        "name": "commitCount",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewRepoRoute.overview.commitCount"
+        ],
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "releaseCount",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.sections.releases.releaseCount"
+        ]
+      },
+      {
+        "name": "tagCount",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.sections.releases.tagCount"
+        ]
+      },
+      {
+        "name": "openIssues",
+        "selector": "a[data-tab-item=\"issues\"] span[data-component=\"CounterLabel\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "openPullRequests",
+        "selector": "a[data-tab-item=\"pull-requests\"] span[data-component=\"CounterLabel\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "createdAt",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewLayoutRoute.repo.createdAt"
+        ]
+      },
+      {
+        "name": "isFork",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewLayoutRoute.repo.isFork"
+        ]
+      },
+      {
+        "name": "isArchived",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewLayoutRoute.repo.isArchived"
+        ]
+      },
+      {
+        "name": "isTemplate",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.repo.isTemplate"
+        ]
+      },
+      {
+        "name": "isOrg",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.sidebarAbout.isOrg"
+        ]
+      },
+      {
+        "name": "ownerAvatar",
+        "selector": "script[data-target=\"react-app.embeddedData\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "payload.codeViewLayoutRoute.repo.ownerAvatar"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "name": "Hacker News - stories list",
+  "description": "Stories from a Hacker News list page (front page, newest, ask, show, past): rank, id, title, link, points, author, time, comment count and the next page link.",
+  "slug": "hacker-news-stories",
+  "url": "https://news.ycombinator.com/news",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "hacker news",
+    "ycombinator",
+    "news",
+    "tech news",
+    "stories"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "stories",
+        "isArray": true,
+        "required": true,
+        "subFields": [
+          {
+            "name": "rank",
+            "selector": "tr.athing td.title span.rank",
+            "extract": "textContent",
+            "transforms": [
+              "extractNumber"
+            ]
+          },
+          {
+            "name": "id",
+            "selector": "tr.athing",
+            "extract": "attributeValue",
+            "attributeName": "id",
+            "required": true
+          },
+          {
+            "name": "title",
+            "selector": "tr.athing span.titleline > a",
+            "extract": "textContent",
+            "transforms": [
+              "normalizeWhitespace"
+            ],
+            "required": true
+          },
+          {
+            "name": "url",
+            "selector": "tr.athing span.titleline > a[href]",
+            "extract": "attributeValue",
+            "attributeName": "href",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          },
+          {
+            "name": "points",
+            "selector": "td.subtext",
+            "extract": "textContent",
+            "transforms": [
+              "normalizeWhitespace",
+              {
+                "before": " point"
+              },
+              "extractNumber"
+            ]
+          },
+          {
+            "name": "author",
+            "selector": "td.subtext",
+            "extract": "innerHTML",
+            "transforms": [
+              "removeHtmlTags",
+              "normalizeWhitespace",
+              {
+                "between": [
+                  " by ",
+                  " "
+                ]
+              }
+            ]
+          },
+          {
+            "name": "postedAt",
+            "selector": "td.subtext span.age[title]",
+            "extract": "attributeValue",
+            "attributeName": "title",
+            "transforms": [
+              {
+                "split": " "
+              },
+              "first"
+            ]
+          },
+          {
+            "name": "commentCount",
+            "selector": "td.subtext",
+            "extract": "innerHTML",
+            "allowedAttributes": [
+              "id"
+            ],
+            "transforms": [
+              "removeHtmlTags",
+              "decodeHtml",
+              "normalizeWhitespace",
+              {
+                "after": {
+                  "text": "|",
+                  "last": true
+                }
+              },
+              "extractNumber"
+            ]
+          },
+          {
+            "name": "commentsUrl",
+            "selector": "td.subtext span.age a[href]",
+            "extract": "attributeValue",
+            "attributeName": "href",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a.morelink[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "name": "Apple App Store - app page",
+  "description": "Apple App Store app page (apps.apple.com): app id, bundle id, name, subtitle, developer, category, rating, rating count, price, version, release notes, size, age rating, compatibility, description, icon and screenshots.",
+  "slug": "apple-app-store-app",
+  "url": "https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "category": "other",
+  "tags": [
+    "app store",
+    "apple",
+    "ios",
+    "apps",
+    "aso"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "appId",
+        "selector": "script#serialized-server-data",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "data[0].data.lockup.adamId"
+        ]
+      },
+      {
+        "name": "bundleId",
+        "selector": "script#serialized-server-data",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "data[0].data.lockup.bundleId"
+        ]
+      },
+      {
+        "name": "name",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "name"
+        ],
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "selector": "script#serialized-server-data",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "data[0].data.lockup.subtitle"
+        ],
+        "transforms": [
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "developer",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "author.name"
+        ]
+      },
+      {
+        "name": "developerUrl",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "author.url"
+        ]
+      },
+      {
+        "name": "category",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "genre[0]"
+        ]
+      },
+      {
+        "name": "genres",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "genre"
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "aggregateRating.ratingValue"
+        ]
+      },
+      {
+        "name": "ratingCount",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "aggregateRating.reviewCount"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.price"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.priceCurrency"
+        ]
+      },
+      {
+        "name": "priceLabel",
+        "selector": "section p.attributes",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "isEditorsChoice",
+        "selector": "script#serialized-server-data",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "data[0].data.lockup.isEditorsChoice"
+        ]
+      },
+      {
+        "name": "version",
+        "selector": "script#serialized-server-data",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "data[0].data.shelfMapping.mostRecentVersion.items[0].primarySubtitle"
+        ],
+        "transforms": [
+          {
+            "after": "Version "
+          }
+        ]
+      },
+      {
+        "name": "versionDate",
+        "selector": "div.metadata time[datetime]",
+        "extract": "attributeValue",
+        "attributeName": "datetime"
+      },
+      {
+        "name": "releaseNotes",
+        "selector": "script#serialized-server-data",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "data[0].data.shelfMapping.mostRecentVersion.items[0].text"
+        ]
+      },
+      {
+        "name": "size",
+        "selector": "script#serialized-server-data",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "data[0].data.shelfMapping.information.items[1].summary"
+        ]
+      },
+      {
+        "name": "information",
+        "isArray": true,
+        "extract": "innerHTML",
+        "selector": "section[id=\"information\"] dl > div",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "dt",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": [
+                "dd summary",
+                "dd"
+              ],
+              "combineStrategy": "first",
+              "extract": "textContent",
+              "excludeTags": [
+                "svg"
+              ],
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "ageRating",
+        "selector": "section#information dd div.text-encapsulation",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "compatibility",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "operatingSystem"
+        ],
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "devices",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "availableOnDevice"
+        ],
+        "transforms": [
+          {
+            "split": ","
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "description"
+        ]
+      },
+      {
+        "name": "icon",
+        "selector": "script#software-application",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "image"
+        ]
+      },
+      {
+        "name": "screenshots",
+        "selector": "section#product_media_phone_ source[type=\"image/jpeg\"][srcset], section#product_media_pad_ source[type=\"image/jpeg\"][srcset]",
+        "extract": "attributeValue",
+        "attributeName": "srcset",
+        "isArray": true,
+        "transforms": [
+          {
+            "before": " "
+          },
+          "unique"
+        ]
+      }
+    ]
+  }
+}

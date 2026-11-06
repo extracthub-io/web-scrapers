@@ -1,0 +1,68 @@
+{
+  "appId": "324684580",
+  "bundleId": "com.spotify.client",
+  "name": "Spotify: Music and Podcasts",
+  "subtitle": "Songs, Playlists & Audiobooks",
+  "developer": "Spotify",
+  "developerUrl": "https://apps.apple.com/us/developer/spotify/id324684583",
+  "category": "Music",
+  "genres": [
+    "Music",
+    "Entertainment"
+  ],
+  "rating": 4.8,
+  "ratingCount": 42965043,
+  "price": 0,
+  "currency": "USD",
+  "priceLabel": "Free",
+  "isEditorsChoice": false,
+  "version": "9.1.94",
+  "versionDate": "2026-10-23",
+  "releaseNotes": "We’re always making changes and improvements to Spotify. To make sure you don’t miss a thing, just keep your Updates turned on.",
+  "size": "325.1 MB",
+  "information": [
+    {
+      "label": "Seller",
+      "value": "Spotify"
+    },
+    {
+      "label": "Size",
+      "value": "325.1 MB"
+    },
+    {
+      "label": "Category",
+      "value": "Music"
+    },
+    {
+      "label": "Compatibility",
+      "value": "Requires iOS 16.1 or later."
+    },
+    {
+      "label": "Languages",
+      "value": "English and 62 more"
+    },
+    {
+      "label": "Age Rating",
+      "value": "13+"
+    },
+    {
+      "label": "Copyright",
+      "value": "© 2008–2026 Spotify Ltd."
+    }
+  ],
+  "ageRating": "13+",
+  "compatibility": "Requires iOS 16.1 and watchOS 10.0 or later. Compatible with iPhone, iPad, and iPod touch.",
+  "devices": [
+    "Apple TV",
+    "Apple Watch",
+    "iPhone",
+    "iPad"
+  ],
+  "description": "With the Spotify app, you can explore an extensive library of music and podcasts for free. Curate the best playlists and stream millions of free songs, albums, and original podcasts on your phone or tablet. Subscribe to Spotify Premium to download and listen offline wherever you are, and unlock our catalog of audiobooks.\n\nWhy choose Spotify as your go-to music and podcast app? Here, you can:\n• Listen to over 100 million songs and 6 million podcast titles\n• Explore our selection of specially-crafted artist playlists\n• Easily search for your favorite songs, albums, artists, and podcasts\n• Discover personalized music recommendations tailored to your unique taste\n• Subscribe to your favorite free podcasts so you never miss an episode, and even curate your own podcast library\n\nSpotify Free is more than a music player - find the sounds you love and stream music and podcasts online, for free. Enjoy personalized playlists or curate and share your own, discover the hottest new releases, explore upcoming events from your favorites, and more.\n\n• Stream millions of free songs and podcasts\n• Create playlists with your favorite music\n• Share songs and playlists with friends and family (feature restrictions may apply in some regions)\n• Discover personalized playlists made just for you, and collaborate on playlists with your friends\n• Enjoy your personal Discover Weekly playlist every week\n• Stay in the know with the Release Radar and New Music Friday playlists\n• Find nearby events and gigs by your favorite artists\n• See your most played songs, genres, artists, and more with yearly Spotify Wrapped\n• Stream music across your devices with Spotify\n• Use Spotify Connect and enjoy listening on smart speakers, desktop, laptop, smart TV, Chromecast, PlayStation®, Xbox®, smartwatch, in your car, and more - limited number of device models apply\n\nSpotify Premium - a great way to enjoy the benefits of an offline music player, and stream music without WiFi. By pressing download, you can access your songs, playlists, podcasts, and audiobooks offline, wherever you are.\n• Listen to music, podcasts, and audiobooks - all in one place\n• Ad-free music listening: enjoy your music with no ad interruptions\n• Enjoy full on-demand playback\n• Audiobooks in Premium are currently available in the US, UK, Australia, Ireland, New Zealand, and Canada. Discover 250,000+ audiobook titles with 15 hours/month of available listening for Premium Individual subscribers and Duo & Family plan managers.\n• Superior sound quality on supported devices\n• AI DJ: a personalized guide that knows your music taste so well it can choose what to play for you\n• Enjoy on desktop, phone, tablet, computer, smartwatch, and in your car\n• Listen and control the listening session together by hosting a Jam in real time with friends\n• Download songs, podcasts, and audiobooks for offline listening, without an internet connection\n• No contract required - cancel your subscription whenever you want\n\nSpotify lets you play music wherever you are. Listen to your favorite songs and discover new music, podcasts, and audiobooks with the Spotify app!\n\nLOVE SPOTIFY?\nFollow us on Instagram: https://www.instagram.com/spotify\nFollow us on TikTok: https://www.tiktok.com/@spotify",
+  "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8b/f2/6a/8bf26ab9-3ced-cb5c-a2b3-19f65e7f5cc6/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/1200x630wa.png",
+  "screenshots": [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ee/75/d1/ee75d168-4edf-4010-9191-a59b83ef6a7c/IOS_-_6.5_-_S01_-_EN_-_US.png/300x650bb-60.jpg",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/b4/4a/6b/b44a6bba-4203-2ebe-ed09-f431b35ae654/IOS_-_6.5_-_S02_-_EN_-_US.png/300x650bb-60.jpg",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/98/72/43/987243f0-9fb7-7d15-27c8-6bfd0c7a52e9/IOS_-_6.5_-_S02_-__U005bEnglish__U0028US_U0029_U005d.png/300x650bb-60.jpg"
+  ]
+}

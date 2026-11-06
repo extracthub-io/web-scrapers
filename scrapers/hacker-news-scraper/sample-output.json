@@ -1,0 +1,60 @@
+{
+  "stories": [
+    {
+      "rank": 1,
+      "id": "50385272",
+      "title": "Claude Code sends your email address to websites",
+      "url": "https://github.com/anthropics/claude-code/issues/107757",
+      "points": 846,
+      "author": "motoroco",
+      "postedAt": "2026-11-05T22:17:15",
+      "commentCount": 279,
+      "commentsUrl": "https://news.ycombinator.com/item?id=50385272"
+    },
+    {
+      "rank": 2,
+      "id": "50378228",
+      "title": "sshole",
+      "url": "https://sshhole.com/",
+      "points": 2525,
+      "author": "josemrb",
+      "postedAt": "2026-11-05T12:19:02",
+      "commentCount": 616,
+      "commentsUrl": "https://news.ycombinator.com/item?id=50378228"
+    },
+    {
+      "rank": 3,
+      "id": "50384233",
+      "title": "MS Paint Remote Code Execution Vulnerability",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-83844",
+      "points": 437,
+      "author": "kuberwastaken",
+      "postedAt": "2026-11-05T20:43:42",
+      "commentCount": 165,
+      "commentsUrl": "https://news.ycombinator.com/item?id=50384233"
+    },
+    {
+      "rank": 4,
+      "id": "50387738",
+      "title": "Nvidia Kubernetes Engine (NVKE)",
+      "url": "https://github.com/dsx-ai-factory/nvke",
+      "points": 46,
+      "author": "gkapur",
+      "postedAt": "2026-11-06T03:16:26",
+      "commentCount": 14,
+      "commentsUrl": "https://news.ycombinator.com/item?id=50387738"
+    },
+    {
+      "rank": 5,
+      "id": "50387796",
+      "title": "Pwn.college",
+      "url": "https://pwn.college/",
+      "points": 66,
+      "author": "tripdout",
+      "postedAt": "2026-11-06T03:27:14",
+      "commentCount": 7,
+      "commentsUrl": "https://news.ycombinator.com/item?id=50387796"
+    }
+  ],
+  "nextPageUrl": "https://news.ycombinator.com/news?p=2"
+}
