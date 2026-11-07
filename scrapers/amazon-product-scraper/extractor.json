@@ -1,0 +1,190 @@
+{
+  "name": "Amazon - product page",
+  "description": "Amazon.com product page (/dp/ASIN): ASIN, title, brand, buy-box price, list price, rating, review count, availability, seller, feature bullets, images and the product overview attributes.",
+  "slug": "amazon-product",
+  "url": "https://www.amazon.com/dp/B0D1XD1ZV3",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "amazon",
+    "product",
+    "price",
+    "ecommerce",
+    "asin"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "asin",
+        "selector": "input#ASIN[value]",
+        "extract": "attributeValue",
+        "attributeName": "value"
+      },
+      {
+        "name": "title",
+        "selector": "#productTitle",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "brand",
+        "selector": "#productOverview_feature_div tr.po-brand td.a-span9",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "byline",
+        "selector": "a#bylineInfo",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": [
+          "#corePriceDisplay_desktop_feature_div #apex-pricetopay-accessibility-label",
+          "#corePriceDisplay_desktop_feature_div .priceToPay .a-offscreen",
+          "#corePrice_desktop .a-price .a-offscreen",
+          "#corePrice_feature_div .a-price .a-offscreen",
+          "#apex-pricetopay-accessibility-label"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "priceText",
+        "selector": [
+          "#corePriceDisplay_desktop_feature_div #apex-pricetopay-accessibility-label",
+          "#corePriceDisplay_desktop_feature_div .priceToPay .a-offscreen",
+          "#corePrice_desktop .a-price .a-offscreen",
+          "#corePrice_feature_div .a-price .a-offscreen",
+          "#apex-pricetopay-accessibility-label"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "listPrice",
+        "selector": [
+          "#corePriceDisplay_desktop_feature_div .basisPrice .a-offscreen",
+          "#corePrice_desktop .a-text-price .a-offscreen"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "#averageCustomerReviews #acrPopover[title]",
+        "extract": "attributeValue",
+        "attributeName": "title",
+        "transforms": [
+          {
+            "before": " out"
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewsCount",
+        "selector": "#averageCustomerReviews #acrCustomerReviewText",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "availability",
+        "selector": [
+          "#availability span",
+          "#outOfStock .a-color-price",
+          "#availability"
+        ],
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ],
+        "combineStrategy": "first"
+      },
+      {
+        "name": "seller",
+        "selector": [
+          "#sellerProfileTriggerId",
+          "#merchantInfoFeature_feature_div .offer-display-feature-text-message",
+          "[offer-display-feature-name=\"desktop-merchant-info\"] .offer-display-feature-text-message"
+        ],
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "combineStrategy": "first"
+      },
+      {
+        "name": "features",
+        "selector": "#feature-bullets li span.a-list-item",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "mainImage",
+        "selector": "img#landingImage[data-old-hires]",
+        "extract": "attributeValue",
+        "attributeName": "data-old-hires",
+        "transforms": [
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "images",
+        "selector": "#imageBlock [data-old-hires]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "data-old-hires",
+        "transforms": [
+          "compact",
+          "unique"
+        ]
+      },
+      {
+        "name": "attributes",
+        "selector": "#productOverview_feature_div tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "td.a-span3",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "td.a-span9",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

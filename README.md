@@ -1,4 +1,4 @@
-# Web Scrapers: Google Search Scraper, Google Maps Scraper, Google Play Scraper, App Store Scraper, GitHub Scraper, Hacker News Scraper, Trustpilot Scraper, Zillow Scraper, YouTube Scraper, YouTube Transcript Scraper & more (ready-to-use scraping API)
+# Web Scrapers: Amazon Scraper, eBay Scraper, Google Search Scraper, Google Maps Scraper, Google Play Scraper, App Store Scraper, GitHub Scraper, Hacker News Scraper, Trustpilot Scraper, Zillow Scraper, YouTube Scraper, YouTube Transcript Scraper & more (ready-to-use scraping API)
 
 A growing collection of **ready-to-use web scrapers** that turn web pages into clean JSON. Every scraper here
 is a published [ExtractHub](https://extracthub.io) extractor: send a URL, get structured data back. No
@@ -22,6 +22,10 @@ API, or let an **AI agent** (Claude, Cursor, any MCP client) call them for you.
 | [Hacker News Scraper](scrapers/hacker-news-scraper/) | stories from the front page, newest, ask, show: title, link, points, author, time, comments, next page | [@extracthub1/hacker-news-stories](https://extracthub.io/extractor/@extracthub1/hacker-news-stories) | $0.0025 |
 | [Zillow Search Scraper](scrapers/zillow-search-scraper/) | homes for sale from a Zillow search, 41 per page: address, price, bedrooms, floor size, coordinates, photo, link, total results, next page | [@extracthub1/zillow-search](https://extracthub.io/extractor/@extracthub1/zillow-search) | $0.0025 |
 | [Zillow Property Scraper](scrapers/zillow-property-scraper/) | one home: price, Zestimate, beds, baths, area, description, days on Zillow, MLS #, facts & features, price and tax history | [@extracthub1/zillow-property](https://extracthub.io/extractor/@extracthub1/zillow-property) | $0.0035 |
+| [Amazon Product Scraper](scrapers/amazon-product-scraper/) | product page: ASIN, title, brand, buy-box price, list price, rating, reviews count, availability, seller, bullets, images, attributes | [@extracthub1/amazon-product](https://extracthub.io/extractor/@extracthub1/amazon-product) | $0.0025 |
+| [Amazon Search Scraper](scrapers/amazon-search-scraper/) | products from an Amazon search: ASIN, title, link, price, list price, rating, ratings count, bought in past month, badge, next page | [@extracthub1/amazon-search](https://extracthub.io/extractor/@extracthub1/amazon-search) | $0.0025 |
+| [eBay Search Scraper](scrapers/ebay-search-scraper/) | listings from an eBay search, about 60 per page: item id, title, price, original price, condition, shipping, sold, seller feedback, next page | [@extracthub1/ebay-search](https://extracthub.io/extractor/@extracthub1/ebay-search) | $0.0025 |
+| [eBay Item Scraper](scrapers/ebay-item-scraper/) | item page: price, condition, quantity sold, shipping, returns, seller feedback, item specifics, photos, categories | [@extracthub1/ebay-item](https://extracthub.io/extractor/@extracthub1/ebay-item) | $0.0025 |
 | [Trustpilot Reviews Scraper](scrapers/trustpilot-reviews-scraper/) | company page: TrustScore, review counts, star distribution, 20 reviews per page with rating, text, dates, company reply, next page | [@extracthub1/trustpilot-reviews](https://extracthub.io/extractor/@extracthub1/trustpilot-reviews) | $0.0025 |
 | [Quotes to Scrape Scraper](scrapers/quotes-to-scrape-scraper/) | quotes, authors, tags, pagination (practice site) | [@extracthub1/quotes-toscrape-list](https://extracthub.io/extractor/@extracthub1/quotes-toscrape-list) | $0.0005 |
 | [Books to Scrape Scraper](scrapers/books-to-scrape-scraper/) | book titles, prices, links, images (practice site) | [@extracthub1/books-to-scrape](https://extracthub.io/extractor/@extracthub1/books-to-scrape) | $0.0005 |
@@ -92,6 +96,8 @@ scrapers/
 docs/
   api.md                 REST API guide
   ai-agents.md           MCP / AI agent guide
+scripts/
+  check-samples.mjs      checks that each scraper's example URL, README and sample output show the same page
 ```
 
 `extractor.json` is the full definition of the scraper (how the page is fetched and which selectors /

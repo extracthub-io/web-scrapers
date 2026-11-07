@@ -1,0 +1,160 @@
+{
+  "name": "eBay - search results",
+  "description": "eBay.com search results page (/sch/i.html?_nkw=...): the listings on the page with item id, title, link, image, price, original price, condition, subtitle details, buying format, shipping, location and seller feedback, plus the total result count and the next page link.",
+  "slug": "ebay-search",
+  "url": "https://www.ebay.com/sch/i.html?_nkw=iphone+15",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "ebay",
+    "search",
+    "listings",
+    "prices",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "resultsSummary",
+        "selector": "h1.srp-controls__count-heading",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "totalResults",
+        "selector": "h1.srp-controls__count-heading span.BOLD",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "listings",
+        "selector": "li.s-card[data-listingid][data-item-pos]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "itemId",
+              "selector": "a.s-card__link[href*=\"/itm/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/itm/"
+                },
+                {
+                  "before": "?"
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "title",
+              "selector": ".s-card__title .su-styled-text",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.s-card__link[href*=\"/itm/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "before": "?"
+                }
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "img.s-card__image",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "price",
+              "selector": ".s-card__price",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "priceText",
+              "selector": ".s-card__price",
+              "extract": "innerHTML",
+              "transforms": [
+                "removeHtmlTags",
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "originalPrice",
+              "selector": ".su-card-container__attributes__primary .strikethrough",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "subtitle",
+              "selector": ".s-card__subtitle-row .s-card__subtitle",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "condition",
+              "selector": ".s-card__subtitle-row .s-card__subtitle",
+              "isArray": true,
+              "extract": "innerHTML",
+              "transforms": [
+                "removeHtmlTags",
+                "normalizeWhitespace",
+                "compact",
+                "last"
+              ]
+            },
+            {
+              "name": "details",
+              "selector": ".su-card-container__attributes__primary .s-card__attribute-row",
+              "isArray": true,
+              "transforms": [
+                "normalizeWhitespace",
+                "compact"
+              ]
+            },
+            {
+              "name": "sellerInfo",
+              "selector": ".su-card-container__attributes__secondary .s-card__attribute-row",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a.pagination__next[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

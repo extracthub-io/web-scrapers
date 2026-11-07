@@ -17,7 +17,7 @@ A Zillow home page (`homedetails`):
 https://www.zillow.com/homedetails/<address>/<zpid>_zpid/
 ```
 
-e.g. `https://www.zillow.com/homedetails/5130-E-1st-Ave-Denver-CO-80220/68048074_zpid/`, or any `item.url`
+e.g. `https://www.zillow.com/homedetails/650-N-Williams-St-Denver-CO-80218/13331758_zpid/`, or any `item.url`
 from the Zillow Search Scraper.
 
 ## Output
@@ -50,7 +50,7 @@ from the Zillow Search Scraper.
 | `priceHistory[]` | array | `{ date, event, price, changePercent, pricePerSqft }`, newest first (the rows Zillow shows) |
 | `taxHistory[]` | array | `{ year, propertyTax, taxAssessment }` |
 
-Full example: [sample-output.json](sample-output.json) (a Denver home; `facts` shortened to 4 categories).
+Full example: [sample-output.json](sample-output.json) (a Denver home; `facts` shortened to 7 categories; this listing has no Zestimate).
 
 ## Quick start
 
@@ -58,7 +58,7 @@ Full example: [sample-output.json](sample-output.json) (a Denver home; `facts` s
 curl -G "https://api.extracthub.io/api/extractor/extract" \
   -H "Authorization: Bearer $EXTRACTHUB_API_KEY" \
   --data-urlencode "extractor_id=@extracthub1/zillow-property@1" \
-  --data-urlencode "target_url=https://www.zillow.com/homedetails/5130-E-1st-Ave-Denver-CO-80220/68048074_zpid/"
+  --data-urlencode "target_url=https://www.zillow.com/homedetails/650-N-Williams-St-Denver-CO-80218/13331758_zpid/"
 ```
 
 With an AI agent (ExtractHub MCP connected):

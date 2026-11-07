@@ -9,7 +9,7 @@ results page.
 
 ## Input
 
-A Google web search URL, e.g. `https://www.google.com/search?q=web+scraper&hl=en&gl=us`.
+A Google web search URL, e.g. `https://www.google.com/search?q=tesla&hl=en&gl=us`.
 `hl` (language) and `gl` (country) control the result language and market. Page 2+: use `nextPageUrl`, or
 add `&start=10`, `&start=20`, ...
 
@@ -36,11 +36,11 @@ Full example: [sample-output.json](sample-output.json).
 curl -G "https://api.extracthub.io/api/extractor/extract" \
   -H "X-API-Key: $EXTRACTHUB_API_KEY" \
   --data-urlencode "extractor_id=@extracthub1/google-serp@1" \
-  --data-urlencode "target_url=https://www.google.com/search?q=web+scraper&hl=en&gl=us"
+  --data-urlencode "target_url=https://www.google.com/search?q=tesla&hl=en&gl=us"
 ```
 
 With an AI agent (ExtractHub MCP connected):
-> Use `@extracthub1/google-serp@1` to get the Google results for "web scraper" (US, English) and list the
+> Use `@extracthub1/google-serp@1` to get the Google results for "tesla" (US, English) and list the
 > titles and sources.
 
 More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agents.md)

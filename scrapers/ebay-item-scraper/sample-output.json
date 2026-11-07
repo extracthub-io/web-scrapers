@@ -1,0 +1,38 @@
+{
+  "title": "Apple iPhone 15 128GB A2846 Unlocked Very Good Condition All Colors",
+  "url": "https://www.ebay.com/itm/127943697081",
+  "price": 391.33,
+  "currency": "USD",
+  "priceText": "US $391.33",
+  "listPrice": 799,
+  "condition": "RefurbishedCondition",
+  "availability": "InStock",
+  "quantityAvailable": 2,
+  "soldCount": 629,
+  "shippingCost": 0,
+  "returnDays": 30,
+  "brand": "Apple",
+  "model": "iPhone 15",
+  "mainImage": "https://s3-eu-west-1.amazonaws.com/images.linnlive.com/c4aa895ca1f64564a88ced7550deabdb/8458f2df-d3c3-428b-a981-dd10a71a4632.jpg",
+  "images": [
+    "https://i.ebayimg.com/images/g/0KMAAeSwTLhqPu7G/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/SZcAAOSw1LdieqO4/s-l1600.webp",
+    "https://s3-eu-west-1.amazonaws.com/images.linnlive.com/c4aa895ca1f64564a88ced7550deabdb/667e6eba-28a6-402c-b9be-dbc59a7a4c24.jpg"
+  ],
+  "sellerName": "Verizon",
+  "sellerFeedbackCount": 39504,
+  "sellerPositivePercent": 99.4,
+  "itemSpecifics": [
+    { "name": "Condition", "value": "Very Good - Refurbished: The item shows minimal wear and is backed by a one year warranty. It is ..." },
+    { "name": "Brand", "value": "Apple" },
+    { "name": "Storage Capacity", "value": "128GB" },
+    { "name": "Model", "value": "iPhone 15" },
+    { "name": "SIM Card Slot", "value": "Dual eSIM" }
+  ],
+  "categories": [
+    { "@type": "ListItem", "position": 1, "name": "eBay", "item": "https://www.ebay.com" },
+    { "@type": "ListItem", "position": 2, "name": "Electronics", "item": "https://www.ebay.com/b/Electronics/bn_7000259124" },
+    { "@type": "ListItem", "position": 3, "name": "Cell Phones & Accessories", "item": "https://www.ebay.com/b/Cell-Phones-Smart-Watches-Accessories/15032/bn_1865441" },
+    { "@type": "ListItem", "position": 4, "name": "Cell Phones & Smartphones", "item": "https://www.ebay.com/b/Cell-Phones-Smartphones/9355/bn_320094" }
+  ]
+}

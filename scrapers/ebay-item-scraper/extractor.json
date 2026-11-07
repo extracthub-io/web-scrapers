@@ -1,0 +1,296 @@
+{
+  "name": "eBay - item page",
+  "description": "eBay.com item page (/itm/ID): title, price, currency, list price, condition, availability, quantity available and sold, shipping cost, returns, brand, model, seller and feedback, item specifics, images and category breadcrumb.",
+  "slug": "ebay-item",
+  "url": "https://www.ebay.com/itm/127943697081",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "ebay",
+    "item",
+    "listing",
+    "price",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "title",
+        "selector": "h1.x-item-title__mainTitle",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.url"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.price"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.priceCurrency"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "priceText",
+        "selector": ".x-price-primary",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "listPrice",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.priceSpecification.price"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "condition",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.itemCondition"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce",
+          {
+            "after": "schema.org/"
+          }
+        ]
+      },
+      {
+        "name": "availability",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.availability"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce",
+          {
+            "after": "schema.org/"
+          }
+        ]
+      },
+      {
+        "name": "quantityAvailable",
+        "selector": ".x-quantity__availability",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "before": " available"
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "soldCount",
+        "selector": ".x-quantity__availability",
+        "extract": "innerHTML",
+        "transforms": [
+          "removeHtmlTags",
+          "normalizeWhitespace",
+          {
+            "after": "available"
+          },
+          {
+            "before": " sold"
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "shippingCost",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.shippingDetails[0].shippingRate.value"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "returnDays",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.hasMerchantReturnPolicy[0].merchantReturnDays"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "brand",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "brand.name"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "model",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "model"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "mainImage",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "image[0].url"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "imageMain",
+        "selector": ".x-photos-min-view .ux-image-carousel-item img[data-zoom-src^=\"http\"]",
+        "extract": "attributeValue",
+        "attributeName": "data-zoom-src",
+        "isArray": true,
+        "transforms": [
+          "compact",
+          "unique"
+        ],
+        "group": {
+          "into": "images",
+          "strategy": "merge"
+        }
+      },
+      {
+        "name": "imageMore",
+        "selector": ".x-photos-min-view .ux-image-carousel-item img[data-src^=\"http\"][data-zoom-src=\"\"]",
+        "extract": "attributeValue",
+        "attributeName": "data-src",
+        "isArray": true,
+        "transforms": [
+          "compact",
+          "unique"
+        ],
+        "group": {
+          "into": "images",
+          "strategy": "merge"
+        }
+      },
+      {
+        "name": "sellerName",
+        "selector": ".x-sellercard-atf__about-seller-item--seller-name",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "sellerFeedbackCount",
+        "selector": ".x-sellercard-atf__about-seller [data-testid=\"x-sellercard-atf__about-seller\"]",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "sellerPositivePercent",
+        "selector": ".x-sellercard-atf__data-item button",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "itemSpecifics",
+        "selector": ".ux-layout-section-evo__col",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "dt",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "dd .ux-labels-values__values-content span.ux-textspans",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "categories",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "breadcrumb[0].itemListElement"
+        ],
+        "isArray": true,
+        "transforms": [
+          "coalesce"
+        ]
+      }
+    ]
+  }
+}

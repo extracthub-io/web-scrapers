@@ -1,0 +1,31 @@
+{
+  "asin": "B0D1XD1ZV3",
+  "title": "Apple AirPods Pro 2 Wireless Earbuds, Active Noise Cancellation, Hearing Aid Feature, Bluetooth Headphones, Transparency, Personalized Spatial Audio, High-Fidelity Sound, H2 Chip, USB-C Charging",
+  "brand": "Apple",
+  "byline": "Visit the Apple Store",
+  "price": 200.22,
+  "priceText": "$200.22",
+  "listPrice": null,
+  "rating": 4.6,
+  "reviewsCount": 47131,
+  "availability": "In Stock",
+  "seller": "6ave",
+  "features": [
+    "PIONEERING HEARING — AirPods Pro 2 unlock the world’s first all-in-one hearing health experience: a scientifically validated Hearing Test,* clinical-grade and active Hearing Protection.*",
+    "INTELLIGENT NOISE CONTROL — Active Noise Cancellation removes up to 2x more background noise.* Transparency mode lets you hear the world around you, and Adaptive Audio seamlessly blends Active Noise …",
+    "IMPROVED SOUND AND CALL QUALITY — The Apple-designed H2 chip helps to create deeply immersive sound. The low-distortion, custom-built driver delivers crisp, clear high notes and full, rich bass in st…"
+  ],
+  "mainImage": "https://m.media-amazon.com/images/I/61SUj2aKoEL._AC_SL1500_.jpg",
+  "images": [
+    "https://m.media-amazon.com/images/I/61SUj2aKoEL._AC_SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/611pEx7220L._AC_SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/81Zg3Ev2M5L._AC_SL1500_.jpg"
+  ],
+  "attributes": [
+    { "name": "Brand", "value": "Apple" },
+    { "name": "Color", "value": "White" },
+    { "name": "Ear Placement", "value": "In Ear" },
+    { "name": "Form Factor", "value": "In Ear" },
+    { "name": "Impedance", "value": "24 ohm" }
+  ]
+}

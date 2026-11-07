@@ -1,0 +1,151 @@
+{
+  "name": "Amazon - search results",
+  "description": "Amazon.com search results page (/s?k=...): the products on the page with ASIN, title, link, image, price, list price, rating, ratings count, bought-in-past-month, badge and delivery message, plus the result summary and the next page link.",
+  "slug": "amazon-search",
+  "url": "https://www.amazon.com/s?k=wireless+earbuds",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "amazon",
+    "search",
+    "products",
+    "prices",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "resultsSummary",
+        "selector": "[data-component-type=\"s-result-info-bar\"] h2",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "products",
+        "selector": "div[data-component-type=\"s-search-result\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "asin",
+              "selector": "[data-csa-c-asin]",
+              "extract": "attributeValue",
+              "attributeName": "data-csa-c-asin",
+              "required": true
+            },
+            {
+              "name": "title",
+              "selector": "[data-cy=\"title-recipe\"] h2",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": [
+                "[data-cy=\"title-recipe\"] a[href]",
+                "[data-cy=\"image-container\"] a[href]",
+                "a[href*=\"/dp/\"]"
+              ],
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "before": "/ref="
+                },
+                "toAbsoluteUrl"
+              ],
+              "combineStrategy": "first"
+            },
+            {
+              "name": "image",
+              "selector": "img.s-image[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "price",
+              "selector": "[data-cy=\"price-recipe\"] .a-price[data-a-size=\"xl\"] .a-offscreen",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "listPrice",
+              "selector": "[data-cy=\"price-recipe\"] .a-text-price[data-a-strike=\"true\"] .a-offscreen",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "[data-cy=\"reviews-block\"] .a-icon-alt",
+              "transforms": [
+                {
+                  "before": " out"
+                },
+                "toNumber"
+              ]
+            },
+            {
+              "name": "ratingsCount",
+              "selector": "[data-cy=\"reviews-block\"] [data-csa-c-content-id=\"alf-customer-ratings-count-component\"] a[aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "boughtPastMonth",
+              "selector": "[data-cy=\"reviews-block\"] .a-row.a-size-base span.a-color-secondary",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "badge",
+              "selector": [
+                ".rio-badge-label",
+                ".a-badge-text"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "delivery",
+              "selector": "[data-cy=\"delivery-recipe\"] .udm-primary-delivery-message",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a.s-pagination-next[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

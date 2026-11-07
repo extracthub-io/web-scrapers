@@ -2,7 +2,7 @@
   "name": "Zillow - property details",
   "description": "Zillow property page (homedetails): zpid, address, coordinates, price, status, price cut, beds, baths, living area, at-a-glance facts, full description, Zestimate and rent Zestimate, days on Zillow, views, saves, MLS number, brokerage, all facts and features by category, price history and tax history.",
   "slug": "zillow-property",
-  "url": "https://www.zillow.com/homedetails/5130-E-1st-Ave-Denver-CO-80220/68048074_zpid/",
+  "url": "https://www.zillow.com/homedetails/650-N-Williams-St-Denver-CO-80218/13331758_zpid/",
   "method": "GET",
   "useProxy": true,
   "renderJavascript": true,
