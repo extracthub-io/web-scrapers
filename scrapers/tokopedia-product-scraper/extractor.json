@@ -1,0 +1,334 @@
+{
+  "name": "Tokopedia - product page",
+  "description": "Tokopedia product page (tokopedia.com/<shop>/<product>): product id, name, price, original price, discount, rating, reviews count, sold count, stock, condition, weight, minimum order, shop name / id / domain, official store flag, category breadcrumbs, variant options, description (Markdown), images.",
+  "slug": "tokopedia-product",
+  "url": "https://www.tokopedia.com/puma-official/puma-sepatu-lari-maxstride-lite-unisex-puma-black-cool-dark-gray-1737624245960803641-1737624235586651449",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "ID",
+  "category": "ecommerce",
+  "tags": [
+    "tokopedia",
+    "indonesia",
+    "ecommerce",
+    "product",
+    "price"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "productId",
+        "selector": "meta[name=\"branch:deeplink:$android_deeplink_path\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          {
+            "after": "product/"
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "h1[data-testid=\"lblPDPDetailProductName\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "price",
+        "selector": "meta[property=\"product:price:amount\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "toNumber"
+        ],
+        "required": true
+      },
+      {
+        "name": "priceText",
+        "selector": "[data-testid=\"lblPDPDetailProductPrice\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "originalPrice",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"slashPriceFmt\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first",
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "discountPercent",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"discPercentage\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first",
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "meta[itemprop=\"ratingValue\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": "meta[itemprop=\"reviewCount\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "soldCount",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"countSold\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "stockText",
+        "selector": "[data-testid=\"stock-label\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "condition",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "after": "\"shopName\":"
+          },
+          {
+            "between": [
+              "\"condition\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "weight",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "after": "\"shopName\":"
+          },
+          {
+            "between": [
+              "\"weight\":",
+              ","
+            ]
+          },
+          "compact",
+          "first",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "weightUnit",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "after": "\"shopName\":"
+          },
+          {
+            "between": [
+              "\"weightUnit\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "minOrder",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "after": "\"shopName\":"
+          },
+          {
+            "between": [
+              "\"minOrder\":",
+              ","
+            ]
+          },
+          "compact",
+          "first",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "shopName",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"shopName\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "shopId",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"shopID\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "shopDomain",
+        "selector": "meta[property=\"og:url\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          {
+            "between": [
+              "tokopedia.com/",
+              "/"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "officialStore",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"isOS\":",
+              ","
+            ]
+          },
+          "compact",
+          "first",
+          "toBoolean"
+        ]
+      },
+      {
+        "name": "breadcrumbs",
+        "selector": "ol[data-testid=\"lnkPDPDetailBreadcrumb\"] li",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "variantTitle",
+        "selector": "[data-testid=\"pdpVariantTitle#0\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "variantOptions",
+        "selector": "#pdpVariantContainer [data-testid^=\"btnVariantChip\"] button",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "soldOutOptions",
+        "selector": "#pdpVariantContainer [data-testid=\"btnVariantChipInactive\"] button",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "[data-testid=\"lblPDPDescriptionProduk\"]",
+        "extract": "innerHTML",
+        "transforms": [
+          "toMarkdown",
+          "trim"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "meta[property=\"og:image\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "images",
+        "selector": "button[data-testid=\"PDPImageThumbnail\"] img[src^=\"https\"]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "src",
+        "transforms": [
+          "unique"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "meta[property=\"og:url\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "required": true
+      }
+    ]
+  }
+}

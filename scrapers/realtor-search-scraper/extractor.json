@@ -1,0 +1,117 @@
+{
+  "name": "Realtor.com - search results",
+  "description": "Realtor.com home search page (realtor.com/realestateandhomes-search/<City>_<ST>, with filters and /pg-N): homes for sale with address, link, price, home type, bedrooms, floor size, street / city / state / ZIP, coordinates and photo, plus the total results count and the next page link.",
+  "slug": "realtor-search",
+  "url": "https://www.realtor.com/realestateandhomes-search/Austin_TX",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "real-estate",
+  "tags": [
+    "realtor.com",
+    "real estate",
+    "homes for sale",
+    "listings",
+    "property search"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "searchTitle",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "name"
+      },
+      {
+        "name": "totalResults",
+        "selector": "[data-testid=\"total-results\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "homes",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "mainEntity.itemListElement[*]",
+        "required": true,
+        "includePosition": true,
+        "subFields": [
+          {
+            "name": "address",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "url",
+            "jsonPath": "url",
+            "required": true
+          },
+          {
+            "name": "price",
+            "jsonPath": "offers.price",
+            "transforms": [
+              "toNumber"
+            ]
+          },
+          {
+            "name": "currency",
+            "jsonPath": "offers.priceCurrency"
+          },
+          {
+            "name": "homeType",
+            "jsonPath": "mainEntity.@type"
+          },
+          {
+            "name": "bedrooms",
+            "jsonPath": "mainEntity.numberOfBedrooms"
+          },
+          {
+            "name": "floorSizeSqft",
+            "jsonPath": "mainEntity.floorSize.value"
+          },
+          {
+            "name": "streetAddress",
+            "jsonPath": "mainEntity.address.streetAddress"
+          },
+          {
+            "name": "city",
+            "jsonPath": "mainEntity.address.addressLocality"
+          },
+          {
+            "name": "state",
+            "jsonPath": "mainEntity.address.addressRegion"
+          },
+          {
+            "name": "postalCode",
+            "jsonPath": "mainEntity.address.postalCode"
+          },
+          {
+            "name": "latitude",
+            "jsonPath": "mainEntity.geo.latitude"
+          },
+          {
+            "name": "longitude",
+            "jsonPath": "mainEntity.geo.longitude"
+          },
+          {
+            "name": "image",
+            "jsonPath": "image"
+          }
+        ]
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "[data-testid=\"pagination\"] a.ml_500[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

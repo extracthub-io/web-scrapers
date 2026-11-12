@@ -1,0 +1,125 @@
+{
+  "allowJsEscalation": true,
+  "name": "Yelp - search results",
+  "description": "Yelp (yelp.com) search results: position, name, business link, rating, approximate reviews count, neighborhood, price range, open status, categories, review snippet and photo, without the sponsored results, plus the next page link.",
+  "slug": "yelp-search",
+  "url": "https://www.yelp.com/search?find_desc=pizza&find_loc=Chicago%2C+IL",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "yelp",
+    "local",
+    "businesses",
+    "restaurants",
+    "reviews"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "results",
+        "selector": "[data-traffic-crawl-id=\"OrganicBusinessResult\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "[data-traffic-crawl-id=\"SearchResultBizName\"] h3 a",
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "[data-traffic-crawl-id=\"SearchResultBizName\"] h3 a[href^=\"/biz/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "required": true,
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "*"
+                  ]
+                },
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "[data-traffic-crawl-id=\"SearchResultBizRating\"] span[data-font-weight=\"semibold\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "[data-traffic-crawl-id=\"SearchResultBizRating\"] span:nth-child(2)",
+              "transforms": [
+                {
+                  "between": [
+                    "(",
+                    " review"
+                  ]
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "neighborhood",
+              "selector": "div[style*=\"margin-top\"] > span:nth-child(2):not([data-font-weight])"
+            },
+            {
+              "name": "priceRange",
+              "selector": "div[style*=\"margin-top\"] > span:nth-child(3):not([data-font-weight])"
+            },
+            {
+              "name": "openStatus",
+              "selector": "div[style*=\"margin-top\"] > span[data-font-weight]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "categories",
+              "selector": "[data-testid=\"serp-ia-categories\"] button",
+              "isArray": true
+            },
+            {
+              "name": "snippet",
+              "selector": "[data-traffic-crawl-id=\"SearchResultReviewSnippet\"] p",
+              "transforms": [
+                {
+                  "before": {
+                    "text": " more",
+                    "last": true
+                  }
+                },
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "link[rel=\"next\"][href], a[aria-label=\"Next\"][href], a.next-link[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

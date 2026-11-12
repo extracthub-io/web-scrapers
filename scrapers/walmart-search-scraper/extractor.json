@@ -1,0 +1,146 @@
+{
+  "name": "Walmart - search results",
+  "description": "Walmart.com search results page (/search?q=...): the products on the page with item id, name, link, image, price, currency, rating, reviews count, seller, availability, badge (Rollback, Best seller...) and sponsored flag, plus the result title, total results and page count.",
+  "slug": "walmart-search",
+  "url": "https://www.walmart.com/search?q=air+fryer",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "walmart",
+    "search",
+    "products",
+    "prices",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "resultsTitle",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.searchResult.title"
+        ]
+      },
+      {
+        "name": "totalResults",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.searchResult.aggregatedCount"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "maxPage",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.searchResult.paginationV2.maxPage"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "products",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialData.searchResult.itemStacks[0].items[*]",
+        "required": true,
+        "includePosition": true,
+        "subFields": [
+          {
+            "name": "itemId",
+            "jsonPath": "usItemId",
+            "required": true
+          },
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "url",
+            "jsonPath": "canonicalUrl",
+            "transforms": [
+              {
+                "removeQueryParams": [
+                  "*"
+                ]
+              },
+              "toAbsoluteUrl"
+            ]
+          },
+          {
+            "name": "image",
+            "jsonPath": "image",
+            "transforms": [
+              {
+                "removeQueryParams": [
+                  "*"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "price",
+            "jsonPath": "price",
+            "transforms": [
+              "toNumber"
+            ]
+          },
+          {
+            "name": "currency",
+            "jsonPath": "priceInfo.priceDetails.currency"
+          },
+          {
+            "name": "rating",
+            "jsonPath": "averageRating",
+            "transforms": [
+              "toNumber"
+            ]
+          },
+          {
+            "name": "reviewsCount",
+            "jsonPath": "numberOfReviews",
+            "transforms": [
+              "toNumber"
+            ]
+          },
+          {
+            "name": "seller",
+            "jsonPath": "sellerName"
+          },
+          {
+            "name": "availability",
+            "jsonPath": "availabilityStatusV2.display"
+          },
+          {
+            "name": "badge",
+            "jsonPath": "flag",
+            "transforms": [
+              "trim",
+              "nullIfEmpty"
+            ]
+          },
+          {
+            "name": "sponsored",
+            "jsonPath": "isSponsoredFlag"
+          },
+          {
+            "name": "productType",
+            "jsonPath": "catalogProductType"
+          }
+        ]
+      }
+    ]
+  }
+}

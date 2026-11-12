@@ -1,0 +1,352 @@
+{
+  "name": "Realtor.com - property page",
+  "description": "Realtor.com property page (realtor.com/realestateandhomes-detail/...): property and listing id, status, address, county, neighborhoods, coordinates, list price, price per sq ft, last price change, value estimates, type, beds, baths, sq ft, lot size, year built, stories, garage, HOA fee, tax rate and amount, list date, days on MLS, last sold, flags (new, price reduced, pending, contingent, foreclosure, short sale...), description, tags, all detail sections (interior, exterior, HOA, schools...), listing agent and brokerage, MLS, photos.",
+  "slug": "realtor-property",
+  "url": "https://www.realtor.com/realestateandhomes-detail/1704-Shelbourne-Dr_Austin_TX_78752_M81029-30727",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "real-estate",
+  "tags": [
+    "realtor.com",
+    "real estate",
+    "property",
+    "home details",
+    "listing"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "propertyId",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.property_id",
+        "required": true
+      },
+      {
+        "name": "listingId",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.listing_id"
+      },
+      {
+        "name": "url",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.href",
+        "required": true
+      },
+      {
+        "name": "status",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.status"
+      },
+      {
+        "name": "address",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.location.address.line",
+        "required": true
+      },
+      {
+        "name": "city",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.location.address.city"
+      },
+      {
+        "name": "state",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.location.address.state_code"
+      },
+      {
+        "name": "postalCode",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.location.address.postal_code"
+      },
+      {
+        "name": "county",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.location.county.name"
+      },
+      {
+        "name": "neighborhoods",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.location.neighborhoods[*].name"
+      },
+      {
+        "name": "latitude",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.location.address.coordinate.lat"
+      },
+      {
+        "name": "longitude",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.location.address.coordinate.lon"
+      },
+      {
+        "name": "price",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.list_price"
+      },
+      {
+        "name": "pricePerSqft",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.price_per_sqft"
+      },
+      {
+        "name": "lastPriceChange",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.last_price_change_amount"
+      },
+      {
+        "name": "estimates",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.estimates.current_values[*]",
+        "subFields": [
+          {
+            "name": "estimate",
+            "jsonPath": "estimate"
+          },
+          {
+            "name": "isBest",
+            "jsonPath": "isbest_homevalue"
+          }
+        ]
+      },
+      {
+        "name": "propertyType",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.type"
+      },
+      {
+        "name": "beds",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.beds"
+      },
+      {
+        "name": "baths",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.baths_consolidated",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "bathsFull",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.baths_full"
+      },
+      {
+        "name": "bathsHalf",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.baths_half"
+      },
+      {
+        "name": "sqft",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.sqft"
+      },
+      {
+        "name": "lotSqft",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.lot_sqft"
+      },
+      {
+        "name": "yearBuilt",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.year_built"
+      },
+      {
+        "name": "stories",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.stories"
+      },
+      {
+        "name": "garage",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.garage"
+      },
+      {
+        "name": "hoaFee",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.hoa.fee"
+      },
+      {
+        "name": "propertyTaxRate",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.mortgage.property_tax_rate"
+      },
+      {
+        "name": "taxAmount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.source.raw.tax_amount"
+      },
+      {
+        "name": "listDate",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.list_date"
+      },
+      {
+        "name": "daysOnMls",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.source.days_on_mls"
+      },
+      {
+        "name": "lastUpdated",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.source.last_update_date"
+      },
+      {
+        "name": "lastSoldDate",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.last_sold_date"
+      },
+      {
+        "name": "lastSoldPrice",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.last_sold_price"
+      },
+      {
+        "name": "flags",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.flags",
+        "subFields": [
+          {
+            "name": "isNewListing",
+            "jsonPath": "is_new_listing"
+          },
+          {
+            "name": "isPriceReduced",
+            "jsonPath": "is_price_reduced"
+          },
+          {
+            "name": "isPending",
+            "jsonPath": "is_pending"
+          },
+          {
+            "name": "isContingent",
+            "jsonPath": "is_contingent"
+          },
+          {
+            "name": "isComingSoon",
+            "jsonPath": "is_coming_soon"
+          },
+          {
+            "name": "isForeclosure",
+            "jsonPath": "is_foreclosure"
+          },
+          {
+            "name": "isShortSale",
+            "jsonPath": "is_short_sale"
+          },
+          {
+            "name": "isNewConstruction",
+            "jsonPath": "is_new_construction"
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.description.text"
+      },
+      {
+        "name": "tags",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.ranked_tags[*].label"
+      },
+      {
+        "name": "details",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.details[*]",
+        "subFields": [
+          {
+            "name": "category",
+            "jsonPath": "category"
+          },
+          {
+            "name": "group",
+            "jsonPath": "parent_category"
+          },
+          {
+            "name": "features",
+            "jsonPath": "text"
+          }
+        ]
+      },
+      {
+        "name": "listingAgent",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.advertisers[0].name"
+      },
+      {
+        "name": "brokerage",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.advertisers[0].broker.name"
+      },
+      {
+        "name": "mlsName",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.source.name"
+      },
+      {
+        "name": "mlsListingId",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.source.listing_id"
+      },
+      {
+        "name": "photoCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.photo_count"
+      },
+      {
+        "name": "photos",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialReduxState.propertyDetails.photos[*].href"
+      }
+    ]
+  }
+}

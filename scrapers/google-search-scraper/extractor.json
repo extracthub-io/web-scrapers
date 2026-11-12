@@ -30,7 +30,8 @@
               "extract": "textContent",
               "transforms": [
                 "normalizeWhitespace"
-              ]
+              ],
+              "required": true
             },
             {
               "name": "url",
@@ -39,7 +40,8 @@
               "attributeName": "href",
               "transforms": [
                 "toAbsoluteUrl"
-              ]
+              ],
+              "required": true
             },
             {
               "name": "directUrl",
@@ -76,7 +78,8 @@
               ]
             }
           ]
-        }
+        },
+        "required": true
       },
       {
         "name": "peopleAlsoAsk",

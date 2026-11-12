@@ -5,7 +5,7 @@ questions, related searches and the next-page URL. No browser, no proxies to man
 results page.
 
 **Catalog:** [extracthub.io/extractor/@extracthub1/google-serp](https://extracthub.io/extractor/@extracthub1/google-serp)
-**Extractor id:** `@extracthub1/google-serp@1` · **Price:** $0.0025 per page (proxy, no JavaScript)
+**Extractor id:** `@extracthub1/google-serp@2` · **Price:** $0.0025 per page (proxy, no JavaScript)
 
 ## Input
 
@@ -28,25 +28,29 @@ add `&start=10`, `&start=20`, ...
 | `relatedSearches[]` | string[] | related search suggestions at the bottom of the page |
 | `nextPageUrl` | string \| null | absolute URL of the next results page |
 
-Full example: [sample-output.json](sample-output.json).
+Full example: [sample-output.json](sample-output.json) ("tesla": on this request Google showed only video results).
 
 ## Quick start
 
 ```bash
 curl -G "https://api.extracthub.io/api/extractor/extract" \
   -H "X-API-Key: $EXTRACTHUB_API_KEY" \
-  --data-urlencode "extractor_id=@extracthub1/google-serp@1" \
+  --data-urlencode "extractor_id=@extracthub1/google-serp@2" \
   --data-urlencode "target_url=https://www.google.com/search?q=tesla&hl=en&gl=us"
 ```
 
 With an AI agent (ExtractHub MCP connected):
-> Use `@extracthub1/google-serp@1` to get the Google results for "tesla" (US, English) and list the
+> Use `@extracthub1/google-serp@2` to get the Google results for "tesla" (US, English) and list the
 > titles and sources.
 
 More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agents.md)
 
 ## Good to know
 
+- **No results = failed request (version 2).** `organicResults` is required: a page without any result (a bot
+  check, a layout the scraper does not know) fails with HTTP 422 `required_fields_missing` instead of returning
+  an empty list. It is still charged; batches retry it once. Results without a title or link are left out.
+  Version 1 (`@extracthub1/google-serp@1`) returned the empty list instead.
 - **Result URLs.** For normal results Google hands out its own `/goto?url=` link (the token is encrypted), so
   `url` is that link. Follow its redirect if you need the final page. Video results also carry the real
   URL in `directUrl`.

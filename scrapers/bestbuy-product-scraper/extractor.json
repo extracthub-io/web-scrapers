@@ -1,0 +1,227 @@
+{
+  "name": "Best Buy - product page",
+  "description": "Best Buy (bestbuy.com) product page: SKU, product id, name, brand, model, color, price, currency, comparable value and savings, availability, every offer (new and open-box conditions with price), rating, review count, images, description, specifications and category breadcrumbs.",
+  "slug": "bestbuy-product",
+  "url": "https://www.bestbuy.com/product/lenovo-ideapad-slim-3-15-6-full-hd-laptop-amd-ryzen-5-40-2025-8gb-memory-256gb-storage-abyss-blue/JJGH3Q8P2K/sku/6668500",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "bestbuy",
+    "ecommerce",
+    "product",
+    "price",
+    "electronics"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "sku",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "sku"
+        ],
+        "required": true
+      },
+      {
+        "name": "productId",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "url"
+        ],
+        "transforms": [
+          {
+            "split": "/"
+          },
+          "last"
+        ]
+      },
+      {
+        "name": "name",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "name"
+        ],
+        "transforms": [
+          "decodeHtml"
+        ],
+        "required": true
+      },
+      {
+        "name": "brand",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "brand.name"
+        ]
+      },
+      {
+        "name": "model",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "model"
+        ]
+      },
+      {
+        "name": "color",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "color"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers[0].price",
+          "offers.price"
+        ],
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers[0].priceCurrency",
+          "offers.priceCurrency"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "compValue",
+        "selector": "[data-lu-target=\"comp_value\"]",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "savings",
+        "selector": "[data-testid=\"price-block-total-savings\"]",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "availability",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers[0].availability",
+          "offers.availability"
+        ],
+        "transforms": [
+          "coalesce",
+          {
+            "after": "schema.org/"
+          }
+        ]
+      },
+      {
+        "name": "offers",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPath": "offers[*]",
+        "subFields": [
+          {
+            "name": "condition",
+            "jsonPath": "description",
+            "required": true
+          },
+          {
+            "name": "price",
+            "jsonPath": "price"
+          },
+          {
+            "name": "availability",
+            "jsonPath": "availability",
+            "transforms": [
+              {
+                "after": "schema.org/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "aggregateRating.ratingValue"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "aggregateRating.reviewCount"
+        ]
+      },
+      {
+        "name": "images",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPath": "image[*].url"
+      },
+      {
+        "name": "description",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "description"
+        ],
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "specifications",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPath": "additionalProperty[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "value",
+            "jsonPath": "value"
+          }
+        ]
+      },
+      {
+        "name": "breadcrumbs",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*].item.name"
+      },
+      {
+        "name": "url",
+        "selector": "script#product-schema",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "url"
+        ]
+      }
+    ]
+  }
+}

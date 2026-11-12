@@ -1,0 +1,133 @@
+{
+  "name": "Tokopedia - search results",
+  "description": "Tokopedia search results (tokopedia.com/search?q=...): 60 products per page with product id, name, link, image, price, original price, discount, rating, labels (sold count, promo), shop name, link and city, category, ad flag, plus total results. Read from the page's own search API response (JS rendering).",
+  "slug": "tokopedia-search",
+  "url": "https://www.tokopedia.com/search?q=sepatu+lari",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "captureXhr": true,
+  "xhrUrlFilter": "graphql/SearchProductV5Query",
+  "proxyCountry": "ID",
+  "category": "ecommerce",
+  "tags": [
+    "tokopedia",
+    "indonesia",
+    "ecommerce",
+    "search",
+    "products",
+    "price"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "sourceType": "json",
+    "fields": [
+      {
+        "name": "search",
+        "jsonPath": "[0].response_body",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "totalResults",
+              "jsonPath": "[0].data.searchProductV5.header.totalData",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "products",
+              "jsonPath": "[0].data.searchProductV5.data.products[*]",
+              "required": true,
+              "includePosition": true,
+              "subFields": [
+                {
+                  "name": "productId",
+                  "jsonPath": "id",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "jsonPath": "name",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "jsonPath": "url",
+                  "transforms": [
+                    {
+                      "removeQueryParams": [
+                        "*"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "image",
+                  "jsonPath": "mediaURL.image300"
+                },
+                {
+                  "name": "price",
+                  "jsonPath": "price.number",
+                  "transforms": [
+                    "toNumber"
+                  ]
+                },
+                {
+                  "name": "priceText",
+                  "jsonPath": "price.text"
+                },
+                {
+                  "name": "originalPrice",
+                  "jsonPath": "price.original",
+                  "transforms": [
+                    "extractPrice"
+                  ]
+                },
+                {
+                  "name": "discountPercent",
+                  "jsonPath": "price.discountPercentage",
+                  "transforms": [
+                    "toNumber"
+                  ]
+                },
+                {
+                  "name": "rating",
+                  "jsonPath": "rating",
+                  "transforms": [
+                    "toNumber"
+                  ]
+                },
+                {
+                  "name": "labels",
+                  "jsonPath": "labelGroups[*].title"
+                },
+                {
+                  "name": "shopName",
+                  "jsonPath": "shop.name"
+                },
+                {
+                  "name": "shopUrl",
+                  "jsonPath": "shop.url"
+                },
+                {
+                  "name": "shopCity",
+                  "jsonPath": "shop.city"
+                },
+                {
+                  "name": "category",
+                  "jsonPath": "category.breadcrumb"
+                },
+                {
+                  "name": "adId",
+                  "jsonPath": "ads.id"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

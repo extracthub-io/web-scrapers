@@ -1,0 +1,174 @@
+{
+  "listingId": "7743405",
+  "name": "Chiado Luxury Apartment",
+  "url": "https://www.airbnb.com/rooms/7743405",
+  "propertyType": "Entire rental unit",
+  "roomType": "Entire home/apt",
+  "headline": "Entire rental unit in Lisbon, Portugal",
+  "overview": [
+    "6 guests",
+    "3 bedrooms",
+    "4 beds",
+    "2 baths"
+  ],
+  "guests": 6,
+  "location": "Lisbon, Portugal",
+  "neighborhood": "São Paulo, Lisbon",
+  "latitude": 38.7107,
+  "longitude": -9.1442,
+  "rating": 4.99,
+  "reviewCount": 508,
+  "isGuestFavorite": true,
+  "categoryRatings": [
+    {
+      "category": "Cleanliness",
+      "rating": 5
+    },
+    {
+      "category": "Accuracy",
+      "rating": 5
+    },
+    {
+      "category": "Check-in",
+      "rating": 5
+    },
+    {
+      "category": "Communication",
+      "rating": 5
+    },
+    {
+      "category": "Location",
+      "rating": 5
+    },
+    {
+      "category": "Value",
+      "rating": 4.9
+    }
+  ],
+  "highlights": [
+    "Top 5% of homes",
+    "In Chiado, Lisbon's historic center",
+    "Full kitchen with in-unit laundry",
+    "Spacious, comfortable, and spotless"
+  ],
+  "description": "Chiado Luxury Apartment is located in the heart of CHIADO, the most emblematic and vibrant neighbourhood of Lisbon! 2 min from Chiado/Baixa subway station (Blue and Green line) and the building has the elevator.",
+  "host": {
+    "name": "C. & N.",
+    "isSuperhost": true,
+    "isVerified": true,
+    "rating": 4.94,
+    "reviewCount": 4643,
+    "yearsHosting": 14,
+    "monthsHosting": 4
+  },
+  "hostResponseRate": "100%",
+  "hostResponseTime": "Responds within an hour",
+  "amenities": [
+    {
+      "group": "Bathroom",
+      "items": [
+        "Bathtub",
+        "Hair dryer",
+        "Shampoo",
+        "Conditioner",
+        "Bidet",
+        "Hot water",
+        "Shower gel"
+      ]
+    },
+    {
+      "group": "Bedroom and laundry",
+      "items": [
+        "Free washer – In unit",
+        "Free dryer – In unit",
+        "Essentials",
+        "Hangers",
+        "Bed linens",
+        "Room-darkening shades",
+        "Iron",
+        "Drying rack for clothing",
+        "Safe",
+        "Clothing storage"
+      ]
+    },
+    {
+      "group": "Entertainment",
+      "items": [
+        "TV with standard cable",
+        "Sound system"
+      ]
+    },
+    {
+      "group": "Internet and office",
+      "items": [
+        "Fast wifi – 359 Mbps",
+        "Dedicated workspace"
+      ]
+    },
+    {
+      "group": "Kitchen and dining",
+      "items": [
+        "Kitchen",
+        "Refrigerator",
+        "Microwave",
+        "Cooking basics",
+        "Dishes and silverware",
+        "Freezer",
+        "Dishwasher",
+        "Oven",
+        "Coffee maker",
+        "…"
+      ]
+    },
+    {
+      "group": "Parking and facilities",
+      "items": [
+        "Elevator",
+        "Paid parking off premises"
+      ]
+    }
+  ],
+  "houseRules": [
+    {
+      "rule": "Up to 6 overnight guests"
+    },
+    {
+      "rule": "No pets"
+    },
+    {
+      "rule": "No smoking",
+      "details": "Including vaping and e-cigarettes"
+    },
+    {
+      "rule": "Quiet hours",
+      "details": "9:00 PM - 8:00 AM"
+    },
+    {
+      "rule": "No parties or events"
+    },
+    {
+      "rule": "No commercial photography",
+      "details": "Including commercial filming"
+    }
+  ],
+  "safetyAndProperty": [
+    {
+      "group": "Safety devices",
+      "items": [
+        "Carbon monoxide alarm installed",
+        "Smoke alarm installed"
+      ]
+    },
+    {
+      "group": "Property info",
+      "items": [
+        "No parking on property"
+      ]
+    }
+  ],
+  "images": [
+    "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6Nzc0MzQwNQ==/original/ee38447f-2efa-4f82-9a67-bb2b30b23a66.jpeg",
+    "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6Nzc0MzQwNQ==/original/6871c02d-ff41-42ae-9db7-a30884e531fc.jpeg",
+    "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6Nzc0MzQwNQ==/original/4df2ad30-a862-456b-9b24-d0be299ff228.jpeg"
+  ]
+}

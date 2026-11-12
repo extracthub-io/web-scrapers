@@ -23,8 +23,8 @@ Each scraper has an id like `@extracthub1/google-serp`. Always call it with a **
 
 | Pin | Meaning |
 |---|---|
-| `@extracthub1/google-serp@1` | latest 1.x version: gets fixes, never breaking changes (recommended) |
-| `@extracthub1/google-serp@1.0.0` | exactly this version |
+| `@extracthub1/google-serp@2` | latest 2.x version: gets fixes, never breaking changes (recommended) |
+| `@extracthub1/google-serp@2.0.0` | exactly this version |
 
 ## 3. Call it
 
@@ -37,7 +37,7 @@ URL-encode both parameters.
 ```bash
 curl -G "https://api.extracthub.io/api/extractor/extract" \
   -H "X-API-Key: $EXTRACTHUB_API_KEY" \
-  --data-urlencode "extractor_id=@extracthub1/google-serp@1" \
+  --data-urlencode "extractor_id=@extracthub1/google-serp@2" \
   --data-urlencode "target_url=https://www.google.com/search?q=web+scraper&hl=en&gl=us"
 ```
 
@@ -45,7 +45,7 @@ curl -G "https://api.extracthub.io/api/extractor/extract" \
 
 ```js
 const params = new URLSearchParams({
-  extractor_id: "@extracthub1/youtube-video@1",
+  extractor_id: "@extracthub1/youtube-video@2",
   target_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
 });
 const res = await fetch(`https://api.extracthub.io/api/extractor/extract?${params}`, {

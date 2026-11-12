@@ -1,0 +1,262 @@
+{
+  "name": "Airbnb - listing page",
+  "description": "Airbnb listing page (airbnb.com/rooms/<id>): listing id, name, property and room type, guests / bedrooms / beds / baths, location and neighborhood, coordinates, rating, reviews count, Guest favorite, category ratings (cleanliness, accuracy, check-in, communication, location, value), highlights, description, host (name, Superhost, verified, rating, reviews, years hosting, response rate and time), amenities by group, house rules, safety and property notes, photos. No prices (Airbnb loads them after the page).",
+  "slug": "airbnb-listing",
+  "url": "https://www.airbnb.com/rooms/7743405",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "airbnb",
+    "travel",
+    "vacation rental",
+    "listing",
+    "reviews",
+    "amenities"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "listingId",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.loggingContext.eventDataLogging.listingId",
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.title.content.localizedString",
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.seoFeatures.canonicalUrl",
+        "required": true
+      },
+      {
+        "name": "propertyType",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.sharingConfig.propertyType"
+      },
+      {
+        "name": "roomType",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.loggingContext.eventDataLogging.roomType"
+      },
+      {
+        "name": "headline",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.overview.title"
+      },
+      {
+        "name": "overview",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.overview.items"
+      },
+      {
+        "name": "guests",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.personCapacity"
+      },
+      {
+        "name": "location",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.location.subtitle"
+      },
+      {
+        "name": "neighborhood",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.location.locationName"
+      },
+      {
+        "name": "latitude",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.location.latitude"
+      },
+      {
+        "name": "longitude",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.location.longitude"
+      },
+      {
+        "name": "rating",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.quality.listingRatingStats.overallRatingStats.ratingAverage"
+      },
+      {
+        "name": "reviewCount",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.quality.listingRatingStats.overallRatingStats.ratingCount",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "isGuestFavorite",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.quality.isGuestFavorite"
+      },
+      {
+        "name": "categoryRatings",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.quality.categoryRatings[*]",
+        "subFields": [
+          {
+            "name": "category",
+            "jsonPath": "label"
+          },
+          {
+            "name": "rating",
+            "jsonPath": "localizedRating",
+            "transforms": [
+              "toNumber"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "highlights",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.highlights[*].headline.localizedContent"
+      },
+      {
+        "name": "description",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "description",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "host",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.hostInfo.passportData",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name"
+          },
+          {
+            "name": "isSuperhost",
+            "jsonPath": "isSuperhost"
+          },
+          {
+            "name": "isVerified",
+            "jsonPath": "isVerified"
+          },
+          {
+            "name": "rating",
+            "jsonPath": "ratingAverage"
+          },
+          {
+            "name": "reviewCount",
+            "jsonPath": "ratingCount"
+          },
+          {
+            "name": "yearsHosting",
+            "jsonPath": "timeAsHost.years"
+          },
+          {
+            "name": "monthsHosting",
+            "jsonPath": "timeAsHost.months"
+          }
+        ]
+      },
+      {
+        "name": "hostResponseRate",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.hostInfo.responseRateText",
+        "transforms": [
+          {
+            "after": ": "
+          }
+        ]
+      },
+      {
+        "name": "hostResponseTime",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.hostInfo.responseTimeText"
+      },
+      {
+        "name": "amenities",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.amenities.seeAllAmenitiesGroups[*]",
+        "subFields": [
+          {
+            "name": "group",
+            "jsonPath": "title"
+          },
+          {
+            "name": "items",
+            "jsonPath": "amenities[*].title"
+          }
+        ]
+      },
+      {
+        "name": "houseRules",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.rules.groupItems[0].items[*]",
+        "subFields": [
+          {
+            "name": "rule",
+            "jsonPath": "title"
+          },
+          {
+            "name": "details",
+            "jsonPath": "description.text"
+          }
+        ]
+      },
+      {
+        "name": "safetyAndProperty",
+        "selector": "script#data-deferred-state-0",
+        "extract": "jsonContent",
+        "jsonPath": "niobeClientData[0][1].data.node.pdpPresentation.safetyAndProperty.groupItems[*]",
+        "subFields": [
+          {
+            "name": "group",
+            "jsonPath": "title"
+          },
+          {
+            "name": "items",
+            "jsonPath": "items[*].title"
+          }
+        ]
+      },
+      {
+        "name": "images",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "image"
+      }
+    ]
+  }
+}

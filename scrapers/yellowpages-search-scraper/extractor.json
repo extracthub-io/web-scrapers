@@ -1,0 +1,257 @@
+{
+  "name": "Yellow Pages - search results",
+  "description": "Yellow Pages search page (yellowpages.com/search?search_terms=...&geo_location_terms=..., with &page=N): the 30 businesses of the page with name, link, categories, phone, street address, city / state / ZIP, website, review count, star rating, years in business, opening status and description snippet, plus the total results count and the next page link. Ads are skipped. A second list gives the schema.org data of the same businesses (numeric rating, opening hours).",
+  "slug": "yellowpages-search",
+  "url": "https://www.yellowpages.com/search?search_terms=plumber&geo_location_terms=Dallas%2C+TX",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "other",
+  "tags": [
+    "yellow pages",
+    "yellowpages.com",
+    "local businesses",
+    "business directory",
+    "leads"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "searchTitle",
+        "selector": "h1",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "totalResults",
+        "selector": ".pagination .showing-count",
+        "transforms": [
+          {
+            "after": " of "
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "businesses",
+        "selector": ".search-results.organic .result",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a.business-name",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.business-name[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "categories",
+              "selector": ".categories a",
+              "isArray": true
+            },
+            {
+              "name": "phone",
+              "selector": ".phones",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "streetAddress",
+              "selector": ".adr .street-address",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "locality",
+              "selector": ".adr .locality",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "city",
+              "selector": ".adr .locality",
+              "transforms": [
+                {
+                  "before": ","
+                },
+                "trim"
+              ]
+            },
+            {
+              "name": "state",
+              "selector": ".adr .locality",
+              "transforms": [
+                {
+                  "after": ","
+                },
+                {
+                  "split": " "
+                },
+                {
+                  "nth": 1
+                }
+              ]
+            },
+            {
+              "name": "postalCode",
+              "selector": ".adr .locality",
+              "transforms": [
+                {
+                  "after": ","
+                },
+                {
+                  "split": " "
+                },
+                {
+                  "nth": 2
+                }
+              ]
+            },
+            {
+              "name": "website",
+              "selector": ".links a.track-visit-website[href]",
+              "extract": "attributeValue",
+              "attributeName": "href"
+            },
+            {
+              "name": "reviewCount",
+              "selector": ".ratings a.rating .count",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "ratingStars",
+              "selector": ".ratings .result-rating[class]",
+              "extract": "attributeValue",
+              "attributeName": "class",
+              "transforms": [
+                {
+                  "after": "result-rating"
+                },
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "yearsInBusiness",
+              "selector": ".years-in-business .count",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "yearsWithYellowPages",
+              "selector": ".years-with-yp .count",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "openStatus",
+              "selector": ".open-status",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "snippet",
+              "selector": ".snippet",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": ".media-thumbnail img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "schemaListings",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "url",
+            "jsonPath": "url"
+          },
+          {
+            "name": "rating",
+            "jsonPath": "aggregateRating.ratingValue"
+          },
+          {
+            "name": "reviewCount",
+            "jsonPath": "aggregateRating.reviewCount"
+          },
+          {
+            "name": "telephone",
+            "jsonPath": "telephone"
+          },
+          {
+            "name": "streetAddress",
+            "jsonPath": "address.streetAddress"
+          },
+          {
+            "name": "city",
+            "jsonPath": "address.addressLocality"
+          },
+          {
+            "name": "state",
+            "jsonPath": "address.addressRegion"
+          },
+          {
+            "name": "postalCode",
+            "jsonPath": "address.postalCode"
+          },
+          {
+            "name": "openingHours",
+            "jsonPath": "openingHours"
+          }
+        ]
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": ".pagination a.next[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

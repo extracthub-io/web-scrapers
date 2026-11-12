@@ -1,0 +1,96 @@
+{
+  "searchTitle": "New York, NY homes for sale & real estate",
+  "totalResults": 19112,
+  "homes": [
+    {
+      "position": 1,
+      "address": "2 E 55th St Unit 903W12, New York, NY 10022",
+      "url": "https://www.redfin.com/NY/New-York/2-E-55th-St-10022/unit-903W12/home/206936005",
+      "propertyId": "206936005",
+      "price": 235000,
+      "beds": 2,
+      "bedsText": "2 beds",
+      "baths": 2,
+      "sqft": 1382,
+      "keyFacts": [
+        "Butler pantry",
+        "$2,820 HOA",
+        "Built 1904"
+      ],
+      "badges": [
+        "NEW 4 HRS AGO",
+        "VIDEO TOUR",
+        "ABOUT THIS HOME"
+      ],
+      "streetAddress": "2 E 55th St Unit 903W12",
+      "city": "New York",
+      "state": "NY",
+      "postalCode": "10022",
+      "latitude": 40.7612128,
+      "longitude": -73.9729824,
+      "homeType": "SingleFamilyResidence",
+      "image": "https://ssl.cdn-redfin.com/photo/211/islphoto/339/genIslnoResize.RLS20126339_1.webp",
+      "listingSource": "Listing by Compass • Provided by RLS at REBNY"
+    },
+    {
+      "position": 2,
+      "address": "62 Union St, Brooklyn, NY 11231",
+      "url": "https://www.redfin.com/NY/Brooklyn/1101-Clarkson-Ave-11212/home/177390359",
+      "propertyId": "177390359",
+      "price": 3200000,
+      "beds": 2,
+      "bedsText": "2 beds",
+      "baths": 3,
+      "sqft": 3000,
+      "keyFacts": [
+        "Mixed-use property",
+        "Access to dining",
+        "2,000 sq ft lot"
+      ],
+      "badges": [
+        "NEW 20 MINS AGO",
+        "ABOUT THIS HOME"
+      ],
+      "streetAddress": "62 Union St",
+      "city": "Brooklyn",
+      "state": "NY",
+      "postalCode": "11231",
+      "latitude": 40.6602888,
+      "longitude": -73.9217911,
+      "homeType": "Accommodation",
+      "image": "https://ssl.cdn-redfin.com/photo/269/islphoto/059/genIslnoResize.1073059_0.webp",
+      "listingSource": "Listing by Keller Williams Legendary"
+    },
+    {
+      "position": 3,
+      "address": "7125 Sutton Pl #2, Fresh Meadows, NY 11365",
+      "url": "https://www.redfin.com/NY/Fresh-Meadows/7125-Sutton-Pl-11365/unit-2/home/20824847",
+      "propertyId": "20824847",
+      "price": 669000,
+      "beds": 4,
+      "bedsText": "4 beds",
+      "baths": 2,
+      "sqft": 993,
+      "keyFacts": [
+        "$363 HOA",
+        "Garage",
+        "Built 1988"
+      ],
+      "badges": [
+        "NEW 1 HR AGO",
+        "ABOUT THIS HOME"
+      ],
+      "streetAddress": "7125 Sutton Pl #2",
+      "city": "Fresh Meadows",
+      "state": "NY",
+      "postalCode": "11365",
+      "latitude": 40.7295601,
+      "longitude": -73.8080211,
+      "homeType": "SingleFamilyResidence",
+      "image": "https://ssl.cdn-redfin.com/photo/269/islphoto/028/genIslnoResize.1073028_0.webp",
+      "listingSource": "Listing by Absolute Earth Realty Corp"
+    }
+  ],
+  "currentPage": 1,
+  "totalPages": 465
+}

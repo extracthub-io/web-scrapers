@@ -1,0 +1,59 @@
+{
+  "listings": [
+    {
+      "position": 1,
+      "listingId": "4296141840",
+      "title": "Coffee Mug - KJ Pottery",
+      "url": "https://www.etsy.com/listing/4296141840/coffee-mug-kj-pottery",
+      "image": "https://i.etsystatic.com/7825028/r/il/553467/6863380541/il_255x319.6863380541_5poq.jpg",
+      "price": 57,
+      "currencySymbol": "$",
+      "originalPrice": null,
+      "discount": null,
+      "shopName": "KJPottery",
+      "starSeller": true,
+      "rating": 4.9,
+      "reviewsCount": 3500,
+      "badge": "Bestseller",
+      "freeShipping": true,
+      "ad": true
+    },
+    {
+      "position": 2,
+      "listingId": "1818032060",
+      "title": "Handmade Custom Stamped Stoneware Mug, Personalized Gift",
+      "url": "https://www.etsy.com/listing/1818032060/handmade-custom-stamped-stoneware-mug",
+      "image": "https://i.etsystatic.com/14890216/r/il/c74b7d/6967922981/il_255x319.6967922981_8h5r.jpg",
+      "price": 58,
+      "currencySymbol": "$",
+      "originalPrice": null,
+      "discount": null,
+      "shopName": "Jarsofdust",
+      "starSeller": false,
+      "rating": 5,
+      "reviewsCount": 348,
+      "badge": "Popular now",
+      "freeShipping": false,
+      "ad": true
+    },
+    {
+      "position": 3,
+      "listingId": "4448501401",
+      "title": "Vintage Stoneware Coffee Mug, Handmade Japandi Pottery Cup, Rustic Ceramic Tea Mug, Wabi-Sabi Boho Home Decor",
+      "url": "https://www.etsy.com/listing/4448501401/vintage-stoneware-coffee-mug-handmade",
+      "image": "https://i.etsystatic.com/63629787/r/il/443478/7843843799/il_255x319.7843843799_te2q.jpg",
+      "price": 13.52,
+      "currencySymbol": "$",
+      "originalPrice": 15.36,
+      "discount": "(12% off)",
+      "shopName": "OceanAndLake",
+      "starSeller": false,
+      "rating": 4.8,
+      "reviewsCount": 106,
+      "badge": "Popular now",
+      "freeShipping": false,
+      "ad": true
+    }
+  ],
+  "nextPageUrl": "https://www.etsy.com/search?q=handmade+mug&page=2"
+}

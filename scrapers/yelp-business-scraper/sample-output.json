@@ -1,0 +1,92 @@
+{
+  "name": "Lou Malnati's Pizzeria",
+  "rating": 4,
+  "reviewCount": 7985,
+  "photoCount": 6881,
+  "claimed": true,
+  "categories": [
+    "Pizza",
+    "Italian",
+    "Sandwiches"
+  ],
+  "address": "439 N Wells St, Chicago, IL 60654",
+  "latitude": 41.890359,
+  "longitude": -87.633708,
+  "hours": [
+    {
+      "day": "Mon",
+      "hours": [
+        "11:00 AM - 11:00 PM"
+      ]
+    },
+    {
+      "day": "Tue",
+      "hours": [
+        "11:00 AM - 11:00 PM"
+      ]
+    },
+    {
+      "day": "Wed",
+      "hours": [
+        "11:00 AM - 11:00 PM"
+      ]
+    },
+    {
+      "day": "Thu",
+      "hours": [
+        "11:00 AM - 11:00 PM"
+      ]
+    },
+    {
+      "day": "Fri",
+      "hours": [
+        "11:00 AM - 12:00 AM (Next day)"
+      ]
+    },
+    {
+      "day": "Sat",
+      "hours": [
+        "11:00 AM - 12:00 AM (Next day)"
+      ]
+    },
+    {
+      "day": "Sun",
+      "hours": [
+        "11:00 AM - 11:00 PM"
+      ]
+    },
+    {
+      "day": "Fri, Nov 27, 2026",
+      "hours": [
+        "Closed"
+      ]
+    },
+    {
+      "day": "Thu, Dec 24, 2026",
+      "hours": [
+        "11:00 AM - 5:00 PM"
+      ]
+    },
+    {
+      "day": "Fri, Dec 25, 2026",
+      "hours": [
+        "Closed"
+      ]
+    }
+  ],
+  "phone": "(312) 828-9800",
+  "website": "https://www.loumalnatis.com/chicago-river-north",
+  "bizId": "8vFJH_paXsMocmEO_KAa3w",
+  "amenities": [
+    "Health Score",
+    "Offers delivery",
+    "Offers take-out",
+    "Takes reservations"
+  ],
+  "photos": [
+    "https://s3-media0.fl.yelpcdn.com/bphoto/9KVGmKJA7qp93s2C3bsRLw/l.jpg",
+    "https://s3-media0.fl.yelpcdn.com/bphoto/dv2qR40gQPE9ObopTeXUhQ/l.jpg",
+    "https://s3-media0.fl.yelpcdn.com/bphoto/HbfNtuWMgpp7TVeReWJ-Bg/l.jpg"
+  ],
+  "url": "https://www.yelp.com/biz/lou-malnatis-pizzeria-chicago"
+}

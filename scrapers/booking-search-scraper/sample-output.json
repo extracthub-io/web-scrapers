@@ -1,0 +1,62 @@
+{
+  "totalResults": 14239,
+  "properties": [
+    {
+      "position": 1,
+      "name": "Manggar Indonesia Hotel",
+      "url": "https://www.booking.com/hotel/id/manggar-indonesia.html",
+      "image": "https://cf.bstatic.com/xdata/images/hotel/square240/32183287.webp?k=caf9a6d86b27d532d3674ae498b9af8c6a31c8e82980c3dce4fe737be6873f53&o=",
+      "area": "Kuta",
+      "reviewScore": 7,
+      "reviewScoreWord": "Good",
+      "reviewCount": 2892,
+      "roomName": "Superior Double or Twin Room with Free One Way Airport Transfer",
+      "beds": "Beds: 1 double or 2 twins",
+      "pricePerNight": 17,
+      "price": 19,
+      "priceText": "$19",
+      "originalPrice": 41,
+      "stay": "1 night, 2 adults",
+      "deal": null,
+      "freeCancellation": false
+    },
+    {
+      "position": 2,
+      "name": "Asta House",
+      "url": "https://www.booking.com/hotel/id/asta-house.html",
+      "image": "https://cf.bstatic.com/xdata/images/hotel/square240/81713578.webp?k=0517d36461c3ca197a9d8a96292848079d65751e16ec06f3d2d3ec1a118666cc&o=",
+      "area": "Kuta",
+      "reviewScore": 8.6,
+      "reviewScoreWord": "Excellent",
+      "reviewCount": 2463,
+      "roomName": "Deluxe Double Room",
+      "beds": "1 queen bed",
+      "pricePerNight": 12,
+      "price": 14,
+      "priceText": "$14",
+      "originalPrice": null,
+      "stay": "1 night, 2 adults",
+      "deal": null,
+      "freeCancellation": false
+    },
+    {
+      "position": 3,
+      "name": "Palm Beach Hotel Bali",
+      "url": "https://www.booking.com/hotel/id/palm-beach-bali.html",
+      "image": "https://cf.bstatic.com/xdata/images/hotel/square240/400665468.webp?k=1d497b0217a643ce8ee8d3e55d5074568d45e0f5a3d058adbd1420fa0abfa6c9&o=",
+      "area": "Kartika Plaza, Kuta (Kartika Plaza)",
+      "reviewScore": 7.9,
+      "reviewScoreWord": "Good",
+      "reviewCount": 4238,
+      "roomName": "Superior Double or Twin Room",
+      "beds": "Beds: 1 double or 2 twins",
+      "pricePerNight": 21,
+      "price": 23,
+      "priceText": "$23",
+      "originalPrice": 43,
+      "stay": "1 night, 2 adults",
+      "deal": "11/11 Super Sale",
+      "freeCancellation": false
+    }
+  ]
+}

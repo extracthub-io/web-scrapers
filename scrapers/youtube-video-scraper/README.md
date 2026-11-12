@@ -5,7 +5,7 @@ duration, publish date, category, keywords, thumbnail and more. One API call per
 or quota needed.
 
 **Catalog:** [extracthub.io/extractor/@extracthub1/youtube-video](https://extracthub.io/extractor/@extracthub1/youtube-video)
-**Extractor id:** `@extracthub1/youtube-video@1` · **Price:** $0.0025 per video (proxy, no JavaScript)
+**Extractor id:** `@extracthub1/youtube-video@2` · **Price:** $0.0025 per video (proxy, no JavaScript)
 
 ## Input
 
@@ -41,18 +41,22 @@ Full example: [sample-output.json](sample-output.json).
 ```bash
 curl -G "https://api.extracthub.io/api/extractor/extract" \
   -H "X-API-Key: $EXTRACTHUB_API_KEY" \
-  --data-urlencode "extractor_id=@extracthub1/youtube-video@1" \
+  --data-urlencode "extractor_id=@extracthub1/youtube-video@2" \
   --data-urlencode "target_url=https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ```
 
 With an AI agent (ExtractHub MCP connected):
 > Get the title, views, likes and publish date of https://www.youtube.com/watch?v=dQw4w9WgXcQ with
-> `@extracthub1/youtube-video@1`.
+> `@extracthub1/youtube-video@2`.
 
 More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agents.md)
 
 ## Good to know
 
+- **Required fields (version 2).** `videoId` and `title` are required: a page without them (a consent wall,
+  an error page) fails with HTTP 422 `required_fields_missing` instead of returning empty values. It is still
+  charged; batches retry it once. The sign-in screen below still has both, so it is returned as before.
+  Version 1 (`@extracthub1/youtube-video@1`) returned the empty values instead.
 - **Partial results.** YouTube sometimes answers with its "Sign in to confirm you're not a bot" screen. The
   scraper still returns the core fields (`videoId`, `url`, `title`, `channel*`, `subscriberCount`,
   `viewCount`). `durationSeconds`, `likeCount`, `publishDate`, `category`, `keywords`, `thumbnailUrl`,

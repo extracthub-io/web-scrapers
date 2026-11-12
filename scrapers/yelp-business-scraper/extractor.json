@@ -1,0 +1,209 @@
+{
+  "name": "Yelp - business page",
+  "description": "Yelp (yelp.com) business page: name, rating, reviews and photos counts, claimed flag, categories, address, coordinates, opening hours, public business phone and website, amenities and photos.",
+  "slug": "yelp-business",
+  "url": "https://www.yelp.com/biz/lou-malnatis-pizzeria-chicago",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "yelp",
+    "local",
+    "businesses",
+    "restaurants",
+    "reviews"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "h1",
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "[data-testid=\"BizHeaderReviewCount\"] span[data-font-weight=\"semibold\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": "title",
+        "transforms": [
+          {
+            "before": " Reviews -"
+          },
+          {
+            "after": {
+              "text": " - ",
+              "last": true
+            }
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "photoCount",
+        "selector": "title",
+        "transforms": [
+          {
+            "before": " Photos -"
+          },
+          {
+            "after": {
+              "text": " - ",
+              "last": true
+            }
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "claimed",
+        "selector": "[data-testid=\"photoHeader\"] span.icon--16-claim-filled-v2",
+        "extract": "exists"
+      },
+      {
+        "name": "categories",
+        "selector": "[data-testid=\"BizHeaderCategory\"] a",
+        "isArray": true
+      },
+      {
+        "name": "address",
+        "selector": "#location-and-hours address p",
+        "isArray": true,
+        "transforms": [
+          "joinWithComma"
+        ]
+      },
+      {
+        "name": "latitude",
+        "selector": "#location-and-hours a[aria-label=\"View map\"] img[src]",
+        "extract": "attributeValue",
+        "attributeName": "src",
+        "transforms": [
+          {
+            "after": "center="
+          },
+          {
+            "before": "%2C"
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "longitude",
+        "selector": "#location-and-hours a[aria-label=\"View map\"] img[src]",
+        "extract": "attributeValue",
+        "attributeName": "src",
+        "transforms": [
+          {
+            "after": "center="
+          },
+          {
+            "between": [
+              "%2C",
+              "&"
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "hours",
+        "selector": "#location-and-hours table tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "day",
+              "selector": "th p",
+              "required": true
+            },
+            {
+              "name": "hours",
+              "selector": "td li p",
+              "isArray": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "phone",
+        "selector": "[data-testid=\"cookbook-island\"] p",
+        "isArray": true,
+        "transforms": [
+          "extractPhone",
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "website",
+        "selector": "[data-testid=\"cookbook-island\"] a[href*=\"biz_redir\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "url=",
+              "&"
+            ]
+          },
+          "decodeUri"
+        ]
+      },
+      {
+        "name": "bizId",
+        "selector": "[data-testid=\"cookbook-island\"] a[href*=\"src_bizid=\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "src_bizid=",
+              "&"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "amenities",
+        "selector": "section[aria-label=\"Amenities and More\"] span[data-font-weight=\"semibold\"]",
+        "isArray": true,
+        "transforms": [
+          "unique"
+        ]
+      },
+      {
+        "name": "photos",
+        "selector": "[data-testid=\"photoHeader\"] img[src*=\"/bphoto/\"]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "src"
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "*"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

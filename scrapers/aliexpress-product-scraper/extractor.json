@@ -1,0 +1,278 @@
+{
+  "name": "AliExpress - product page",
+  "description": "AliExpress product page (/item/<id>.html): product id, title, brand, current price, original price, currency, availability, rating, reviews count, sold count, store name, link and feedback, shipping lines, options (SKU properties), images and specifications.",
+  "slug": "aliexpress-product",
+  "url": "https://www.aliexpress.com/item/1005007621004768.html",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "waitForSelector": "h1[data-pl=\"product-title\"]",
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "aliexpress",
+    "product",
+    "prices",
+    "reviews",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "productId",
+        "selector": "a[href*=\"reportIndex.htm?product_id=\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "product_id="
+          }
+        ]
+      },
+      {
+        "name": "title",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].name",
+          "name"
+        ],
+        "transforms": [
+          "coalesce"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].offers.url",
+          "offers.url"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "brand",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].brand.name",
+          "brand.name"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "[class*=\"price-default--current--\"]",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "listPrice",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].offers.price",
+          "offers.price"
+        ],
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "originalPrice",
+        "selector": "[class*=\"price-default--original--\"]",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].offers.priceCurrency",
+          "offers.priceCurrency"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "availability",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].offers.availability",
+          "offers.availability"
+        ],
+        "transforms": [
+          "coalesce",
+          {
+            "after": {
+              "text": "/",
+              "last": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].aggregateRating.ratingValue",
+          "aggregateRating.ratingValue"
+        ],
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewsCount",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].aggregateRating.reviewCount",
+          "aggregateRating.reviewCount"
+        ],
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "sold",
+        "selector": "[class*=\"reviewer--sold--\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "store",
+        "selector": "a[data-pl=\"store-name\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "storeUrl",
+        "selector": "a[data-pl=\"store-name\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "storeFeedback",
+        "selector": "[class*=\"store-info--desc--\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "shipping",
+        "selector": "[class*=\"shipping--content--\"] .dynamic-shipping-line",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "options",
+        "selector": "[class*=\"sku-item--property--\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "[class*=\"sku-item--title--\"] > span",
+              "transforms": [
+                {
+                  "before": ":"
+                },
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "selected",
+              "selector": "[class*=\"sku-item--title--\"] span span",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "values",
+              "selector": "[class*=\"sku-item--skus--\"] > div",
+              "isArray": true,
+              "transforms": [
+                "normalizeWhitespace",
+                "compact"
+              ]
+            },
+            {
+              "name": "imageValues",
+              "selector": "[class*=\"sku-item--skus--\"] img[alt]",
+              "extract": "attributeValue",
+              "attributeName": "alt",
+              "isArray": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "images",
+        "selector": "[class*=\"slider--img--\"] img[src]",
+        "extract": "attributeValue",
+        "attributeName": "src",
+        "isArray": true,
+        "transforms": [
+          {
+            "before": "_220x220"
+          },
+          "unique",
+          "compact"
+        ]
+      },
+      {
+        "name": "specifications",
+        "selector": "[class*=\"specification--prop--\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "[class*=\"specification--title--\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "[class*=\"specification--desc--\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "searchTitle": "Plumber in Dallas, TX",
+  "totalResults": 792,
+  "businesses": [
+    {
+      "position": 1,
+      "name": "Splash Water Plumbing",
+      "url": "https://www.yellowpages.com/dallas-tx/mip/splash-water-plumbing-535624938?lid=1002195736846",
+      "categories": [
+        "Plumbers",
+        "Plumbing-Drain & Sewer Cleaning",
+        "Drainage Contractors"
+      ],
+      "phone": "(214) 522-1733",
+      "streetAddress": null,
+      "locality": "Dallas, TX 75217",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75217",
+      "website": "https://www.splashwaterplumbing.com",
+      "reviewCount": null,
+      "ratingStars": null,
+      "yearsInBusiness": null,
+      "yearsWithYellowPages": null,
+      "openStatus": "open 24 hours",
+      "snippet": "From Business: 24/7 Emergency Plumbers in Dallas Texas serving Dallas County With More Than 40 Years of Experience. Low Rates, Exceptional Quality Service. Our Licensed…",
+      "image": "https://i3.ypcdn.com/ypu/images/default-thumbnails-v2/thumbnail-8.svg?fbfdc6472"
+    },
+    {
+      "position": 2,
+      "name": "Roto-Rooter Plumbing & Water Cleanup",
+      "url": "https://www.yellowpages.com/dallas-tx/mip/roto-rooter-plumbing-water-cleanup-575072721?lid=1002194259492",
+      "categories": [
+        "Plumbers",
+        "Plumbing Contractors-Commercial & Industrial",
+        "Water Heater Repair"
+      ],
+      "phone": "(469) 923-9039",
+      "streetAddress": "1412 Main St",
+      "locality": "Dallas, TX 75202",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75202",
+      "website": "https://www.rotorooter.com/dallas/?utm_source=iyp&utm_medium=paid&utm_campaign=iyp",
+      "reviewCount": null,
+      "ratingStars": null,
+      "yearsInBusiness": 91,
+      "yearsWithYellowPages": 12,
+      "openStatus": "open 24 hours",
+      "snippet": "From Business: When you need an emergency plumber near me in Dallas or a drain cleaner, call Roto-Rooter Plumbing & Water Cleanup. Your fast & reliable plumber can fix any…",
+      "image": "https://i2.ypcdn.com/blob/94850e1522feb07bd424a37f4165194fe5f8b345_130x130_crop.jpg?fbfdc6472"
+    },
+    {
+      "position": 3,
+      "name": "Lewisville Plumbing Service",
+      "url": "https://www.yellowpages.com/lewisville-tx/mip/lewisville-plumbing-service-3202668?lid=1002194226596",
+      "categories": [
+        "Plumbers",
+        "Drainage Contractors",
+        "Water Heater Repair"
+      ],
+      "phone": "(214) 894-0018",
+      "streetAddress": "1400 Moccassin Trail",
+      "locality": "Lewisville, TX 75077",
+      "city": "Lewisville",
+      "state": "TX",
+      "postalCode": "75077",
+      "website": "http://www.lewisville-plumbing.com",
+      "reviewCount": 3,
+      "ratingStars": "four half",
+      "yearsInBusiness": 46,
+      "yearsWithYellowPages": 1,
+      "openStatus": "closed now",
+      "snippet": "Lewisville Plumbing Service has provided outstanding professional routine and emergency maintenance and installation services for our home since 1994.\"",
+      "image": "https://i2.ypcdn.com/blob/3d95aebf4beb737356de24fed80cdeda9df08b51_130x130_crop.jpg?fbfdc6472"
+    }
+  ],
+  "schemaListings": [
+    {
+      "name": "Splash Water Plumbing",
+      "url": "https://www.yellowpages.com/dallas-tx/mip/splash-water-plumbing-535624938?lid=1002195736846",
+      "telephone": "(214) 522-1733",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75217",
+      "openingHours": [
+        "Mo-Su"
+      ]
+    },
+    {
+      "name": "Roto-Rooter Plumbing & Water Cleanup",
+      "url": "https://www.yellowpages.com/dallas-tx/mip/roto-rooter-plumbing-water-cleanup-575072721?lid=1002194259492",
+      "telephone": "(469) 923-9039",
+      "streetAddress": "1412 Main St",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75202",
+      "openingHours": [
+        "Mo-Su"
+      ]
+    },
+    {
+      "name": "Lewisville Plumbing Service",
+      "url": "https://www.yellowpages.com/lewisville-tx/mip/lewisville-plumbing-service-3202668?lid=1002194226596",
+      "rating": 4.67,
+      "reviewCount": 3,
+      "telephone": "(214) 894-0018",
+      "streetAddress": "1400 Moccassin Trail",
+      "city": "Lewisville",
+      "state": "TX",
+      "postalCode": "75077",
+      "openingHours": [
+        "Mo-Fr 08:00-17:00"
+      ]
+    }
+  ],
+  "nextPageUrl": "https://www.yellowpages.com/search?search_terms=plumber&geo_location_terms=Dallas%2C%20TX&page=2"
+}

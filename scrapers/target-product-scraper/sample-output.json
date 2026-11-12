@@ -1,0 +1,72 @@
+{
+  "tcin": "94482826",
+  "dpci": null,
+  "upc": null,
+  "name": "bella 12 Cup Programmable Coffee Maker Blossom",
+  "brand": "bella Housewares",
+  "price": 29.99,
+  "priceText": "$29.99",
+  "regularPrice": 39.99,
+  "rating": 4.37,
+  "ratingCount": 626,
+  "reviewCount": 394,
+  "questionCount": 37,
+  "category": "Drip Coffee Makers",
+  "breadcrumbs": [
+    "Target",
+    "Kitchen & Dining",
+    "Kitchen Appliances",
+    "Coffee & Espresso Makers",
+    "Drip Coffee Makers"
+  ],
+  "highlights": [
+    "Program up to 24 hours in advance for coffee ready when you are.",
+    "Select your preferred coffee strength—regular or bold—for a customized cup.",
+    "Easy-to-read LCD display for easy monitoring and operation.",
+    "Bold Brew activation for a stronger coffee taste",
+    "Carafe Lid with Mixing Tube ensures even distribution of coffee for consistent flavor from first to last drop."
+  ],
+  "specifications": [
+    "Dimensions (Overall): 12.24 Inches (H) x 10.35 Inches (W) x 6.65 Inches (D)",
+    "Weight: 2.68 Pounds",
+    "Capacity (Volume): 96 Ounces",
+    "Cup Capacity: 12",
+    "Safety and Security Features: Automatic Shut-Off",
+    "Coffee Filter Type: Paper"
+  ],
+  "description": "Start your day with the perfect cup of coffee with the bella 12-Cup Programmable Coffee Maker. With a programmable timer that lets you set your brew up to 24 hours in advance, you can wake up to fresh coffee every morning. Choose between regular or bold strength for your ideal brew, and enjoy consistent flavor from the first cup to the last with the carafe’s mixing tube. The easy-to-read LCD display and user-friendly features make brewing simple, while the automatic shut-off and cleaning cycle ensure hassle-free operation. Whether you need a quick pour or a hot cup waiting for you, this coffee maker has it all.",
+  "primaryImage": "https://target.scene7.com/is/image/Target/GUEST_4b6332f2-65e3-4459-88df-222ff9939259",
+  "images": [
+    "https://target.scene7.com/is/image/Target/GUEST_a3a649f3-8281-4fb4-aabc-4e3b7fa71f1d",
+    "https://target.scene7.com/is/image/Target/GUEST_f3e90fc1-a1d8-4a07-a503-fa6a65d57f84",
+    "https://target.scene7.com/is/image/Target/GUEST_8467ece5-64d7-42e2-87c2-e4d27ccbd1e6"
+  ],
+  "variations": [
+    {
+      "name": "Color",
+      "value": "Blossom",
+      "tcin": "94482748"
+    },
+    {
+      "name": "Color",
+      "value": "Surf",
+      "tcin": "94482804"
+    },
+    {
+      "name": "Color",
+      "value": "Seaglass",
+      "tcin": "94482806"
+    },
+    {
+      "name": "Color",
+      "value": "Oatmilk",
+      "tcin": "94482782"
+    },
+    {
+      "name": "Color",
+      "value": "Plum",
+      "tcin": "94482759"
+    }
+  ],
+  "url": "https://www.target.com/p/bella-12-cup-programmable-coffee-maker/-/A-94482826"
+}

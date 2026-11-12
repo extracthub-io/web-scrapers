@@ -1,0 +1,136 @@
+{
+  "name": "LinkedIn Jobs - public job search",
+  "description": "LinkedIn public (guest, no login) job search page (linkedin.com/jobs/search?keywords=...&location=...): every job card with job id, title, link, company, company page, location, posted date, benefit badge and company logo; plus the result count LinkedIn shows.",
+  "slug": "linkedin-jobs",
+  "url": "https://www.linkedin.com/jobs/search?keywords=python&location=United%20States",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "job-listings",
+  "tags": [
+    "linkedin",
+    "jobs",
+    "job-search",
+    "recruiting",
+    "hiring"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "jobs",
+        "selector": "ul.jobs-search__results-list > li",
+        "extract": "innerHTML",
+        "isArray": true,
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "jobId",
+              "selector": "[data-entity-urn^=\"urn:li:jobPosting:\"]",
+              "extract": "attributeValue",
+              "attributeName": "data-entity-urn",
+              "transforms": [
+                {
+                  "after": "urn:li:jobPosting:"
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "title",
+              "selector": "h3.base-search-card__title",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "link",
+              "selector": "a.base-card__full-link[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "*"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "company",
+              "selector": "h4.base-search-card__subtitle",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "companyUrl",
+              "selector": "h4.base-search-card__subtitle a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "*"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "location",
+              "selector": ".job-search-card__location",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "postedDate",
+              "selector": "time[datetime]",
+              "extract": "attributeValue",
+              "attributeName": "datetime"
+            },
+            {
+              "name": "postedText",
+              "selector": "time",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "benefit",
+              "selector": ".job-posting-benefits__text",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "companyLogo",
+              "selector": "img[data-delayed-url]",
+              "extract": "attributeValue",
+              "attributeName": "data-delayed-url"
+            }
+          ]
+        }
+      },
+      {
+        "name": "resultsCount",
+        "selector": ".results-context-header__job-count",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "searchTitle",
+        "selector": "h1.results-context-header__context",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      }
+    ]
+  }
+}

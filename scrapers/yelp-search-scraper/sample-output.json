@@ -1,0 +1,54 @@
+{
+  "results": [
+    {
+      "position": 1,
+      "name": "Lou Malnati's Pizzeria",
+      "url": "https://www.yelp.com/biz/lou-malnatis-pizzeria-chicago",
+      "rating": 4,
+      "reviewCount": 8000,
+      "neighborhood": "River North",
+      "priceRange": "$$",
+      "openStatus": "Open until 11:00 PM",
+      "categories": [
+        "Pizza",
+        "Italian",
+        "Sandwiches"
+      ],
+      "snippet": "\"It was a delicious pizza , not too saucy like some deep dish can be but a good balance of cheese...\"",
+      "image": "https://s3-media0.fl.yelpcdn.com/bphoto/9KVGmKJA7qp93s2C3bsRLw/ls.jpg"
+    },
+    {
+      "position": 2,
+      "name": "Pequod's Pizza",
+      "url": "https://www.yelp.com/biz/pequods-pizza-chicago-3",
+      "rating": 3.9,
+      "reviewCount": 9000,
+      "neighborhood": "DePaul",
+      "priceRange": "$$",
+      "openStatus": "Open until Midnight",
+      "categories": [
+        "Pizza"
+      ],
+      "snippet": "\"Don't know that I'd consider it deep dish, more like Detroit style, but truly delicious pizza .\"",
+      "image": "https://s3-media0.fl.yelpcdn.com/bphoto/8QJUNblfCI0EDhOjuIWJ4A/ls.jpg"
+    },
+    {
+      "position": 3,
+      "name": "Giordano's",
+      "url": "https://www.yelp.com/biz/giordanos-chicago-30",
+      "rating": 3.8,
+      "reviewCount": 4400,
+      "neighborhood": "The Loop",
+      "priceRange": "$$",
+      "openStatus": "Open until 10:00 PM",
+      "categories": [
+        "Pizza",
+        "Salad",
+        "Italian"
+      ],
+      "snippet": "\"Absolutely delicious pizza and friendly service. The wait was a bit long, but it's worth it.\"",
+      "image": "https://s3-media0.fl.yelpcdn.com/bphoto/OKxuR9ZqBNY-4wvP0Z0SPQ/ls.jpg"
+    }
+  ],
+  "nextPageUrl": "https://www.yelp.com/search?find_desc=pizza&find_loc=Chicago%2C+IL&start=10"
+}

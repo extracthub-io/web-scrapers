@@ -1,0 +1,254 @@
+{
+  "name": "Booking.com - hotel page",
+  "description": "Booking.com property page (booking.com/hotel/<cc>/<name>.html): hotel id, name, star class, review score, score word, reviews count, review subscores (cleanliness, comfort, location...), location score, address, coordinates, description, most popular facilities, house rules (check-in, check-out, cancellation, pets...), main image.",
+  "slug": "booking-hotel",
+  "url": "https://www.booking.com/hotel/id/novotel-bali-ngurah-rai-airport-opening-june-2016.html",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "booking.com",
+    "travel",
+    "hotel",
+    "reviews",
+    "rating"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "hotelId",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "b_hotel_id: '",
+              "'"
+            ]
+          },
+          "compact",
+          "first"
+        ],
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "name",
+        "transforms": [
+          "decodeHtml"
+        ],
+        "required": true
+      },
+      {
+        "name": "stars",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "hotel_class: ",
+              ","
+            ]
+          },
+          "compact",
+          "first",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewScore",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "aggregateRating.ratingValue",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewScoreWord",
+        "selector": "[data-testid=\"review-score-component\"] span",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "aggregateRating.reviewCount",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "subscores",
+        "selector": "[data-testid=\"review-subscore\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "span",
+              "transforms": [
+                {
+                  "before": ","
+                },
+                "trim"
+              ],
+              "required": true
+            },
+            {
+              "name": "score",
+              "selector": "span",
+              "transforms": [
+                {
+                  "between": [
+                    ", ",
+                    ","
+                  ]
+                },
+                "toNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "locationScore",
+        "selector": "[data-testid=\"PropertyHeaderAddressDesktop-wrapper\"] button",
+        "transforms": [
+          {
+            "between": [
+              "rated ",
+              "/10"
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "address",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.streetAddress",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "region",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.addressRegion"
+      },
+      {
+        "name": "postalCode",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.postalCode"
+      },
+      {
+        "name": "country",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.addressCountry"
+      },
+      {
+        "name": "latitude",
+        "selector": "a#map_trigger_header_pin[data-atlas-latlng]",
+        "extract": "attributeValue",
+        "attributeName": "data-atlas-latlng",
+        "transforms": [
+          {
+            "before": ","
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "longitude",
+        "selector": "a#map_trigger_header_pin[data-atlas-latlng]",
+        "extract": "attributeValue",
+        "attributeName": "data-atlas-latlng",
+        "transforms": [
+          {
+            "after": ","
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "p[data-testid=\"property-description\"]",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "popularFacilities",
+        "selector": "[data-testid=\"property-most-popular-facilities-wrapper\"] li",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "unique"
+        ]
+      },
+      {
+        "name": "checkIn",
+        "selector": "#policies [data-testid=\"property-section--content\"] > div > div",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "Check-in "
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "checkOut",
+        "selector": "#policies [data-testid=\"property-section--content\"] > div > div",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "Check-out "
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "policies",
+        "selector": "#policies [data-testid=\"property-section--content\"] > div > div",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "image"
+      },
+      {
+        "name": "url",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "url",
+        "required": true
+      }
+    ]
+  }
+}

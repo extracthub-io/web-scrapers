@@ -1,0 +1,232 @@
+{
+  "name": "Target - product page",
+  "description": "Target (target.com) product page: TCIN, DPCI, UPC, name, brand, current and regular price, price text, rating, reviews and questions counts, highlights, specifications, description, images, category breadcrumbs and variations.",
+  "slug": "target-product",
+  "url": "https://www.target.com/p/bella-12-cup-programmable-coffee-maker/-/A-94482826",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "waitForSelector": "[data-test=\"product-price\"]",
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "target",
+    "ecommerce",
+    "product",
+    "price",
+    "retail"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "tcin",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.tcin"
+        ],
+        "required": true
+      },
+      {
+        "name": "dpci",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.dpci"
+        ]
+      },
+      {
+        "name": "upc",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.primary_barcode"
+        ]
+      },
+      {
+        "name": "name",
+        "selector": "h1[data-test=\"product-title\"]",
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "brand",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.primary_brand.name"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": [
+          "[data-test=\"module-product-detail-price-v2\"] [data-test=\"text-quill-insert-0\"]",
+          "[data-test=\"product-price\"]"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "priceText",
+        "selector": [
+          "[data-test=\"module-product-detail-price-v2\"] [data-test=\"text-quill-insert-0\"]",
+          "[data-test=\"product-price\"]"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "regularPrice",
+        "selector": "[data-test=\"module-product-detail-price-v2\"] [data-test=\"text-quill-insert-2\"]",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.ratings_and_reviews.statistics.rating.average"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "ratingCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.ratings_and_reviews.statistics.rating.count"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.ratings_and_reviews.statistics.review_count"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "questionCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.ratings_and_reviews.statistics.question_count"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "category",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.category.name"
+        ]
+      },
+      {
+        "name": "breadcrumbs",
+        "selector": "[data-test=\"@web/Breadcrumbs/BreadcrumbNav\"] a[data-test=\"@web/Breadcrumbs/BreadcrumbLink\"]",
+        "isArray": true
+      },
+      {
+        "name": "highlights",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.product_description.soft_bullets.bullets",
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.children[0].item.product_description.soft_bullets.bullets"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "specifications",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.product_description.bullet_descriptions[*]",
+        "transforms": [
+          "toJson",
+          "removeHtmlTags",
+          "parseJson"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.product_description.downstream_description",
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.children[0].item.product_description.downstream_description"
+        ],
+        "transforms": [
+          "coalesce",
+          "decodeHtml",
+          "removeHtmlTags",
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "primaryImage",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.enrichment.image_info.primary_image.url"
+        ]
+      },
+      {
+        "name": "images",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.enrichment.image_info.alternate_images[*].url"
+      },
+      {
+        "name": "variations",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.variation_hierarchy[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name"
+          },
+          {
+            "name": "value",
+            "jsonPath": "value"
+          },
+          {
+            "name": "tcin",
+            "jsonPath": "tcin"
+          }
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[4].state.data.data.data_source_modules[1].module_data.data.product.item.enrichment.buy_url"
+        ]
+      }
+    ]
+  }
+}

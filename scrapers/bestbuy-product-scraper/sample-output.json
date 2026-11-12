@@ -1,0 +1,83 @@
+{
+  "sku": "6668500",
+  "productId": "JJGH3Q8P2K",
+  "name": "Lenovo - IdeaPad Slim 3 15.6\" Full HD Laptop - AMD Ryzen 5 40 2025 - 8GB Memory- 256GB Storage - Abyss Blue",
+  "brand": "Lenovo",
+  "model": "82XQ012GUS",
+  "color": "Abyss Blue",
+  "price": 349.99,
+  "currency": "USD",
+  "compValue": 629.99,
+  "savings": 280,
+  "availability": "InStock",
+  "offers": [
+    {
+      "condition": "New",
+      "price": 349.99,
+      "availability": "InStock"
+    },
+    {
+      "condition": "Open-Box Excellent",
+      "price": 329.99,
+      "availability": "InStock"
+    },
+    {
+      "condition": "Open-Box Good",
+      "price": 316.99,
+      "availability": "InStock"
+    },
+    {
+      "condition": "Open-Box Fair",
+      "price": 279.99,
+      "availability": "InStock"
+    }
+  ],
+  "rating": 4.7,
+  "reviewCount": 337,
+  "images": [
+    "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/55a4a43f-2608-46b7-8a47-2b6ef45fb46a.jpg"
+  ],
+  "description": "The slim, lightweight and military-grade resilient IdeaPad Slim 3 is built for smart and heavy work and study on the go, featuring AMD Ryzen processors and Smart Power.",
+  "specifications": [
+    {
+      "name": "Screen Size",
+      "value": "15.6 inches"
+    },
+    {
+      "name": "Screen Resolution",
+      "value": "1920 x 1080 (Full HD)"
+    },
+    {
+      "name": "Touch Screen",
+      "value": "false"
+    },
+    {
+      "name": "Brightness",
+      "value": "250 nits"
+    },
+    {
+      "name": "Processor Model",
+      "value": "AMD 10 Series"
+    },
+    {
+      "name": "CPU Base Clock Frequency",
+      "value": "2.8 gigahertz"
+    },
+    {
+      "name": "Storage Type",
+      "value": "SSD"
+    },
+    {
+      "name": "Total Storage Capacity",
+      "value": "256 gigabytes"
+    }
+  ],
+  "breadcrumbs": [
+    "Best Buy",
+    "Computers & Tablets",
+    "Laptops",
+    "All Laptops",
+    "Windows Laptops"
+  ],
+  "url": "https://www.bestbuy.com/product/lenovo-ideapad-slim-3-15-6-full-hd-laptop-amd-ryzen-5-40-2025-8gb-memory-256gb-storage-abyss-blue/JJGH3Q8P2K"
+}

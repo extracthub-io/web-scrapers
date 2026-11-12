@@ -1,0 +1,127 @@
+{
+  "name": "Indeed - job search results",
+  "description": "Indeed.com job search results page (/jobs?q=...&l=...): every job card (main results and the grouped carousels) with job key, title, link, company, location, salary, job type tags, sponsored flag; plus the total job count and the next page link.",
+  "slug": "indeed-jobs",
+  "url": "https://www.indeed.com/jobs?q=data+analyst&l=Remote",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "job-listings",
+  "tags": [
+    "indeed",
+    "jobs",
+    "job-search",
+    "salary",
+    "recruiting"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "jobs",
+        "selector": "#mosaic-provider-jobcards div.tapItem:not([aria-hidden=\"true\"])",
+        "extract": "innerHTML",
+        "isArray": true,
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "jobKey",
+              "selector": "h3.jobTitle a[data-jk]",
+              "extract": "attributeValue",
+              "attributeName": "data-jk",
+              "required": true
+            },
+            {
+              "name": "title",
+              "selector": "h3.jobTitle span[title]",
+              "extract": "attributeValue",
+              "attributeName": "title",
+              "required": true
+            },
+            {
+              "name": "link",
+              "selector": "h3.jobTitle a[href^=\"/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "company",
+              "selector": [
+                "[data-testid=\"company-name\"]",
+                ".company-info-container"
+              ],
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "combineStrategy": "first"
+            },
+            {
+              "name": "location",
+              "selector": "[data-testid=\"text-location\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "salary",
+              "selector": "li.salary-snippet-container",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "attributes",
+              "selector": "ul.metadataContainer li",
+              "isArray": true,
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "snippet",
+              "selector": "[data-testid=\"belowJobSnippet\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "sponsored",
+              "selector": "h3.jobTitle a[id^=\"sj_\"]",
+              "extract": "exists"
+            }
+          ]
+        }
+      },
+      {
+        "name": "totalJobs",
+        "selector": "script#mosaic-data",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\"totalJobCount\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a[data-testid=\"pagination-page-next\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

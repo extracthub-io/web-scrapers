@@ -1,0 +1,58 @@
+{
+  "searchTitle": "Austin, TX homes for sale & real estate",
+  "totalResults": 6658,
+  "homes": [
+    {
+      "position": 1,
+      "address": "14300 Fallen Timber Dr, Austin, TX 78734",
+      "url": "https://www.realtor.com/realestateandhomes-detail/14300-Fallen-Timber-Dr_Austin_TX_78734_M74205-06606",
+      "price": 699000,
+      "currency": "USD",
+      "homeType": "SingleFamilyResidence",
+      "bedrooms": 7,
+      "floorSizeSqft": 11486,
+      "streetAddress": "14300 Fallen Timber Dr",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78734",
+      "latitude": 30.39303,
+      "longitude": -97.912794,
+      "image": "https://ap.rdcpix.com/2d85f535a2788bc144d193b7f4ffeb6el-m153670183s.jpg"
+    },
+    {
+      "position": 2,
+      "address": "1704 Shelbourne Dr, Austin, TX 78752",
+      "url": "https://www.realtor.com/realestateandhomes-detail/1704-Shelbourne-Dr_Austin_TX_78752_M81029-30727",
+      "price": 400000,
+      "currency": "USD",
+      "homeType": "SingleFamilyResidence",
+      "bedrooms": 3,
+      "floorSizeSqft": 1556,
+      "streetAddress": "1704 Shelbourne Dr",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78752",
+      "latitude": 30.327864,
+      "longitude": -97.683779,
+      "image": "https://ap.rdcpix.com/d35f307687bd662693dfc1958f2a9e63l-m4003346858s.jpg"
+    },
+    {
+      "position": 3,
+      "address": "11908 Lansdowne Rd, Austin, TX 78754",
+      "url": "https://www.realtor.com/realestateandhomes-detail/11908-Lansdowne-Rd_Austin_TX_78754_M83166-85849",
+      "price": 329000,
+      "currency": "USD",
+      "homeType": "SingleFamilyResidence",
+      "bedrooms": 3,
+      "floorSizeSqft": 1858,
+      "streetAddress": "11908 Lansdowne Rd",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78754",
+      "latitude": 30.357197,
+      "longitude": -97.610088,
+      "image": "https://ap.rdcpix.com/4e512bd59cb416721c2c88590313703fl-m160179015s.jpg"
+    }
+  ],
+  "nextPageUrl": "https://www.realtor.com/realestateandhomes-search/Austin_TX/pg-2"
+}

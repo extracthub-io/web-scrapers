@@ -23,7 +23,8 @@
         "extract": "jsonContent",
         "jsonPaths": [
           "currentVideoEndpoint.watchEndpoint.videoId"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "url",
@@ -48,7 +49,8 @@
         ],
         "transforms": [
           "coalesce"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "description",

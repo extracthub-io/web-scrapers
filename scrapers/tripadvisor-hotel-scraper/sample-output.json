@@ -1,0 +1,53 @@
+{
+  "hotelId": "1776857",
+  "name": "The Langham, New York, Fifth Avenue",
+  "rating": 4.7,
+  "reviewCount": 3437,
+  "ranking": "#88 of 530 hotels in New York City",
+  "hotelClass": 5,
+  "priceRange": "$$$",
+  "offerPrice": 965,
+  "offerProvider": "Expedia.com",
+  "telephone": "1 (212) 695-4005",
+  "website": "http://www.langhamhotels.com/en/the-langham/new-york/",
+  "streetAddress": "400 Fifth Avenue, New York",
+  "city": "New York City",
+  "region": "New York",
+  "postalCode": "10018-2753",
+  "country": "US",
+  "latitude": 40.75007,
+  "longitude": -73.983765,
+  "amenities": [
+    "Paid private parking on-site",
+    "Free High Speed Internet (WiFi)",
+    "Fitness Center with Gym / Workout Room",
+    "Bar / lounge",
+    "Babysitting"
+  ],
+  "description": "The Langham, New York, Fifth Avenue is a modern sanctuary of serenity in the heart of Manhattan. Perfectly located between Bryant Park and the Empire State Building, the hotel offers spacious rooms and suites—among the largest in the city—featuring chic furnishings, a refined color palette, and original artwork by contemporary American artist, Alex Katz. Guests can enjoy exclusive access to The Langham Club and a range of award-winning dining experiences, including Michelin-starred Ai Fiori, the stylish Bar Fiori, casual delights at Maison Kayser, and even Sky Terrace, a secret rooftop dining concept. Stay active in the 24-hour fitness center or host unforgettable events in versatile spaces ideal for weddings, meetings, and social gatherings. Whether visiting for business or leisure, The Langham, New York, Fifth Avenue delivers the legendary hospitality and personalized service that have made The Langham Hotels a global benchmark of elegance.",
+  "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/e5/84/82/the-langham-new-york.jpg?w=500&h=-1&s=1",
+  "breadcrumbs": [
+    "United States",
+    "New York (NY)",
+    "New York City",
+    "New York City Hotels",
+    "The Langham, New York, Fifth Avenue"
+  ],
+  "reviews": [
+    {
+      "position": 1,
+      "title": "A benchmarked experience",
+      "text": "We had to schedule a red eye flight for this trip when we arrive early the staff suggested multiple options and go us into a comfortable room. The food was so good we didn’t venture out much other than to the convention we came for. The staff was extremely careful til the very last interaction. We both felt like this was the very best experience we had ever had in New York and actually anywhere we had traveled. The customer service was exceptional on every front. Thanks to the care and hospitality of the staff there it made a short and last minute decision an experience we won’t forget and many will fall short of living up to.",
+      "rating": 5,
+      "url": "https://www.tripadvisor.com/ShowUserReviews-g60763-d1776857-r1084840695-The_Langham_New_York_Fifth_Avenue-New_York_City_New_York.html"
+    },
+    {
+      "position": 4,
+      "title": "Noise, a lot of noise - construction outside and in the building.",
+      "text": "Expensive room - noise, uncomfortable bedding - toilet flushing noise, non-insulating window frames. You should have warned us.",
+      "rating": 2,
+      "url": "https://www.tripadvisor.com/ShowUserReviews-g60763-d1776857-r1083143725-The_Langham_New_York_Fifth_Avenue-New_York_City_New_York.html"
+    }
+  ],
+  "url": "https://www.tripadvisor.com/Hotel_Review-g60763-d1776857-Reviews-The_Langham_New_York_Fifth_Avenue-New_York_City_New_York.html"
+}

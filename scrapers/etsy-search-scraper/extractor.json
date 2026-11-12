@@ -1,0 +1,169 @@
+{
+  "name": "Etsy - search results",
+  "description": "Etsy.com search results page (/search?q=...): the 64 listings on the page with listing id, title, link, image, price, original price, discount, shop name, star seller, rating, reviews count, badge (Bestseller, Etsy's Pick, Popular now), free shipping and ad flag, plus the next page link.",
+  "slug": "etsy-search",
+  "url": "https://www.etsy.com/search?q=handmade+mug",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "waitForSelector": "div.v2-listing-card[data-listing-id]",
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "etsy",
+    "search",
+    "handmade",
+    "listings",
+    "prices",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "listings",
+        "selector": "div.v2-listing-card[data-listing-id]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "listingId",
+              "selector": "a.v2-listing-card__img[data-listing-id]",
+              "extract": "attributeValue",
+              "attributeName": "data-listing-id",
+              "required": true
+            },
+            {
+              "name": "title",
+              "selector": "h3.v2-listing-card__title",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.v2-listing-card__img[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "*"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "img[data-listing-card-listing-image][src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "price",
+              "selector": "p.lc-price .currency-value",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "currencySymbol",
+              "selector": "p.lc-price .currency-symbol",
+              "transforms": [
+                "trim"
+              ]
+            },
+            {
+              "name": "originalPrice",
+              "selector": "p.search-collage-original-price .wt-text-strikethrough .currency-value",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "discount",
+              "selector": "p.search-collage-original-price .wt-text-grey",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "shopName",
+              "selector": "[data-seller-name-link]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "starSeller",
+              "selector": "[data-star-seller-badge=\"true\"]",
+              "extract": "exists"
+            },
+            {
+              "name": "rating",
+              "selector": "clg-static-review-stars[rating]",
+              "extract": "attributeValue",
+              "attributeName": "rating",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewsCount",
+              "selector": "clg-static-review-stars[review-count-text]",
+              "extract": "attributeValue",
+              "attributeName": "review-count-text",
+              "transforms": [
+                {
+                  "between": [
+                    "(",
+                    ")"
+                  ]
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "badge",
+              "selector": "clg-signal",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "freeShipping",
+              "selector": ".promotion-badge-line",
+              "extract": "exists"
+            },
+            {
+              "name": "ad",
+              "selector": "h3[id^=\"ad-listing-title\"]",
+              "extract": "exists"
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "[data-appears-component-name=\"search_pagination\"] .wt-hide-lg nav .wt-action-group__item-container:nth-child(2) a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "ref"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "name": "LinkedIn Jobs - public job page",
+  "description": "LinkedIn public (guest, no login) job page (linkedin.com/jobs/view/...): job id, title, company, company page and logo, location (city, region, country), posted date and age, expiry date, applicant count, salary when shown, employment type, seniority level, job function, industries, experience and education requirements, and the full description text.",
+  "slug": "linkedin-job",
+  "url": "https://www.linkedin.com/jobs/view/lead-python-software-engineer-at-archer-4481685585",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "job-listings",
+  "tags": [
+    "linkedin",
+    "jobs",
+    "job-posting",
+    "recruiting",
+    "salary"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "jobId",
+        "selector": "link[rel=\"canonical\"][href*=\"/jobs/view/\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "*"
+            ]
+          },
+          {
+            "split": "-"
+          },
+          "last"
+        ],
+        "required": true
+      },
+      {
+        "name": "title",
+        "selector": [
+          ".top-card-layout h1.top-card-layout__title",
+          "h1.topcard__title"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "company",
+        "selector": [
+          ".top-card-layout a.topcard__org-name-link",
+          ".top-card-layout .topcard__flavor"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "companyUrl",
+        "selector": ".top-card-layout a.topcard__org-name-link[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "*"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "companyLogo",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "hiringOrganization.logo"
+        ],
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "location",
+        "selector": ".top-card-layout .topcard__flavor--bullet",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "city",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "jobLocation.address.addressLocality"
+        ]
+      },
+      {
+        "name": "region",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "jobLocation.address.addressRegion"
+        ]
+      },
+      {
+        "name": "country",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "jobLocation.address.addressCountry"
+        ]
+      },
+      {
+        "name": "datePosted",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "datePosted"
+        ]
+      },
+      {
+        "name": "validThrough",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "validThrough"
+        ]
+      },
+      {
+        "name": "postedText",
+        "selector": ".top-card-layout .posted-time-ago__text",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "applicants",
+        "selector": [
+          ".top-card-layout .num-applicants__caption",
+          ".top-card-layout .num-applicants__figure"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "salary",
+        "selector": [
+          ".compensation__salary",
+          ".compensation__salary-range .salary"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "employmentType",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "employmentType"
+        ]
+      },
+      {
+        "name": "criteria",
+        "selector": "ul.description__job-criteria-list > li.description__job-criteria-item",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "h3.description__job-criteria-subheader",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": ".description__job-criteria-text",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "industry",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "industry"
+        ]
+      },
+      {
+        "name": "experienceMonths",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "experienceRequirements.monthsOfExperience"
+        ]
+      },
+      {
+        "name": "education",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "educationRequirements.credentialCategory"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": ".description__text .show-more-less-html__markup",
+        "extract": "textContent",
+        "textSeparator": "\n",
+        "transforms": [
+          "trim"
+        ]
+      }
+    ]
+  }
+}

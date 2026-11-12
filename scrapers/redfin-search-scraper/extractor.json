@@ -1,0 +1,231 @@
+{
+  "name": "Redfin - search results",
+  "description": "Redfin home search page (redfin.com/city/<id>/<ST>/<City>, also zipcode / neighborhood pages, with filters and /page-N): about 40 homes for sale with address, link, property id, price, beds, baths, square feet, key facts, badges, street / city / state / ZIP, coordinates, photo and listing source, plus the total homes count, current page and total pages.",
+  "slug": "redfin-search",
+  "url": "https://www.redfin.com/city/30749/NY/New-York",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "real-estate",
+  "tags": [
+    "redfin",
+    "real estate",
+    "homes for sale",
+    "listings",
+    "property search"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "searchTitle",
+        "selector": "h1",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "totalResults",
+        "selector": "[data-rf-test-id=\"homes-description\"]",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "homes",
+        "selector": "[data-rf-test-name=\"home-card\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "address",
+              "selector": "a.bp-Homecard__Address",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.bp-Homecard__Address[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "propertyId",
+              "selector": "a.bp-Homecard__Address[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/home/"
+                }
+              ]
+            },
+            {
+              "name": "price",
+              "selector": ".bp-Homecard__Price--value",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "beds",
+              "selector": ".bp-Homecard__Stats--beds",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "bedsText",
+              "selector": ".bp-Homecard__Stats--beds",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "baths",
+              "selector": ".bp-Homecard__Stats--baths",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "sqft",
+              "selector": ".bp-Homecard__Stats--sqft .bp-Homecard__LockedStat--value",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "keyFacts",
+              "selector": ".KeyFacts-item",
+              "isArray": true
+            },
+            {
+              "name": "badges",
+              "selector": ".bp-Homecard__Sash",
+              "isArray": true
+            },
+            {
+              "name": "streetAddress",
+              "selector": "script[type=\"application/ld+json\"]",
+              "extract": "jsonContent",
+              "jsonPaths": [
+                "[0].address.streetAddress"
+              ],
+              "transforms": [
+                "coalesce"
+              ]
+            },
+            {
+              "name": "city",
+              "selector": "script[type=\"application/ld+json\"]",
+              "extract": "jsonContent",
+              "jsonPaths": [
+                "[0].address.addressLocality"
+              ],
+              "transforms": [
+                "coalesce"
+              ]
+            },
+            {
+              "name": "state",
+              "selector": "script[type=\"application/ld+json\"]",
+              "extract": "jsonContent",
+              "jsonPaths": [
+                "[0].address.addressRegion"
+              ],
+              "transforms": [
+                "coalesce"
+              ]
+            },
+            {
+              "name": "postalCode",
+              "selector": "script[type=\"application/ld+json\"]",
+              "extract": "jsonContent",
+              "jsonPaths": [
+                "[0].address.postalCode"
+              ],
+              "transforms": [
+                "coalesce"
+              ]
+            },
+            {
+              "name": "latitude",
+              "selector": "script[type=\"application/ld+json\"]",
+              "extract": "jsonContent",
+              "jsonPaths": [
+                "[0].geo.latitude"
+              ],
+              "transforms": [
+                "coalesce"
+              ]
+            },
+            {
+              "name": "longitude",
+              "selector": "script[type=\"application/ld+json\"]",
+              "extract": "jsonContent",
+              "jsonPaths": [
+                "[0].geo.longitude"
+              ],
+              "transforms": [
+                "coalesce"
+              ]
+            },
+            {
+              "name": "homeType",
+              "selector": "script[type=\"application/ld+json\"]",
+              "extract": "jsonContent",
+              "jsonPaths": [
+                "[0].@type"
+              ],
+              "transforms": [
+                "coalesce"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "img.bp-Homecard__Photo--image[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "listingSource",
+              "selector": ".bp-Homecard__Attribution",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "currentPage",
+        "selector": "a.PageNumbers__page--selected",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "totalPages",
+        "selector": "[data-rf-test-name=\"download-and-save-page-number-text\"]",
+        "transforms": [
+          {
+            "after": " of "
+          },
+          "extractNumber"
+        ]
+      }
+    ]
+  }
+}

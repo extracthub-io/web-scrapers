@@ -1,0 +1,194 @@
+{
+  "name": "Booking.com - search results",
+  "description": "Booking.com search results (booking.com/searchresults.html?ss=<destination>&checkin=...&checkout=...): properties with name, link, image, area, review score, score word, reviews count, recommended room and beds, price per night, total price, original price, stay length, deal badge, free cancellation, plus the total number of properties found.",
+  "slug": "booking-search",
+  "url": "https://www.booking.com/searchresults.html?ss=Bali&checkin=2026-12-14&checkout=2026-12-15&group_adults=2&no_rooms=1",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "booking.com",
+    "travel",
+    "hotels",
+    "search",
+    "prices"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "totalResults",
+        "selector": "h1[aria-live]",
+        "transforms": [
+          {
+            "after": ": "
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "properties",
+        "selector": "[data-testid=\"property-card\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "[data-testid=\"title\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[data-testid=\"title-link\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl",
+                {
+                  "removeQueryParams": [
+                    "*"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "img[data-testid=\"image\"][src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "area",
+              "selector": "[data-testid=\"address-link\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "reviewScore",
+              "selector": "a[data-testid=\"review-score-link\"][aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                {
+                  "between": [
+                    "Scored ",
+                    ","
+                  ]
+                },
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewScoreWord",
+              "selector": "a[data-testid=\"review-score-link\"][aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                {
+                  "between": [
+                    ", ",
+                    ","
+                  ]
+                },
+                "trim"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "a[data-testid=\"review-score-link\"][aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                {
+                  "after": ", "
+                },
+                {
+                  "between": [
+                    ", ",
+                    " review"
+                  ]
+                },
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "roomName",
+              "selector": "[data-testid=\"recommended-units\"] h4",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "beds",
+              "selector": "[data-testid=\"recommended-units\"] li",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "pricePerNight",
+              "selector": "[data-testid=\"availability-rate-information\"] > div > [data-testid=\"price-and-discounted-price\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "price",
+              "selector": "[data-testid=\"price-and-discounted-price\"]",
+              "isArray": true,
+              "transforms": [
+                "extractPrice",
+                "last"
+              ]
+            },
+            {
+              "name": "priceText",
+              "selector": "[data-testid=\"price-and-discounted-price\"]",
+              "isArray": true,
+              "transforms": [
+                "normalizeWhitespace",
+                "last"
+              ]
+            },
+            {
+              "name": "originalPrice",
+              "selector": "[role=\"group\"] > span[aria-hidden=\"true\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "stay",
+              "selector": "[data-testid=\"price-for-x-nights\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "deal",
+              "selector": "[data-testid=\"property-card-deal\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "freeCancellation",
+              "selector": "[data-testid=\"cancellation-policy-icon\"]",
+              "extract": "exists"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

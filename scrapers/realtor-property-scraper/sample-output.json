@@ -1,0 +1,150 @@
+{
+  "propertyId": "8102930727",
+  "listingId": "2991781467",
+  "url": "https://www.realtor.com/realestateandhomes-detail/1704-Shelbourne-Dr_Austin_TX_78752_M81029-30727",
+  "status": "for_sale",
+  "address": "1704 Shelbourne Dr",
+  "city": "Austin",
+  "state": "TX",
+  "postalCode": "78752",
+  "county": "Travis",
+  "neighborhoods": [
+    "Creekside",
+    "Coronado Hills",
+    "East Austin"
+  ],
+  "latitude": 30.327864,
+  "longitude": -97.683779,
+  "price": 400000,
+  "pricePerSqft": 257,
+  "lastPriceChange": 5000,
+  "estimates": [
+    {
+      "estimate": 391000,
+      "isBest": true
+    },
+    {
+      "estimate": 510340,
+      "isBest": false
+    },
+    {
+      "estimate": 380000,
+      "isBest": false
+    }
+  ],
+  "propertyType": "single_family",
+  "beds": 3,
+  "baths": 2,
+  "bathsFull": 2,
+  "bathsHalf": null,
+  "sqft": 1556,
+  "lotSqft": 9561,
+  "yearBuilt": 1969,
+  "stories": 1,
+  "garage": 2,
+  "hoaFee": 0,
+  "propertyTaxRate": 0.030605,
+  "taxAmount": 12242,
+  "listDate": "2026-02-21T14:21:38Z",
+  "daysOnMls": 238,
+  "lastUpdated": "2026-11-03T13:04:11Z",
+  "lastSoldDate": "2022-10-21",
+  "lastSoldPrice": null,
+  "flags": {
+    "isNewListing": false,
+    "isPriceReduced": null,
+    "isPending": null,
+    "isContingent": null,
+    "isComingSoon": null,
+    "isForeclosure": null,
+    "isShortSale": true,
+    "isNewConstruction": null
+  },
+  "description": "LENDER-APPROVED SHORT SALE! OVER $31,000 IN RECENT UPGRADES. THIS PROPERTY WAS OFFERED FOR $625,000 JUST 4 YEARS AGO AND SOLD FOR CLOSE TO THAT. Pool + sunroom + charm in the heart of Austin - this one checks all the boxes. Warm and inviting 3-bedroom, 2-bath home offering 1,556 square feet of thoughtfully designed living space. …",
+  "tags": [
+    "Private Swimming Pool",
+    "Exercise room",
+    "Open concept living",
+    "Luxury",
+    "Office",
+    "Open Beams"
+  ],
+  "details": [
+    {
+      "category": "Bedrooms",
+      "group": "Interior",
+      "features": [
+        "Bedrooms: 3",
+        "Bedrooms On Main Level: 3",
+        "Primary Bedroom Level: Main"
+      ]
+    },
+    {
+      "category": "Bathrooms",
+      "group": "Interior",
+      "features": [
+        "Total Bathrooms: 2",
+        "Full Bathrooms: 2"
+      ]
+    },
+    {
+      "category": "Pool and Spa",
+      "group": "Exterior",
+      "features": [
+        "Pool Features: Fenced, In Ground, Outdoor Pool",
+        "Pool Private: Yes"
+      ]
+    },
+    {
+      "category": "Garage and Parking",
+      "group": "Exterior",
+      "features": [
+        "Covered Spaces: 2",
+        "Garage Spaces: 2",
+        "Parking Features: Driveway, Garage, Garage Door Opener",
+        "Parking Total: 2"
+      ]
+    },
+    {
+      "category": "Homeowners Association",
+      "group": "Community",
+      "features": [
+        "Association: No",
+        "Calculated Total Monthly Association Fees: 0"
+      ]
+    },
+    {
+      "category": "School Information",
+      "group": "Community",
+      "features": [
+        "Elementary School: Andrews",
+        "High School: Northeast Early College",
+        "High School District: Austin ISD",
+        "Middle School: Webb",
+        "School District: Austin ISD"
+      ]
+    },
+    {
+      "category": "Utilities",
+      "group": "Features",
+      "features": [
+        "Sewer: Public Sewer",
+        "Electricity Connected",
+        "Natural Gas Connected",
+        "Sewer Connected",
+        "Water Connected",
+        "Water Source: Public"
+      ]
+    }
+  ],
+  "listingAgent": "Knolly Williams",
+  "brokerage": "eXp Realty, LLC",
+  "mlsName": "UnlockMLS",
+  "mlsListingId": "3401964",
+  "photoCount": 38,
+  "photos": [
+    "https://ap.rdcpix.com/d35f307687bd662693dfc1958f2a9e63l-m4003346858s.jpg",
+    "https://ap.rdcpix.com/d35f307687bd662693dfc1958f2a9e63l-m620270851s.jpg",
+    "https://ap.rdcpix.com/d35f307687bd662693dfc1958f2a9e63l-m3183099925s.jpg"
+  ]
+}

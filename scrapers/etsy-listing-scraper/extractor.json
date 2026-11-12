@@ -1,0 +1,219 @@
+{
+  "name": "Etsy - listing page",
+  "description": "Etsy.com listing page (/listing/<id>/...): listing id, title, price (lowest price for listings with options) and highest option price, original price on sale, currency, availability, shop name and link, rating, reviews count, category path, material, ships-from country, description, images and the reviews shown on the page (rating, date, text).",
+  "slug": "etsy-listing",
+  "url": "https://www.etsy.com/listing/986959096/handmade-ceramic-coffee-mug",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "etsy",
+    "listing",
+    "handmade",
+    "product",
+    "reviews",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "listingId",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "sku"
+        ],
+        "required": true
+      },
+      {
+        "name": "title",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "name"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "url"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.price",
+          "offers.lowPrice"
+        ],
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "highPrice",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.highPrice",
+          "offers.priceSpecification[0].maxPrice",
+          "offers.priceSpecification.maxPrice"
+        ],
+        "transforms": [
+          "coalesce",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "originalPrice",
+        "selector": "[data-selector=\"price-only\"] .lp_toffers_v2_original_price",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.priceCurrency"
+        ]
+      },
+      {
+        "name": "availability",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.availability"
+        ],
+        "transforms": [
+          {
+            "after": "schema.org/"
+          }
+        ]
+      },
+      {
+        "name": "shopName",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "brand.name"
+        ]
+      },
+      {
+        "name": "shopUrl",
+        "selector": "a[data-seller-cred-anchor][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "*"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "aggregateRating.ratingValue"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewsCount",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "aggregateRating.reviewCount"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "category",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "category"
+        ]
+      },
+      {
+        "name": "categories",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*].name"
+      },
+      {
+        "name": "material",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "material"
+        ]
+      },
+      {
+        "name": "shipsFrom",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "offers.shippingDetails.shippingOrigin.addressCountry"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "description"
+        ]
+      },
+      {
+        "name": "images",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "image[*].contentURL"
+      },
+      {
+        "name": "reviews",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "review[*]",
+        "subFields": [
+          {
+            "name": "rating",
+            "jsonPath": "reviewRating.ratingValue",
+            "transforms": [
+              "toNumber"
+            ]
+          },
+          {
+            "name": "date",
+            "jsonPath": "datePublished"
+          },
+          {
+            "name": "text",
+            "jsonPath": "reviewBody",
+            "transforms": [
+              "normalizeWhitespace"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

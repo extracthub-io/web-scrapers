@@ -1,0 +1,68 @@
+{
+  "hotelId": "1527745",
+  "name": "Novotel Bali Ngurah Rai Airport",
+  "stars": 4,
+  "reviewScore": 8.7,
+  "reviewScoreWord": "Excellent",
+  "reviewCount": 3945,
+  "subscores": [
+    {
+      "name": "Cleanliness",
+      "score": 9.1
+    },
+    {
+      "name": "Comfort",
+      "score": 9.1
+    },
+    {
+      "name": "Facilities",
+      "score": 8.8
+    },
+    {
+      "name": "Location",
+      "score": 9.6
+    },
+    {
+      "name": "Staff",
+      "score": 9.3
+    },
+    {
+      "name": "Value for money",
+      "score": 8.8
+    },
+    {
+      "name": "Free Wifi",
+      "score": 8.6
+    }
+  ],
+  "locationScore": 9.6,
+  "address": "Jalan Raya Ngurah Rai, Tuban, 80362 Kuta, Indonesia",
+  "region": "Bali",
+  "postalCode": "80362",
+  "country": "Indonesia",
+  "latitude": -8.746722,
+  "longitude": 115.166776,
+  "description": "Novotel Bali Ngurah Rai Airport is conveniently located in Bali Denpasar International Airport with direct access to the international departure and domestic arrival sections. Featuring an outdoor pool, the hotel is set in Kuta, 0.8 mi from Tuban Beach and 1.2 mi from Waterbom Bali. Free WiFi can be accessed throughout the property and the front desk is available 24 hours to assist guests. The rooms at Novotel Bali Ngurah Rai Airport are equipped with air conditioning, a flat-screen TV and a safety deposit box. Some rooms come with sofa bed and work area. The private bathrooms have shower and free amenities. For extra comfort, slippers and bathrobes are provided. Guests can work out at the fitness or enjoy a massage at the spa. Laundry services can be requested with additional charges. The hotel also have meeting rooms and a function hall for gatherings. Discovery Shopping Mall is 1.2 mi from Novotel Bali Ngurah Rai Airport , while the famous Uluwatu Temple is 14 mi away from the hotel.",
+  "popularFacilities": [
+    "Outdoor swimming pool",
+    "Non-smoking rooms",
+    "Spa and wellness center",
+    "Fitness center",
+    "Room service",
+    "2 restaurants",
+    "Facilities for disabled guests",
+    "Tea/Coffee Maker in All Rooms",
+    "Bar",
+    "Very Good Breakfast"
+  ],
+  "checkIn": "From 2:00 PM Guests are required to show a photo ID and credit card at check-in. You need to let the property know what time you'll be arriving in advance.",
+  "checkOut": "Until 12:00 PM",
+  "policies": [
+    "Check-in From 2:00 PM Guests are required to show a photo ID and credit card at check-in. You need to let the property know what time you'll be arriving in advance.",
+    "Check-out Until 12:00 PM",
+    "Cancellation/ prepayment Cancellation and prepayment policies vary according to accommodation type. Check what conditions apply to each option when making your selection.",
+    "Pets Pets are not allowed."
+  ],
+  "image": "https://cf.bstatic.com/xdata/images/hotel/max500/751142152.jpg?k=f8cf8ea0c58a0fa052f50c39c2c8e9b432ac312dc0823fff726c261ce6f6a9b6&o=&hp=1",
+  "url": "https://www.booking.com/hotel/id/novotel-bali-ngurah-rai-airport-opening-june-2016.html"
+}

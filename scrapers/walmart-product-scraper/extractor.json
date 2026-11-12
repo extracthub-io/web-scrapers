@@ -1,0 +1,243 @@
+{
+  "name": "Walmart - product page",
+  "description": "Walmart.com product page (/ip/...): item id, name, brand, model, UPC, current price, was price, savings, rating, reviews count, availability, seller, condition, badges, shipping and pickup messages, return policy, description, category path, images, specifications and the review summary.",
+  "slug": "walmart-product",
+  "url": "https://www.walmart.com/ip/Ninja-4-Qt-Air-Fryer-3-Functions-Air-Fry-Reheat-and-Dehydrate-Dishwasher-Safe-Non-Stick-AF100WM-Black/844320666",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "walmart",
+    "product",
+    "prices",
+    "reviews",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "itemId",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.usItemId"
+        ],
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.name"
+        ],
+        "required": true
+      },
+      {
+        "name": "brand",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.brand"
+        ]
+      },
+      {
+        "name": "model",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.model"
+        ]
+      },
+      {
+        "name": "upc",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.upc"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.canonicalUrl"
+        ],
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.priceInfo.currentPrice.price"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.priceInfo.currentPrice.currencyUnit"
+        ]
+      },
+      {
+        "name": "wasPrice",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.priceInfo.wasPrice.price"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "savings",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.priceInfo.savingsAmount.amount"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.averageRating"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewsCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.numberOfReviews"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "availability",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.availabilityStatusV2.display"
+        ]
+      },
+      {
+        "name": "seller",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.sellerDisplayName"
+        ]
+      },
+      {
+        "name": "condition",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.conditionType"
+        ]
+      },
+      {
+        "name": "badges",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialData.data.product.badges.flags[*].text"
+      },
+      {
+        "name": "fulfillment",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialData.data.product.fulfillmentLabel[*].message"
+      },
+      {
+        "name": "returnPolicy",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.returnPolicy.returnPolicyText"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.product.shortDescription"
+        ],
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "categories",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialData.data.product.category.path[*].name"
+      },
+      {
+        "name": "images",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialData.data.product.imageInfo.allImages[*].url"
+      },
+      {
+        "name": "specifications",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.initialData.data.idml.specifications[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "value",
+            "jsonPath": "value"
+          }
+        ]
+      },
+      {
+        "name": "reviewSummary",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.reviews.reviewSummary.summary"
+        ]
+      },
+      {
+        "name": "recommendedPercentage",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialData.data.reviews.recommendedPercentage"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      }
+    ]
+  }
+}

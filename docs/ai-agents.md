@@ -61,9 +61,9 @@ More: [extracthub.io/mcp](https://extracthub.io/mcp)
 
 Name the scraper (or just the site) and the URL. Example prompts:
 
-- *"Use `@extracthub1/google-serp@1` to get the organic results for `best web scraper` (US, English) and make a
+- *"Use `@extracthub1/google-serp@2` to get the organic results for `best web scraper` (US, English) and make a
   table of title, source and snippet."*
-- *"Get the views, likes and publish date of these YouTube videos with `@extracthub1/youtube-video@1`: …"*
+- *"Get the views, likes and publish date of these YouTube videos with `@extracthub1/youtube-video@2`: …"*
 - *"Scrape all pages of quotes.toscrape.com with `@extracthub1/quotes-toscrape-list@1` and count quotes per
   author."*
 - *"Is there an ExtractHub scraper for Google search? Show me its fields and price."* (the agent uses

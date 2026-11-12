@@ -196,8 +196,22 @@ for (const d of dirs) {
 					if (res.status === 204) problems.push('catalog has NO preview HTML (released from a batch item?)');
 					else {
 						const body = await res.json();
-						const w = mentionsPage(body.content ?? '', info.target_url);
-						if (w) problems.push(`catalog preview HTML is not the target_url page: ${w}`);
+						if (typeof body.content !== 'string') {
+							// Captured-XHR extractors: the preview is the captured responses as JSON, and the catalog
+							// cuts every string in it to ~100 characters, so the page words are not in it. Check the
+							// URL the preview was fetched from instead (get_extractor versions[].preview.source_url).
+							const latest = [...(info.versions ?? [])]
+								.filter((v) => v.status === 'active')
+								.sort((a, b) => String(b.released_at).localeCompare(String(a.released_at)))[0];
+							const srcUrl = latest?.preview?.source_url;
+							if (!srcUrl) problems.push('catalog preview (captured XHR) has no source_url');
+							else if (!samePage(srcUrl, info.target_url)) {
+								problems.push(`catalog preview (captured XHR) was fetched from ${srcUrl}, not target_url ${info.target_url}`);
+							}
+						} else {
+							const w = mentionsPage(body.content, info.target_url);
+							if (w) problems.push(`catalog preview HTML is not the target_url page: ${w}`);
+						}
 					}
 				}
 			} catch (e) {

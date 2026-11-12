@@ -1,0 +1,264 @@
+{
+  "name": "Indeed - job page",
+  "description": "Indeed.com job page (/viewjob?jk=...): job key, title, company, company rating and reviews count, location, job type, salary text with min / max / period / currency, posted age, and the full job description (plain text and Markdown).",
+  "slug": "indeed-job",
+  "url": "https://www.indeed.com/viewjob?jk=40a14417050bd353",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "waitForSelector": "div.react-native-html-content",
+  "proxyCountry": "US",
+  "category": "job-listings",
+  "tags": [
+    "indeed",
+    "jobs",
+    "job-posting",
+    "salary",
+    "recruiting"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "jobKey",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"jobKey\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ],
+        "required": true
+      },
+      {
+        "name": "title",
+        "selector": "[data-testid=\"vj-job-title\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "company",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"companyName\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "companyRating",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"ratingsModel\":{",
+              "}"
+            ]
+          },
+          {
+            "between": [
+              "\"rating\":",
+              ","
+            ]
+          },
+          "toNumber",
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "companyReviewsCount",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"ratingsModel\":{",
+              "}"
+            ]
+          },
+          {
+            "between": [
+              "\"count\":",
+              ","
+            ]
+          },
+          "toNumber",
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "location",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"jobLocation\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "jobType",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"jobMetadataHeaderModel\":{\"jobType\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "salary",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"salaryText\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "salaryMin",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "after": "\"salaryInfoModel\":{\"featureTokens\""
+          },
+          {
+            "between": [
+              "\"salaryMin\":",
+              ","
+            ]
+          },
+          "toNumber",
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "salaryMax",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "after": "\"salaryInfoModel\":{\"featureTokens\""
+          },
+          {
+            "between": [
+              "\"salaryMax\":",
+              ","
+            ]
+          },
+          "toNumber",
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "salaryPeriod",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "after": "\"salaryInfoModel\":{\"featureTokens\""
+          },
+          {
+            "between": [
+              "\"salaryType\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "salaryCurrency",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "after": "\"salaryInfoModel\":{\"featureTokens\""
+          },
+          {
+            "between": [
+              "\"salaryCurrency\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "posted",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "\"age\":\"",
+              "\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "div.react-native-html-content",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "descriptionMarkdown",
+        "selector": "div.react-native-html-content",
+        "extract": "innerHTML",
+        "transforms": [
+          "toMarkdown"
+        ]
+      }
+    ]
+  }
+}

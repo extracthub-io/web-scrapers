@@ -1,0 +1,55 @@
+{
+  "resultsTitle": "Results for \"air fryer\"",
+  "totalResults": 2349,
+  "maxPage": 13,
+  "products": [
+    {
+      "position": 1,
+      "itemId": "14678059894",
+      "name": "Chefman Air Fryer 1500W, 6 Quart, 4 Functions with Touch Controls, Stainless Steel",
+      "url": "https://www.walmart.com/ip/Chefman-Air-Fryer-1500W-6-Quart-4-Functions-with-Touch-Controls-Stainless-Steel/14678059894",
+      "image": "https://i5.walmartimages.com/seo/Chefman-Air-Fryer-1500W-6-Quart-4-Functions-with-Touch-Controls-Stainless-Steel_0ccae75c-daa2-4d52-a1d4-63b5f20f42c3.52b088aed447be6063d85850d455ebd5.jpeg",
+      "price": 64.97,
+      "currency": "USD",
+      "rating": 4.6,
+      "reviewsCount": 13575,
+      "seller": "Walmart.com",
+      "availability": "In stock",
+      "badge": "In 500+ people's carts",
+      "sponsored": true,
+      "productType": "Air Fryers"
+    },
+    {
+      "position": 2,
+      "itemId": "7588413507",
+      "name": "COSORI Dual Blaze 6.8qt Smart Air Fryer - Dark Gray",
+      "url": "https://www.walmart.com/ip/COSORI-Dual-Blaze-6-8qt-Ceramic-Coating-Smart-Air-Fryer-Dark-Gray/7588413507",
+      "image": "https://i5.walmartimages.com/seo/COSORI-Dual-Blaze-6-8qt-Ceramic-Coating-Smart-Air-Fryer-Dark-Gray_0e8dee71-ecaf-467d-b0b4-baa136ea55f1.40d5a17664011ac01a750eb9a5c758a8.jpeg",
+      "price": 99,
+      "currency": "USD",
+      "rating": 4.5,
+      "reviewsCount": 604,
+      "seller": "Walmart.com",
+      "availability": "In stock",
+      "badge": "Rollback",
+      "sponsored": true,
+      "productType": "Air Fryers"
+    },
+    {
+      "position": 3,
+      "itemId": "17707154629",
+      "name": "HoninJoy 13 QT Stack Double Basket Air Fryer, Space Saving Design, 10-in1 Air Fryer, Roast, Bake & More, Easy to Clean, Dishwasher Safe Parts",
+      "url": "https://www.walmart.com/ip/HoninJoy-12-QT-DoubleStack-2-Basket-Air-Fryer-Space-Saving-Design-Feeds-6-People-8-in1-Air-Fryer-Roast-Bake-More-Easy-Clean-Dishwasher-Safe-Parts/17707154629",
+      "image": "https://i5.walmartimages.com/seo/HoninJoy-12-QT-DoubleStack-2-Basket-Air-Fryer-Space-Saving-Design-Feeds-6-People-8-in1-Air-Fryer-Roast-Bake-More-Easy-Clean-Dishwasher-Safe-Parts_8a22bb40-fb2d-4727-8b79-d153679e2847.32be01ad86807bb4d91818dc62e752d5.jpeg",
+      "price": 135.99,
+      "currency": "USD",
+      "rating": 4.4,
+      "reviewsCount": 110,
+      "seller": "HoninJoy",
+      "availability": "In stock",
+      "badge": null,
+      "sponsored": true,
+      "productType": "Air Fryers"
+    }
+  ]
+}
