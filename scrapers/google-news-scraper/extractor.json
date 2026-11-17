@@ -1,0 +1,152 @@
+{
+  "name": "Google News - topic articles",
+  "description": "Google News topic pages (news.google.com/topics/<id>?hl=en-US&gl=US&ceid=US:en): every article on the page (about 200) with title, Google News article id, source name and site, publish time (ISO and as shown), author and image, plus the page title and canonical URL. Search pages (/search?q=) are not supported: the scraping provider returns no result for them.",
+  "slug": "google-news",
+  "url": "https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "news",
+  "tags": [
+    "google news",
+    "news",
+    "headlines",
+    "articles",
+    "topics",
+    "media monitoring"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "articles",
+        "selector": "[jscontroller=\"BoFkO\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": "a[href^=\"./read/\"][data-n-tid=\"29\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "articleId",
+              "selector": "a[href^=\"./read/\"][data-n-tid=\"29\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "./read/"
+                },
+                {
+                  "before": "?"
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"./read/\"][data-n-tid=\"29\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "."
+                },
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "source",
+              "selector": "[data-n-tid=\"9\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "sourceUrl",
+              "selector": "img[src*=\"faviconV2?url=\"]",
+              "extract": "attributeValue",
+              "attributeName": "src",
+              "transforms": [
+                {
+                  "between": [
+                    "url=",
+                    "&"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "publishedAt",
+              "selector": "time[datetime]",
+              "extract": "attributeValue",
+              "attributeName": "datetime"
+            },
+            {
+              "name": "timeText",
+              "selector": "time",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "author",
+              "selector": ".bInasb span",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "By "
+                },
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "figure img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "articlesCount",
+        "selector": "[jscontroller=\"BoFkO\"]",
+        "extract": "count"
+      }
+    ]
+  }
+}

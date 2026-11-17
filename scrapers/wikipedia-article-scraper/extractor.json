@@ -1,0 +1,182 @@
+{
+  "name": "Wikipedia - article",
+  "description": "Wikipedia article page (any language edition, /wiki/<title>): title, URL, short description, Wikidata id, lead summary (first paragraph and all lead paragraphs), infobox as label / value rows, infobox image, section headings, categories, references count, language editions count, first published and last modified dates.",
+  "slug": "wikipedia-article",
+  "url": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "research",
+  "tags": [
+    "wikipedia",
+    "encyclopedia",
+    "knowledge",
+    "infobox",
+    "articles",
+    "research"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "title",
+        "selector": "h1#firstHeading",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "required": true
+      },
+      {
+        "name": "shortDescription",
+        "selector": "#mw-content-text .shortdescription",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "wikidataId",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "sameAs",
+        "transforms": [
+          {
+            "after": "/entity/"
+          }
+        ]
+      },
+      {
+        "name": "summary",
+        "selector": "#mw-content-text section[data-mw-section-id=\"0\"] > p:not(.mw-empty-elt)",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "first"
+        ],
+        "textSeparator": "",
+        "excludeTags": [
+          "sup",
+          "style"
+        ]
+      },
+      {
+        "name": "summaryParagraphs",
+        "selector": "#mw-content-text section[data-mw-section-id=\"0\"] > p:not(.mw-empty-elt)",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ],
+        "textSeparator": "",
+        "excludeTags": [
+          "sup",
+          "style"
+        ]
+      },
+      {
+        "name": "infobox",
+        "selector": "#mw-content-text table.infobox tr",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "th.infobox-label",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "td.infobox-data",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "split": "[["
+                },
+                "first",
+                "trim"
+              ],
+              "excludeTags": [
+                "sup",
+                "style"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "image",
+        "selector": "#mw-content-text table.infobox img.mw-file-element[src]",
+        "extract": "attributeValue",
+        "attributeName": "src",
+        "transforms": [
+          "toAbsoluteUrl",
+          {
+            "removeQueryParams": [
+              "utm_*"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sections",
+        "selector": "#mw-content-text .mw-heading2 > h2",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "categories",
+        "selector": "#mw-normal-catlinks ul li a",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "referencesCount",
+        "selector": "#mw-content-text ol.references > li",
+        "extract": "count"
+      },
+      {
+        "name": "languagesCount",
+        "selector": "li.interlanguage-link",
+        "extract": "count"
+      },
+      {
+        "name": "datePublished",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "datePublished"
+      },
+      {
+        "name": "dateModified",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "dateModified"
+      }
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "appId": 413150,
+  "name": "Stardew Valley",
+  "url": "https://store.steampowered.com/app/413150/Stardew_Valley/",
+  "shortDescription": "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?",
+  "price": 14.99,
+  "currency": "USD",
+  "priceText": "$14.99",
+  "originalPrice": null,
+  "discountPercent": null,
+  "discountEnds": null,
+  "reviewsSummary": "Overwhelmingly Positive",
+  "reviewsCount": 397368,
+  "reviewsPositivePercent": 98,
+  "recentReviewsSummary": "Overwhelmingly Positive",
+  "recentReviewsCount": 5803,
+  "recentReviewsPositivePercent": 98,
+  "releaseDate": "Feb 26, 2016",
+  "developers": [
+    "ConcernedApe"
+  ],
+  "publishers": [
+    "ConcernedApe"
+  ],
+  "genres": [
+    "Indie",
+    "RPG",
+    "Simulation"
+  ],
+  "tags": [
+    "Farming Sim",
+    "Pixel Graphics",
+    "Multiplayer",
+    "Life Sim",
+    "RPG",
+    "Relaxing",
+    "Simulation",
+    "Agriculture",
+    "Sandbox",
+    "Crafting",
+    "Indie",
+    "Building",
+    "Open World",
+    "Casual",
+    "Singleplayer",
+    "2D",
+    "Dating Sim",
+    "Cute",
+    "Great Soundtrack",
+    "Fishing"
+  ],
+  "features": [
+    "Single-player",
+    "Online Co-op",
+    "LAN Co-op",
+    "Shared/Split Screen Co-op",
+    "Shared/Split Screen",
+    "Steam Achievements",
+    "Steam Trading Cards",
+    "Steam Cloud",
+    "Remote Play on Phone",
+    "Remote Play on Tablet",
+    "Remote Play Together",
+    "Family Sharing"
+  ],
+  "languages": [
+    "English",
+    "German",
+    "Spanish - Spain",
+    "Japanese",
+    "Portuguese - Brazil",
+    "Russian",
+    "Simplified Chinese",
+    "French",
+    "Italian",
+    "Hungarian",
+    "Korean",
+    "Turkish"
+  ],
+  "platforms": [
+    "win",
+    "mac",
+    "linux"
+  ],
+  "metacriticScore": 89,
+  "description": "Stardew Valley is an open-ended country-life RPG! You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home? It won't be easy. Ever since Joja Corporation came to town, the old ways of life have all but disappeared. Th…",
+  "headerImage": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1786554168"
+}

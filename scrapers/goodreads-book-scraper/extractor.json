@@ -1,0 +1,346 @@
+{
+  "name": "Goodreads - book page",
+  "description": "Goodreads book page (goodreads.com/book/show/<id>): book id, title, series, authors (name, link), average rating, ratings and reviews counts, star distribution, description, genres, pages, format, publication info, publisher, language, ISBN / ISBN-13 / ASIN, awards and cover image.",
+  "slug": "goodreads-book",
+  "url": "https://www.goodreads.com/book/show/5907.The_Hobbit",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "entertainment",
+  "tags": [
+    "goodreads",
+    "books",
+    "ratings",
+    "reviews",
+    "reading",
+    "isbn"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "bookId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "/book/show/"
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "title",
+        "selector": "h1[data-testid=\"bookTitle\"]",
+        "extract": "textContent",
+        "transforms": [
+          "decodeHtml",
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "required": true
+      },
+      {
+        "name": "series",
+        "selector": ".BookPageTitleSection__title h3 a",
+        "extract": "textContent",
+        "transforms": [
+          "decodeHtml",
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "seriesUrl",
+        "selector": ".BookPageTitleSection__title h3 a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "author",
+        "selector": ".BookPageMetadataSection__contributor .ContributorLink__name",
+        "extract": "textContent",
+        "transforms": [
+          "decodeHtml",
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "contributors",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "author[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "transforms": [
+              "decodeHtml",
+              "trim"
+            ]
+          },
+          {
+            "name": "url",
+            "jsonPath": "url",
+            "transforms": [
+              "trim"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": ".BookPageMetadataSection__ratingStats .RatingStatistics__rating",
+        "extract": "textContent",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "ratingsCount",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "aggregateRating.ratingCount"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewsCount",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "aggregateRating.reviewCount"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "ratingDistribution",
+        "selector": ".RatingsHistogram .RatingsHistogram__bar",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "stars",
+              "selector": ".RatingsHistogram__labelTitle",
+              "extract": "textContent",
+              "transforms": [
+                "extractNumber"
+              ],
+              "required": true
+            },
+            {
+              "name": "count",
+              "selector": ".RatingsHistogram__labelTotal",
+              "extract": "textContent",
+              "transforms": [
+                {
+                  "before": "("
+                },
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "percent",
+              "selector": ".RatingsHistogram__labelTotal",
+              "extract": "textContent",
+              "transforms": [
+                {
+                  "between": [
+                    "(",
+                    "%"
+                  ]
+                },
+                "toNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "description",
+        "selector": "[data-testid=\"description\"] .Formatted",
+        "extract": "textContent",
+        "transforms": [
+          "decodeHtml",
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "descriptionHtml",
+        "selector": "[data-testid=\"description\"] .Formatted",
+        "extract": "innerHTML",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "genres",
+        "selector": "[data-testid=\"genresList\"] .BookPageMetadataSection__genreButton .Button__labelItem",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "decodeHtml",
+          "trim"
+        ]
+      },
+      {
+        "name": "pages",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "numberOfPages"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "format",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "bookFormat"
+        ],
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "pagesFormat",
+        "selector": "[data-testid=\"pagesFormat\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "publicationInfo",
+        "selector": "[data-testid=\"publicationInfo\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "publisher",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\"__typename\":\"BookDetails\"",
+              "\"isbn\""
+            ]
+          },
+          {
+            "between": [
+              "\"publisher\":\"",
+              "\""
+            ]
+          },
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "language",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "inLanguage"
+        ],
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "isbn",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "isbn"
+        ],
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "isbn13",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\"__typename\":\"BookDetails\"",
+              "\"language\""
+            ]
+          },
+          {
+            "between": [
+              "\"isbn13\":\"",
+              "\""
+            ]
+          }
+        ]
+      },
+      {
+        "name": "asin",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\"__typename\":\"BookDetails\"",
+              "\"format\""
+            ]
+          },
+          {
+            "between": [
+              "\"asin\":\"",
+              "\""
+            ]
+          }
+        ]
+      },
+      {
+        "name": "awards",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "awards"
+        ],
+        "transforms": [
+          "decodeHtml",
+          "trim"
+        ]
+      },
+      {
+        "name": "coverImage",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "image"
+        ],
+        "transforms": [
+          "trim"
+        ]
+      }
+    ]
+  }
+}

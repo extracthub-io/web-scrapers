@@ -1,0 +1,67 @@
+{
+  "id": "t3_1xukkss",
+  "title": "AKAMAI (STANDARD + BMP) FULLY REVERSED + VM ISA, OTHER CHECKS",
+  "subreddit": "r/webscraping",
+  "author": "C.",
+  "score": 34,
+  "upvoteRatio": 0.9722222222222222,
+  "commentCount": 5,
+  "postType": "multi_media",
+  "domain": "self.webscraping",
+  "contentUrl": "https://www.reddit.com/r/webscraping/comments/1xukkss/akamai_standard_bmp_fully_reversed_vm_isa_other/",
+  "createdAt": "2026-11-12T18:29:28.521000+0000",
+  "text": "First time on this subreddit, I am publicizing a full reverse of Akamai, all documentation is in this repository. Fully native, the throughput should be fast on any machine and scale pretty well. You might have to add some of your own fingerprints though. Maybe I'll add more later. https://github.com/9xz/reverseakamai (NO SANDBOXING, FULLY NATIVE) !!!! Enjoy! CF WAF & Turnstiles will be next!",
+  "url": "https://www.reddit.com/r/webscraping/comments/1xukkss/akamai_standard_bmp_fully_reversed_vm_isa_other/",
+  "comments": [
+    {
+      "position": 1,
+      "id": "t1_19sjijhsy6xur",
+      "author": "I.",
+      "score": 2,
+      "depth": null,
+      "createdAt": "2026-11-12T20:55:56.764Z",
+      "text": "BuildTemplate::from_bmak_script in crates/codec/src/sensor.rs overrides shuffle_key/ver if and only if extract_bmak_shuffle_key/extract_bmak_ver return Some . If either returns None on a build they don't recognize, the function uses the hardcoded bestbuy.com defaults, and returns a payload with no error. A caller can't tell a correctly-extracted build from a silent fallback. Can you please look into it?",
+      "url": "https://www.reddit.com/r/webscraping/comments/1xukkss/comment/19sjijhsy6xur/"
+    },
+    {
+      "position": 2,
+      "id": "t1_19sjiq7lucdt0",
+      "author": "C.",
+      "score": 3,
+      "depth": 1,
+      "createdAt": "2026-11-12T21:00:07.748Z",
+      "text": "will release a fix soon edit: updated sorry for not cleaning this up",
+      "url": "https://www.reddit.com/r/webscraping/comments/1xukkss/comment/19sjiq7lucdt0/"
+    },
+    {
+      "position": 3,
+      "id": "t1_19sjkzsx46wo3",
+      "author": "Q.",
+      "score": 2,
+      "depth": null,
+      "createdAt": "2026-11-12T21:50:56.593Z",
+      "text": "Try imperva",
+      "url": "https://www.reddit.com/r/webscraping/comments/1xukkss/comment/19sjkzsx46wo3/"
+    },
+    {
+      "position": 4,
+      "id": "t1_19sjn04kyapr8",
+      "author": "T.",
+      "score": 1,
+      "depth": 1,
+      "createdAt": "2026-11-12T22:35:59.117Z",
+      "text": "Imperva is easier than akamai, plenty of documentation out there on it, also there is already a rust solver on github for it, quite outdated but its there",
+      "url": "https://www.reddit.com/r/webscraping/comments/1xukkss/comment/19sjn04kyapr8/"
+    },
+    {
+      "position": 5,
+      "id": "t1_19sjqdu70u5ep",
+      "author": "H.",
+      "score": 1,
+      "depth": null,
+      "createdAt": "2026-11-12T23:51:47.103Z",
+      "text": "Ksd next?",
+      "url": "https://www.reddit.com/r/webscraping/comments/1xukkss/comment/19sjqdu70u5ep/"
+    }
+  ]
+}

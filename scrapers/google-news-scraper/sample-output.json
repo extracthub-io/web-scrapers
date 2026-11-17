@@ -1,0 +1,67 @@
+{
+  "pageTitle": "Google News - Technology - Latest",
+  "pageUrl": "https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen",
+  "articles": [
+    {
+      "position": 1,
+      "title": "iOS 27.3 gives Apple’s Calendar app new design updates",
+      "articleId": "CBMijgFBVV95cUxOVXZOV0hoY1VrdUtJQUNQUGdiQzYyZ0h0RFEwajJrYTVzOWNIQWJyRkdfQ1BNTEI0dlJTenMtb01jRXFRek1ZczRYb2xLNHFESlpOLWN6N0dvT1Z4WnYwektxeE1lbDl2MXY3NmlTbWFsWnl5VHZwRUpuRVZ5dEJMVzJ3X2Y0WDlNN1RjWTNR",
+      "url": "https://news.google.com/read/CBMijgFBVV95cUxOVXZOV0hoY1VrdUtJQUNQUGdiQzYyZ0h0RFEwajJrYTVzOWNIQWJyRkdfQ1BNTEI0dlJTenMtb01jRXFRek1ZczRYb2xLNHFESlpOLWN6N0dvT1Z4WnYwektxeE1lbDl2MXY3NmlTbWFsWnl5VHZwRUpuRVZ5dEJMVzJ3X2Y0WDlNN1RjWTNR?hl=en-US&gl=US&ceid=US%3Aen",
+      "source": "9to5Mac",
+      "sourceUrl": "https://9to5mac.com",
+      "publishedAt": "2026-11-16T18:52:00Z",
+      "timeText": "9 hours ago",
+      "author": "Ryan Christoffel",
+      "image": "https://news.google.com/api/attachments/CC8iK0NnNUpaM0JyY1d4UVVERkpXRUUyVFJDSEF4aVBCaWdLTWdhdFZaVE9vUWc=-w280-h168-p-df-rw"
+    },
+    {
+      "position": 2,
+      "title": "Apple is testing daily usage limits for more complex Siri AI interactions",
+      "articleId": "CBMipgFBVV95cUxPQkNnb0JyWWVtVWhWbGRSd1QxRDRSZld4aGtaTU82Vzk1Z1hBUzRNd0I2TkFCSmlGaWE2WGRaN09jX1hIZ3p0VXRKZTBoYWg0RVZpVTFOQXBSd0dTc1NGU1ZFMTYzRVNyLUxtRXpEbTk4TTZvZ2RMUkJ5ckI0dTdOY1lXaEtCYnNIVXlwTjE2U2E3RW9EOW9sNzFTeXpDdktmM05iU0N3",
+      "url": "https://news.google.com/read/CBMipgFBVV95cUxPQkNnb0JyWWVtVWhWbGRSd1QxRDRSZld4aGtaTU82Vzk1Z1hBUzRNd0I2TkFCSmlGaWE2WGRaN09jX1hIZ3p0VXRKZTBoYWg0RVZpVTFOQXBSd0dTc1NGU1ZFMTYzRVNyLUxtRXpEbTk4TTZvZ2RMUkJ5ckI0dTdOY1lXaEtCYnNIVXlwTjE2U2E3RW9EOW9sNzFTeXpDdktmM05iU0N3?hl=en-US&gl=US&ceid=US%3Aen",
+      "source": "The Verge",
+      "sourceUrl": "https://www.theverge.com",
+      "publishedAt": "2026-11-16T19:24:40Z",
+      "timeText": "8 hours ago",
+      "author": "Andrew Liszewski",
+      "image": null
+    },
+    {
+      "position": 3,
+      "title": "Everything new in iOS 27.3 beta 2",
+      "articleId": "CBMifEFVX3lxTFB4MEdsUUp5ek13U1ZObXZ0RWlPOU5wOTUtWU5iamFfbm85Z0I5R2djYTFBdW1KTE5DX003TnF6Vmxmd19EOFlvS2RNMGFBamNpRUxpTFNfdFl2ZDNieUR5RF9pcGRyQ2pvaUx3ajI4THRFOXZvYWVRenpNN3g",
+      "url": "https://news.google.com/read/CBMifEFVX3lxTFB4MEdsUUp5ek13U1ZObXZ0RWlPOU5wOTUtWU5iamFfbm85Z0I5R2djYTFBdW1KTE5DX003TnF6Vmxmd19EOFlvS2RNMGFBamNpRUxpTFNfdFl2ZDNieUR5RF9pcGRyQ2pvaUx3ajI4THRFOXZvYWVRenpNN3g?hl=en-US&gl=US&ceid=US%3Aen",
+      "source": "9to5Mac",
+      "sourceUrl": "https://9to5mac.com",
+      "publishedAt": "2026-11-16T19:24:00Z",
+      "timeText": "8 hours ago",
+      "author": "Zac Hall",
+      "image": null
+    },
+    {
+      "position": 4,
+      "title": "iOS 27.3 Adds 'Ask About Page' Siri AI Feature to Safari",
+      "articleId": "CBMidkFVX3lxTE94MTNDczVaczBYZVU5NUhmMXZfRzZsbTQzLXUwbkNBbHFkV3hZaHVJV3REU1h0VWhaRktuR2lESm9zbDdTRmlNSFhRSTVBdHpxNkttMmVmN0VLS0l4OFlnR0VTaUNPODlUYmNYMTU1UFdUZE1Fc0E",
+      "url": "https://news.google.com/read/CBMidkFVX3lxTE94MTNDczVaczBYZVU5NUhmMXZfRzZsbTQzLXUwbkNBbHFkV3hZaHVJV3REU1h0VWhaRktuR2lESm9zbDdTRmlNSFhRSTVBdHpxNkttMmVmN0VLS0l4OFlnR0VTaUNPODlUYmNYMTU1UFdUZE1Fc0E?hl=en-US&gl=US&ceid=US%3Aen",
+      "source": "MacRumors",
+      "sourceUrl": "https://www.macrumors.com",
+      "publishedAt": "2026-11-16T18:24:57Z",
+      "timeText": "9 hours ago",
+      "author": "Juli Clover",
+      "image": null
+    },
+    {
+      "position": 5,
+      "title": "Google Finds Hackers Using AI Agents to Build and Run Exploits From Software Patches",
+      "articleId": "CBMihAFBVV95cUxOMU1mNVUtaU1mbFc5RkYtbVl5SndUcjJPVm1FVjcxWnB1NW9KRHJoTloxZ053STNBdUxuVHhqLXF6dV8xRWRGMUNhRzVMSnhrNTRnNnRtY2s0WWMzeEVjR21HOVQwT0R3RkVXZDNYbFRqY2FYZl9wOElWc3JVRklDUFdRcWw",
+      "url": "https://news.google.com/read/CBMihAFBVV95cUxOMU1mNVUtaU1mbFc5RkYtbVl5SndUcjJPVm1FVjcxWnB1NW9KRHJoTloxZ053STNBdUxuVHhqLXF6dV8xRWRGMUNhRzVMSnhrNTRnNnRtY2s0WWMzeEVjR21HOVQwT0R3RkVXZDNYbFRqY2FYZl9wOElWc3JVRklDUFdRcWw?hl=en-US&gl=US&ceid=US%3Aen",
+      "source": "The Hacker News",
+      "sourceUrl": "https://thehackernews.com",
+      "publishedAt": "2026-11-16T14:00:00Z",
+      "timeText": "13 hours ago",
+      "author": "Ravie Lakshmanan",
+      "image": "https://news.google.com/api/attachments/CC8iK0NnNWhlR2xuUlVweVdUWTNUemRaVFJDUUF4ai1CU2dLTWdhUlVwSkpNZ2M=-w280-h168-p-df-rw"
+    }
+  ],
+  "articlesCount": 216
+}

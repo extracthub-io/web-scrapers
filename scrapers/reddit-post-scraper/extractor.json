@@ -1,0 +1,217 @@
+{
+  "name": "Reddit - post with comments",
+  "description": "Reddit post page (reddit.com/r/<subreddit>/comments/<id>/...): post id, title, subreddit, author, score, upvote ratio, comments count, post type, link, date, text body, and the comments loaded with the page (id, author, score, reply depth, date, text, link).",
+  "slug": "reddit-post",
+  "url": "https://www.reddit.com/r/webscraping/comments/1xukkss/akamai_standard_bmp_fully_reversed_vm_isa_other/",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "browserActions": [
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "shreddit-post"
+      },
+      "timeout_s": 10
+    },
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "shreddit-comment [data-testid=\"comment-score\"]"
+      },
+      "timeout_s": 5,
+      "on_error": "skip"
+    }
+  ],
+  "category": "social-media",
+  "tags": [
+    "reddit",
+    "posts",
+    "comments",
+    "social media",
+    "forums"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "id",
+        "selector": "shreddit-post[id]",
+        "extract": "attributeValue",
+        "attributeName": "id",
+        "required": true
+      },
+      {
+        "name": "title",
+        "selector": "shreddit-post[post-title]",
+        "extract": "attributeValue",
+        "attributeName": "post-title",
+        "required": true
+      },
+      {
+        "name": "subreddit",
+        "selector": "shreddit-post[subreddit-prefixed-name]",
+        "extract": "attributeValue",
+        "attributeName": "subreddit-prefixed-name"
+      },
+      {
+        "name": "author",
+        "selector": "shreddit-post[author]",
+        "extract": "attributeValue",
+        "attributeName": "author"
+      },
+      {
+        "name": "score",
+        "selector": "shreddit-post[score]",
+        "extract": "attributeValue",
+        "attributeName": "score",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "upvoteRatio",
+        "selector": "shreddit-post[upvote-ratio]",
+        "extract": "attributeValue",
+        "attributeName": "upvote-ratio",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "commentCount",
+        "selector": "shreddit-post[comment-count]",
+        "extract": "attributeValue",
+        "attributeName": "comment-count",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "postType",
+        "selector": "shreddit-post[post-type]",
+        "extract": "attributeValue",
+        "attributeName": "post-type"
+      },
+      {
+        "name": "domain",
+        "selector": "shreddit-post[domain]",
+        "extract": "attributeValue",
+        "attributeName": "domain"
+      },
+      {
+        "name": "contentUrl",
+        "selector": "shreddit-post[content-href]",
+        "extract": "attributeValue",
+        "attributeName": "content-href"
+      },
+      {
+        "name": "createdAt",
+        "selector": "shreddit-post[created-timestamp]",
+        "extract": "attributeValue",
+        "attributeName": "created-timestamp"
+      },
+      {
+        "name": "text",
+        "selector": "[property=\"schema:articleBody\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "shreddit-post[permalink]",
+        "extract": "attributeValue",
+        "attributeName": "permalink",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "comments",
+        "selector": "shreddit-comment[thingid]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "id",
+              "selector": "div[slot=\"comment\"][id]",
+              "extract": "attributeValue",
+              "attributeName": "id",
+              "transforms": [
+                {
+                  "before": "-comment-rtjson"
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "author",
+              "selector": "a[href*=\"/user/\"]",
+              "transforms": [
+                {
+                  "after": "/user/"
+                },
+                {
+                  "before": "/"
+                }
+              ],
+              "extract": "attributeValue",
+              "attributeName": "href"
+            },
+            {
+              "name": "score",
+              "selector": "[data-testid=\"comment-score\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "depth",
+              "selector": "details[role=\"article\"][aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                {
+                  "between": [
+                    "level ",
+                    ":"
+                  ]
+                },
+                "toNumber"
+              ]
+            },
+            {
+              "name": "createdAt",
+              "selector": "[slot=\"commentMeta\"] time[datetime]",
+              "extract": "attributeValue",
+              "attributeName": "datetime"
+            },
+            {
+              "name": "text",
+              "selector": "div[slot=\"comment\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "[slot=\"commentMeta\"] a[href*=\"/comment/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

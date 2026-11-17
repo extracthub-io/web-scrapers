@@ -1,0 +1,98 @@
+{
+  "listings": [
+    {
+      "position": 1,
+      "title": "Now Open, Whiskey Lounge, Pets Welcome, All New",
+      "price": 3710,
+      "priceText": "$3,710",
+      "location": "santa clara",
+      "url": "https://www.craigslist.org/view/d/santa-clara-now-open-whiskey-lounge/jStHkxm8kVymgok5JiViUf"
+    },
+    {
+      "position": 2,
+      "title": "Pet friendly, Ten laundry facilities, Balcony",
+      "price": 2973,
+      "priceText": "$2,973",
+      "location": "gilroy",
+      "url": "https://www.craigslist.org/view/d/san-juan-bautista-pet-friendly-ten/wDA4FuUnsh3i1RwiXrf2YW"
+    },
+    {
+      "position": 3,
+      "title": "Coworking Courtyard w WiFi, Pets Welcome, Washer and Dryer In Apt",
+      "price": 4808,
+      "priceText": "$4,808",
+      "location": "santa clara",
+      "url": "https://www.craigslist.org/view/d/santa-clara-coworking-courtyard-wifi/svtS5tZTGZYcNs3ZzMC8LN"
+    },
+    {
+      "position": 4,
+      "title": "1bd 1ba, Green garden setting, A/C and heating",
+      "price": 2062,
+      "priceText": "$2,062",
+      "location": "hayward / castro valley",
+      "url": "https://www.craigslist.org/view/d/san-lorenzo-1bd-1ba-green-garden/nFNnZj6xiZFQQbXvvbnhJr"
+    },
+    {
+      "position": 5,
+      "title": "1/Br 1Ba available in Sunny San Mateo",
+      "price": 1999,
+      "priceText": "$1,999",
+      "location": "san mateo",
+      "url": "https://www.craigslist.org/view/d/san-mateo-br-1ba-available-in-sunny-san/ez3bb29RoP6jBVp3MtJADB"
+    }
+  ],
+  "listingsCount": 356,
+  "searchDescription": "Apartments / Housing For Rent in SF Bay Area",
+  "schemaListings": [
+    {
+      "name": "Now Open, Whiskey Lounge, Pets Welcome, All New",
+      "type": "Apartment",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "latitude": 37.4096801058484,
+      "longitude": -121.966958237425,
+      "city": "Santa Clara",
+      "region": "CA"
+    },
+    {
+      "name": "Pet friendly, Ten laundry facilities, Balcony",
+      "type": "Apartment",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "latitude": 36.8482863179269,
+      "longitude": -121.539359834942,
+      "city": "San Juan Bautista",
+      "region": "CA"
+    },
+    {
+      "name": "Coworking Courtyard w WiFi, Pets Welcome, Washer and Dryer In Apt",
+      "type": "Apartment",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "latitude": 37.4096801058484,
+      "longitude": -121.966958237425,
+      "city": "Santa Clara",
+      "region": "CA"
+    },
+    {
+      "name": "1bd 1ba, Green garden setting, A/C and heating",
+      "type": "Apartment",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "latitude": 37.6849811697738,
+      "longitude": -122.117539567386,
+      "city": "San Lorenzo",
+      "region": "CA"
+    },
+    {
+      "name": "1/Br 1Ba available in Sunny San Mateo",
+      "type": "Apartment",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "latitude": 37.5400274312758,
+      "longitude": -122.294072447719,
+      "city": "San Mateo",
+      "region": "CA"
+    }
+  ]
+}

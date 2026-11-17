@@ -1,0 +1,195 @@
+{
+  "name": "Stack Overflow - questions by tag",
+  "description": "Questions of a Stack Overflow tag page (stackoverflow.com/questions/tagged/<tag>, any sort tab and page): question id, title, link, score, answers count, accepted answer, views, comments count, asked date, excerpt, tags, the user shown on the card (asker, or the last editor / answerer on the Active tab: name, profile link, reputation, action date), plus the total questions count and the next page link.",
+  "slug": "stackoverflow-questions",
+  "url": "https://stackoverflow.com/questions/tagged/web-scraping?tab=newest",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "social-media",
+  "tags": [
+    "stack overflow",
+    "stackexchange",
+    "questions",
+    "programming",
+    "q&a",
+    "developer"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "heading",
+        "selector": "#questions > meta[itemprop=\"name\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "totalQuestions",
+        "selector": "#tagged-results-heading",
+        "extract": "textContent",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "questions",
+        "selector": "#questions div.s-post-summary[data-post-id]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "id",
+              "selector": "h3.s-post-summary--content-title a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "/questions/",
+                    "/"
+                  ]
+                },
+                "toNumber"
+              ],
+              "required": true
+            },
+            {
+              "name": "title",
+              "selector": "h3.s-post-summary--content-title a span[itemprop=\"name\"]",
+              "extract": "textContent",
+              "transforms": [
+                "decodeHtml",
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "h3.s-post-summary--content-title a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "score",
+              "selector": "[itemprop=\"upvoteCount\"]",
+              "extract": "textContent",
+              "transforms": [
+                "trim",
+                "toNumber"
+              ]
+            },
+            {
+              "name": "answerCount",
+              "selector": "meta[itemprop=\"answerCount\"][content]",
+              "extract": "attributeValue",
+              "attributeName": "content",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "hasAcceptedAnswer",
+              "selector": ".has-accepted-answer",
+              "extract": "exists"
+            },
+            {
+              "name": "views",
+              "selector": ".s-post-summary--stats > div:nth-child(3) .s-post-summary--stats-item-number",
+              "extract": "textContent",
+              "transforms": [
+                "trim",
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "commentCount",
+              "selector": "meta[itemprop=\"commentCount\"][content]",
+              "extract": "attributeValue",
+              "attributeName": "content",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "askedAt",
+              "selector": "meta[itemprop=\"dateCreated\"][content]",
+              "extract": "attributeValue",
+              "attributeName": "content"
+            },
+            {
+              "name": "excerpt",
+              "selector": ".s-post-summary--content-excerpt",
+              "extract": "textContent",
+              "transforms": [
+                "decodeHtml",
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "tags",
+              "selector": "a.post-tag",
+              "extract": "textContent",
+              "isArray": true,
+              "transforms": [
+                "trim"
+              ]
+            },
+            {
+              "name": "userName",
+              "selector": ".s-user-card--link span[itemprop=\"name\"]",
+              "extract": "textContent",
+              "transforms": [
+                "decodeHtml",
+                "trim"
+              ]
+            },
+            {
+              "name": "userUrl",
+              "selector": ".s-user-card--link a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "userReputation",
+              "selector": ".s-user-card--rep .v-visible-sr",
+              "extract": "textContent",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "userActionAt",
+              "selector": "time.s-user-card--time span.relativetime[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a[rel=\"next\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

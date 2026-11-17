@@ -1,0 +1,187 @@
+{
+  "name": "Steam - search results",
+  "description": "Steam store search results (store.steampowered.com/search/?term=...; also tag, genre, sort and filter URLs): 50 results per page with app id, name, link, capsule image, platforms, release date, review summary, review count and % positive, price, original price, discount and free flag; plus the total results count and the shown range.",
+  "slug": "steam-search",
+  "url": "https://store.steampowered.com/search/?term=strategy",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "entertainment",
+  "tags": [
+    "steam",
+    "games",
+    "video games",
+    "search",
+    "prices",
+    "discounts"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "results",
+        "selector": "#search_resultsRows > a.search_result_row",
+        "extract": "innerHTML",
+        "isArray": true,
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": ".search_name .title",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "image",
+              "selector": ".search_capsule img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "appId",
+              "selector": ".search_capsule img[src*=\"/apps/\"]",
+              "extract": "attributeValue",
+              "attributeName": "src",
+              "transforms": [
+                {
+                  "between": [
+                    "/apps/",
+                    "/"
+                  ]
+                },
+                "toInteger"
+              ]
+            },
+            {
+              "name": "platforms",
+              "selector": ".search_platforms .platform_img[class]",
+              "extract": "attributeValue",
+              "attributeName": "class",
+              "isArray": true,
+              "transforms": [
+                {
+                  "after": "platform_img "
+                },
+                "compact"
+              ]
+            },
+            {
+              "name": "releaseDate",
+              "selector": ".search_released",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "reviewSummary",
+              "selector": ".search_review_summary[data-tooltip-html]",
+              "extract": "attributeValue",
+              "attributeName": "data-tooltip-html",
+              "transforms": [
+                {
+                  "before": "<br>"
+                }
+              ]
+            },
+            {
+              "name": "reviewsPositivePercent",
+              "selector": ".search_review_summary[data-tooltip-html]",
+              "extract": "attributeValue",
+              "attributeName": "data-tooltip-html",
+              "transforms": [
+                {
+                  "after": "<br>"
+                },
+                {
+                  "before": "%"
+                },
+                "toInteger"
+              ]
+            },
+            {
+              "name": "reviewsCount",
+              "selector": ".search_review_summary[data-tooltip-html]",
+              "extract": "attributeValue",
+              "attributeName": "data-tooltip-html",
+              "transforms": [
+                {
+                  "between": [
+                    "% of the ",
+                    " user"
+                  ]
+                },
+                "toInteger"
+              ]
+            },
+            {
+              "name": "price",
+              "selector": ".discount_block .discount_final_price",
+              "extract": "textContent",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "priceText",
+              "selector": ".discount_block .discount_final_price",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "originalPrice",
+              "selector": ".discount_block .discount_original_price",
+              "extract": "textContent",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "discountPercent",
+              "selector": ".discount_block[data-discount]",
+              "extract": "attributeValue",
+              "attributeName": "data-discount",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "isFree",
+              "selector": ".discount_block .discount_final_price.free",
+              "extract": "exists"
+            }
+          ]
+        }
+      },
+      {
+        "name": "totalResults",
+        "selector": ".search_pagination_left",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": " of "
+          },
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "showing",
+        "selector": ".search_pagination_left",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      }
+    ]
+  }
+}

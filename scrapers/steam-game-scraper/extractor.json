@@ -1,0 +1,270 @@
+{
+  "name": "Steam - game page",
+  "description": "Steam store game page (store.steampowered.com/app/<id>): app id, name, URL, short description, price, original price, discount, currency, all-reviews and recent-reviews summary (label, count, % positive), release date, developers, publishers, genres, user tags, features, supported languages, platforms, Metacritic score, description and header image.",
+  "slug": "steam-game",
+  "url": "https://store.steampowered.com/app/413150/Stardew_Valley/",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "entertainment",
+  "tags": [
+    "steam",
+    "games",
+    "video games",
+    "prices",
+    "reviews",
+    "pc games"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "appId",
+        "selector": "meta[property=\"og:url\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          {
+            "between": [
+              "/app/",
+              "/"
+            ]
+          },
+          "toInteger"
+        ],
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "#appHubAppName",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "meta[property=\"og:url\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "shortDescription",
+        "selector": ".game_description_snippet",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "meta[itemprop=\"price\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "meta[itemprop=\"priceCurrency\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "priceText",
+        "selector": "#game_area_purchase .game_area_purchase_game_wrapper:not(.dynamic_bundle_description) .game_purchase_price, #game_area_purchase .game_area_purchase_game_wrapper:not(.dynamic_bundle_description) .game_purchase_discount .discount_final_price",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "originalPrice",
+        "selector": "#game_area_purchase .game_area_purchase_game_wrapper:not(.dynamic_bundle_description) .game_purchase_discount .discount_original_price",
+        "extract": "textContent",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "discountPercent",
+        "selector": "#game_area_purchase .game_area_purchase_game_wrapper:not(.dynamic_bundle_description) .game_purchase_discount[data-discount]",
+        "extract": "attributeValue",
+        "attributeName": "data-discount",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "discountEnds",
+        "selector": "#game_area_purchase .game_area_purchase_game_wrapper:not(.dynamic_bundle_description) .game_purchase_discount_countdown",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "reviewsSummary",
+        "selector": "#userReviews a[itemprop=\"aggregateRating\"] .game_review_summary",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "reviewsCount",
+        "selector": "#userReviews meta[itemprop=\"reviewCount\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "reviewsPositivePercent",
+        "selector": "#userReviews a[itemprop=\"aggregateRating\"][data-tooltip-html]",
+        "extract": "attributeValue",
+        "attributeName": "data-tooltip-html",
+        "transforms": [
+          {
+            "before": "%"
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "recentReviewsSummary",
+        "selector": "#userReviews a.user_reviews_summary_row[data-tooltip-html*=\"last 30 days\"] .game_review_summary",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "recentReviewsCount",
+        "selector": "#userReviews a.user_reviews_summary_row[data-tooltip-html*=\"last 30 days\"][data-tooltip-html]",
+        "extract": "attributeValue",
+        "attributeName": "data-tooltip-html",
+        "transforms": [
+          {
+            "between": [
+              "% of the ",
+              " user"
+            ]
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "recentReviewsPositivePercent",
+        "selector": "#userReviews a.user_reviews_summary_row[data-tooltip-html*=\"last 30 days\"][data-tooltip-html]",
+        "extract": "attributeValue",
+        "attributeName": "data-tooltip-html",
+        "transforms": [
+          {
+            "before": "%"
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "releaseDate",
+        "selector": ".release_date .date",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "developers",
+        "selector": "#genresAndManufacturer > div.dev_row:nth-of-type(1) a",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "publishers",
+        "selector": "#genresAndManufacturer > div.dev_row:nth-of-type(2) a",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "genres",
+        "selector": "#genresAndManufacturer a[href*=\"/genre/\"]",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "tags",
+        "selector": ".popular_tags a.app_tag",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "features",
+        "selector": "#category_block .game_area_details_specs_ctn .label",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "languages",
+        "selector": "table.game_language_options td.ellipsis",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "platforms",
+        "selector": ".sysreq_tabs .sysreq_tab[data-os]",
+        "extract": "attributeValue",
+        "attributeName": "data-os",
+        "isArray": true
+      },
+      {
+        "name": "metacriticScore",
+        "selector": "#game_area_metascore .score",
+        "extract": "textContent",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "#game_area_description",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "About This Game "
+          }
+        ]
+      },
+      {
+        "name": "headerImage",
+        "selector": "img.game_header_image_full[src]",
+        "extract": "attributeValue",
+        "attributeName": "src"
+      }
+    ]
+  }
+}

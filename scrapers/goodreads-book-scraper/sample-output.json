@@ -1,0 +1,78 @@
+{
+  "bookId": 5907,
+  "title": "The Hobbit, or There and Back Again",
+  "url": "https://www.goodreads.com/book/show/5907.The_Hobbit_or_There_and_Back_Again",
+  "series": "Middle Earth #1",
+  "seriesUrl": "https://www.goodreads.com/series/66175-middle-earth",
+  "author": "J.R.R. Tolkien",
+  "contributors": [
+    {
+      "name": "J.R.R. Tolkien",
+      "url": "https://www.goodreads.com/author/show/656983.J_R_R_Tolkien"
+    },
+    {
+      "name": "Douglas A. Anderson",
+      "url": "https://www.goodreads.com/author/show/1582.Douglas_A_Anderson"
+    },
+    {
+      "name": "Michael Hague",
+      "url": "https://www.goodreads.com/author/show/13290.Michael_Hague"
+    },
+    {
+      "name": "Jemima Catlin",
+      "url": "https://www.goodreads.com/author/show/6971179.Jemima_Catlin"
+    }
+  ],
+  "rating": 4.3,
+  "ratingsCount": 4669436,
+  "reviewsCount": 96411,
+  "ratingDistribution": [
+    {
+      "stars": 5,
+      "count": 2532426,
+      "percent": 54
+    },
+    {
+      "stars": 4,
+      "count": 1346905,
+      "percent": 28
+    },
+    {
+      "stars": 3,
+      "count": 548317,
+      "percent": 11
+    },
+    {
+      "stars": 2,
+      "count": 146699,
+      "percent": 3
+    },
+    {
+      "stars": 1,
+      "count": 95089,
+      "percent": 2
+    }
+  ],
+  "description": "In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort. Written for J.R.R. Tolkien’s own children, The Hobbit met with instant critical acclaim when it was first published in 1937. Now recognized as a timeles…",
+  "descriptionHtml": "In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort.<br>Written for J.R.R. Tolkien’s own children, The Hobbit met with instant critical acclaim when it was first published in 1937. Now recognized as a time…",
+  "genres": [
+    "Fantasy",
+    "Classics",
+    "Fiction",
+    "Adventure",
+    "Young Adult",
+    "Audiobook",
+    "High Fantasy"
+  ],
+  "pages": 366,
+  "format": "Paperback",
+  "pagesFormat": "366 pages, Paperback",
+  "publicationInfo": "First published September 21, 1937",
+  "publisher": "Houghton Mifflin",
+  "language": "English",
+  "isbn": null,
+  "isbn13": null,
+  "asin": "B0DN8P5BQF",
+  "awards": "Keith Barker Millennium Book Award (2000), Books I Loved Best Yearly (BILBY) Awards Older Readers (1997), Mythopoeic Scholarship Award Inklings Studies (1990)",
+  "coverImage": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1546071216i/5907.jpg"
+}

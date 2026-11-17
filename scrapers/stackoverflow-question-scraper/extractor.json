@@ -1,0 +1,259 @@
+{
+  "name": "Stack Overflow - question page",
+  "description": "Stack Overflow question page (stackoverflow.com/questions/<id>/<slug>): question id, title, link, score, views, asked and modified dates, tags, body (text and HTML), author (name, profile link, reputation), community wiki flag, comments count, answers count, and the answers on the page (id, score, accepted, date, body text and HTML, author, community wiki), plus the next answers page.",
+  "slug": "stackoverflow-question",
+  "url": "https://stackoverflow.com/questions/11227809/why-is-conditional-processing-of-a-sorted-array-faster-than-of-an-unsorted-array",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "social-media",
+  "tags": [
+    "stack overflow",
+    "stackexchange",
+    "questions",
+    "answers",
+    "programming",
+    "q&a",
+    "developer"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "id",
+        "selector": "#question[data-questionid]",
+        "extract": "attributeValue",
+        "attributeName": "data-questionid",
+        "transforms": [
+          "toNumber"
+        ],
+        "required": true
+      },
+      {
+        "name": "title",
+        "selector": "#question-header h1 a",
+        "extract": "textContent",
+        "transforms": [
+          "decodeHtml",
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "#question-header h1 a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "score",
+        "selector": "#question .js-vote-count[data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "viewCount",
+        "selector": "div[title^=\"Viewed \"]",
+        "extract": "attributeValue",
+        "attributeName": "title",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "askedAt",
+        "selector": "time[itemprop=\"dateCreated\"][datetime]",
+        "extract": "attributeValue",
+        "attributeName": "datetime"
+      },
+      {
+        "name": "modifiedAt",
+        "selector": "a[href=\"?lastactivity\"][title]",
+        "extract": "attributeValue",
+        "attributeName": "title"
+      },
+      {
+        "name": "tags",
+        "selector": "#question .post-taglist a.post-tag",
+        "extract": "textContent",
+        "isArray": true,
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "body",
+        "selector": "#question .s-prose.js-post-body",
+        "extract": "textContent",
+        "transforms": [
+          "decodeHtml",
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "bodyHtml",
+        "selector": "#question .s-prose.js-post-body",
+        "extract": "innerHTML",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "authorName",
+        "selector": "#question .post-signature.owner .user-details meta[itemprop=\"name\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "authorUrl",
+        "selector": "#question .post-signature.owner .user-details a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "authorReputation",
+        "selector": "#question .post-signature.owner .reputation-score",
+        "extract": "textContent",
+        "transforms": [
+          "trim",
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "isCommunityWiki",
+        "selector": "#question .post-signature .community-wiki",
+        "extract": "exists"
+      },
+      {
+        "name": "commentCount",
+        "selector": "#question span[itemprop=\"commentCount\"]",
+        "extract": "textContent",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "answerCount",
+        "selector": "h2[data-answercount]",
+        "extract": "attributeValue",
+        "attributeName": "data-answercount",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "answers",
+        "selector": "#answers div.answer[data-answerid]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "id",
+              "selector": ".js-voting-container[data-post-id]",
+              "extract": "attributeValue",
+              "attributeName": "data-post-id",
+              "transforms": [
+                "toNumber"
+              ],
+              "required": true
+            },
+            {
+              "name": "score",
+              "selector": ".js-vote-count[data-value]",
+              "extract": "attributeValue",
+              "attributeName": "data-value",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "isAccepted",
+              "selector": ".js-accepted-answer-indicator:not(.d-none)",
+              "extract": "exists"
+            },
+            {
+              "name": "answeredAt",
+              "selector": "time[itemprop=\"dateCreated\"][datetime]",
+              "extract": "attributeValue",
+              "attributeName": "datetime"
+            },
+            {
+              "name": "body",
+              "selector": ".s-prose.js-post-body",
+              "extract": "textContent",
+              "transforms": [
+                "decodeHtml",
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "bodyHtml",
+              "selector": ".s-prose.js-post-body",
+              "extract": "innerHTML",
+              "transforms": [
+                "trim"
+              ]
+            },
+            {
+              "name": "authorName",
+              "selector": ".user-details[itemprop=\"author\"] meta[itemprop=\"name\"][content]",
+              "extract": "attributeValue",
+              "attributeName": "content",
+              "transforms": [
+                "decodeHtml"
+              ]
+            },
+            {
+              "name": "authorUrl",
+              "selector": ".user-details[itemprop=\"author\"] a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "authorReputation",
+              "selector": ".user-details[itemprop=\"author\"] .reputation-score",
+              "extract": "textContent",
+              "transforms": [
+                "trim",
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "isCommunityWiki",
+              "selector": ".post-signature .community-wiki",
+              "extract": "exists"
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextAnswersPageUrl",
+        "selector": "#answers .s-pagination a[rel=\"next\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

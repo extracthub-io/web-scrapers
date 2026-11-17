@@ -1,13 +1,13 @@
 # Etsy Search Scraper (search results)
 
-Turn an Etsy search results page into JSON: for every listing on the page (about 60 to 64) its listing id,
+Turn an Etsy search results page into JSON: for every listing in the page HTML (12 per page) its listing id,
 title, link, image, price, original price and discount when on sale, shop name, Star Seller flag, rating,
 reviews count, badge (Bestseller, Etsy's Pick, Popular now), free shipping and whether it is an ad, plus the
 next page link. Good for product and keyword research on handmade and vintage goods, price comparisons and
 finding listing links for the [Etsy Listing Scraper](../etsy-listing-scraper/).
 
 **Catalog:** [extracthub.io/extractor/@extracthub1/etsy-search](https://extracthub.io/extractor/@extracthub1/etsy-search)
-**Extractor id:** `@extracthub1/etsy-search@1` · **Price:** $0.0035 per page
+**Extractor id:** `@extracthub1/etsy-search@1` · **Price:** $0.0025 per page
 
 ## Input
 
@@ -62,9 +62,10 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 
 ## Good to know
 
-- **Rendered in a browser:** Etsy sends only the first 12 listings in the page HTML and loads the rest with
-  JavaScript, so this extractor renders the page (JavaScript tier, $0.0035) to return the full page of about
-  60 to 64 listings.
+- **12 listings per page (since 1.0.1):** Etsy sends the first 12 listings in the page HTML and loads the
+  rest with JavaScript. Etsy now answers browser-rendered fetches with HTTP 403, so this extractor reads the
+  page HTML without a browser (standard tier, $0.0025): 12 listings per page instead of about 64. Follow
+  `nextPageUrl` for more.
 - **Rating and reviews are the shop's:** search cards show the shop's rating and review count, not the
   listing's. Use the [Etsy Listing Scraper](../etsy-listing-scraper/) for the listing's own reviews.
 - **Ads are included** where Etsy puts them in the grid (`ad: true`); filter on `ad` if you only want organic
@@ -75,5 +76,5 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 
 ## Files
 
-- [`extractor.json`](extractor.json): the extractor definition (JavaScript rendering through a US proxy; CSS fields)
+- [`extractor.json`](extractor.json): the extractor definition (plain fetch through a US proxy; CSS fields)
 - [`sample-output.json`](sample-output.json): output on a real search page

@@ -1,0 +1,168 @@
+{
+  "title": "Oppenheimer",
+  "fullTitle": "Oppenheimer (2023)",
+  "url": "https://www.rottentomatoes.com/m/oppenheimer_2023",
+  "emsId": "07d7f9a2-3fa1-342a-b6ca-27fd594e04c6",
+  "releaseDate": "2023-07-21",
+  "tomatometer": 93,
+  "tomatometerCertified": true,
+  "tomatometerSentiment": "POSITIVE",
+  "criticsReviewCount": 510,
+  "criticsAverageRating": 8.6,
+  "criticsLikedCount": 474,
+  "criticsNotLikedCount": 36,
+  "topCriticsScore": 95,
+  "topCriticsReviewCount": 87,
+  "audienceScore": 91,
+  "audienceRatingCount": "10,000+ Verified Ratings",
+  "audienceAverageRating": 4.5,
+  "audienceCertified": true,
+  "audienceSentiment": "POSITIVE",
+  "allAudienceScore": 88,
+  "allAudienceRatingCount": "25,000+ Ratings",
+  "criticsConsensus": "Oppenheimer marks another engrossing achievement from Christopher Nolan that benefits from Murphy's tour-de-force performance and stunning visuals.",
+  "audienceSays": "Oppenheimer is an intelligent movie about an important topic that's never less than powerfully acted and incredibly entertaining.",
+  "synopsis": "During World War II, Lt. Gen. Leslie Groves Jr. appoints physicist J. Robert Oppenheimer to work on the top-secret Manhattan Project. Oppenheimer and a team of scientists spend years developing and designing the atomic bomb. Their work comes to fruition on July 16, 1945, as they witness the world's first nuclear explosion, forever changing the course of history.",
+  "contentRating": "R",
+  "genres": [
+    "Biography",
+    "History",
+    "Drama"
+  ],
+  "directors": [
+    "Christopher Nolan"
+  ],
+  "poster": "https://resizing.flixster.com/dV1vfa4w_dB4wzk7A_VzThWUWw8=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzEyZDMyYjZmLThmNzAtNDliNC1hMjFmLTA2ZWY4M2UyMjJhMi5qcGc=",
+  "cast": [
+    {
+      "position": 1,
+      "name": "Christopher Nolan",
+      "role": "Director",
+      "url": "https://www.rottentomatoes.com/celebrity/christopher_nolan",
+      "image": "https://resizing.flixster.com/T40ZBsSIF6UkKz5hV4l17FzknzQ=/100x120/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/233377_v9_bb.jpg"
+    },
+    {
+      "position": 2,
+      "name": "Cillian Murphy",
+      "role": "J. Robert Oppenheimer",
+      "url": "https://www.rottentomatoes.com/celebrity/cillian_murphy",
+      "image": "https://resizing.flixster.com/MM_6SAVyjUpAOVpQgYt_975m4c4=/100x120/v2/https://resizing.flixster.com/B85FadbEaADP0UNK2R0wLAyB4aA=/ems.cHJkLWVtcy1hc3NldHMvY2VsZWJyaXRpZXMvZjY4M2MzNDAtZDZjOC00MzBiLTg5OTgtNjdhMzY5NDkwNzU1LmpwZw=="
+    },
+    {
+      "position": 3,
+      "name": "Emily Blunt",
+      "role": "Kitty Oppenheimer",
+      "url": "https://www.rottentomatoes.com/celebrity/1163951-emily_blunt",
+      "image": "https://resizing.flixster.com/jZESJWcaQcm1GIRHRIicKhXeM3Y=/100x120/v2/https://resizing.flixster.com/wD-MXfph00yBhLPRDVBtrGqQjJ8=/ems.ZW1zLXByZC1hc3NldHMvY2VsZWJyaXRpZXMvMmExMGNlNzgtNzhkYS00NzRlLThmMzQtNDlhOGExN2JjMTY4LmpwZw=="
+    },
+    {
+      "position": 4,
+      "name": "Robert Downey Jr.",
+      "role": "Lewis Strauss",
+      "url": "https://www.rottentomatoes.com/celebrity/robert_downey_jr",
+      "image": "https://resizing.flixster.com/5Kz793p_24A7Q6ZKN4B201L8UZo=/100x120/v2/https://resizing.flixster.com/OOPw6FXLl1dvZXrlE73jckDTzpc=/ems.cHJkLWVtcy1hc3NldHMvY2VsZWJyaXRpZXMvYTUxYzhlNTctMzg2OS00YWJjLWEwYmEtOWY1ZjE0Njg2ZWVlLmpwZw=="
+    },
+    {
+      "position": 5,
+      "name": "Matt Damon",
+      "role": "Leslie Groves Jr.",
+      "url": "https://www.rottentomatoes.com/celebrity/matt_damon",
+      "image": "https://resizing.flixster.com/4o9TUWdAMHr3CUKCkuAwtDbwUjg=/100x120/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/44333_v9_bc.jpg"
+    },
+    {
+      "position": 6,
+      "name": "Rami Malek",
+      "role": "David Hill",
+      "url": "https://www.rottentomatoes.com/celebrity/rami_malek",
+      "image": "https://resizing.flixster.com/_0Nr9FJ8m-WC9w4jQwTvONSbmzk=/100x120/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/330277_v9_bc.jpg"
+    }
+  ],
+  "details": [
+    {
+      "label": "Director",
+      "values": [
+        "Christopher Nolan"
+      ]
+    },
+    {
+      "label": "Producer",
+      "values": [
+        "Emma Thomas",
+        "Charles Roven",
+        "Christopher Nolan"
+      ]
+    },
+    {
+      "label": "Screenwriter",
+      "values": [
+        "Christopher Nolan"
+      ]
+    },
+    {
+      "label": "Distributor",
+      "values": [
+        "Universal Pictures"
+      ]
+    },
+    {
+      "label": "Production Co",
+      "values": [
+        "Gadget Films",
+        "Universal Pictures",
+        "Syncopy",
+        "Atlas Entertainment"
+      ]
+    },
+    {
+      "label": "Rating",
+      "values": [
+        "R (Nudity|Language|Some Sexuality)"
+      ]
+    },
+    {
+      "label": "Genre",
+      "values": [
+        "Biography",
+        "History",
+        "Drama"
+      ]
+    },
+    {
+      "label": "Original Language",
+      "values": [
+        "English"
+      ]
+    },
+    {
+      "label": "Release Date (Theaters)",
+      "values": [
+        "Jul 21, 2023, Wide"
+      ]
+    },
+    {
+      "label": "Release Date (Streaming)",
+      "values": [
+        "Nov 21, 2023"
+      ]
+    },
+    {
+      "label": "Box Office (Gross USA)",
+      "values": [
+        "$330.0M"
+      ]
+    },
+    {
+      "label": "Runtime",
+      "values": [
+        "3h 0m"
+      ]
+    },
+    {
+      "label": "Sound Mix",
+      "values": [
+        "Datasat",
+        "Dolby Digital"
+      ]
+    }
+  ]
+}

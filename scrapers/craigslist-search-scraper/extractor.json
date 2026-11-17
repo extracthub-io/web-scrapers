@@ -1,0 +1,137 @@
+{
+  "name": "Craigslist - search results",
+  "description": "Craigslist search and category result pages (<city>.craigslist.org/search/<category>?query=...): every listing on the page (up to ~360) with title, price, location and link, plus a schema.org list with home type, bedrooms, bathrooms, coordinates and city where Craigslist provides it (housing).",
+  "slug": "craigslist-search",
+  "url": "https://sfbay.craigslist.org/search/apa",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "other",
+  "tags": [
+    "craigslist",
+    "classifieds",
+    "listings",
+    "housing",
+    "rentals",
+    "for sale",
+    "search"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "listings",
+        "selector": "ol li.cl-static-search-result",
+        "extract": "innerHTML",
+        "isArray": true,
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": ".title",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "price",
+              "selector": ".price",
+              "extract": "textContent",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "priceText",
+              "selector": ".price",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "location",
+              "selector": ".location",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "listingsCount",
+        "selector": "ol li.cl-static-search-result",
+        "extract": "count"
+      },
+      {
+        "name": "searchDescription",
+        "selector": "script#ld_searchpage_data",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "description"
+        ]
+      },
+      {
+        "name": "schemaListings",
+        "selector": "script#ld_searchpage_results",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*].item",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "type",
+            "jsonPath": "@type"
+          },
+          {
+            "name": "bedrooms",
+            "jsonPath": "numberOfBedrooms"
+          },
+          {
+            "name": "bathrooms",
+            "jsonPath": "numberOfBathroomsTotal"
+          },
+          {
+            "name": "latitude",
+            "jsonPath": "latitude"
+          },
+          {
+            "name": "longitude",
+            "jsonPath": "longitude"
+          },
+          {
+            "name": "city",
+            "jsonPath": "address.addressLocality"
+          },
+          {
+            "name": "region",
+            "jsonPath": "address.addressRegion"
+          }
+        ]
+      }
+    ]
+  },
+  "visibility": "public"
+}

@@ -1,0 +1,74 @@
+{
+  "heading": "Newest 'web-scraping' Questions",
+  "totalQuestions": 51616,
+  "questions": [
+    {
+      "position": 1,
+      "id": 80009348,
+      "title": "How do I solve an error with a Python scraping program",
+      "url": "https://stackoverflow.com/questions/80009348/how-do-i-solve-an-error-with-a-python-scraping-program",
+      "score": -4,
+      "answerCount": 2,
+      "hasAcceptedAnswer": false,
+      "views": 390,
+      "commentCount": 1,
+      "askedAt": "2026-10-12 00:09:34Z",
+      "excerpt": "I'm creating a program to collect news items from the internet regarding companies, separate out the text from the html code and then allocate scoring depending on the information it contains. I've ...",
+      "tags": [
+        "python",
+        "web-scraping"
+      ],
+      "userName": "T.A.",
+      "userUrl": "https://stackoverflow.com/users/…",
+      "userReputation": 3,
+      "userActionAt": "2026-10-12 00:09:34Z"
+    },
+    {
+      "position": 2,
+      "id": 80008831,
+      "title": "Merge two Celery tasks",
+      "url": "https://stackoverflow.com/questions/80008831/merge-two-celery-tasks",
+      "score": -5,
+      "answerCount": 1,
+      "hasAcceptedAnswer": false,
+      "views": 267,
+      "commentCount": 6,
+      "askedAt": "2026-10-09 05:22:26Z",
+      "excerpt": "Let's say I have a web scraping pipeline. For some reason, I use Celery to write sanitized payloads to the database. Each payload is a list of rows. Due to the nature of the problem, two Celery tasks ...",
+      "tags": [
+        "python",
+        "web-scraping",
+        "celery"
+      ],
+      "userName": "S.",
+      "userUrl": "https://stackoverflow.com/users/…",
+      "userReputation": 196,
+      "userActionAt": "2026-10-09 05:22:26Z"
+    },
+    {
+      "position": 3,
+      "id": 79995776,
+      "title": "Why does Selenium/Playwright keep getting detected by Cloudflare even with stealth options? [duplicate]",
+      "url": "https://stackoverflow.com/questions/79995776/why-does-selenium-playwright-keep-getting-detected-by-cloudflare-even-with-steal",
+      "score": -8,
+      "answerCount": 1,
+      "hasAcceptedAnswer": false,
+      "views": 368,
+      "commentCount": 5,
+      "askedAt": "2026-08-17 09:25:58Z",
+      "excerpt": "I'm working on a web scraping project where I need to extract data from several e-commerce sites. I started with Puppeteer, then tried Playwright with stealth plugins, but within a few requests I'm ...",
+      "tags": [
+        "web-scraping",
+        "automation",
+        "puppeteer",
+        "cloudflare",
+        "browser-automation"
+      ],
+      "userName": "A.C.",
+      "userUrl": "https://stackoverflow.com/users/…",
+      "userReputation": 1,
+      "userActionAt": "2026-08-17 09:25:58Z"
+    }
+  ],
+  "nextPageUrl": "https://stackoverflow.com/questions/tagged/web-scraping?tab=newest&page=2&pagesize=15"
+}

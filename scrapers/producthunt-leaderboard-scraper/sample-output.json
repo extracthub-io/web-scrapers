@@ -1,0 +1,82 @@
+{
+  "title": "Best of Product Hunt | November 12, 2026",
+  "products": [
+    {
+      "position": 1,
+      "rank": 1,
+      "name": "Plurai Simulation",
+      "tagline": "A simulated world that makes your agent improve on every run",
+      "url": "https://www.producthunt.com/products/plurai",
+      "topics": [
+        "API",
+        "Developer Tools",
+        "Artificial Intelligence"
+      ],
+      "votes": 409,
+      "comments": 139,
+      "thumbnail": "https://ph-files.imgix.net/e87131be-1490-4ed2-a291-5f91da603996.png?auto=compress,format&codec=mozjpeg&cs=strip&fit=crop&frame=1&h=48&w=48"
+    },
+    {
+      "position": 2,
+      "rank": 2,
+      "name": "YouArt Desktop App",
+      "tagline": "Codex for creative team",
+      "url": "https://www.producthunt.com/products/youart",
+      "topics": [
+        "Marketing",
+        "Artificial Intelligence",
+        "Video"
+      ],
+      "votes": 349,
+      "comments": 60,
+      "thumbnail": "https://ph-files.imgix.net/f47c5780-5a8a-4458-90ed-2700c2f4d548.png?auto=compress,format&codec=mozjpeg&cs=strip&fit=crop&frame=1&h=48&w=48"
+    },
+    {
+      "position": 3,
+      "rank": 3,
+      "name": "Omnigraph",
+      "tagline": "Open source graph database for your AI agents",
+      "url": "https://www.producthunt.com/products/omnigraph",
+      "topics": [
+        "Open Source",
+        "Developer Tools",
+        "Database"
+      ],
+      "votes": 289,
+      "comments": 36,
+      "thumbnail": "https://ph-files.imgix.net/7dc98c53-4374-466e-97f8-388ca136aad3.png?auto=compress,format&codec=mozjpeg&cs=strip&fit=crop&frame=1&h=48&w=48"
+    },
+    {
+      "position": 4,
+      "rank": 4,
+      "name": "⌘+L",
+      "tagline": "Edit your website like Figma!",
+      "url": "https://www.producthunt.com/products/l",
+      "topics": [
+        "Design Tools",
+        "Productivity",
+        "Developer Tools"
+      ],
+      "votes": 273,
+      "comments": 34,
+      "thumbnail": "https://ph-files.imgix.net/7afdfaf6-038f-411e-ae40-484f9355f96a.png?auto=compress,format&codec=mozjpeg&cs=strip&fit=crop&frame=1&h=48&w=48"
+    },
+    {
+      "position": 5,
+      "rank": 5,
+      "name": "Spacefast by Automattic",
+      "tagline": "Give your AI agents a place to build, run, and ship",
+      "url": "https://www.producthunt.com/products/spacefast-by-automattic",
+      "topics": [
+        "Developer Tools",
+        "Artificial Intelligence",
+        "GitHub"
+      ],
+      "votes": 183,
+      "comments": 26,
+      "thumbnail": "https://ph-files.imgix.net/74983efe-60a0-4e2f-b04f-bbf40437df85.png?auto=compress,format&codec=mozjpeg&cs=strip&fit=crop&frame=1&h=48&w=48"
+    }
+  ],
+  "previousDayUrl": "https://www.producthunt.com/leaderboard/daily/2026/11/11",
+  "nextDayUrl": "https://www.producthunt.com/leaderboard/daily/2026/11/13"
+}

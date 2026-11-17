@@ -1,0 +1,299 @@
+{
+  "name": "Rotten Tomatoes - movie page",
+  "description": "Rotten Tomatoes movie page (rottentomatoes.com/m/<movie>): title, release date, Tomatometer (score, certified, sentiment, reviews count, average rating, liked / not liked, top critics score), Popcornmeter audience score (score, ratings count, average rating, all-audience score), critics consensus, audience says, synopsis, content rating, genres, directors, poster, cast (name, role, link, photo) and the Movie Info details (producer, screenwriter, distributor, language, release dates, box office, runtime, ...).",
+  "slug": "rottentomatoes-movie",
+  "url": "https://www.rottentomatoes.com/m/oppenheimer_2023",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "entertainment",
+  "tags": [
+    "rotten tomatoes",
+    "movies",
+    "tomatometer",
+    "reviews",
+    "ratings",
+    "film"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "title",
+        "selector": "script#media-hero-json",
+        "extract": "jsonContent",
+        "jsonPath": "content.title",
+        "transforms": [
+          "decodeHtml"
+        ],
+        "required": true
+      },
+      {
+        "name": "fullTitle",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "name",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "url",
+        "required": true
+      },
+      {
+        "name": "emsId",
+        "selector": "script#curation-json",
+        "extract": "jsonContent",
+        "jsonPath": "emsId"
+      },
+      {
+        "name": "releaseDate",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "dateCreated"
+      },
+      {
+        "name": "tomatometer",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "criticsScore.scorePercent",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "tomatometerCertified",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "criticsScore.certified"
+      },
+      {
+        "name": "tomatometerSentiment",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "criticsScore.sentiment"
+      },
+      {
+        "name": "criticsReviewCount",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "criticsScore.reviewCount",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "criticsAverageRating",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "criticsScore.averageRating",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "criticsLikedCount",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "criticsScore.likedCount",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "criticsNotLikedCount",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "criticsScore.notLikedCount",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "topCriticsScore",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "overlay.criticsTop.scorePercent",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "topCriticsReviewCount",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "overlay.criticsTop.reviewCount",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "audienceScore",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "audienceScore.scorePercent",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "audienceRatingCount",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "audienceScore.bandedRatingCount"
+      },
+      {
+        "name": "audienceAverageRating",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "audienceScore.averageRating",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "audienceCertified",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "audienceScore.certified"
+      },
+      {
+        "name": "audienceSentiment",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "audienceScore.sentiment"
+      },
+      {
+        "name": "allAudienceScore",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "overlay.audienceAll.scorePercent",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "allAudienceRatingCount",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "overlay.audienceAll.bandedRatingCount"
+      },
+      {
+        "name": "criticsConsensus",
+        "selector": "#critics-consensus p",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "audienceSays",
+        "selector": "#audience-consensus p",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "synopsis",
+        "selector": "script#media-scorecard-json",
+        "extract": "jsonContent",
+        "jsonPath": "description",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "contentRating",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "contentRating"
+      },
+      {
+        "name": "genres",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "genre"
+      },
+      {
+        "name": "directors",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "director[*].name"
+      },
+      {
+        "name": "poster",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "image"
+      },
+      {
+        "name": "cast",
+        "isArray": true,
+        "includePosition": true,
+        "subFields": [
+          {
+            "name": "name",
+            "selector": "a[data-qa=\"person-item\"] [data-qa=\"person-name\"]",
+            "transforms": [
+              "normalizeWhitespace"
+            ],
+            "required": true
+          },
+          {
+            "name": "role",
+            "selector": "a[data-qa=\"person-item\"] [data-qa=\"person-role\"]",
+            "transforms": [
+              "normalizeWhitespace"
+            ]
+          },
+          {
+            "name": "url",
+            "selector": "a[data-qa=\"person-item\"][href]",
+            "extract": "attributeValue",
+            "attributeName": "href",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          },
+          {
+            "name": "image",
+            "selector": "a[data-qa=\"person-item\"] rt-img[src]",
+            "extract": "attributeValue",
+            "attributeName": "src"
+          }
+        ]
+      },
+      {
+        "name": "details",
+        "selector": "section.media-info [data-qa=\"item\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "[data-qa=\"item-label\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "values",
+              "selector": "[data-qa=\"item-value\"]",
+              "isArray": true,
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

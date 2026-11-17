@@ -1,0 +1,130 @@
+{
+  "name": "Product Hunt - daily leaderboard",
+  "description": "Product Hunt daily leaderboard (producthunt.com/leaderboard/daily/<year>/<month>/<day>): the day's ranked products in leaderboard order with rank, name, tagline, link, topics, votes, comments count and thumbnail, plus the page title and the previous / next day links. Promoted (ad) cards are skipped.",
+  "slug": "producthunt-leaderboard",
+  "url": "https://www.producthunt.com/leaderboard/daily/2026/11/12",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "allowJsEscalation": true,
+  "category": "other",
+  "tags": [
+    "product hunt",
+    "startups",
+    "launches",
+    "products",
+    "leaderboard",
+    "tech"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "title",
+        "selector": "h1[data-test=\"leaderboard-title\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "products",
+        "selector": "section[data-container]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "rank",
+              "selector": "a[href^=\"/products/\"]",
+              "transforms": [
+                {
+                  "before": ". "
+                },
+                "toNumber"
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": "img[alt]",
+              "extract": "attributeValue",
+              "attributeName": "alt",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "tagline",
+              "selector": "span.text-secondary",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"/products/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "topics",
+              "selector": "a[href^=\"/topics/\"]",
+              "isArray": true,
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "votes",
+              "selector": "button[data-test=\"vote-button\"] p",
+              "transforms": [
+                "toNumber"
+              ],
+              "required": true
+            },
+            {
+              "name": "comments",
+              "selector": "button.hidden p",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "thumbnail",
+              "selector": "img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            }
+          ]
+        }
+      },
+      {
+        "name": "previousDayUrl",
+        "selector": "a[data-test=\"previous-day-link\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "nextDayUrl",
+        "selector": "a[data-test=\"next-day-link\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}
