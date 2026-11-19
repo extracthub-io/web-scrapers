@@ -1,0 +1,142 @@
+{
+  "name": "Bing Search - results page (SERP)",
+  "description": "Organic web results of a Bing search results page (www.bing.com/search?q=...): position, title, Bing click URL, the target URL as base64url text, displayed URL, site name, snippet and date, plus the query, the result count text, related searches and the next-page URL. Fetched through the proxy without JavaScript.",
+  "slug": "bing-serp",
+  "url": "https://www.bing.com/search?q=web+scraping+api",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "research",
+  "tags": [
+    "bing",
+    "serp",
+    "search",
+    "search engine",
+    "organic results",
+    "seo"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "query",
+        "selector": "input#sb_form_q[value]",
+        "extract": "attributeValue",
+        "attributeName": "value",
+        "required": true
+      },
+      {
+        "name": "resultStats",
+        "selector": "#b_tween .sb_count",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "organicResults",
+        "selector": "#b_results > li.b_algo",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": "h2 a",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "h2 a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "urlBase64",
+              "selector": "h2 a[href*=\"/ck/a\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "&u=a1",
+                    "&"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "displayedUrl",
+              "selector": "cite",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "siteName",
+              "selector": ".tptt",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "snippet",
+              "selector": [
+                ".b_caption p",
+                ".b_caption",
+                "p"
+              ],
+              "combineStrategy": "first",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "date",
+              "selector": ".news_dt",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "relatedSearches",
+        "selector": ".b_rs li a, .b_rrsr li a",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "unique"
+        ]
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a.sb_pagN[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

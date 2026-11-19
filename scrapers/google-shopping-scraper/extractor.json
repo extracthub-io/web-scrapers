@@ -1,0 +1,351 @@
+{
+  "name": "Google Shopping - search results",
+  "description": "Google Shopping search results (google.com/search?q=...&tbm=shop or &udm=28): the products of the results grid (about 40) with title, price, original price, discount, typical price, store, rating, review count, delivery note and Google's product ids, plus the themed product groups Google shows above the grid and the link to the next results.",
+  "slug": "google-shopping",
+  "url": "https://www.google.com/search?q=running+shoes&tbm=shop&hl=en&gl=us",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "ecommerce",
+  "tags": [
+    "google shopping",
+    "google",
+    "shopping",
+    "products",
+    "prices",
+    "price comparison",
+    "ecommerce"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "query",
+        "selector": "textarea[name=\"q\"], input[name=\"q\"][value]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "products",
+        "selector": "product-viewer-group li",
+        "extract": "innerHTML",
+        "isArray": true,
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": ".gkQHve",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "price",
+              "selector": "span[aria-label^=\"Current Price\"]",
+              "transforms": [
+                "extractPrice"
+              ],
+              "required": true
+            },
+            {
+              "name": "priceText",
+              "selector": "span[aria-label^=\"Current Price\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "originalPrice",
+              "selector": "span[aria-label^=\" Was\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "typicalPrice",
+              "selector": "[role=\"group\"][aria-label*=\"Usually\"]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                {
+                  "after": "Usually "
+                },
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "discount",
+              "selector": "[role=\"img\"][aria-label$=\"OFF. \"]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "store",
+              "selector": ".WJMUdc",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "moreStores",
+              "selector": ".Ludoze",
+              "extract": "exists"
+            },
+            {
+              "name": "rating",
+              "selector": "span[aria-label$=\"user reviews\"]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                {
+                  "between": [
+                    "Rated ",
+                    " out"
+                  ]
+                },
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "span[aria-label$=\"user reviews\"]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "transforms": [
+                {
+                  "between": [
+                    "5, ",
+                    " user"
+                  ]
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "delivery",
+              "selector": ".ybnj7e",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "catalogId",
+              "selector": "[data-cid]",
+              "extract": "attributeValue",
+              "attributeName": "data-cid"
+            },
+            {
+              "name": "productId",
+              "selector": "[data-pid]",
+              "extract": "attributeValue",
+              "attributeName": "data-pid"
+            },
+            {
+              "name": "offerId",
+              "selector": "[data-oid]",
+              "extract": "attributeValue",
+              "attributeName": "data-oid"
+            },
+            {
+              "name": "groupId",
+              "selector": "[data-gid]",
+              "extract": "attributeValue",
+              "attributeName": "data-gid"
+            }
+          ]
+        }
+      },
+      {
+        "name": "productGroups",
+        "selector": ".MhZJBd",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": "div[role=\"list\"][aria-label]",
+              "extract": "attributeValue",
+              "attributeName": "aria-label",
+              "required": true
+            },
+            {
+              "name": "products",
+              "selector": "div[role=\"listitem\"]",
+              "extract": "innerHTML",
+              "isArray": true,
+              "includePosition": true,
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "title",
+                    "selector": ".gkQHve",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "price",
+                    "selector": "span[aria-label^=\"Current Price\"]",
+                    "transforms": [
+                      "extractPrice"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "priceText",
+                    "selector": "span[aria-label^=\"Current Price\"]",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "originalPrice",
+                    "selector": "span[aria-label^=\" Was\"]",
+                    "transforms": [
+                      "extractPrice"
+                    ]
+                  },
+                  {
+                    "name": "typicalPrice",
+                    "selector": "[role=\"group\"][aria-label*=\"Usually\"]",
+                    "extract": "attributeValue",
+                    "attributeName": "aria-label",
+                    "transforms": [
+                      {
+                        "after": "Usually "
+                      },
+                      "extractPrice"
+                    ]
+                  },
+                  {
+                    "name": "discount",
+                    "selector": "[role=\"img\"][aria-label$=\"OFF. \"]",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "store",
+                    "selector": ".WJMUdc",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "moreStores",
+                    "selector": ".Ludoze",
+                    "extract": "exists"
+                  },
+                  {
+                    "name": "rating",
+                    "selector": "span[aria-label$=\"user reviews\"]",
+                    "extract": "attributeValue",
+                    "attributeName": "aria-label",
+                    "transforms": [
+                      {
+                        "between": [
+                          "Rated ",
+                          " out"
+                        ]
+                      },
+                      "toNumber"
+                    ]
+                  },
+                  {
+                    "name": "reviewCount",
+                    "selector": "span[aria-label$=\"user reviews\"]",
+                    "extract": "attributeValue",
+                    "attributeName": "aria-label",
+                    "transforms": [
+                      {
+                        "between": [
+                          "5, ",
+                          " user"
+                        ]
+                      },
+                      "parseCompactNumber"
+                    ]
+                  },
+                  {
+                    "name": "delivery",
+                    "selector": ".ybnj7e",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "catalogId",
+                    "selector": "[data-cid]",
+                    "extract": "attributeValue",
+                    "attributeName": "data-cid"
+                  },
+                  {
+                    "name": "productId",
+                    "selector": "[data-pid]",
+                    "extract": "attributeValue",
+                    "attributeName": "data-pid"
+                  },
+                  {
+                    "name": "offerId",
+                    "selector": "[data-oid]",
+                    "extract": "attributeValue",
+                    "attributeName": "data-oid"
+                  },
+                  {
+                    "name": "groupId",
+                    "selector": "[data-gid]",
+                    "extract": "attributeValue",
+                    "attributeName": "data-gid"
+                  }
+                ]
+              },
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a[aria-label=\"More results\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "sca_esv",
+              "sxsrf",
+              "ei",
+              "sa",
+              "prmd",
+              "ved"
+            ]
+          },
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

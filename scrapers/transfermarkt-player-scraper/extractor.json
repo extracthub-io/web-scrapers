@@ -1,0 +1,479 @@
+{
+  "name": "Transfermarkt - player profile",
+  "description": "Transfermarkt player profile pages (transfermarkt.com/<name>/profil/spieler/<id>): name, shirt number, date of birth, age, place of birth, citizenship, height, position, foot, agent, current club and league, joined and contract end dates, national team caps and goals, market value with its last update, titles, image and the full \"Facts and data\" table as label / value rows. JavaScript rendering through a US proxy.",
+  "slug": "transfermarkt-player",
+  "url": "https://www.transfermarkt.com/erling-haaland/profil/spieler/418560",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "waitForSelector": "h1.data-header__headline-wrapper",
+  "category": "sports",
+  "tags": [
+    "transfermarkt",
+    "football",
+    "soccer",
+    "player",
+    "market value",
+    "sports"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "playerId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "/spieler/",
+              "/"
+            ]
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "name",
+        "selector": "meta[property=\"og:title\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          {
+            "before": " - Player profile"
+          },
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "shirtNumber",
+        "selector": ".data-header__shirt-number",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "#"
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "nameInHomeCountry",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Name in home country: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "fullName",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Full name: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "dateOfBirth",
+        "selector": ".info-table a[href*=\"/datum/\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "/datum/"
+          }
+        ]
+      },
+      {
+        "name": "age",
+        "selector": ".data-header [itemprop=\"birthDate\"]",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "(",
+              ")"
+            ]
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "placeOfBirth",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Place of birth: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "citizenship",
+        "selector": ".data-header [itemprop=\"nationality\"] img[title]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "title",
+        "transforms": [
+          "compact",
+          "unique"
+        ]
+      },
+      {
+        "name": "height",
+        "selector": ".data-header [itemprop=\"height\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "position",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Position: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "mainPosition",
+        "selector": ".detail-position__position",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "foot",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Foot: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "agent",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Player agent: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "club",
+        "selector": ".data-header__club a[title]",
+        "extract": "attributeValue",
+        "attributeName": "title"
+      },
+      {
+        "name": "clubUrl",
+        "selector": ".data-header__club a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "league",
+        "selector": "a.data-header__league-link",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "leagueUrl",
+        "selector": "a.data-header__league-link[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "joined",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Joined: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "contractExpires",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Contract expires: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "lastContractExtension",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Last contract extension: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "outfitter",
+        "selector": [
+          ".info-table .info-table__content"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Outfitter: | ",
+              " | "
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "nationalTeam",
+        "selector": ".data-header__items a[href*=\"/startseite/verein/\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "caps",
+        "selector": ".data-header__items a.data-header__content--highlight",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "toInteger",
+          {
+            "nth": 1
+          }
+        ]
+      },
+      {
+        "name": "internationalGoals",
+        "selector": ".data-header__items a.data-header__content--highlight",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "toInteger",
+          {
+            "nth": 2
+          }
+        ]
+      },
+      {
+        "name": "marketValue",
+        "selector": ".data-header__market-value-wrapper",
+        "extract": "textContent",
+        "excludeTags": [
+          "p"
+        ],
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "marketValueEur",
+        "selector": ".data-header__market-value-wrapper",
+        "extract": "textContent",
+        "excludeTags": [
+          "p"
+        ],
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "€"
+          },
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "marketValueUpdated",
+        "selector": ".data-header__last-update",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "Last update:"
+          },
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "img.data-header__profile-image[src]",
+        "extract": "attributeValue",
+        "attributeName": "src"
+      },
+      {
+        "name": "titles",
+        "selector": ".data-header__badge-container a.data-header__success-data",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": "img[title]",
+              "extract": "attributeValue",
+              "attributeName": "title",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "count",
+              "selector": ".data-header__success-number",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "facts",
+        "isArray": true,
+        "subFields": [
+          {
+            "name": "label",
+            "selector": ".info-table .info-table__content--regular",
+            "extract": "textContent",
+            "transforms": [
+              "normalizeWhitespace"
+            ]
+          },
+          {
+            "name": "value",
+            "selector": ".info-table .info-table__content--bold",
+            "extract": "textContent",
+            "transforms": [
+              "normalizeWhitespace"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "socialLinks",
+        "selector": ".info-table .social-media-toolbar__icons a[href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href"
+      }
+    ]
+  }
+}

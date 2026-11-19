@@ -1,0 +1,119 @@
+{
+  "playerId": "418560",
+  "pageUrl": "https://www.transfermarkt.com/erling-haaland/profil/spieler/418560",
+  "name": "Erling Haaland",
+  "shirtNumber": 9,
+  "nameInHomeCountry": "Erling Braut Håland",
+  "fullName": null,
+  "dateOfBirth": "2000-07-21",
+  "age": 26,
+  "placeOfBirth": "Leeds",
+  "citizenship": [
+    "Norway"
+  ],
+  "height": "1,95 m",
+  "position": "Attack - Centre-Forward",
+  "mainPosition": "Centre-Forward",
+  "foot": "left",
+  "agent": "Rafaela Pimenta",
+  "club": "Manchester City",
+  "clubUrl": "https://www.transfermarkt.com/manchester-city/startseite/verein/281",
+  "league": "Premier League",
+  "leagueUrl": "https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1",
+  "joined": "01/07/2022",
+  "contractExpires": "30/06/2034",
+  "lastContractExtension": "17/01/2025",
+  "outfitter": "Nike",
+  "nationalTeam": "Norway",
+  "caps": 61,
+  "internationalGoals": 68,
+  "marketValue": "€220.00M",
+  "marketValueEur": 220000000,
+  "marketValueUpdated": "22/07/2026",
+  "image": "https://img.a.transfermarkt.technology/portrait/header/418560-1788115885.jpg?lm=4711",
+  "titles": [
+    {
+      "title": "UEFA Best Player in Europe",
+      "count": 1
+    },
+    {
+      "title": "Golden Boy",
+      "count": 1
+    },
+    {
+      "title": "UEFA Champions League winner",
+      "count": 1
+    },
+    {
+      "title": "English Champion",
+      "count": 2
+    },
+    {
+      "title": "Uefa Supercup winner",
+      "count": 1
+    }
+  ],
+  "facts": [
+    {
+      "label": "Name in home country:",
+      "value": "Erling Braut Håland"
+    },
+    {
+      "label": "Date of birth/Age:",
+      "value": "21/07/2000 (26)"
+    },
+    {
+      "label": "Place of birth:",
+      "value": "Leeds"
+    },
+    {
+      "label": "Height:",
+      "value": "1,95 m"
+    },
+    {
+      "label": "Citizenship:",
+      "value": "Norway"
+    },
+    {
+      "label": "Position:",
+      "value": "Attack - Centre-Forward"
+    },
+    {
+      "label": "Foot:",
+      "value": "left"
+    },
+    {
+      "label": "Player agent:",
+      "value": "Rafaela Pimenta"
+    },
+    {
+      "label": "Current club:",
+      "value": "Manchester City"
+    },
+    {
+      "label": "Joined:",
+      "value": "01/07/2022"
+    },
+    {
+      "label": "Contract expires:",
+      "value": "30/06/2034"
+    },
+    {
+      "label": "Last contract extension:",
+      "value": "17/01/2025"
+    },
+    {
+      "label": "Outfitter:",
+      "value": "Nike"
+    },
+    {
+      "label": "Social-Media:",
+      "value": null
+    }
+  ],
+  "socialLinks": [
+    "http://twitter.com/ErlingHaaland",
+    "http://www.facebook.com/profile.php?id=100052762394674",
+    "http://instagram.com/erling/"
+  ]
+}

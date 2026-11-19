@@ -1,0 +1,317 @@
+{
+  "name": "Transfermarkt - club squad",
+  "description": "Transfermarkt club squad pages (transfermarkt.com/<club>/kader/verein/<id>, compact view): every player with shirt number, name, player id, profile link, position, age, nationalities, contract end and market value, plus the club name, league, season, squad size, average age, foreigners, stadium and total market value. JavaScript rendering through a US proxy.",
+  "slug": "transfermarkt-squad",
+  "url": "https://www.transfermarkt.com/manchester-city/kader/verein/281",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "waitForSelector": "table.items",
+  "category": "sports",
+  "tags": [
+    "transfermarkt",
+    "football",
+    "soccer",
+    "squad",
+    "club",
+    "market value",
+    "sports"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "clubId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "/verein/",
+              "/"
+            ]
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "club",
+        "selector": "h1.data-header__headline-wrapper",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "league",
+        "selector": ".data-header__club a",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "leagueUrl",
+        "selector": ".data-header__club a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "season",
+        "selector": "select[name=\"saison_id\"] option[selected]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "squadSize",
+        "selector": [
+          ".data-header__details li.data-header__label"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Squad size:",
+              " | "
+            ]
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "averageAge",
+        "selector": [
+          ".data-header__details li.data-header__label"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Average age:",
+              " | "
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "foreigners",
+        "selector": ".data-header__details a[href*=\"/legionaere/\"]",
+        "extract": "textContent",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "nationalTeamPlayers",
+        "selector": ".data-header__details a[href*=\"/nationalspieler/\"]",
+        "extract": "textContent",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "stadium",
+        "selector": ".data-header__details a[href*=\"/stadion/\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "transferRecord",
+        "selector": ".data-header__details a[href*=\"/transfers/\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "tablePosition",
+        "selector": ".data-header__club-info a[href*=\"/tabelle/\"]",
+        "extract": "textContent",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "totalMarketValue",
+        "selector": ".data-header__market-value-wrapper",
+        "extract": "textContent",
+        "excludeTags": [
+          "p"
+        ],
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "totalMarketValueEur",
+        "selector": ".data-header__market-value-wrapper",
+        "extract": "textContent",
+        "excludeTags": [
+          "p"
+        ],
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "€"
+          },
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "players",
+        "selector": "table.items > tbody > tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "shirtNumber",
+              "selector": ".rn_nummer",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "name",
+              "selector": "table.inline-table td.hauptlink a",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "playerId",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "/spieler/",
+                    "/"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "profileUrl",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "position",
+              "selector": "table.inline-table tr:nth-child(2) td",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "positionGroup",
+              "selector": "td.rueckennummer[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "age",
+              "selector": "td.zentriert:nth-child(3)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "nationalities",
+              "selector": "td.zentriert img.flaggenrahmen[title]",
+              "isArray": true,
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "contractExpires",
+              "selector": "td.zentriert:nth-child(5)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "marketValue",
+              "selector": "td.rechts.hauptlink",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "marketValueEur",
+              "selector": "td.rechts.hauptlink",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "€"
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "injury",
+              "selector": "span.verletzt-table[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "captain",
+              "selector": "span.kapitaenicon-table",
+              "extract": "exists"
+            },
+            {
+              "name": "signedFrom",
+              "selector": "span.wechsel-kader-wappen a[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "image",
+              "selector": "img.bilderrahmen-fixed[data-src]",
+              "extract": "attributeValue",
+              "attributeName": "data-src"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

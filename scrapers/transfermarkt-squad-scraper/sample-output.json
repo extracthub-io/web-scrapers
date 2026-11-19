@@ -1,0 +1,97 @@
+{
+  "clubId": "281",
+  "pageUrl": "https://www.transfermarkt.com/manchester-city/kader/verein/281",
+  "club": "Manchester City",
+  "league": "Premier League",
+  "leagueUrl": "https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1",
+  "season": "26/27",
+  "squadSize": 24,
+  "averageAge": 25.6,
+  "foreigners": 17,
+  "nationalTeamPlayers": 22,
+  "stadium": "Etihad Stadium",
+  "transferRecord": "-€189.18M",
+  "tablePosition": 3,
+  "totalMarketValue": "€1.50B",
+  "totalMarketValueEur": 1500000000,
+  "players": [
+    {
+      "shirtNumber": 1,
+      "name": "Gianluigi Donnarumma",
+      "playerId": "315858",
+      "profileUrl": "https://www.transfermarkt.com/gianluigi-donnarumma/profil/spieler/315858",
+      "position": "Goalkeeper",
+      "positionGroup": "Goalkeeper",
+      "age": 27,
+      "nationalities": [
+        "Italy"
+      ],
+      "contractExpires": "30/06/2030",
+      "marketValue": "€45.00M",
+      "marketValueEur": 45000000,
+      "injury": null,
+      "captain": false,
+      "signedFrom": null,
+      "image": "https://img.a.transfermarkt.technology/portrait/medium/315858-1761076746.jpg?lm=4711"
+    },
+    {
+      "shirtNumber": 28,
+      "name": "Gerónimo Rulli",
+      "playerId": "229604",
+      "profileUrl": "https://www.transfermarkt.com/geronimo-rulli/profil/spieler/229604",
+      "position": "Goalkeeper",
+      "positionGroup": "Goalkeeper",
+      "age": 34,
+      "nationalities": [
+        "Argentina",
+        "Italy"
+      ],
+      "contractExpires": "30/06/2028",
+      "marketValue": "€5.00M",
+      "marketValueEur": 5000000,
+      "injury": null,
+      "captain": false,
+      "signedFrom": "Joined from Olympique Marseille; date: 12/08/2026; fee: €3.50M",
+      "image": "https://img.a.transfermarkt.technology/portrait/medium/229604-1698670758.jpg?lm=4711"
+    },
+    {
+      "shirtNumber": 6,
+      "name": "Marc Guéhi",
+      "playerId": "392757",
+      "profileUrl": "https://www.transfermarkt.com/marc-guehi/profil/spieler/392757",
+      "position": "Centre-Back",
+      "positionGroup": "Defender",
+      "age": 26,
+      "nationalities": [
+        "England",
+        "Cote d'Ivoire"
+      ],
+      "contractExpires": "30/06/2031",
+      "marketValue": "€75.00M",
+      "marketValueEur": 75000000,
+      "injury": "Hip injury - Return unknown",
+      "captain": false,
+      "signedFrom": null,
+      "image": "https://img.a.transfermarkt.technology/portrait/medium/392757-1683030598.jpg?lm=4711"
+    },
+    {
+      "shirtNumber": 3,
+      "name": "Rúben Dias",
+      "playerId": "258004",
+      "profileUrl": "https://www.transfermarkt.com/ruben-dias/profil/spieler/258004",
+      "position": "Centre-Back",
+      "positionGroup": "Defender",
+      "age": 29,
+      "nationalities": [
+        "Portugal"
+      ],
+      "contractExpires": "30/06/2029",
+      "marketValue": "€50.00M",
+      "marketValueEur": 50000000,
+      "injury": null,
+      "captain": true,
+      "signedFrom": null,
+      "image": "https://img.a.transfermarkt.technology/portrait/medium/258004-1684921271.jpg?lm=4711"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "name": "ESPN - scoreboard",
+  "description": "ESPN scoreboard pages (espn.com/nba/scoreboard, optionally /_/date/YYYYMMDD; also NFL, MLB, NHL, WNBA and college scoreboards): every game of the day with id, start time, status, both teams (name, abbreviation, score, record, home / away, winner), quarter scores, venue, TV broadcasts, betting line and the game link.",
+  "slug": "espn-scoreboard",
+  "url": "https://www.espn.com/nba/scoreboard/_/date/20261114",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "sports",
+  "tags": [
+    "espn",
+    "nba",
+    "scores",
+    "scoreboard",
+    "sports",
+    "games",
+    "live scores"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "script#__window__espnfitt",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "page.meta.title"
+        ]
+      },
+      {
+        "name": "pageUrl",
+        "selector": "script#__window__espnfitt",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "page.meta.canonical"
+        ]
+      },
+      {
+        "name": "league",
+        "selector": "script#__window__espnfitt",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "page.content.scoreboard.league.abbrev"
+        ],
+        "required": true
+      },
+      {
+        "name": "leagueName",
+        "selector": "script#__window__espnfitt",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "page.content.scoreboard.league.name"
+        ]
+      },
+      {
+        "name": "seasonType",
+        "selector": "script#__window__espnfitt",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "page.content.scoreboard.crntSzn.name"
+        ]
+      },
+      {
+        "name": "games",
+        "selector": "script#__window__espnfitt",
+        "extract": "jsonContent",
+        "jsonPath": "page.content.scoreboard.evts[*]",
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "gameId",
+              "jsonPath": "id",
+              "required": true
+            },
+            {
+              "name": "name",
+              "jsonPath": "shortName"
+            },
+            {
+              "name": "startTime",
+              "jsonPath": "date"
+            },
+            {
+              "name": "status",
+              "jsonPath": "status.description"
+            },
+            {
+              "name": "statusDetail",
+              "jsonPath": "status.detail"
+            },
+            {
+              "name": "state",
+              "jsonPath": "status.state"
+            },
+            {
+              "name": "completed",
+              "jsonPath": "completed"
+            },
+            {
+              "name": "teams",
+              "jsonPath": "competitors[*]",
+              "subFields": [
+                {
+                  "name": "teamId",
+                  "jsonPath": "id"
+                },
+                {
+                  "name": "name",
+                  "jsonPath": "displayName",
+                  "required": true
+                },
+                {
+                  "name": "abbreviation",
+                  "jsonPath": "abbrev"
+                },
+                {
+                  "name": "isHome",
+                  "jsonPath": "isHome"
+                },
+                {
+                  "name": "score",
+                  "jsonPath": "score"
+                },
+                {
+                  "name": "winner",
+                  "jsonPath": "winner"
+                },
+                {
+                  "name": "record",
+                  "jsonPath": "records[0].summary"
+                },
+                {
+                  "name": "logo",
+                  "jsonPath": "logo"
+                },
+                {
+                  "name": "url",
+                  "jsonPath": "links",
+                  "transforms": [
+                    "toAbsoluteUrl"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "periodLabels",
+              "jsonPath": "lnescrs.lbls"
+            },
+            {
+              "name": "homePeriodScores",
+              "jsonPath": "lnescrs.hme"
+            },
+            {
+              "name": "awayPeriodScores",
+              "jsonPath": "lnescrs.awy"
+            },
+            {
+              "name": "venue",
+              "jsonPath": "vnue.fullName"
+            },
+            {
+              "name": "city",
+              "jsonPath": "vnue.address.city"
+            },
+            {
+              "name": "region",
+              "jsonPath": "vnue.address.state"
+            },
+            {
+              "name": "broadcasts",
+              "jsonPath": "broadcasts[*].name"
+            },
+            {
+              "name": "oddsLine",
+              "jsonPath": "odds.details"
+            },
+            {
+              "name": "overUnder",
+              "jsonPath": "odds.oU"
+            },
+            {
+              "name": "url",
+              "jsonPath": "links[0].href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
