@@ -1,0 +1,199 @@
+{
+  "name": "Apple Inc",
+  "ticker": "AAPL:NASDAQ",
+  "symbol": "AAPL",
+  "exchange": "NASDAQ",
+  "price": 342.56,
+  "priceText": "$342.56",
+  "changePercent": -1.9,
+  "change": -6.65,
+  "marketStatus": "Closed: Nov 20, 4:00:03 PM GMT-5",
+  "currency": "USD",
+  "extendedPrice": 344.87,
+  "extendedChangePercent": 0.67,
+  "extendedChange": 2.31,
+  "extendedSession": "After hours · 8:01 PM",
+  "stats": [
+    {
+      "label": "Open",
+      "value": "$352.86"
+    },
+    {
+      "label": "High",
+      "value": "$354.34"
+    },
+    {
+      "label": "Low",
+      "value": "$340.56"
+    },
+    {
+      "label": "Mkt. cap",
+      "value": "4.98T"
+    },
+    {
+      "label": "Avg. vol.",
+      "value": "45.32M"
+    },
+    {
+      "label": "Volume",
+      "value": "80.69M"
+    },
+    {
+      "label": "Dividend",
+      "value": "0.32%"
+    },
+    {
+      "label": "Quarterly dividend",
+      "value": "$0.27"
+    },
+    {
+      "label": "Ex-dividend date",
+      "value": "Nov 12, 2026"
+    },
+    {
+      "label": "P/E ratio",
+      "value": "38.15"
+    },
+    {
+      "label": "52-wk high",
+      "value": "$360.83"
+    },
+    {
+      "label": "52-wk low",
+      "value": "$243.42"
+    },
+    {
+      "label": "EPS",
+      "value": "$8.98"
+    },
+    {
+      "label": "Beta",
+      "value": "1.07"
+    },
+    {
+      "label": "Shares outstanding",
+      "value": "14.53B"
+    },
+    {
+      "label": "No. of employees",
+      "value": "167K"
+    }
+  ],
+  "description": "Apple Inc. is an American multinational technology company headquartered in Cupertino, California, in Silicon Valley, and known for consumer electronics, software and online services. Founded in 1976 as Apple Computer Company by Steve Jobs, Steve Wozniak and Ronald Wayne, the company was incorporated by Jobs and Wozniak as Apple Computer, Inc. the following year. Its current name was adopted in 2007 as the company expanded its focus from computers to consumer electronics. Apple is one of the Big Tech companies.",
+  "descriptionSource": "https://en.wikipedia.org/wiki/Apple_Inc.",
+  "about": [
+    {
+      "label": "CEO",
+      "value": "John Ternus"
+    },
+    {
+      "label": "Employees",
+      "value": "167K"
+    },
+    {
+      "label": "Founded",
+      "value": "Apr 1, 1976"
+    },
+    {
+      "label": "Headquarters",
+      "value": "Cupertino, California, United States"
+    },
+    {
+      "label": "Sector",
+      "value": "Information Technology"
+    },
+    {
+      "label": "Industry",
+      "value": "Computers, Peripherals, and Software"
+    },
+    {
+      "label": "Website",
+      "value": "-"
+    }
+  ],
+  "analystBuy": 15,
+  "analystHold": 8,
+  "analystSell": 6,
+  "analystConsensus": "Buy",
+  "priceTargets": [
+    {
+      "label": "Highest",
+      "price": 425,
+      "changePercent": 24.07
+    },
+    {
+      "label": "Average",
+      "price": 343.69,
+      "changePercent": 0.33
+    },
+    {
+      "label": "Lowest",
+      "price": 261,
+      "changePercent": -23.81
+    }
+  ],
+  "news": [
+    {
+      "position": 1,
+      "title": "Apple (AAPL) Technical Levels: Support $342, Resistance $347",
+      "url": "https://www.moomoo.com/community/feed/apple-aapl-technical-levels-support-342-resistance-347-117651921567749",
+      "source": "Moomoo",
+      "published": "26 minutes ago"
+    },
+    {
+      "position": 2,
+      "title": "Apple (AAPL) Grows at 12% and Trades at 37 Times Earnings. Is It Worth It?",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-grows-12-trades-011327437.html",
+      "source": "Yahoo Finance",
+      "published": "1 hour ago"
+    },
+    {
+      "position": 3,
+      "title": "Apple's iOS 27 Adds iPhone Handoff to Share One Number Across Two Devices",
+      "url": "https://finance.biggo.com/news/46fbe802-c078-452e-aad6-641928b3bf04",
+      "source": "BigGo Finance",
+      "published": "2 hours ago"
+    },
+    {
+      "position": 4,
+      "title": "Why is Meta stock down today? About 6% lower as the AI sell-off and an Apple agent report hit",
+      "url": "https://www.nacionale.com/en/articles/why-is-meta-stock-down-today-ai-selloff-apple-ai-agent-insider-sales-november-20",
+      "source": "Nacionale",
+      "published": "2 hours ago"
+    },
+    {
+      "position": 5,
+      "title": "Anthropic’s IPO Is Triggering a Selloff. How to Play It Now.",
+      "url": "https://www.barrons.com/articles/anthropic-ipo-triggering-selloff-options-10cb0c08?mod=goog_fin_scbar",
+      "source": "News Corp",
+      "published": "4 hours ago"
+    }
+  ],
+  "relatedStocks": [
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp",
+      "price": 125.53,
+      "changePercent": -14.01
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft Corp",
+      "price": 484.52,
+      "changePercent": -2.77
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com Inc",
+      "price": 246.82,
+      "changePercent": -4.1
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla Inc",
+      "price": 345.82,
+      "changePercent": -7.64
+    }
+  ],
+  "pageUrl": "https://www.google.com/finance/quote/AAPL:NASDAQ"
+}

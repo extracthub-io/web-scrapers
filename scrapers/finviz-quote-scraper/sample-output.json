@@ -1,0 +1,475 @@
+{
+  "ticker": "AAPL",
+  "companyName": "Apple Inc",
+  "website": "http://www.apple.com",
+  "sector": "Technology",
+  "industry": "Consumer Electronics",
+  "country": "USA",
+  "marketCapGroup": "Mega",
+  "exchange": "NASD",
+  "price": 342.56,
+  "priceLabel": "Last Close",
+  "priceTime": "Nov 20 • 3:59 PM ET",
+  "change": -6.65,
+  "changePercent": -1.9,
+  "extendedPrice": 344.87,
+  "extendedPriceLabel": "Aftermarket Close",
+  "extendedPriceTime": "Aftermarket • 7:59 PM ET",
+  "extendedChange": 2.31,
+  "extendedChangePercent": 0.67,
+  "snapshot": [
+    {
+      "label": "Index",
+      "value": "DJIA, NDX, S&P 500, RUI",
+      "description": "Major index membership"
+    },
+    {
+      "label": "Market Cap",
+      "value": "4978.14B",
+      "description": "Market capitalization"
+    },
+    {
+      "label": "Enterprise Value",
+      "value": "5007.19B",
+      "description": "Enterprise Value"
+    },
+    {
+      "label": "Income",
+      "value": "132.18B",
+      "description": "Income (ttm)"
+    },
+    {
+      "label": "Sales",
+      "value": "478.83B",
+      "description": "Revenue (ttm)"
+    },
+    {
+      "label": "Book/sh",
+      "value": "7.71",
+      "description": "Book value per share (mrq)"
+    },
+    {
+      "label": "Cash/sh",
+      "value": "3.90",
+      "description": "Cash per share (mrq)"
+    },
+    {
+      "label": "Dividend Est.",
+      "value": "1.14 (0.33%)",
+      "description": "Analysts' Dividend Estimate (Fiscal Year)"
+    },
+    {
+      "label": "Dividend TTM",
+      "value": "1.07 (0.31%)",
+      "description": "Trailing 12 Months Dividend"
+    },
+    {
+      "label": "Dividend Ex-Date",
+      "value": "Nov 12, 2026",
+      "description": "Ex-Dividend Date"
+    },
+    {
+      "label": "Dividend Gr. 3/5Y",
+      "value": "4.09% 4.51%",
+      "description": "Dividend growth over 3 and 5 years"
+    },
+    {
+      "label": "Payout",
+      "value": "11.81%",
+      "description": "Dividend Payout Ratio (ttm)"
+    },
+    {
+      "label": "Employees",
+      "value": "167000",
+      "description": "Full time employees"
+    },
+    {
+      "label": "IPO",
+      "value": "Dec 12, 1980",
+      "description": "IPO Date"
+    },
+    {
+      "label": "P/E",
+      "value": "38.17",
+      "description": "Price-to-Earnings (ttm)"
+    },
+    {
+      "label": "Forward P/E",
+      "value": "32.58",
+      "description": "Forward Price-to-Earnings (next fiscal year)"
+    },
+    {
+      "label": "PEG",
+      "value": "3.80",
+      "description": "Price-to-Earnings-to-Growth"
+    },
+    {
+      "label": "P/S",
+      "value": "10.40",
+      "description": "Price-to-Sales (ttm)"
+    },
+    {
+      "label": "P/B",
+      "value": "44.41",
+      "description": "Price-to-Book (mrq)"
+    },
+    {
+      "label": "P/C",
+      "value": "87.76",
+      "description": "Price to cash per share (mrq)"
+    },
+    {
+      "label": "P/FCF",
+      "value": "36.59",
+      "description": "Price to Free Cash Flow (ttm)"
+    },
+    {
+      "label": "EV/EBITDA",
+      "value": "29.20",
+      "description": "Enterprise Value to EBITDA"
+    },
+    {
+      "label": "EV/Sales",
+      "value": "10.46",
+      "description": "Enterprise Value to Revenues"
+    },
+    {
+      "label": "Quick Ratio",
+      "value": "0.94",
+      "description": "Quick Ratio (mrq)"
+    },
+    {
+      "label": "Current Ratio",
+      "value": "1.02",
+      "description": "Current Ratio (mrq)"
+    },
+    {
+      "label": "Debt/Eq",
+      "value": "0.77",
+      "description": "Total Debt to Equity (mrq)"
+    },
+    {
+      "label": "LT Debt/Eq",
+      "value": "0.64",
+      "description": "Long Term Debt to Equity (mrq)"
+    },
+    {
+      "label": "Option/Short",
+      "value": "Yes / Yes",
+      "description": "Stock has options trading on a market exchange / Stock is available to sell short"
+    },
+    {
+      "label": "EPS (ttm)",
+      "value": "8.97",
+      "description": "Diluted EPS (ttm)"
+    },
+    {
+      "label": "EPS next Y",
+      "value": "10.51",
+      "description": "EPS estimate for next year"
+    },
+    {
+      "label": "EPS next Q",
+      "value": "2.90",
+      "description": "EPS estimate for next quarter"
+    },
+    {
+      "label": "EPS this Y",
+      "value": "5.12%",
+      "description": "EPS growth this year"
+    },
+    {
+      "label": "EPS next Y",
+      "value": "11.38%",
+      "description": "EPS growth next year"
+    },
+    {
+      "label": "EPS next 5Y",
+      "value": "8.57%",
+      "description": "Long term annual growth estimate (5 years)"
+    },
+    {
+      "label": "EPS past 3/5Y",
+      "value": "13.54% 9.85%",
+      "description": "Annual EPS growth past 3 and 5 years"
+    },
+    {
+      "label": "Sales past 3/5Y",
+      "value": "7.70% 5.53%",
+      "description": "Annual sales growth past 3 and 5 years"
+    },
+    {
+      "label": "EPS Y/Y TTM",
+      "value": "20.33%",
+      "description": "EPS growth TTM"
+    },
+    {
+      "label": "Sales Y/Y TTM",
+      "value": "15.06%",
+      "description": "Sales growth TTM"
+    },
+    {
+      "label": "EPS Q/Q",
+      "value": "13.59%",
+      "description": "Quarterly earnings growth (YoY)"
+    },
+    {
+      "label": "Sales Q/Q",
+      "value": "11.72%",
+      "description": "Quarterly revenue growth (YoY)"
+    },
+    {
+      "label": "Earnings",
+      "value": "Nov 02 AMC",
+      "description": "Earnings date<br><br>BMO = Before Market Open<br>AMC = After Market Close"
+    },
+    {
+      "label": "EPS/Sales Surpr.",
+      "value": "5.56% 0.95%",
+      "description": "Last quarter EPS and Revenue surprise"
+    },
+    {
+      "label": "Insider Own",
+      "value": "0.12%",
+      "description": "Insider ownership"
+    },
+    {
+      "label": "Insider Trans",
+      "value": "-2.44%",
+      "description": "Insider transactions (6-Month change in Insider Ownership)"
+    },
+    {
+      "label": "Inst Own",
+      "value": "69.20%",
+      "description": "Institutional ownership"
+    },
+    {
+      "label": "Inst Trans",
+      "value": "-0.56%",
+      "description": "Institutional transactions (3-Month change in Institutional Ownership)"
+    },
+    {
+      "label": "ROA",
+      "value": "34.61%",
+      "description": "Return on Assets (ttm)"
+    },
+    {
+      "label": "ROE",
+      "value": "142.26%",
+      "description": "Return on Equity (ttm)"
+    },
+    {
+      "label": "ROIC",
+      "value": "71.95%",
+      "description": "Return on Invested Capital (ttm)"
+    },
+    {
+      "label": "Gross Margin",
+      "value": "48.79%",
+      "description": "Gross Margin (ttm)"
+    },
+    {
+      "label": "Oper. Margin",
+      "value": "33.01%",
+      "description": "Operating Margin (ttm)"
+    },
+    {
+      "label": "Profit Margin",
+      "value": "27.60%",
+      "description": "Net Profit Margin (ttm)"
+    },
+    {
+      "label": "SMA20",
+      "value": "-1.42%",
+      "description": "Distance from 20-Day Simple Moving Average"
+    },
+    {
+      "label": "SMA50",
+      "value": "0.22%",
+      "description": "Distance from 50-Day Simple Moving Average"
+    },
+    {
+      "label": "SMA200",
+      "value": "12.97%",
+      "description": "Distance from 200-Day Simple Moving Average"
+    },
+    {
+      "label": "Trades",
+      "value": null,
+      "description": "Trades"
+    },
+    {
+      "label": "Shs Outstand",
+      "value": "14.53B",
+      "description": "Shares outstanding"
+    },
+    {
+      "label": "Shs Float",
+      "value": "14.51B",
+      "description": "Shares float"
+    },
+    {
+      "label": "Short Float",
+      "value": "1.00%",
+      "description": "Short interest share"
+    },
+    {
+      "label": "Short Ratio",
+      "value": "3.41",
+      "description": "Short interest ratio"
+    },
+    {
+      "label": "Short Interest",
+      "value": "144.79M",
+      "description": "Short interest"
+    },
+    {
+      "label": "52W High",
+      "value": "360.83 -5.06%",
+      "description": "Distance from 52-Week High"
+    },
+    {
+      "label": "52W Low",
+      "value": "243.42 40.73%",
+      "description": "Distance from 52-Week Low"
+    },
+    {
+      "label": "Volatility",
+      "value": "2.26% 2.26%",
+      "description": "Volatility (Week, Month)"
+    },
+    {
+      "label": "ATR (14)",
+      "value": "8.18",
+      "description": "Average True Range (14)"
+    },
+    {
+      "label": "RSI (14)",
+      "value": "46.45",
+      "description": "Relative Strength Index"
+    },
+    {
+      "label": "Beta",
+      "value": "1.06",
+      "description": "Beta"
+    },
+    {
+      "label": "Rel Volume",
+      "value": "1.90",
+      "description": "Relative volume"
+    },
+    {
+      "label": "Avg Volume",
+      "value": "42.41M",
+      "description": "Average volume (3 month)"
+    },
+    {
+      "label": "Volume",
+      "value": "80,692,825",
+      "description": "Volume"
+    },
+    {
+      "label": "Perf Week",
+      "value": "-3.85%",
+      "description": "Performance (Week, Excl. Dividends)"
+    },
+    {
+      "label": "Perf Month",
+      "value": "-1.63%",
+      "description": "Performance (Month, Excl. Dividends)"
+    },
+    {
+      "label": "Perf Quarter",
+      "value": "10.38%",
+      "description": "Performance (Quarter, Excl. Dividends)"
+    },
+    {
+      "label": "Perf Half Y",
+      "value": "10.93%",
+      "description": "Performance (Half Year, Excl. Dividends)"
+    },
+    {
+      "label": "Perf YTD",
+      "value": "26.01%",
+      "description": "Performance (Year To Date, Excl. Dividends)"
+    },
+    {
+      "label": "Perf Year",
+      "value": "28.66%",
+      "description": "Performance (Year, Excl. Dividends)"
+    },
+    {
+      "label": "Perf 3Y",
+      "value": "78.93%",
+      "description": "Performance (3 Years, Excl. Dividends)"
+    },
+    {
+      "label": "Perf 5Y",
+      "value": "113.37%",
+      "description": "Performance (5 Years, Excl. Dividends)"
+    },
+    {
+      "label": "Perf 10Y",
+      "value": "1144.99%",
+      "description": "Performance (10 Years, Excl. Dividends)"
+    },
+    {
+      "label": "Recom",
+      "value": "2.20",
+      "description": "Analysts' mean recommendation (1=Buy 5=Sell)"
+    },
+    {
+      "label": "Target Price",
+      "value": "348.52",
+      "description": "Analysts' mean target price"
+    },
+    {
+      "label": "Prev Close",
+      "value": "349.21",
+      "description": "Previous close"
+    },
+    {
+      "label": "Price",
+      "value": "342.56",
+      "description": "Current stock price"
+    },
+    {
+      "label": "Change %",
+      "value": "-1.90%",
+      "description": "Performance (today)"
+    }
+  ],
+  "news": [
+    {
+      "time": "Nov-20-26 11:00PM",
+      "title": "Startup sues Apple in India over tap-to-share contacts feature",
+      "url": "https://finance.yahoo.com/technology/articles/startup-sues-apple-india-over-040000799.html",
+      "source": "TechCrunch"
+    },
+    {
+      "time": "07:46PM",
+      "title": "Has AI's honeymoon ended on Wall Street?",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/ais-honeymoon-ended-wall-street-004604807.html",
+      "source": "AFP"
+    },
+    {
+      "time": "04:53PM",
+      "title": "Apple's secret AI agent shows John Ternus is done sitting out the AI race",
+      "url": "https://finance.yahoo.com/markets/article/apples-secret-ai-agent-shows-john-ternus-is-done-sitting-out-the-ai-race-164226953.html",
+      "source": "Yahoo Finance"
+    },
+    {
+      "time": "04:46PM",
+      "title": "Anthropic's IPO Is Triggering a Selloff. How to Play It Now.",
+      "url": "https://www.barrons.com/articles/anthropic-ipo-triggering-selloff-options-10cb0c08?mod=bar_FV",
+      "source": "Barrons.com"
+    },
+    {
+      "time": "03:21PM",
+      "title": "Major Indexes Dragged as Tech Selloff Intensifies",
+      "url": "https://finviz.com/news/425863/major-indexes-dragged-as-tech-selloff-intensifies",
+      "source": "Schaeffer's Research"
+    }
+  ],
+  "description": "Apple, Inc. engages in the design, manufacture, and sale of smartphones, personal computers, tablets, wearables and accessories, and other varieties of related services. It operates through the following geographical segments: Americas, Europe, Greater China, Japan, and Rest of Asia Pacific. The Americas segment includes North and South America. The Europe segment consists of European countries, as well as India, the Middle East, and Africa. The Greater China segment comprises China, Hong Kong, and Taiwan. The Rest of Asia Pacific segment includes Australia and Asian countries. Its products and services include iPhone, Mac, iPad, AirPods, Apple TV, Apple Watch, Beats products, AppleCare, iCloud, digital content stores, streaming, and licensing services. The company was founded by Steven Paul Jobs, Ronald Gerald Wayne, and Stephen G. Wozniak in April 1976 and is headquartered in Cupertino, CA."
+}

@@ -1,0 +1,376 @@
+{
+  "name": "Transfermarkt - league clubs",
+  "description": "Transfermarkt league overview pages (transfermarkt.com/<league>/startseite/wettbewerb/<id>, optionally /saison_id/<year>): every club with club id and links, squad size, average age, foreigners, average and total market value, plus the league's country, level, reigning champion, number of teams, players, foreigners, average age, average market value, most valuable player and total market value. JavaScript rendering through a US proxy.",
+  "slug": "transfermarkt-league-clubs",
+  "url": "https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "waitForSelector": "#yw1 table.items",
+  "category": "sports",
+  "tags": [
+    "transfermarkt",
+    "football",
+    "soccer",
+    "league",
+    "clubs",
+    "market value",
+    "sports"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "leagueId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "/wettbewerb/"
+          },
+          {
+            "split": "/"
+          },
+          "first"
+        ],
+        "required": true
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "league",
+        "selector": "h1.data-header__headline-wrapper",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "season",
+        "selector": "select[name=\"saison_id\"] option[selected]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "country",
+        "selector": ".data-header__club a",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "leagueLevel",
+        "selector": [
+          ".data-header__club-info > .data-header__label"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "between": [
+              "League level: ",
+              " |"
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "reigningChampion",
+        "selector": [
+          ".data-header__club-info > .data-header__label"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "between": [
+              "Reigning champion: ",
+              " |"
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "numberOfTeams",
+        "selector": [
+          ".data-header__details li.data-header__label"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "between": [
+              "Number of teams: ",
+              " "
+            ]
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "players",
+        "selector": [
+          ".data-header__details li.data-header__label"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "between": [
+              "Players: ",
+              " |"
+            ]
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "foreigners",
+        "selector": ".data-header__details a[href*=\"/gastarbeiter/\"]",
+        "extract": "textContent",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "foreignersShare",
+        "selector": ".data-header__details .tabellenplatz",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "averageMarketValue",
+        "selector": [
+          ".data-header__details li.data-header__label"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "between": [
+              "ø-Market value: ",
+              " |"
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "averageAge",
+        "selector": [
+          ".data-header__details li.data-header__label"
+        ],
+        "combineStrategy": "concat",
+        "concatSeparator": " | ",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "between": [
+              "ø-Age: ",
+              " |"
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "mostValuablePlayer",
+        "selector": ".data-header__details a[href*=\"/spieler/\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "mostValuablePlayerUrl",
+        "selector": ".data-header__details a[href*=\"/spieler/\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "totalMarketValue",
+        "selector": ".data-header__market-value-wrapper",
+        "extract": "textContent",
+        "excludeTags": [
+          "p"
+        ],
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "totalMarketValueEur",
+        "selector": ".data-header__market-value-wrapper",
+        "extract": "textContent",
+        "excludeTags": [
+          "p"
+        ],
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "€"
+          },
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "clubs",
+        "selector": "#yw1 table.items > tbody > tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "club",
+              "selector": "td.hauptlink a[title]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "clubId",
+              "selector": "td.hauptlink a[href*=\"/verein/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "/verein/",
+                    "/"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "clubUrl",
+              "selector": "td.hauptlink a[href*=\"/verein/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "squadUrl",
+              "selector": "td:nth-child(3) a[href*=\"/kader/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "logo",
+              "selector": "td:nth-child(1) img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "squadSize",
+              "selector": "td:nth-child(3)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "averageAge",
+              "selector": "td:nth-child(4)",
+              "extract": "textContent",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "foreigners",
+              "selector": "td:nth-child(5)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "averageMarketValue",
+              "selector": "td:nth-child(6)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "averageMarketValueEur",
+              "selector": "td:nth-child(6)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "€"
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "totalMarketValue",
+              "selector": "td:nth-child(7)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "totalMarketValueEur",
+              "selector": "td:nth-child(7)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "€"
+                },
+                "parseCompactNumber"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

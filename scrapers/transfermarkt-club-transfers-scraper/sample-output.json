@@ -1,0 +1,122 @@
+{
+  "clubId": "281",
+  "pageUrl": "https://www.transfermarkt.com/manchester-city/transfers/verein/281",
+  "club": "Manchester City",
+  "league": "Premier League",
+  "season": "26/27",
+  "arrivalsCount": 17,
+  "expenditure": "€526.20M",
+  "expenditureEur": 526200000,
+  "departuresCount": 19,
+  "income": "€337.02M",
+  "incomeEur": 337020000,
+  "balance": "-€189.18M",
+  "arrivals": [
+    {
+      "name": "Enzo Fernández",
+      "playerId": "648195",
+      "profileUrl": "https://www.transfermarkt.com/enzo-fernandez/profil/spieler/648195",
+      "position": "Central Midfield",
+      "age": 25,
+      "nationalities": [
+        "Argentina"
+      ],
+      "fromClub": "Chelsea FC",
+      "fromClubId": "631",
+      "fromLeague": "Premier League",
+      "fromCountry": "England",
+      "fee": "€145.00M",
+      "feeEur": 145000000,
+      "transferUrl": "https://www.transfermarkt.com/jumplist/transfers/spieler/648195/transfer_id/6558535"
+    },
+    {
+      "name": "Elliot Anderson",
+      "playerId": "567576",
+      "profileUrl": "https://www.transfermarkt.com/elliot-anderson/profil/spieler/567576",
+      "position": "Defensive Midfield",
+      "age": 23,
+      "nationalities": [
+        "England",
+        "Scotland"
+      ],
+      "fromClub": "Nottingham Forest",
+      "fromClubId": "703",
+      "fromLeague": "Premier League",
+      "fromCountry": "England",
+      "fee": "€135.00M",
+      "feeEur": 135000000,
+      "transferUrl": "https://www.transfermarkt.com/jumplist/transfers/spieler/567576/transfer_id/6396999"
+    },
+    {
+      "name": "Ayyoub Bouaddi",
+      "playerId": "1097139",
+      "profileUrl": "https://www.transfermarkt.com/ayyoub-bouaddi/profil/spieler/1097139",
+      "position": "Defensive Midfield",
+      "age": 18,
+      "nationalities": [
+        "Morocco",
+        "France"
+      ],
+      "fromClub": "LOSC Lille",
+      "fromClubId": "1082",
+      "fromLeague": "Ligue 1",
+      "fromCountry": "France",
+      "fee": "€95.00M",
+      "feeEur": 95000000,
+      "transferUrl": "https://www.transfermarkt.com/jumplist/transfers/spieler/1097139/transfer_id/6536198"
+    }
+  ],
+  "departures": [
+    {
+      "name": "Sávio",
+      "playerId": "743591",
+      "profileUrl": "https://www.transfermarkt.com/savio/profil/spieler/743591",
+      "position": "Left Winger",
+      "age": 22,
+      "nationalities": [
+        "Brazil"
+      ],
+      "toClub": "Tottenham Hotspur",
+      "toClubId": "148",
+      "toLeague": "Premier League",
+      "toCountry": "England",
+      "fee": "€87.70M",
+      "feeEur": 87700000,
+      "transferUrl": "https://www.transfermarkt.com/jumplist/transfers/spieler/743591/transfer_id/6532593"
+    },
+    {
+      "name": "Tijjani Reijnders",
+      "playerId": "460939",
+      "profileUrl": "https://www.transfermarkt.com/tijjani-reijnders/profil/spieler/460939",
+      "position": "Central Midfield",
+      "age": 28,
+      "nationalities": [
+        "Netherlands"
+      ],
+      "toClub": "Al-Qadsiah FC",
+      "toClubId": "26069",
+      "toLeague": "Saudi Pro League",
+      "toCountry": "Saudi Arabia",
+      "fee": "€61.00M",
+      "feeEur": 61000000,
+      "transferUrl": "https://www.transfermarkt.com/jumplist/transfers/spieler/460939/transfer_id/6518125"
+    },
+    {
+      "name": "Rodri",
+      "playerId": "357565",
+      "profileUrl": "https://www.transfermarkt.com/rodri/profil/spieler/357565",
+      "position": "Defensive Midfield",
+      "age": 30,
+      "nationalities": [
+        "Spain"
+      ],
+      "toClub": "FC Barcelona",
+      "toClubId": "131",
+      "toLeague": "LaLiga",
+      "toCountry": "Spain",
+      "fee": "€60.00M",
+      "feeEur": 60000000,
+      "transferUrl": "https://www.transfermarkt.com/jumplist/transfers/spieler/357565/transfer_id/6515728"
+    }
+  ]
+}

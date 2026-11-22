@@ -1,0 +1,403 @@
+{
+  "name": "Transfermarkt - club transfers",
+  "description": "Transfermarkt club transfer pages (transfermarkt.com/<club>/transfers/verein/<id>, optionally /saison_id/<year>): every arrival and departure of the season with player name, id, profile link, position, age, nationalities, the other club (name, id, league, country) and the fee (as shown and in euros; loans and free transfers as shown), plus the club name, id, season, arrival / departure counts, income, expenditure and overall balance. JavaScript rendering through a US proxy.",
+  "slug": "transfermarkt-club-transfers",
+  "url": "https://www.transfermarkt.com/manchester-city/transfers/verein/281",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "waitForSelector": "#yw1 table.items",
+  "category": "sports",
+  "tags": [
+    "transfermarkt",
+    "football",
+    "soccer",
+    "transfers",
+    "club",
+    "sports"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "clubId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "/verein/"
+          },
+          {
+            "split": "/"
+          },
+          "first"
+        ],
+        "required": true
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "club",
+        "selector": "h1.data-header__headline-wrapper",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "league",
+        "selector": ".data-header__club a",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "season",
+        "selector": "select[name=\"saison_id\"] option[selected]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "arrivalsCount",
+        "selector": "tr.transfer-record__expenses td:nth-child(2)",
+        "extract": "textContent",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "expenditure",
+        "selector": "tr.transfer-record__expenses td.transfer-record__total",
+        "extract": "textContent",
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "expenditureEur",
+        "selector": "tr.transfer-record__expenses td.transfer-record__total",
+        "extract": "textContent",
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "€"
+          },
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "departuresCount",
+        "selector": "tr.transfer-record__revenue td:nth-child(2)",
+        "extract": "textContent",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "income",
+        "selector": "tr.transfer-record__revenue td.transfer-record__total",
+        "extract": "textContent",
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "incomeEur",
+        "selector": "tr.transfer-record__revenue td.transfer-record__total",
+        "extract": "textContent",
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "€"
+          },
+          "parseCompactNumber"
+        ]
+      },
+      {
+        "name": "balance",
+        "selector": "table tfoot td.transfer-record__total",
+        "extract": "textContent",
+        "textSeparator": "",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "arrivals",
+        "selector": "#yw1 table.items > tbody > tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "playerId",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/spieler/"
+                },
+                {
+                  "split": "/"
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "profileUrl",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "position",
+              "selector": "table.inline-table tr:nth-child(2) td",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "age",
+              "selector": "td.zentriert:nth-child(3)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "nationalities",
+              "selector": "td.zentriert:nth-child(4) img.flaggenrahmen[title]",
+              "isArray": true,
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "fromClub",
+              "selector": "td:nth-child(5) td.hauptlink a[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "fromClubId",
+              "selector": "td:nth-child(5) td.hauptlink a[href*=\"/verein/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/verein/"
+                },
+                {
+                  "split": "/"
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "fromLeague",
+              "selector": "td:nth-child(5) tr:nth-child(2) a[title]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "fromCountry",
+              "selector": "td:nth-child(5) tr:nth-child(2) img.flaggenrahmen[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "fee",
+              "selector": "td.rechts.hauptlink",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "feeEur",
+              "selector": "td.rechts.hauptlink",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "€"
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "transferUrl",
+              "selector": "td.rechts.hauptlink a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "departures",
+        "selector": "#yw2 table.items > tbody > tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "playerId",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/spieler/"
+                },
+                {
+                  "split": "/"
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "profileUrl",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "position",
+              "selector": "table.inline-table tr:nth-child(2) td",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "age",
+              "selector": "td.zentriert:nth-child(3)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "nationalities",
+              "selector": "td.zentriert:nth-child(4) img.flaggenrahmen[title]",
+              "isArray": true,
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "toClub",
+              "selector": "td:nth-child(5) td.hauptlink a[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "toClubId",
+              "selector": "td:nth-child(5) td.hauptlink a[href*=\"/verein/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/verein/"
+                },
+                {
+                  "split": "/"
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "toLeague",
+              "selector": "td:nth-child(5) tr:nth-child(2) a[title]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "toCountry",
+              "selector": "td:nth-child(5) tr:nth-child(2) img.flaggenrahmen[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "fee",
+              "selector": "td.rechts.hauptlink",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "feeEur",
+              "selector": "td.rechts.hauptlink",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "€"
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "transferUrl",
+              "selector": "td.rechts.hauptlink a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

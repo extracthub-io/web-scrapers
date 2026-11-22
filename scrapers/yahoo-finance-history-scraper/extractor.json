@@ -1,0 +1,212 @@
+{
+  "name": "Yahoo Finance - historical prices",
+  "description": "Yahoo Finance historical data pages (finance.yahoo.com/quote/<SYMBOL>/history/, optionally with period1 / period2 / frequency): company name, symbol, currency, date range and interval shown, and the daily (or weekly / monthly) price rows with date, open, high, low, close, adjusted close and volume, plus the dividend and stock split rows of the same period.",
+  "slug": "yahoo-finance-history",
+  "url": "https://finance.yahoo.com/quote/AAPL/history/",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "yahoo finance",
+    "stocks",
+    "historical prices",
+    "ohlc",
+    "price history",
+    "dividends",
+    "finance"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "[data-testid=\"quote-title\"] h1",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "before": {
+              "text": " (",
+              "last": true
+            }
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "symbol",
+        "selector": "[data-testid=\"quote-title\"] h1",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": {
+              "text": "(",
+              "last": true
+            }
+          },
+          {
+            "before": ")"
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "exchange",
+        "selector": "[data-testid=\"quote-hdr\"] .exchange > span:first-child",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "split": " - "
+          },
+          "first"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "[data-testid=\"history-table\"] .currency > span:first-child",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": "Currency in "
+          }
+        ]
+      },
+      {
+        "name": "dateRange",
+        "selector": "[data-testid=\"history-date-picker\"] button[title]",
+        "extract": "attributeValue",
+        "attributeName": "title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "interval",
+        "selector": "[data-testid=\"history-interval-select\"] button[title]",
+        "extract": "attributeValue",
+        "attributeName": "title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "prices",
+        "selector": "[data-testid=\"history-table\"] table tbody tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "date",
+              "selector": "td:nth-child(1)",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "open",
+              "selector": "td:nth-child(2)",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "high",
+              "selector": "td:nth-child(3)",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "low",
+              "selector": "td:nth-child(4)",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "close",
+              "selector": "td:nth-child(5)",
+              "transforms": [
+                "toNumber"
+              ],
+              "required": true
+            },
+            {
+              "name": "adjClose",
+              "selector": "td:nth-child(6)",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "volume",
+              "selector": "td:nth-child(7)",
+              "transforms": [
+                "toInteger"
+              ]
+            }
+          ]
+        },
+        "required": true
+      },
+      {
+        "name": "events",
+        "selector": "[data-testid=\"history-table\"] table tbody tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "date",
+              "selector": "td:nth-child(1)",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "event",
+              "selector": "td.event",
+              "excludeTags": [
+                {
+                  "tag": "span",
+                  "hasAttributeValue": [
+                    [
+                      "slot",
+                      "content"
+                    ]
+                  ]
+                }
+              ],
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": " "
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "td.event > span:first-child",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      }
+    ]
+  }
+}

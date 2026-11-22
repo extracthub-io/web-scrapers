@@ -1,0 +1,282 @@
+{
+  "pageTitle": "Live Cricket Score | Scorecard | Live Commentary - IPL 2026 | Cricbuzz.com",
+  "pageUrl": "https://www.cricbuzz.com/cricket-match/live-scores",
+  "tab": "Live",
+  "series": [
+    {
+      "seriesName": "India tour of New Zealand 2026",
+      "seriesId": "12543",
+      "seriesUrl": "https://www.cricbuzz.com/cricket-series/12543/india-tour-of-new-zealand-2026/matches",
+      "matches": [
+        {
+          "matchId": "161285",
+          "title": "New Zealand vs India, 1st Test",
+          "matchDesc": "1st Test",
+          "venue": "Wellington, Basin Reserve",
+          "teams": [
+            {
+              "name": "New Zealand",
+              "shortName": "NZ",
+              "score": "368 & 21-1",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c776333/new-zealand.jpg"
+            },
+            {
+              "name": "India",
+              "shortName": "IND",
+              "score": "720-9 d",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c776162/india.jpg"
+            }
+          ],
+          "status": "Day 4: 2nd Session - New Zealand trail by 331 runs",
+          "url": "https://www.cricbuzz.com/live-cricket-stream/161285/nz-vs-ind-1st-test-india-tour-of-new-zealand-2026"
+        }
+      ]
+    },
+    {
+      "seriesName": "CSA Four-Day Series Division One 2026-27",
+      "seriesId": "13140",
+      "seriesUrl": "https://www.cricbuzz.com/cricket-series/13140/csa-four-day-series-division-one-2026-27/matches",
+      "matches": [
+        {
+          "matchId": "171797",
+          "title": "Lions vs North West - Eastvaal Renault Dragons, 12th Match",
+          "matchDesc": "12th Match",
+          "venue": "Potchefstroom, Senwes Park",
+          "teams": [
+            {
+              "name": "Lions",
+              "shortName": "LIONS",
+              "score": "384-8 d",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172224/lions.jpg"
+            },
+            {
+              "name": "North West - Eastvaal Renault Dragons",
+              "shortName": "NWEST",
+              "score": "175-7",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c248439/north-west-eastvaal-renault-dragons.jpg"
+            }
+          ],
+          "status": "Day 3: Stumps - North West - Eastvaal Renault Dragons trail by 209 runs",
+          "url": "https://www.cricbuzz.com/live-cricket-scores/171797/lions-vs-nwest-12th-match-csa-four-day-series-division-one-2026-27"
+        },
+        {
+          "matchId": "171777",
+          "title": "Dolphins vs Western Province, 10th Match",
+          "matchDesc": "10th Match",
+          "venue": "Durban, Kingsmead",
+          "teams": [
+            {
+              "name": "Dolphins",
+              "shortName": "DOL",
+              "score": "235 & 294",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172183/dolphins.jpg"
+            },
+            {
+              "name": "Western Province",
+              "shortName": "WPR",
+              "score": "251 & 50-1",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c1082447/western-province.jpg"
+            }
+          ],
+          "status": "Day 3: Stumps - Western Province need 229 runs",
+          "url": "https://www.cricbuzz.com/live-cricket-scores/171777/dol-vs-wpr-10th-match-csa-four-day-series-division-one-2026-27"
+        },
+        {
+          "matchId": "171787",
+          "title": "Boland vs Knights, 11th Match",
+          "matchDesc": "11th Match",
+          "venue": "Bloemfontein, Mangaung Oval",
+          "teams": [
+            {
+              "name": "Boland",
+              "shortName": "BOL",
+              "score": "297",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c349610/boland.jpg"
+            },
+            {
+              "name": "Knights",
+              "shortName": "KNG",
+              "score": "323-6",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172331/knights.jpg"
+            }
+          ],
+          "status": "Day 3: Stumps - Knights lead by 26 runs",
+          "url": "https://www.cricbuzz.com/live-cricket-scores/171787/bol-vs-kng-11th-match-csa-four-day-series-division-one-2026-27"
+        },
+        {
+          "matchId": "171767",
+          "title": "Titans vs Warriors, 9th Match",
+          "matchDesc": "9th Match",
+          "venue": "Pretoria, LC de Villiers Oval",
+          "teams": [
+            {
+              "name": "Titans",
+              "shortName": "TIT",
+              "score": "202 & 372-6 d",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172182/titans.jpg"
+            },
+            {
+              "name": "Warriors",
+              "shortName": "WAR",
+              "score": "178 & 20-2",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172222/warriors.jpg"
+            }
+          ],
+          "status": "Day 3: Stumps - Warriors need 377 runs",
+          "url": "https://www.cricbuzz.com/live-cricket-scores/171767/tit-vs-war-9th-match-csa-four-day-series-division-one-2026-27"
+        }
+      ]
+    },
+    {
+      "seriesName": "Plunket Shield 2026-27",
+      "seriesId": "13097",
+      "seriesUrl": "https://www.cricbuzz.com/cricket-series/13097/plunket-shield-2026-27/matches",
+      "matches": [
+        {
+          "matchId": "171320",
+          "title": "Wellington vs Central Districts, 2nd Match",
+          "matchDesc": "2nd Match",
+          "venue": "Palmerston North, Fitzherbert Park",
+          "teams": [
+            {
+              "name": "Wellington",
+              "shortName": "WEL",
+              "score": "152 & 335",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172364/wellington.jpg"
+            },
+            {
+              "name": "Central Districts",
+              "shortName": "CD",
+              "score": "265 & 226-1",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172363/central-districts.jpg"
+            }
+          ],
+          "status": "Central Districts won by 9 wkts",
+          "url": "https://www.cricbuzz.com/live-cricket-scores/171320/wel-vs-cd-2nd-match-plunket-shield-2026-27"
+        },
+        {
+          "matchId": "171330",
+          "title": "Canterbury vs Otago, 3rd Match",
+          "matchDesc": "3rd Match",
+          "venue": "Dunedin, University Oval",
+          "teams": [
+            {
+              "name": "Canterbury",
+              "shortName": "CNTBRY",
+              "score": "485 & 321-5 d",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172362/canterbury.jpg"
+            },
+            {
+              "name": "Otago",
+              "shortName": "OTG",
+              "score": "410-7 d & 112-1",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172197/otago.jpg"
+            }
+          ],
+          "status": "Day 4: 2nd Session - Otago need 285 runs",
+          "url": "https://www.cricbuzz.com/live-cricket-scores/171330/cntbry-vs-otg-3rd-match-plunket-shield-2026-27"
+        }
+      ]
+    },
+    {
+      "seriesName": "Sheffield Shield 2026-27",
+      "seriesId": "12717",
+      "seriesUrl": "https://www.cricbuzz.com/cricket-series/12717/sheffield-shield-2026-27/matches",
+      "matches": [
+        {
+          "matchId": "166677",
+          "title": "Queensland vs New South Wales, 13th Match",
+          "matchDesc": "13th Match",
+          "venue": "Sydney, Sydney Cricket Ground",
+          "teams": [
+            {
+              "name": "Queensland",
+              "shortName": "QL",
+              "score": "72-1",
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172233/queensland.jpg"
+            },
+            {
+              "name": "New South Wales",
+              "shortName": "NSW",
+              "score": null,
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172196/new-south-wales.jpg"
+            }
+          ],
+          "status": "Day 1: Lunch Break",
+          "url": "https://www.cricbuzz.com/live-cricket-scores/166677/ql-vs-nsw-13th-match-sheffield-shield-2026-27"
+        }
+      ]
+    },
+    {
+      "seriesName": "Malaysia Women's T20I Tri-Series, 2026",
+      "seriesId": "13553",
+      "seriesUrl": "https://www.cricbuzz.com/cricket-series/13553/malaysia-womens-t20i-tri-series-2026/matches",
+      "matches": [
+        {
+          "matchId": "178410",
+          "title": "China Women vs Malaysia Women, 3rd Match",
+          "matchDesc": "3rd Match",
+          "venue": "Kuala Lumpur, Bayuemas Oval",
+          "teams": [
+            {
+              "name": "China Women",
+              "shortName": "CHNW",
+              "score": null,
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c172534/china-women.jpg"
+            },
+            {
+              "name": "Malaysia Women",
+              "shortName": "MLYW",
+              "score": null,
+              "flagUrl": "https://static.cricbuzz.com/a/img/v1/0x0/i1/c776323/malaysia-women.jpg"
+            }
+          ],
+          "status": "Malaysia Women opt to bowl",
+          "url": "https://www.cricbuzz.com/live-cricket-scores/178410/chnw-vs-mlyw-3rd-match-malaysia-womens-t20i-tri-series-2026"
+        }
+      ]
+    }
+  ],
+  "allCurrentMatches": [
+    {
+      "matchId": "161285",
+      "title": "New Zealand vs India, 1st Test",
+      "state": "Live",
+      "teams": "New Zealand vs India",
+      "matchDesc": "1st Test",
+      "url": "https://www.cricbuzz.com/live-cricket-scores/161285/nz-vs-ind-1st-test-india-tour-of-new-zealand-2026"
+    },
+    {
+      "matchId": "151338",
+      "title": "England vs Australia, 1st T20I",
+      "state": "Complete",
+      "teams": "England vs Australia",
+      "matchDesc": "1st T20I",
+      "url": "https://www.cricbuzz.com/live-cricket-scores/151338/eng-vs-aus-1st-t20i-england-tour-of-australia-2026"
+    },
+    {
+      "matchId": "170713",
+      "title": "Sri Lanka vs Pakistan, 2nd Test",
+      "state": "PAK Won",
+      "teams": "Sri Lanka vs Pakistan",
+      "matchDesc": "2nd Test",
+      "url": "https://www.cricbuzz.com/live-cricket-scores/170713/sl-vs-pak-2nd-test-sri-lanka-tour-of-pakistan-2026"
+    },
+    {
+      "matchId": "164991",
+      "title": "Vidarbha vs Gujarat, Elite Group D",
+      "state": "Preview",
+      "teams": "Vidarbha vs Gujarat",
+      "matchDesc": "Elite Group D",
+      "url": "https://www.cricbuzz.com/live-cricket-scores/164991/vid-vs-guj-elite-group-d-syed-mushtaq-ali-trophy-elite-2026"
+    },
+    {
+      "matchId": "164983",
+      "title": "Himachal Pradesh vs Tripura, Elite Group C",
+      "state": "Preview",
+      "teams": "Himachal Pradesh vs Tripura",
+      "matchDesc": "Elite Group C",
+      "url": "https://www.cricbuzz.com/live-cricket-scores/164983/hp-vs-tri-elite-group-c-syed-mushtaq-ali-trophy-elite-2026"
+    }
+  ]
+}

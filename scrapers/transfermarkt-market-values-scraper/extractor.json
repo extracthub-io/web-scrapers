@@ -1,0 +1,198 @@
+{
+  "name": "Transfermarkt - most valuable players",
+  "description": "Transfermarkt most valuable players ranking (transfermarkt.com/spieler-statistik/wertvollstespieler/marktwertetop, 25 players per page, ?page=2 ... and the page's filters): every player with rank, name, player id, profile link, position, age, nationalities, club (name and id), market value (as shown and in euros) and the market value history link, plus the current page, last page and next page URL. JavaScript rendering through a US proxy.",
+  "slug": "transfermarkt-market-values",
+  "url": "https://www.transfermarkt.com/spieler-statistik/wertvollstespieler/marktwertetop",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "waitForSelector": "#yw1 table.items",
+  "category": "sports",
+  "tags": [
+    "transfermarkt",
+    "football",
+    "soccer",
+    "market value",
+    "ranking",
+    "players",
+    "sports"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageUrl",
+        "selector": "meta[property=\"og:url\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "page",
+        "selector": ".tm-pagination__list-item--active a",
+        "extract": "textContent",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "lastPage",
+        "selector": ".tm-pagination__list-item--icon-last-page a[title]",
+        "extract": "attributeValue",
+        "attributeName": "title",
+        "transforms": [
+          {
+            "between": [
+              "(page ",
+              ")"
+            ]
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": ".tm-pagination__list-item--icon-next-page a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "players",
+        "selector": "#yw1 table.items > tbody > tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "rank",
+              "selector": "td.zentriert:nth-child(1)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "playerId",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/spieler/"
+                },
+                {
+                  "split": "/"
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "profileUrl",
+              "selector": "table.inline-table td.hauptlink a[href*=\"/spieler/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "position",
+              "selector": "table.inline-table tr:nth-child(2) td",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "table.inline-table img.bilderrahmen-fixed[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "age",
+              "selector": "td.zentriert:nth-child(3)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "nationalities",
+              "selector": "td.zentriert:nth-child(4) img.flaggenrahmen[title]",
+              "isArray": true,
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "club",
+              "selector": "td.zentriert:nth-child(5) a[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "clubId",
+              "selector": "td.zentriert:nth-child(5) a[href*=\"/verein/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/verein/"
+                },
+                {
+                  "split": "/"
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "marketValue",
+              "selector": "td.rechts.hauptlink",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "marketValueEur",
+              "selector": "td.rechts.hauptlink",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "€"
+                },
+                "parseCompactNumber"
+              ]
+            },
+            {
+              "name": "marketValueHistoryUrl",
+              "selector": "td.rechts.hauptlink a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

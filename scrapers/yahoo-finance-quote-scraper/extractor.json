@@ -1,0 +1,404 @@
+{
+  "name": "Yahoo Finance - stock quote",
+  "description": "Yahoo Finance quote pages (finance.yahoo.com/quote/<SYMBOL>/): company name, symbol, exchange, currency, last price, change, change %, market time, after-hours / overnight price, previous close, open, day range, 52-week range, volume, average volume, market cap, P/E, the full Summary statistics table (bid, ask, beta, EPS, earnings date, dividend and yield, 1y target, ...), sector / industry, description, website, employees, performance vs the S&P 500, financial highlights and analyst price targets (low / average / high).",
+  "slug": "yahoo-finance-quote",
+  "url": "https://finance.yahoo.com/quote/AAPL/",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "yahoo finance",
+    "stocks",
+    "stock quote",
+    "market data",
+    "finance",
+    "market cap",
+    "pe ratio"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "[data-testid=\"quote-title\"] h1",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "before": {
+              "text": " (",
+              "last": true
+            }
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "symbol",
+        "selector": "[data-testid=\"quote-title\"] h1",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": {
+              "text": "(",
+              "last": true
+            }
+          },
+          {
+            "before": ")"
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "exchange",
+        "selector": "[data-testid=\"quote-hdr\"] .exchange > span:first-child",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "split": " - "
+          },
+          "first"
+        ]
+      },
+      {
+        "name": "quoteSource",
+        "selector": "[data-testid=\"quote-hdr\"] .exchange > span:first-child",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "[data-testid=\"quote-hdr\"] .exchange > span:nth-of-type(3)",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "[data-testid=\"qsp-price\"]",
+        "transforms": [
+          "toNumber"
+        ],
+        "required": true
+      },
+      {
+        "name": "change",
+        "selector": "[data-testid=\"qsp-price-change\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "changePercent",
+        "selector": "[data-testid=\"qsp-price-change-percent\"]",
+        "transforms": [
+          {
+            "between": [
+              "(",
+              "%"
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "marketTime",
+        "selector": "[data-testid=\"quote-price\"] section.primary .marketTimeNotice",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "extendedSession",
+        "selector": "[data-testid=\"quote-price\"] section.secondary .marketIcon[class]",
+        "extract": "attributeValue",
+        "attributeName": "class",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "split": " "
+          },
+          {
+            "nth": 2
+          }
+        ]
+      },
+      {
+        "name": "extendedPrice",
+        "selector": "[data-testid=\"qsp-overnight-price\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "extendedChange",
+        "selector": "[data-testid=\"qsp-overnight-price-change\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "extendedChangePercent",
+        "selector": "[data-testid=\"qsp-overnight-price-change-percent\"]",
+        "transforms": [
+          {
+            "between": [
+              "(",
+              "%"
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "extendedMarketTime",
+        "selector": "[data-testid=\"quote-price\"] section.secondary .marketTimeNotice",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "excludeTags": [
+          "p"
+        ]
+      },
+      {
+        "name": "previousClose",
+        "selector": "[data-testid=\"quote-statistics\"] fin-streamer[data-field=\"regularMarketPreviousClose\"][data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "open",
+        "selector": "[data-testid=\"quote-statistics\"] fin-streamer[data-field=\"regularMarketOpen\"][data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "dayRange",
+        "selector": "[data-testid=\"quote-statistics\"] fin-streamer[data-field=\"regularMarketDayRange\"][data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "fiftyTwoWeekRange",
+        "selector": "[data-testid=\"quote-statistics\"] fin-streamer[data-field=\"fiftyTwoWeekRange\"][data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "volume",
+        "selector": "[data-testid=\"quote-statistics\"] fin-streamer[data-field=\"regularMarketVolume\"][data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "avgVolume",
+        "selector": "[data-testid=\"quote-statistics\"] fin-streamer[data-field=\"averageVolume\"][data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "marketCap",
+        "selector": "[data-testid=\"quote-statistics\"] fin-streamer[data-field=\"marketCap\"][data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "peRatio",
+        "selector": "[data-testid=\"quote-statistics\"] fin-streamer[data-field=\"trailingPE\"][data-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-value",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "statistics",
+        "selector": "[data-testid=\"quote-statistics\"] li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "span.label[title]",
+              "extract": "attributeValue",
+              "attributeName": "title",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "span.value",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "industrySector",
+        "selector": "[data-testid=\"company-overview-card\"] .titleInfo",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "[data-testid=\"company-overview-card\"] .description > p",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "website",
+        "selector": "[data-testid=\"company-overview-card\"] .description > a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "companyInfo",
+        "selector": "[data-testid=\"company-overview-card\"] .infoSection",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "h3",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "p",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "performance",
+        "selector": "[data-testid=\"performance-overview\"] section[data-testid=\"card-container\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "period",
+              "selector": "h3",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "symbolReturn",
+              "selector": ".perfInfo > div:nth-of-type(1) .perf",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "benchmark",
+              "selector": ".perfInfo > div:nth-of-type(2) .symbol",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "benchmarkReturn",
+              "selector": ".perfInfo > div:nth-of-type(2) .perf",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "financialHighlights",
+        "selector": "[data-testid=\"financial-highlights\"] .highlights li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "p.label",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "p.value",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "analystTargetLow",
+        "selector": "[data-testid=\"analyst-price-target-card\"] .priceContainer.low .price",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "analystTargetAverage",
+        "selector": "[data-testid=\"analyst-price-target-card\"] .priceContainer.average .price",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "analystTargetHigh",
+        "selector": "[data-testid=\"analyst-price-target-card\"] .priceContainer.high .price",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      }
+    ]
+  }
+}

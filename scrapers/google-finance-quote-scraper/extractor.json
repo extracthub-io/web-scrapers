@@ -1,0 +1,355 @@
+{
+  "name": "Google Finance - stock quote",
+  "description": "Google Finance quote pages (google.com/finance/quote/<SYMBOL>:<EXCHANGE>?hl=en): company name, ticker, symbol, exchange, price, change and change %, market status / time, currency, after-hours / pre-market price, the key stats grid (open, high, low, market cap, average volume, volume, dividend yield, quarterly dividend, ex-dividend date, P/E, 52-week high / low, EPS, beta, shares outstanding, employees), company profile and About rows (CEO, founded, headquarters, sector, industry, website), analyst ratings (buy / hold / sell) and 12-month price targets (highest, average, lowest), latest news (title, link, source, time) and related stocks.",
+  "slug": "google-finance-quote",
+  "url": "https://www.google.com/finance/quote/AAPL:NASDAQ?hl=en",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "google finance",
+    "stocks",
+    "stock quote",
+    "market data",
+    "finance",
+    "analyst ratings",
+    "stock news"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "div[jsname=\"AS5Pxb\"] .gO24Ff",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "ticker",
+        "selector": ".JV7gl[title]",
+        "extract": "attributeValue",
+        "attributeName": "title"
+      },
+      {
+        "name": "symbol",
+        "selector": ".JV7gl[title]",
+        "extract": "attributeValue",
+        "attributeName": "title",
+        "transforms": [
+          {
+            "before": ":"
+          }
+        ]
+      },
+      {
+        "name": "exchange",
+        "selector": ".JV7gl[title]",
+        "extract": "attributeValue",
+        "attributeName": "title",
+        "transforms": [
+          {
+            "after": ":"
+          }
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "div[jsname=\"AS5Pxb\"] .N6SYTe span[jsname=\"Pdsbrc\"]",
+        "transforms": [
+          "extractPrice"
+        ],
+        "required": true
+      },
+      {
+        "name": "priceText",
+        "selector": "div[jsname=\"AS5Pxb\"] .N6SYTe span[jsname=\"Pdsbrc\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "changePercent",
+        "selector": "div[jsname=\"AS5Pxb\"] .ujg0He span[jsname=\"vY9t3b\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "change",
+        "selector": "div[jsname=\"AS5Pxb\"] .ujg0He span[jsname=\"xnruHf\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "marketStatus",
+        "selector": "div[jsname=\"AS5Pxb\"] .jZZ2de",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "before": " · "
+          }
+        ]
+      },
+      {
+        "name": "currency",
+        "selector": "div[jsname=\"AS5Pxb\"] .jZZ2de",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": " · "
+          }
+        ]
+      },
+      {
+        "name": "extendedPrice",
+        "selector": "div[jsname=\"AS5Pxb\"] .B0rt4b span[jsname=\"Pdsbrc\"]",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "extendedChangePercent",
+        "selector": "div[jsname=\"AS5Pxb\"] .B0rt4b span[jsname=\"vY9t3b\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "extendedChange",
+        "selector": "div[jsname=\"AS5Pxb\"] .B0rt4b span[jsname=\"xnruHf\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "extendedSession",
+        "selector": "div[jsname=\"AS5Pxb\"] .B0rt4b .bU8Fdf",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": " "
+          }
+        ]
+      },
+      {
+        "name": "stats",
+        "selector": "div[jsname=\"EZteOc\"] .KxsRFb",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": ".SwQK7",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": ".dO6ijd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "description",
+        "selector": ".RaUwRb > div > span",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "descriptionSource",
+        "selector": ".RaUwRb a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "about",
+        "selector": ".LuLFhc",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": ".OspXqd",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": ".oJCxTc",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "analystBuy",
+        "selector": "div[jsname=\"Oqy0Pd\"][data-buy]",
+        "extract": "attributeValue",
+        "attributeName": "data-buy",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "analystHold",
+        "selector": "div[jsname=\"Oqy0Pd\"][data-hold]",
+        "extract": "attributeValue",
+        "attributeName": "data-hold",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "analystSell",
+        "selector": "div[jsname=\"Oqy0Pd\"][data-sell]",
+        "extract": "attributeValue",
+        "attributeName": "data-sell",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "analystConsensus",
+        "selector": ".aFZaee .Pm5yRb",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "priceTargets",
+        "selector": ".cICk9e .U3dG8e",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": ".CTRKfb",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "price",
+              "selector": ".mrliXd span[jsname=\"Pdsbrc\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "changePercent",
+              "selector": ".mrliXd span[jsname=\"vY9t3b\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "news",
+        "selector": ".LIT7If",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": ".TQWIEd",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href"
+            },
+            {
+              "name": "source",
+              "selector": ".WrUjhf",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "published",
+              "selector": ".JQ8Czd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "relatedStocks",
+        "selector": "a.HPIOqe[href]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "symbol",
+              "selector": ".zeKmqc",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": ".KzWCNc",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "price",
+              "selector": "span[jsname=\"Pdsbrc\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "changePercent",
+              "selector": "span[jsname=\"vY9t3b\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      }
+    ]
+  }
+}

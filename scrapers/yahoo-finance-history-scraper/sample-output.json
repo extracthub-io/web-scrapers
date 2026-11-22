@@ -1,0 +1,83 @@
+{
+  "name": "Apple Inc.",
+  "symbol": "AAPL",
+  "exchange": "NasdaqGS",
+  "currency": "USD",
+  "dateRange": "Nov 20, 2025 - Nov 20, 2026",
+  "interval": "Daily",
+  "prices": [
+    {
+      "position": 1,
+      "date": "Nov 19, 2026",
+      "open": 352.91,
+      "high": 355.28,
+      "low": 346.47,
+      "close": 349.21,
+      "adjClose": 349.21,
+      "volume": 40795500
+    },
+    {
+      "position": 2,
+      "date": "Nov 18, 2026",
+      "open": 351.94,
+      "high": 356.42,
+      "low": 351.47,
+      "close": 352.45,
+      "adjClose": 352.45,
+      "volume": 34209900
+    },
+    {
+      "position": 3,
+      "date": "Nov 17, 2026",
+      "open": 352.83,
+      "high": 355.36,
+      "low": 349.67,
+      "close": 351.91,
+      "adjClose": 351.91,
+      "volume": 37407500
+    },
+    {
+      "position": 4,
+      "date": "Nov 16, 2026",
+      "open": 357.13,
+      "high": 357.13,
+      "low": 351.31,
+      "close": 352.78,
+      "adjClose": 352.78,
+      "volume": 50292200
+    },
+    {
+      "position": 5,
+      "date": "Nov 13, 2026",
+      "open": 357.96,
+      "high": 360.83,
+      "low": 355.75,
+      "close": 356.27,
+      "adjClose": 356.27,
+      "volume": 40027500
+    }
+  ],
+  "events": [
+    {
+      "date": "Nov 12, 2026",
+      "event": "Dividend",
+      "value": "0.27"
+    },
+    {
+      "date": "Aug 10, 2026",
+      "event": "Dividend",
+      "value": "0.27"
+    },
+    {
+      "date": "May 11, 2026",
+      "event": "Dividend",
+      "value": "0.27"
+    },
+    {
+      "date": "Feb 9, 2026",
+      "event": "Dividend",
+      "value": "0.26"
+    }
+  ],
+  "pageUrl": "https://finance.yahoo.com/quote/AAPL/history/"
+}

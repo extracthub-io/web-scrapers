@@ -29,6 +29,7 @@ const STOP = new Set([
 	'www', 'com', 'org', 'net', 'html', 'htm', 'php', 'jsp', 'search', 'searchpage', 'sch', 'site', 'item', 'itm',
 	'dp', 'jobs', 'review', 'reviews', 'homes', 'for', 'sale', 'the', 'and', 'https', 'http', 'store', 'apps',
 	'details', 'app', 'watch', 'channel', 'videos', 'place', 'maps', 'en', 'us', 'id', 'hl', 'gl', 'page',
+	'quote', 'ashx',
 ]);
 
 // Tokens that identify the page: ids (letters+digits, 6+ chars, or long numbers) and search words.

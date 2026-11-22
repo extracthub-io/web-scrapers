@@ -46,9 +46,16 @@
       },
       {
         "name": "url",
-        "selector": "link[rel=\"canonical\"][href]",
+        "selector": "meta[property=\"og:url\"][content]",
         "extract": "attributeValue",
-        "attributeName": "href"
+        "attributeName": "content",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "from"
+            ]
+          }
+        ]
       },
       {
         "name": "company",

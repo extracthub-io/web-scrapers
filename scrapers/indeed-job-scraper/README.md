@@ -24,7 +24,7 @@ e.g. `https://www.indeed.com/viewjob?jk=40a14417050bd353`.
 |---|---|---|
 | `jobKey` | string | Indeed job key, e.g. `40a14417050bd353` |
 | `title` | string | job title, e.g. `Reporting Analyst` |
-| `url` | string \| null | canonical job page |
+| `url` | string \| null | job page url, e.g. `https://www.indeed.com/viewjob?jk=40a14417050bd353` |
 | `company` | string \| null | e.g. `Joseph & Associates` |
 | `companyRating` | number \| null | company rating on Indeed (1 to 5), e.g. `4.5` |
 | `companyReviewsCount` | number \| null | number of company reviews on Indeed |

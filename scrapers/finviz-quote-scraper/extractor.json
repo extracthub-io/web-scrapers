@@ -1,0 +1,296 @@
+{
+  "name": "Finviz - stock quote",
+  "description": "Finviz stock quote pages (finviz.com/quote.ashx?t=TICKER): ticker, company name, website, sector, industry, country, market cap group, exchange, last close price with change and change %, after-hours price, the whole snapshot table (~84 fundamentals such as Market Cap, P/E, EPS, Short Float, Recom, Target Price) as label / value rows, latest news headlines (time, title, link, source) and the company description.",
+  "slug": "finviz-quote",
+  "url": "https://finviz.com/quote.ashx?t=AAPL",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "finviz",
+    "stocks",
+    "stock quote",
+    "fundamentals",
+    "finance",
+    "screener",
+    "news"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "ticker",
+        "selector": "h1.quote-header_ticker-wrapper_ticker",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "companyName",
+        "selector": "h2.quote-header_ticker-wrapper_company a",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "website",
+        "selector": "h2.quote-header_ticker-wrapper_company a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sector",
+        "selector": "div.quote-header_categories a[href*=\"f=sec_\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "industry",
+        "selector": "div.quote-header_categories a[href*=\"f=industry_\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "country",
+        "selector": "div.quote-header_categories a[href*=\"f=geo_\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "marketCapGroup",
+        "selector": "div.quote-header_categories a[href*=\"f=cap_\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "exchange",
+        "selector": "div.quote-header_categories a[href*=\"f=exch_\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "price",
+        "selector": "div.js-quote-price-static > div.quote-price:first-child strong.quote-price_price",
+        "extract": "textContent",
+        "transforms": [
+          "toNumber"
+        ],
+        "required": true
+      },
+      {
+        "name": "priceLabel",
+        "selector": "div.js-quote-price-static > div.quote-price:first-child div.sr-only",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "priceTime",
+        "selector": "div.js-quote-price-static > div.quote-price:first-child span.quote-price_date",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "change",
+        "selector": "div.js-quote-price-static > div.quote-price:first-child span.quote-price_change",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Dollar change",
+              "Percentage change"
+            ]
+          },
+          "trim",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "changePercent",
+        "selector": "div.js-quote-price-static > div.quote-price:first-child span.quote-price_change",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "(",
+              "%"
+            ]
+          },
+          "trim",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "extendedPrice",
+        "selector": "div.js-quote-price-static > div.quote-price:nth-child(3) strong.quote-price_price",
+        "extract": "textContent",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "extendedPriceLabel",
+        "selector": "div.js-quote-price-static > div.quote-price:nth-child(3) div.sr-only",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "extendedPriceTime",
+        "selector": "div.js-quote-price-static > div.quote-price:nth-child(3) span.quote-price_date",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "extendedChange",
+        "selector": "div.js-quote-price-static > div.quote-price:nth-child(3) span.quote-price_change",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "Dollar change",
+              "Percentage change"
+            ]
+          },
+          "trim",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "extendedChangePercent",
+        "selector": "div.js-quote-price-static > div.quote-price:nth-child(3) span.quote-price_change",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "(",
+              "%"
+            ]
+          },
+          "trim",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "snapshot",
+        "required": true,
+        "selector": "table.snapshot-table2 tr",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "div.snapshot-td-label",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "div.snapshot-td-content",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "description",
+              "selector": "td[data-boxover-html]",
+              "extract": "attributeValue",
+              "attributeName": "data-boxover-html",
+              "transforms": [
+                "decodeHtml",
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "news",
+        "selector": "table#news-table tr[data-news-row]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "time",
+              "selector": "td:first-child",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "title",
+              "selector": "a.tab-link-news",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.tab-link-news[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "source",
+              "selector": "div.news-link-right span",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "between": [
+                    "(",
+                    ")"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "description",
+        "selector": "div.quote_profile-bio",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      }
+    ]
+  }
+}

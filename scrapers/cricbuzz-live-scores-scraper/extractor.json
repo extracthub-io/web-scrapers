@@ -1,0 +1,282 @@
+{
+  "name": "Cricbuzz - live scores",
+  "description": "Cricbuzz live scores pages (cricbuzz.com/cricket-match/live-scores and its /recent-matches and /upcoming-matches tabs): the match cards grouped by series (series name, id, link) with match id, title, match description, venue, both teams (name, short name, score, flag), status text and match link, plus the header list of all current matches (title, teams, description, state, link).",
+  "slug": "cricbuzz-live-scores",
+  "url": "https://www.cricbuzz.com/cricket-match/live-scores",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "category": "sports",
+  "tags": [
+    "cricbuzz",
+    "cricket",
+    "live scores",
+    "scores",
+    "sports",
+    "matches",
+    "ipl",
+    "test cricket"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "pageUrl",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "tab",
+        "selector": "main nav#main-nav a.pointer-events-none",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "series",
+        "required": true,
+        "selector": "main div.flex-col.gap-2 > div",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "seriesName",
+              "selector": "a[href^=\"/cricket-series/\"] span",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "seriesId",
+              "selector": "a[href^=\"/cricket-series/\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "split": "/"
+                },
+                {
+                  "nth": 2
+                }
+              ]
+            },
+            {
+              "name": "seriesUrl",
+              "selector": "a[href^=\"/cricket-series/\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "matches",
+              "selector": "div.gap-px > div",
+              "extract": "innerHTML",
+              "isArray": true,
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "matchId",
+                    "selector": "a.bg-cbWhite[href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      {
+                        "split": "/"
+                      },
+                      {
+                        "nth": 2
+                      }
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "title",
+                    "selector": "a.bg-cbWhite[title]",
+                    "extract": "attributeValue",
+                    "attributeName": "title",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "matchDesc",
+                    "selector": "a.bg-cbWhite span.text-xs",
+                    "extract": "textContent",
+                    "transforms": [
+                      {
+                        "before": " • "
+                      },
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "venue",
+                    "selector": "a.bg-cbWhite span.text-xs",
+                    "extract": "textContent",
+                    "transforms": [
+                      {
+                        "after": " • "
+                      },
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "teams",
+                    "selector": "div.my-2 > div.justify-between",
+                    "extract": "innerHTML",
+                    "isArray": true,
+                    "subExtractor": {
+                      "fields": [
+                        {
+                          "name": "name",
+                          "selector": "span.hidden",
+                          "extract": "textContent",
+                          "transforms": [
+                            "normalizeWhitespace"
+                          ],
+                          "required": true
+                        },
+                        {
+                          "name": "shortName",
+                          "selector": "span.block",
+                          "extract": "textContent",
+                          "transforms": [
+                            "normalizeWhitespace"
+                          ]
+                        },
+                        {
+                          "name": "score",
+                          "selector": "span.font-medium",
+                          "extract": "textContent",
+                          "transforms": [
+                            "normalizeWhitespace",
+                            "nullIfEmpty"
+                          ]
+                        },
+                        {
+                          "name": "flagUrl",
+                          "selector": "img[src]",
+                          "extract": "attributeValue",
+                          "attributeName": "src"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "status",
+                    "selector": "a.bg-cbWhite > span",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "url",
+                    "selector": "a.bg-cbWhite[href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      "toAbsoluteUrl"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "allCurrentMatches",
+        "isArray": true,
+        "subFields": [
+          {
+            "name": "matchId",
+            "selector": "div.homePageCurrentMatchesIn a.mb-3[href^=\"/live-cricket-scores/\"]",
+            "extract": "attributeValue",
+            "attributeName": "href",
+            "transforms": [
+              {
+                "split": "/"
+              },
+              {
+                "nth": 2
+              }
+            ]
+          },
+          {
+            "name": "title",
+            "selector": "div.homePageCurrentMatchesIn a.mb-3[href^=\"/live-cricket-scores/\"]",
+            "extract": "attributeValue",
+            "attributeName": "title",
+            "transforms": [
+              {
+                "before": {
+                  "text": " - ",
+                  "last": true
+                }
+              },
+              "normalizeWhitespace"
+            ]
+          },
+          {
+            "name": "state",
+            "selector": "div.homePageCurrentMatchesIn a.mb-3[href^=\"/live-cricket-scores/\"]",
+            "extract": "attributeValue",
+            "attributeName": "title",
+            "transforms": [
+              {
+                "after": {
+                  "text": " - ",
+                  "last": true
+                }
+              },
+              "normalizeWhitespace"
+            ]
+          },
+          {
+            "name": "teams",
+            "selector": "div.homePageCurrentMatchesIn a.mb-3[href^=\"/live-cricket-scores/\"] div.text-white",
+            "extract": "textContent",
+            "transforms": [
+              "normalizeWhitespace"
+            ]
+          },
+          {
+            "name": "matchDesc",
+            "selector": "div.homePageCurrentMatchesIn a.mb-3[href^=\"/live-cricket-scores/\"] div.text-xs",
+            "extract": "textContent",
+            "transforms": [
+              "normalizeWhitespace"
+            ]
+          },
+          {
+            "name": "url",
+            "selector": "div.homePageCurrentMatchesIn a.mb-3[href^=\"/live-cricket-scores/\"]",
+            "extract": "attributeValue",
+            "attributeName": "href",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

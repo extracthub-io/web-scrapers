@@ -1,0 +1,78 @@
+{
+  "pageUrl": "https://www.transfermarkt.com/spieler-statistik/wertvollstespieler/marktwertetop",
+  "page": 1,
+  "lastPage": 20,
+  "nextPageUrl": "https://www.transfermarkt.com/spieler-statistik/wertvollstespieler/marktwertetop?page=2",
+  "players": [
+    {
+      "rank": 1,
+      "name": "Lamine Yamal",
+      "playerId": "937958",
+      "profileUrl": "https://www.transfermarkt.com/lamine-yamal/profil/spieler/937958",
+      "position": "Right Winger",
+      "image": "https://img.a.transfermarkt.technology/portrait/small/937958-1773173768.jpg?lm=4711",
+      "age": 19,
+      "nationalities": [
+        "Spain"
+      ],
+      "club": "FC Barcelona",
+      "clubId": "131",
+      "marketValue": "€220.00M",
+      "marketValueEur": 220000000,
+      "marketValueHistoryUrl": "https://www.transfermarkt.com/lamine-yamal/marktwertverlauf/spieler/937958"
+    },
+    {
+      "rank": 1,
+      "name": "Erling Haaland",
+      "playerId": "418560",
+      "profileUrl": "https://www.transfermarkt.com/erling-haaland/profil/spieler/418560",
+      "position": "Centre-Forward",
+      "image": "https://img.a.transfermarkt.technology/portrait/small/418560-1788115885.jpg?lm=4711",
+      "age": 26,
+      "nationalities": [
+        "Norway"
+      ],
+      "club": "Manchester City",
+      "clubId": "281",
+      "marketValue": "€220.00M",
+      "marketValueEur": 220000000,
+      "marketValueHistoryUrl": "https://www.transfermarkt.com/erling-haaland/marktwertverlauf/spieler/418560"
+    },
+    {
+      "rank": 3,
+      "name": "Kylian Mbappé",
+      "playerId": "342229",
+      "profileUrl": "https://www.transfermarkt.com/kylian-mbappe/profil/spieler/342229",
+      "position": "Centre-Forward",
+      "image": "https://img.a.transfermarkt.technology/portrait/small/342229-1789750273.jpg?lm=4711",
+      "age": 27,
+      "nationalities": [
+        "France",
+        "Cameroon"
+      ],
+      "club": "Real Madrid",
+      "clubId": "418",
+      "marketValue": "€200.00M",
+      "marketValueEur": 200000000,
+      "marketValueHistoryUrl": "https://www.transfermarkt.com/kylian-mbappe/marktwertverlauf/spieler/342229"
+    },
+    {
+      "rank": 4,
+      "name": "Michael Olise",
+      "playerId": "566723",
+      "profileUrl": "https://www.transfermarkt.com/michael-olise/profil/spieler/566723",
+      "position": "Right Winger",
+      "image": "https://img.a.transfermarkt.technology/portrait/small/566723-1762944477.jpg?lm=4711",
+      "age": 24,
+      "nationalities": [
+        "France",
+        "England"
+      ],
+      "club": "FC Bayern Munich",
+      "clubId": "27",
+      "marketValue": "€180.00M",
+      "marketValueEur": 180000000,
+      "marketValueHistoryUrl": "https://www.transfermarkt.com/michael-olise/marktwertverlauf/spieler/566723"
+    }
+  ]
+}

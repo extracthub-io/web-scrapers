@@ -1,0 +1,223 @@
+{
+  "name": "Transfermarkt - league table",
+  "description": "Transfermarkt league table pages (transfermarkt.com/<league>/tabelle/wettbewerb/<id>, optionally /saison_id/<year>): every club with position, club id, fixtures link, matches, wins, draws, losses, goals for / against, goal difference and points, plus the league name, id and season. JavaScript rendering through a US proxy.",
+  "slug": "transfermarkt-league-table",
+  "url": "https://www.transfermarkt.com/premier-league/tabelle/wettbewerb/GB1",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "waitForSelector": "#yw1 table.items",
+  "category": "sports",
+  "tags": [
+    "transfermarkt",
+    "football",
+    "soccer",
+    "league table",
+    "standings",
+    "sports"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "leagueId",
+        "selector": "meta[property=\"og:url\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          {
+            "after": "/wettbewerb/"
+          },
+          {
+            "split": "/"
+          },
+          "first"
+        ],
+        "required": true
+      },
+      {
+        "name": "pageUrl",
+        "selector": "meta[property=\"og:url\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "league",
+        "selector": ".data-header__headline-wrapper",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "season",
+        "selector": "select[name=\"saison_id\"] option[selected]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "table",
+        "selector": "#yw1 table.items > tbody > tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "position",
+              "selector": "td:nth-child(1)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ],
+              "required": true
+            },
+            {
+              "name": "club",
+              "selector": "td.hauptlink.no-border-links a[title]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "clubFullName",
+              "selector": "td.hauptlink.no-border-links a[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "clubId",
+              "selector": "td.hauptlink.no-border-links a[href*=\"/verein/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "/verein/",
+                    "/"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "fixturesUrl",
+              "selector": "td.hauptlink.no-border-links a[href*=\"/verein/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "logo",
+              "selector": "td:nth-child(2) img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "matches",
+              "selector": "td:nth-child(4)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "wins",
+              "selector": "td:nth-child(5)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "draws",
+              "selector": "td:nth-child(6)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "losses",
+              "selector": "td:nth-child(7)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "goals",
+              "selector": "td:nth-child(8)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "goalsFor",
+              "selector": "td:nth-child(8)",
+              "extract": "textContent",
+              "transforms": [
+                {
+                  "before": ":"
+                },
+                "toInteger"
+              ]
+            },
+            {
+              "name": "goalsAgainst",
+              "selector": "td:nth-child(8)",
+              "extract": "textContent",
+              "transforms": [
+                {
+                  "after": ":"
+                },
+                "toInteger"
+              ]
+            },
+            {
+              "name": "goalDifference",
+              "selector": "td:nth-child(9)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "points",
+              "selector": "td:nth-child(10)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ],
+              "required": true
+            },
+            {
+              "name": "previousPosition",
+              "selector": "td:nth-child(1) span[title]",
+              "extract": "attributeValue",
+              "attributeName": "title",
+              "transforms": [
+                {
+                  "between": [
+                    "week ",
+                    ".place"
+                  ]
+                },
+                "toInteger"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,408 @@
+{
+  "name": "Transfermarkt - player stats",
+  "description": "Transfermarkt player stats pages (transfermarkt.com/<name>/leistungsdaten/spieler/<id>, optionally /saison/<year>): the season's totals per competition (appearances, goals, assists, cards, minutes; goals conceded and clean sheets for goalkeepers) and every match per competition with matchday, date, venue, opponent, result, position, goals, assists, card minutes, minutes played and the absence note (not in squad, injury), plus the player's name, id, club and the season. JavaScript rendering through a US proxy.",
+  "slug": "transfermarkt-player-stats",
+  "url": "https://www.transfermarkt.com/erling-haaland/leistungsdaten/spieler/418560",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "waitForSelector": "tm-player-performance-table-new div[role=\"row\"]",
+  "category": "sports",
+  "tags": [
+    "transfermarkt",
+    "football",
+    "soccer",
+    "player",
+    "stats",
+    "goals",
+    "sports"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "playerId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "/spieler/"
+          },
+          {
+            "split": "/"
+          },
+          "first"
+        ],
+        "required": true
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "name",
+        "selector": "head title",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "before": " - "
+          },
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "shirtNumber",
+        "selector": "h1.data-header__headline-wrapper .data-header__shirt-number",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "#"
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "club",
+        "selector": ".data-header__club a",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "clubUrl",
+        "selector": ".data-header__club a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "season",
+        "selector": "head title",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "- Stats ",
+              " |"
+            ]
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "goalkeeper",
+        "selector": "tm-player-performance-table-new[data-type=\"performanceByCompetitions\"]:not([table-type]) .grid-row--dark img[title=\"Goals conceded\"]",
+        "extract": "exists"
+      },
+      {
+        "name": "statColumns",
+        "selector": "tm-player-performance-table-new[data-type=\"performanceByCompetitions\"]:not([table-type]) .grid-row--dark img[title]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "title"
+      },
+      {
+        "name": "competitions",
+        "selector": "tm-player-performance-table-new[data-type=\"performanceByCompetitions\"]:not([table-type]) div[role=\"rowgroup\"] > div[role=\"row\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "competition",
+              "selector": "a[class*=\"grid__cell\"]:nth-child(1)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "competitionId",
+              "selector": "a[class*=\"grid__cell\"]:nth-child(1)[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/wettbewerb/"
+                },
+                {
+                  "split": "/"
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "appearances",
+              "selector": "[class*=\"grid__cell\"]:nth-child(2)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "goals",
+              "selector": "[class*=\"grid__cell\"]:nth-child(3)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "assists",
+              "selector": "[class*=\"grid__cell\"]:nth-child(4)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "yellowCards",
+              "selector": "[class*=\"grid__cell\"]:nth-child(5)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "secondYellowCards",
+              "selector": "[class*=\"grid__cell\"]:nth-child(6)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "redCards",
+              "selector": "[class*=\"grid__cell\"]:nth-child(7)",
+              "extract": "textContent",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "minutesPlayed",
+              "selector": "[class*=\"grid__cell\"]:nth-child(8)",
+              "extract": "textContent",
+              "transforms": [
+                "extractNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "matchesByCompetition",
+        "selector": "tm-player-performance-table-new[data-type=\"matchPerformanceByCompetition\"] div.box",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "competition",
+              "selector": ".content-box-headline a",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "competitionId",
+              "selector": ".content-box-headline a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "/wettbewerb/"
+                },
+                {
+                  "split": "/"
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "matches",
+              "selector": "div[role=\"rowgroup\"] > div[role=\"row\"]",
+              "isArray": true,
+              "extract": "innerHTML",
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "matchday",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(1)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "date",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(2)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "venue",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(3)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "club",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(4) a[title]",
+                    "extract": "attributeValue",
+                    "attributeName": "title"
+                  },
+                  {
+                    "name": "opponent",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(5) a[title]",
+                    "extract": "attributeValue",
+                    "attributeName": "title"
+                  },
+                  {
+                    "name": "opponentId",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(5) a[href*=\"/verein/\"]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      {
+                        "after": "/verein/"
+                      },
+                      {
+                        "split": "/"
+                      },
+                      "first"
+                    ]
+                  },
+                  {
+                    "name": "result",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(6)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "outcome",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(6)[class]",
+                    "extract": "attributeValue",
+                    "attributeName": "class",
+                    "transforms": [
+                      {
+                        "after": "tm-grid__cell--"
+                      },
+                      {
+                        "split": " "
+                      },
+                      "first"
+                    ]
+                  },
+                  {
+                    "name": "matchUrl",
+                    "selector": "a[class*=\"grid__cell\"]:nth-child(6)[href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      "toAbsoluteUrl"
+                    ]
+                  },
+                  {
+                    "name": "position",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(7)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "goals",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(8)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "toInteger"
+                    ]
+                  },
+                  {
+                    "name": "assists",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(9)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "toInteger"
+                    ]
+                  },
+                  {
+                    "name": "yellowCard",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(10)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "secondYellowCard",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(11)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "redCard",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(12)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "minutesPlayed",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(13)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "extractNumber"
+                    ]
+                  },
+                  {
+                    "name": "note",
+                    "selector": "[class*=\"grid__cell\"]:nth-child(14)",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

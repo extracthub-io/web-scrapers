@@ -1,0 +1,598 @@
+{
+  "name": "Basketball-Reference - player page",
+  "description": "Basketball-Reference player pages (basketball-reference.com/players/<letter>/<id>.html): name, player id, headshot, bio lines (full name, position, shoots, height / weight, team, birth, college, draft, debut, experience), birth date and place, height, weight, honors (All-Star, MVP, titles), every regular-season row of the per-game stats table (season, age, team, league, position, games, minutes, shooting splits, rebounds, assists, steals, blocks, turnovers, fouls, points, awards), career and per-team per-game averages and career totals (games, minutes, points, rebounds, assists, steals, blocks).",
+  "slug": "basketball-reference-player",
+  "url": "https://www.basketball-reference.com/players/j/jamesle01.html",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "sports",
+  "tags": [
+    "basketball reference",
+    "nba",
+    "basketball",
+    "player stats",
+    "sports",
+    "sports data"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "#meta h1",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "playerId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "after": "/players/"
+          },
+          {
+            "after": "/"
+          },
+          {
+            "before": ".html"
+          }
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "#meta .media-item img[src]",
+        "extract": "attributeValue",
+        "attributeName": "src",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "bio",
+        "selector": "#meta p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ],
+        "textSeparator": ""
+      },
+      {
+        "name": "birthDate",
+        "selector": "#necro-birth[data-birth]",
+        "extract": "attributeValue",
+        "attributeName": "data-birth"
+      },
+      {
+        "name": "birthPlace",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "birthPlace"
+        ]
+      },
+      {
+        "name": "height",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "height.value"
+        ]
+      },
+      {
+        "name": "weight",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "weight.value"
+        ]
+      },
+      {
+        "name": "honors",
+        "selector": "#bling li",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "seasons",
+        "selector": "#per_game_stats tbody tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "season",
+              "selector": "th[data-stat=\"year_id\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "age",
+              "selector": "td[data-stat=\"age\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "team",
+              "selector": "td[data-stat=\"team_name_abbr\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "textSeparator": ""
+            },
+            {
+              "name": "teamUrl",
+              "selector": "td[data-stat=\"team_name_abbr\"] a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "league",
+              "selector": "td[data-stat=\"comp_name_abbr\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "position",
+              "selector": "td[data-stat=\"pos\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "games",
+              "selector": "td[data-stat=\"games\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "gamesStarted",
+              "selector": "td[data-stat=\"games_started\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "minutes",
+              "selector": "td[data-stat=\"mp_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg",
+              "selector": "td[data-stat=\"fg_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fga",
+              "selector": "td[data-stat=\"fga_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fgPct",
+              "selector": "td[data-stat=\"fg_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg3",
+              "selector": "td[data-stat=\"fg3_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg3a",
+              "selector": "td[data-stat=\"fg3a_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg3Pct",
+              "selector": "td[data-stat=\"fg3_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg2",
+              "selector": "td[data-stat=\"fg2_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg2a",
+              "selector": "td[data-stat=\"fg2a_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg2Pct",
+              "selector": "td[data-stat=\"fg2_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "efgPct",
+              "selector": "td[data-stat=\"efg_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "ft",
+              "selector": "td[data-stat=\"ft_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fta",
+              "selector": "td[data-stat=\"fta_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "ftPct",
+              "selector": "td[data-stat=\"ft_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "orb",
+              "selector": "td[data-stat=\"orb_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "drb",
+              "selector": "td[data-stat=\"drb_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "trb",
+              "selector": "td[data-stat=\"trb_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "ast",
+              "selector": "td[data-stat=\"ast_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "stl",
+              "selector": "td[data-stat=\"stl_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "blk",
+              "selector": "td[data-stat=\"blk_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "tov",
+              "selector": "td[data-stat=\"tov_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "pf",
+              "selector": "td[data-stat=\"pf_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "pts",
+              "selector": "td[data-stat=\"pts_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "awards",
+              "selector": "td[data-stat=\"awards\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "textSeparator": ""
+            }
+          ]
+        }
+      },
+      {
+        "name": "careerPerGame",
+        "selector": "#per_game_stats tfoot tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "th[data-stat=\"year_id\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "games",
+              "selector": "td[data-stat=\"games\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "gamesStarted",
+              "selector": "td[data-stat=\"games_started\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "minutes",
+              "selector": "td[data-stat=\"mp_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg",
+              "selector": "td[data-stat=\"fg_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fga",
+              "selector": "td[data-stat=\"fga_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fgPct",
+              "selector": "td[data-stat=\"fg_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg3",
+              "selector": "td[data-stat=\"fg3_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg3a",
+              "selector": "td[data-stat=\"fg3a_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg3Pct",
+              "selector": "td[data-stat=\"fg3_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg2",
+              "selector": "td[data-stat=\"fg2_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg2a",
+              "selector": "td[data-stat=\"fg2a_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fg2Pct",
+              "selector": "td[data-stat=\"fg2_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "efgPct",
+              "selector": "td[data-stat=\"efg_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "ft",
+              "selector": "td[data-stat=\"ft_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "fta",
+              "selector": "td[data-stat=\"fta_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "ftPct",
+              "selector": "td[data-stat=\"ft_pct\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "orb",
+              "selector": "td[data-stat=\"orb_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "drb",
+              "selector": "td[data-stat=\"drb_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "trb",
+              "selector": "td[data-stat=\"trb_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "ast",
+              "selector": "td[data-stat=\"ast_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "stl",
+              "selector": "td[data-stat=\"stl_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "blk",
+              "selector": "td[data-stat=\"blk_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "tov",
+              "selector": "td[data-stat=\"tov_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "pf",
+              "selector": "td[data-stat=\"pf_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "pts",
+              "selector": "td[data-stat=\"pts_per_g\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "careerGames",
+        "selector": "#totals_stats tfoot tr[id=\"totals_stats.Yrs\"] td[data-stat=\"games\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "careerMinutes",
+        "selector": "#totals_stats tfoot tr[id=\"totals_stats.Yrs\"] td[data-stat=\"mp\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "careerPoints",
+        "selector": "#totals_stats tfoot tr[id=\"totals_stats.Yrs\"] td[data-stat=\"pts\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "careerRebounds",
+        "selector": "#totals_stats tfoot tr[id=\"totals_stats.Yrs\"] td[data-stat=\"trb\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "careerAssists",
+        "selector": "#totals_stats tfoot tr[id=\"totals_stats.Yrs\"] td[data-stat=\"ast\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "careerSteals",
+        "selector": "#totals_stats tfoot tr[id=\"totals_stats.Yrs\"] td[data-stat=\"stl\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "careerBlocks",
+        "selector": "#totals_stats tfoot tr[id=\"totals_stats.Yrs\"] td[data-stat=\"blk\"]",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      }
+    ]
+  }
+}
