@@ -1,0 +1,260 @@
+{
+  "name": "Google Finance - financials, earnings history and insider trades",
+  "description": "Google Finance quote pages (google.com/finance/quote/<SYMBOL>:<EXCHANGE>?hl=en), rendered: the quarterly income statement of the last 4 quarters (revenue, cost of revenue, R&D, SG&A, operating income, income tax, net income, net profit margin, EPS, EBITDA, ...), previous earnings reports (fiscal period, report date, EPS and revenue with the analyst estimate and surprise %, links to the earnings release and 10-Q / 10-K documents) and insider transactions (insider, position, buy / sell type, date, shares, amount).",
+  "slug": "google-finance-financials",
+  "url": "https://www.google.com/finance/quote/AAPL:NASDAQ?hl=en",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "browserActions": [
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "table[aria-label=\"Previous reports\"] tbody tr"
+      },
+      "timeout_s": 15
+    }
+  ],
+  "category": "finance",
+  "tags": [
+    "google finance",
+    "financial statements",
+    "income statement",
+    "earnings history",
+    "eps surprise",
+    "insider trading",
+    "stocks"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "div[jsname=\"AS5Pxb\"] .gO24Ff",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "ticker",
+        "selector": ".JV7gl[title]",
+        "extract": "attributeValue",
+        "attributeName": "title"
+      },
+      {
+        "name": "currency",
+        "selector": "table[aria-label=\"Income statement\"] thead .SAz1jb .nQ5Kpf",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "after": {
+              "text": " ",
+              "last": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "incomeStatementPeriods",
+        "selector": "table[aria-label=\"Income statement\"] thead .Jgxjcf .nQ5Kpf",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "isArray": true
+      },
+      {
+        "name": "incomeStatement",
+        "selector": "table[aria-label=\"Income statement\"] tbody tr.K5RZUc",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": ".sp5q4e",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "values",
+              "selector": ".CNzF7d",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "isArray": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "earningsReports",
+        "selector": "table[aria-label=\"Previous reports\"] tbody tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "period",
+              "selector": "th",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "reportDate",
+              "selector": ".cs5WNc:nth-child(2)",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "eps",
+              "selector": ".cs5WNc:nth-child(3) .mzDnN",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                "first",
+                "toNumber"
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "epsEstimate",
+              "selector": ".cs5WNc:nth-child(3) .fphDPb",
+              "transforms": [
+                {
+                  "between": [
+                    "(",
+                    " est"
+                  ]
+                },
+                "toNumber"
+              ]
+            },
+            {
+              "name": "epsSurprisePercent",
+              "selector": ".cs5WNc:nth-child(4) span[jsname=\"vY9t3b\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "revenue",
+              "selector": ".cs5WNc:nth-child(5) .mzDnN",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                "first"
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "revenueEstimate",
+              "selector": ".cs5WNc:nth-child(5) .fphDPb",
+              "transforms": [
+                {
+                  "between": [
+                    "(",
+                    " est"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "revenueSurprisePercent",
+              "selector": ".cs5WNc:nth-child(6) span[jsname=\"vY9t3b\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "documentTitles",
+              "selector": "a.wdHoqe",
+              "transforms": [
+                {
+                  "after": " "
+                }
+              ],
+              "isArray": true
+            },
+            {
+              "name": "documentUrls",
+              "selector": "a.wdHoqe[href]",
+              "isArray": true,
+              "extract": "attributeValue",
+              "attributeName": "href"
+            }
+          ]
+        }
+      },
+      {
+        "name": "insiderTransactions",
+        "selector": "table[aria-label=\"Entity insider transactions table\"] tbody tr.TjdP2",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "insider",
+              "selector": "td.P8I5Oc:nth-child(1) .kPjCOc",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "position",
+              "selector": "td.P8I5Oc:nth-child(2) .kPjCOc",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "type",
+              "selector": "td.P8I5Oc:nth-child(3) .kPjCOc",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "date",
+              "selector": "td.P8I5Oc:nth-child(4) .kPjCOc",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "shares",
+              "selector": "td.P8I5Oc:nth-child(5) .kPjCOc",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "amount",
+              "selector": "td.P8I5Oc:nth-child(6) .kPjCOc",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      }
+    ]
+  }
+}

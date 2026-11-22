@@ -1,0 +1,93 @@
+{
+  "yesterday": [],
+  "today": [],
+  "tomorrow": [
+    {
+      "company": "Agilent Technologies Inc",
+      "ticker": "A:NYSE",
+      "symbol": "A",
+      "exchange": "NYSE",
+      "weekday": "Mon",
+      "day": 23,
+      "time": "4:30 PM EST",
+      "timing": "dark_mode",
+      "epsEstimate": "$1.73",
+      "revenueEstimate": "$1.99B",
+      "period": "Fiscal Q4 2026",
+      "url": "https://www.google.com/finance/quote/A:NYSE?tab=earnings#entity_detail"
+    },
+    {
+      "company": "Jacobs Solutions Inc",
+      "ticker": "J:NYSE",
+      "symbol": "J",
+      "exchange": "NYSE",
+      "weekday": "Mon",
+      "day": 23,
+      "time": "4:30 PM EST",
+      "timing": "dark_mode",
+      "epsEstimate": "$2.12",
+      "revenueEstimate": "$3.89B",
+      "period": "Fiscal Q4 2026",
+      "url": "https://www.google.com/finance/quote/J:NYSE?tab=earnings#entity_detail"
+    },
+    {
+      "company": "Semtech Corporation",
+      "ticker": "SMTC:NASDAQ",
+      "symbol": "SMTC",
+      "exchange": "NASDAQ",
+      "weekday": "Mon",
+      "day": 23,
+      "time": "4:30 PM EST",
+      "timing": "dark_mode",
+      "epsEstimate": "$1.13",
+      "revenueEstimate": "$416.43M",
+      "period": "Fiscal Q3 2027",
+      "url": "https://www.google.com/finance/quote/SMTC:NASDAQ?tab=earnings#entity_detail"
+    }
+  ],
+  "thisWeek": [],
+  "nextWeek": [
+    {
+      "company": "Agilent Technologies Inc",
+      "ticker": "A:NYSE",
+      "symbol": "A",
+      "exchange": "NYSE",
+      "weekday": "Mon",
+      "day": 23,
+      "time": "4:30 PM EST",
+      "timing": "dark_mode",
+      "epsEstimate": "$1.73",
+      "revenueEstimate": "$1.99B",
+      "period": "Fiscal Q4 2026",
+      "url": "https://www.google.com/finance/quote/A:NYSE?tab=earnings#entity_detail"
+    },
+    {
+      "company": "Jacobs Solutions Inc",
+      "ticker": "J:NYSE",
+      "symbol": "J",
+      "exchange": "NYSE",
+      "weekday": "Mon",
+      "day": 23,
+      "time": "4:30 PM EST",
+      "timing": "dark_mode",
+      "epsEstimate": "$2.12",
+      "revenueEstimate": "$3.89B",
+      "period": "Fiscal Q4 2026",
+      "url": "https://www.google.com/finance/quote/J:NYSE?tab=earnings#entity_detail"
+    },
+    {
+      "company": "Semtech Corporation",
+      "ticker": "SMTC:NASDAQ",
+      "symbol": "SMTC",
+      "exchange": "NASDAQ",
+      "weekday": "Mon",
+      "day": 23,
+      "time": "4:30 PM EST",
+      "timing": "dark_mode",
+      "epsEstimate": "$1.13",
+      "revenueEstimate": "$416.43M",
+      "period": "Fiscal Q3 2027",
+      "url": "https://www.google.com/finance/quote/SMTC:NASDAQ?tab=earnings#entity_detail"
+    }
+  ]
+}

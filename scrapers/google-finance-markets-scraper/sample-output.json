@@ -1,0 +1,271 @@
+{
+  "markets": [
+    {
+      "position": 1,
+      "name": "Dow Jones",
+      "ticker": ".DJI:INDEXDJX",
+      "price": 48147.33,
+      "change": -949.73,
+      "changePercent": -1.93
+    },
+    {
+      "position": 2,
+      "name": "S&P 500",
+      "ticker": ".INX:INDEXSP",
+      "price": 6910.39,
+      "change": -265.44,
+      "changePercent": -3.7
+    },
+    {
+      "position": 3,
+      "name": "Nasdaq",
+      "ticker": ".IXIC:INDEXNASDAQ",
+      "price": 22617.73,
+      "change": -1261.47,
+      "changePercent": -5.28
+    },
+    {
+      "position": 4,
+      "name": "Russell",
+      "ticker": "RUT:INDEXRUSSELL",
+      "price": 2581.79,
+      "change": -73.32,
+      "changePercent": -2.76
+    },
+    {
+      "position": 5,
+      "name": "VIX",
+      "ticker": "VIX:INDEXCBOE",
+      "price": 35.89,
+      "change": 7.45,
+      "changePercent": 26.2
+    },
+    {
+      "position": 6,
+      "name": "DAX",
+      "ticker": "DAX:INDEXDB",
+      "price": 24802.78,
+      "change": -661.03,
+      "changePercent": -2.6
+    }
+  ],
+  "sectors": [
+    {
+      "symbol": "SX3P",
+      "name": "Consumer Staples",
+      "ticker": "SX3P:INDEXSTOXX",
+      "price": 701.39,
+      "change": 5.57,
+      "changePercent": 0.8,
+      "previousClose": 695.82,
+      "open": 697.07,
+      "high": 703.98,
+      "low": 697.07
+    },
+    {
+      "symbol": "SX6P",
+      "name": "Utilities",
+      "ticker": "SX6P:INDEXSTOXX",
+      "price": 559.63,
+      "change": -0.9,
+      "changePercent": -0.16,
+      "previousClose": 560.53,
+      "open": 559.41,
+      "high": 561.15,
+      "low": 555.16
+    },
+    {
+      "symbol": "SX8P",
+      "name": "Technology",
+      "ticker": "SX8P:INDEXSTOXX",
+      "price": 902.77,
+      "change": -51.46,
+      "changePercent": -5.39,
+      "previousClose": 954.23,
+      "open": 935.65,
+      "high": 935.65,
+      "low": 902.77
+    }
+  ],
+  "movers": [
+    {
+      "list": "Most active",
+      "stocks": [
+        {
+          "position": 1,
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "price": 125.53,
+          "changePercent": -14.01
+        },
+        {
+          "position": 2,
+          "symbol": "ANT",
+          "name": "Anthropic PBC",
+          "price": 88.91,
+          "changePercent": -8.5
+        }
+      ]
+    },
+    {
+      "list": "Daily gainers",
+      "stocks": [
+        {
+          "position": 1,
+          "symbol": "NVD",
+          "name": "GraniteShares 2x Short NVDA Daily ETF",
+          "price": 10.45,
+          "changePercent": 27.59
+        },
+        {
+          "position": 2,
+          "symbol": "BERZ",
+          "name": "Bank of Montreal MicroSectors FANG & Innovation 3x Inverse Leveraged ETN",
+          "price": 35.04,
+          "changePercent": 25.05
+        }
+      ]
+    },
+    {
+      "list": "Daily losers",
+      "stocks": [
+        {
+          "position": 1,
+          "symbol": "SOXL",
+          "name": "Direxion Daily Semiconductor Bull 3X ETF",
+          "price": 30.88,
+          "changePercent": -31.83
+        },
+        {
+          "position": 2,
+          "symbol": "AIQU",
+          "name": "MicroSectors 3A Long Artificial Intelligence (AI) ETN",
+          "price": 6.31,
+          "changePercent": -23.52
+        }
+      ]
+    }
+  ],
+  "earnings": [
+    {
+      "company": "Agilent Technologies Inc",
+      "ticker": "A:NYSE",
+      "weekday": "Mon",
+      "day": 23,
+      "time": "10:30 PM CET",
+      "timing": "dark_mode",
+      "period": "Fiscal Q4 2026",
+      "epsEstimate": "$1.73",
+      "revenueEstimate": "2.0B"
+    },
+    {
+      "company": "Jacobs Solutions Inc",
+      "ticker": "J:NYSE",
+      "weekday": "Mon",
+      "day": 23,
+      "time": "10:30 PM CET",
+      "timing": "dark_mode",
+      "period": "Fiscal Q4 2026",
+      "epsEstimate": "$2.12",
+      "revenueEstimate": "3.9B"
+    }
+  ],
+  "moreEarningsUrl": "https://www.google.com/finance/earnings",
+  "ipos": [
+    {
+      "name": "Anthropic",
+      "symbol": "ANT",
+      "status": "Listed",
+      "filingType": null,
+      "month": "Nov",
+      "day": 19,
+      "changePercent": 7.12,
+      "details": [
+        {
+          "label": "Offer price",
+          "value": "$83.00"
+        },
+        {
+          "label": "Current price",
+          "value": "$88.91"
+        },
+        {
+          "label": "Est. market cap",
+          "value": "$1.09T"
+        }
+      ],
+      "url": "https://www.google.com/finance/quote/ANT:NASDAQ"
+    },
+    {
+      "name": "Windward Bio, Inc",
+      "symbol": "WWB",
+      "status": "Listed",
+      "filingType": null,
+      "month": "Nov",
+      "day": 13,
+      "changePercent": 42.85,
+      "details": [
+        {
+          "label": "Offer price",
+          "value": "$17.00"
+        },
+        {
+          "label": "Current price",
+          "value": "$24.28"
+        },
+        {
+          "label": "Est. market cap",
+          "value": "$986.66M"
+        }
+      ],
+      "url": "https://www.google.com/finance/quote/WWB:NASDAQ"
+    },
+    {
+      "name": "Vesicor Therapeutics Holdings, Inc",
+      "symbol": "VESI",
+      "status": null,
+      "filingType": null,
+      "month": "Nov",
+      "day": 23,
+      "changePercent": null,
+      "details": [
+        {
+          "label": "Filing range",
+          "value": "Merger"
+        },
+        {
+          "label": "Est. deal size",
+          "value": "-"
+        },
+        {
+          "label": "Est. market cap",
+          "value": "-"
+        }
+      ],
+      "url": null
+    }
+  ],
+  "news": [
+    {
+      "position": 1,
+      "title": "Corporate America hunts for ‘generational’ growth in AI, trading cards and the L.A. airport",
+      "url": "https://www.marketwatch.com/story/corporate-america-hunts-for-generational-growth-in-ai-trading-cards-and-the-l-a-airport-3072eb1a?mod=goog_fin_scmw",
+      "source": "News Corp",
+      "published": "1 hour ago"
+    },
+    {
+      "position": 2,
+      "title": "Delta Resolves Automation Outage that Led to Over 1,000 Flight Delays",
+      "url": "https://www.wsj.com/business/airlines/delta-delays-hundreds-of-flights-over-system-outage-6bbba92c?mod=goog_fin_scwsj",
+      "source": "News Corp",
+      "published": "1 hour ago"
+    },
+    {
+      "position": 3,
+      "title": "Stock Futures Could Signal Monday’s Mood After Last Week’s Bloodbath",
+      "url": "https://www.barrons.com/articles/stock-futures-trading-sunday-3926b2b5?mod=goog_fin_scbar",
+      "source": "News Corp",
+      "published": "1 hour ago"
+    }
+  ]
+}

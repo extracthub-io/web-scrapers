@@ -1,0 +1,461 @@
+{
+  "name": "Google Finance - market overview",
+  "description": "The Google Finance home page (google.com/finance/?hl=en): the market index strip (US, Europe, Asia, Latin America indexes, currencies, crypto and futures with price, change and change %), the US equity sectors table (price, change, previous close, open, high, low), most active stocks, daily gainers and losers, upcoming earnings (date, company, time, period, EPS and revenue estimates), recent and upcoming IPOs and notable filings, and the latest market news (title, link, source, time).",
+  "slug": "google-finance-markets",
+  "url": "https://www.google.com/finance/?hl=en",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "google finance",
+    "stock market",
+    "market indexes",
+    "market movers",
+    "earnings calendar",
+    "ipo",
+    "finance news"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "markets",
+        "selector": ".c15FDd .ebt9Ze",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": ".KzWCNc",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "ticker",
+              "selector": "a.HPIOqe[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "quote/"
+                }
+              ]
+            },
+            {
+              "name": "price",
+              "selector": "span[jsname=\"Pdsbrc\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "change",
+              "selector": "span[jsname=\"xnruHf\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "changePercent",
+              "selector": "span[jsname=\"vY9t3b\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "sectors",
+        "selector": "table[aria-label=\"Equity sectors\"] tr.z0htKf",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "symbol",
+              "selector": ".y9ljXe",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": ".sdnoWe",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "ticker",
+              "selector": "a.sZuC3[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "quote/"
+                }
+              ]
+            },
+            {
+              "name": "price",
+              "selector": "td.bHoPLb:nth-child(5) span[jsname=\"Pdsbrc\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "change",
+              "selector": "td.bHoPLb:nth-child(6) .a39knb",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "changePercent",
+              "selector": "td.bHoPLb:nth-child(7) span[jsname=\"vY9t3b\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "previousClose",
+              "selector": "td.bHoPLb:nth-child(8)",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "open",
+              "selector": "td.bHoPLb:nth-child(9)",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "high",
+              "selector": "td.bHoPLb:nth-child(10)",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "low",
+              "selector": "td.bHoPLb:nth-child(11)",
+              "transforms": [
+                "extractPrice"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "movers",
+        "selector": ".QutDjc .nWbFke",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "list",
+              "selector": ".OpYNmb",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "stocks",
+              "selector": "a.sPIq9b[href]",
+              "isArray": true,
+              "extract": "innerHTML",
+              "includePosition": true,
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "symbol",
+                    "selector": ".QNCF0e",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "name",
+                    "selector": ".FH0NBd",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "price",
+                    "selector": "span[jsname=\"Pdsbrc\"]",
+                    "transforms": [
+                      "extractPrice"
+                    ]
+                  },
+                  {
+                    "name": "changePercent",
+                    "selector": "span[jsname=\"vY9t3b\"]",
+                    "transforms": [
+                      "toNumber"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "earnings",
+        "selector": "div[aria-labelledby=\"earnings-tab\"] .Y4EHw",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "company",
+              "selector": ".kmtBVb",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "ticker",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "quote/"
+                },
+                {
+                  "before": "?"
+                }
+              ]
+            },
+            {
+              "name": "weekday",
+              "selector": ".QwiFyd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "day",
+              "selector": ".GP42b",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "time",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -2
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "timing",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -3
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "period",
+              "selector": ".CUVnub:nth-child(3) .P81ycb",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "epsEstimate",
+              "selector": ".CUVnub:nth-child(4) .P81ycb",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "revenueEstimate",
+              "selector": ".CUVnub:nth-child(5) .P81ycb",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "moreEarningsUrl",
+        "selector": "a.VuKlb[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "ipos",
+        "selector": "div[aria-labelledby=\"ipos-tab\"] .xIbBCe",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": ".IE0NIe",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "symbol",
+              "selector": ".PSmSPc",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "status",
+              "selector": ".rNz3Pd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "filingType",
+              "selector": ".RwV9ed",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "month",
+              "selector": ".Xj5eWd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "day",
+              "selector": ".ydv2kd",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "changePercent",
+              "selector": "span[jsname=\"vY9t3b\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "details",
+              "selector": ".qymfuc",
+              "isArray": true,
+              "extract": "innerHTML",
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "label",
+                    "selector": ".CMiF8",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "value",
+                    "selector": [
+                      ".cb394b > span",
+                      ".cb394b"
+                    ],
+                    "combineStrategy": "first",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "url",
+              "selector": "a.wOkSKe[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "news",
+        "selector": "c-wiz[jsrenderer=\"yIOaIc\"] .LIT7If",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": ".TQWIEd",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "source",
+              "selector": ".WrUjhf",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "published",
+              "selector": ".JQ8Czd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

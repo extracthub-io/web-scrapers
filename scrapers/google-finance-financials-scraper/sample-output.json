@@ -1,0 +1,148 @@
+{
+  "name": "Apple Inc",
+  "ticker": "AAPL:NASDAQ",
+  "currency": "USD",
+  "incomeStatementPeriods": [
+    "Dec 2025",
+    "Mar 2026",
+    "Jun 2026",
+    "Sep 2026"
+  ],
+  "incomeStatement": [
+    {
+      "label": "Revenue",
+      "values": [
+        "143.76B",
+        "111.18B",
+        "109.42B",
+        "114.48B"
+      ]
+    },
+    {
+      "label": "Cost of goods sold",
+      "values": [
+        "74.53B",
+        "56.40B",
+        "54.65B",
+        "59.66B"
+      ]
+    },
+    {
+      "label": "Cost of revenue",
+      "values": [
+        "74.53B",
+        "56.40B",
+        "54.65B",
+        "59.66B"
+      ]
+    },
+    {
+      "label": "Research and development expenses",
+      "values": [
+        "10.89B",
+        "11.42B",
+        "11.73B",
+        "11.73B"
+      ]
+    },
+    {
+      "label": "Total research and development expenses",
+      "values": [
+        "-",
+        "-",
+        "-",
+        "-"
+      ]
+    },
+    {
+      "label": "Selling, general, and admin expenses",
+      "values": [
+        "7.49B",
+        "7.48B",
+        "7.35B",
+        "7.46B"
+      ]
+    }
+  ],
+  "earningsReports": [
+    {
+      "period": "Q4 2026",
+      "reportDate": "Nov 2, 2026",
+      "eps": 2.1,
+      "epsEstimate": 1.99,
+      "epsSurprisePercent": 5.61,
+      "revenue": "114.48B",
+      "revenueEstimate": "113.35B",
+      "revenueSurprisePercent": 0.99,
+      "documentTitles": [
+        "Earnings Release (8-K)"
+      ],
+      "documentUrls": [
+        "https://files.quartr.com/reports/4801854393aaf20558456442adf5c84b-2026-11-02-21-31-49.pdf?ref=R29vZ2xl"
+      ]
+    },
+    {
+      "period": "Q3 2026",
+      "reportDate": "Jul 30, 2026",
+      "eps": 2.02,
+      "epsEstimate": 1.89,
+      "epsSurprisePercent": 6.74,
+      "revenue": "109.42B",
+      "revenueEstimate": "108.96B",
+      "revenueSurprisePercent": 0.42,
+      "documentTitles": [
+        "Quarterly Report (10-Q)",
+        "Earnings Release (8-K)"
+      ],
+      "documentUrls": [
+        "https://files.quartr.com/reports/8067506a2d19f928230adcd59f3e0627-2026-07-31-10-07-18.pdf?ref=R29vZ2xl",
+        "https://files.quartr.com/reports/d087ceb34cd4db637b71a94211277eb2-2026-07-30-20-32-31.pdf?ref=R29vZ2xl"
+      ]
+    },
+    {
+      "period": "Q2 2026",
+      "reportDate": "Apr 30, 2026",
+      "eps": 2.01,
+      "epsEstimate": 1.94,
+      "epsSurprisePercent": 3.49,
+      "revenue": "111.18B",
+      "revenueEstimate": "109.58B",
+      "revenueSurprisePercent": 1.46,
+      "documentTitles": [
+        "Earnings Release (8-K)",
+        "Quarterly Report (10-Q)"
+      ],
+      "documentUrls": [
+        "https://files.quartr.com/reports/184b2-2026-04-30-20-26-34.pdf?ref=R29vZ2xl",
+        "https://files.quartr.com/reports/aa853-2026-05-01-13-44-25.pdf?ref=R29vZ2xl"
+      ]
+    }
+  ],
+  "insiderTransactions": [
+    {
+      "insider": "Jennifer Newstead",
+      "position": "SVP, GC and Government Affairs",
+      "type": "Uninformative sell",
+      "date": "11/19/2026",
+      "shares": "2.4K",
+      "amount": "$845.94K"
+    },
+    {
+      "insider": "Arthur Levinson",
+      "position": "Director",
+      "type": "Uninformative sell",
+      "date": "11/18/2026",
+      "shares": "50K",
+      "amount": "$17.62M"
+    },
+    {
+      "insider": "Arthur Levinson",
+      "position": "Director",
+      "type": "Discretionary sell",
+      "date": "11/18/2026",
+      "shares": "90K",
+      "amount": "$31.77M"
+    }
+  ],
+  "pageUrl": "https://www.google.com/finance/quote/AAPL:NASDAQ"
+}

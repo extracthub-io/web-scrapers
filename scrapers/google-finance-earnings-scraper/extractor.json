@@ -1,0 +1,604 @@
+{
+  "name": "Google Finance - earnings calendar",
+  "description": "The Google Finance earnings calendar (google.com/finance/earnings?hl=en): every company reporting yesterday, today, tomorrow, this week and next week with ticker, symbol, exchange, weekday and day, report time and before-open / after-close marker, fiscal period, EPS estimate and revenue estimate, and the quote link.",
+  "slug": "google-finance-earnings",
+  "url": "https://www.google.com/finance/earnings?hl=en",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "google finance",
+    "earnings calendar",
+    "earnings",
+    "eps estimates",
+    "stocks"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "yesterday",
+        "selector": "div[role=\"tabpanel\"][aria-labelledby=\"earnings-yesterdayTab\"] .wQPxF",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "company",
+              "selector": ".zJXQtf",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "ticker",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "quote/"
+                },
+                {
+                  "before": "?"
+                }
+              ]
+            },
+            {
+              "name": "symbol",
+              "selector": ".yIJIId",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "exchange",
+              "selector": ".nTWfgd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "weekday",
+              "selector": ".Oqb8zd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "day",
+              "selector": ".LbpHAb",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "time",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -1
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "timing",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -2
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "epsEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(1) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "revenueEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(2) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "period",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(3) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "today",
+        "selector": "div[role=\"tabpanel\"][aria-labelledby=\"earnings-todayTab\"] .wQPxF",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "company",
+              "selector": ".zJXQtf",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "ticker",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "quote/"
+                },
+                {
+                  "before": "?"
+                }
+              ]
+            },
+            {
+              "name": "symbol",
+              "selector": ".yIJIId",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "exchange",
+              "selector": ".nTWfgd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "weekday",
+              "selector": ".Oqb8zd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "day",
+              "selector": ".LbpHAb",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "time",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -1
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "timing",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -2
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "epsEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(1) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "revenueEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(2) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "period",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(3) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "tomorrow",
+        "selector": "div[role=\"tabpanel\"][aria-labelledby=\"earnings-tomorrowTab\"] .wQPxF",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "company",
+              "selector": ".zJXQtf",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "ticker",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "quote/"
+                },
+                {
+                  "before": "?"
+                }
+              ]
+            },
+            {
+              "name": "symbol",
+              "selector": ".yIJIId",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "exchange",
+              "selector": ".nTWfgd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "weekday",
+              "selector": ".Oqb8zd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "day",
+              "selector": ".LbpHAb",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "time",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -1
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "timing",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -2
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "epsEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(1) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "revenueEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(2) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "period",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(3) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "thisWeek",
+        "selector": "div[role=\"tabpanel\"][aria-labelledby=\"earnings-thisWeekTab\"] .wQPxF",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "company",
+              "selector": ".zJXQtf",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "ticker",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "quote/"
+                },
+                {
+                  "before": "?"
+                }
+              ]
+            },
+            {
+              "name": "symbol",
+              "selector": ".yIJIId",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "exchange",
+              "selector": ".nTWfgd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "weekday",
+              "selector": ".Oqb8zd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "day",
+              "selector": ".LbpHAb",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "time",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -1
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "timing",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -2
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "epsEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(1) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "revenueEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(2) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "period",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(3) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextWeek",
+        "selector": "div[role=\"tabpanel\"][aria-labelledby=\"earnings-nextWeekTab\"] .wQPxF",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "company",
+              "selector": ".zJXQtf",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "ticker",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "after": "quote/"
+                },
+                {
+                  "before": "?"
+                }
+              ]
+            },
+            {
+              "name": "symbol",
+              "selector": ".yIJIId",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "exchange",
+              "selector": ".nTWfgd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "weekday",
+              "selector": ".Oqb8zd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "day",
+              "selector": ".LbpHAb",
+              "transforms": [
+                "toInteger"
+              ]
+            },
+            {
+              "name": "time",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -1
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "timing",
+              "selector": ".S1XAGb",
+              "transforms": [
+                {
+                  "split": "|"
+                },
+                {
+                  "nth": -2
+                }
+              ],
+              "textSeparator": "|"
+            },
+            {
+              "name": "epsEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(1) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "revenueEstimate",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(2) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "period",
+              "selector": "a.Sb5kzb .dqMDl:nth-child(3) .IKnFUd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a.Ypk2mb[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
