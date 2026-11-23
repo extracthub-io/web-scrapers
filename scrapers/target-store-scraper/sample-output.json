@@ -1,0 +1,112 @@
+{
+  "storeId": "2829",
+  "name": "Target Alameda",
+  "locationName": "Alameda",
+  "status": "Open",
+  "hoursMessage": "Opens at 7am",
+  "street": "2700 Fifth Street",
+  "city": "Alameda",
+  "county": "Alameda",
+  "state": "California",
+  "stateCode": "CA",
+  "postalCode": "94501-6574",
+  "phone": "510-214-0931",
+  "latitude": 37.788701,
+  "longitude": -122.280262,
+  "timeZone": "America/Los_Angeles",
+  "buildingAreaSqFt": 140194,
+  "hours": [
+    {
+      "date": "Monday, November 23",
+      "hours": "7am open • 10pm close"
+    },
+    {
+      "date": "Tuesday, November 24",
+      "hours": "7am open • 10pm close"
+    },
+    {
+      "date": "Wednesday, November 25",
+      "hours": "7am open • 10pm close"
+    },
+    {
+      "date": "Thursday, November 26",
+      "hours": "Closed"
+    },
+    {
+      "date": "Friday, November 27",
+      "hours": "6am open • 10pm close"
+    },
+    {
+      "date": "Saturday, November 28",
+      "hours": "7am open • 10pm close"
+    },
+    {
+      "date": "Sunday, November 29",
+      "hours": "7am open • 11pm close"
+    }
+  ],
+  "departmentHours": [
+    {
+      "name": "Target Optical",
+      "hours": "9am open • 7pm close"
+    },
+    {
+      "name": "Starbucks Cafe",
+      "hours": "7am open • 8pm close"
+    },
+    {
+      "name": "CVS pharmacy",
+      "hours": "10am open • 1:30pm close 2pm open • 6:30pm close"
+    },
+    {
+      "name": "Wine, Beer & Spirits Available",
+      "hours": "7am open • 10pm close"
+    }
+  ],
+  "fulfillment": [
+    {
+      "name": "Order Pickup",
+      "description": "Order ahead and pickup in-store"
+    },
+    {
+      "name": "Drive Up",
+      "description": "Order ahead and use the Target app to pick up without leaving your car"
+    },
+    {
+      "name": "Same Day Delivery",
+      "description": "Brought to your door by Shipt"
+    }
+  ],
+  "features": [
+    {
+      "name": "Target Optical",
+      "url": "https://www.target.com/c/target-optical/-/N-4y8o9"
+    },
+    {
+      "name": "Starbucks Cafe",
+      "url": "https://www.target.com/sl/alameda/2829/starbucks"
+    },
+    {
+      "name": "CVS pharmacy",
+      "url": "https://www.target.com/c/pharmacy/-/N-54y52"
+    },
+    {
+      "name": "Wine, Beer & Spirits Available",
+      "url": "https://www.target.com/c/wine-beer-liquor-beverages/-/N-5n5q6"
+    },
+    {
+      "name": "Target Textile Drop Spot",
+      "url": "https://www.target.com/c/target-textile-drop-spot/-/N-5vtm6"
+    },
+    {
+      "name": "Accepts WIC",
+      "url": null
+    },
+    {
+      "name": "EV Charging",
+      "url": null
+    }
+  ],
+  "mapUrl": "https://www.google.com/maps/search/?api=1&query=Target%2C+2700+Fifth+Street%2C+Alameda%2C+CA%2C+94501-6574",
+  "pageUrl": "https://www.target.com/sl/alameda/2829"
+}

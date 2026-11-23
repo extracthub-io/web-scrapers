@@ -1,0 +1,224 @@
+{
+  "name": "Target - search and category results",
+  "description": "Target (target.com) search results and category pages: page title, results count, page count and page links, breadcrumbs, sibling categories, related searches, and each product on the page with TCIN, name, brand, category, image, current price, struck-through regular price, sale type, rating, rating count and URL.",
+  "slug": "target-search",
+  "url": "https://www.target.com/s?searchTerm=coffee+maker",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "waitForSelector": "[data-test=\"@web/ProductCard/ProductCardImage\"]",
+  "category": "ecommerce",
+  "tags": [
+    "target",
+    "ecommerce",
+    "search",
+    "category",
+    "products",
+    "price",
+    "retail"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "title",
+        "selector": [
+          "h1[data-test=\"@web/SiteTopOfFunnel/PageTitle\"]",
+          "h1[data-test=\"page-title\"]"
+        ],
+        "combineStrategy": "first",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "resultsCount",
+        "selector": "[data-test=\"lp-resultsCount\"]",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "before": " result"
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "totalPages",
+        "selector": "[data-test=\"listing-page-pagination\"] button[aria-expanded]",
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "of "
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "pageUrls",
+        "selector": "a[data-test=\"seo-pagination-link\"][href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "breadcrumbs",
+        "selector": "[data-test=\"@web/Breadcrumbs/BreadcrumbNav\"] li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": [
+                "a",
+                "span"
+              ],
+              "combineStrategy": "first",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "categories",
+        "selector": "[data-module-type=\"TaxonomySiblingCategories\"] li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "span",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "relatedSearches",
+        "selector": "a[data-test=\"relatedTerm\"]",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "products",
+        "selector": "script[data-test=\"plp-product-level-json-ld\"]",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*]",
+        "subFields": [
+          {
+            "name": "position",
+            "jsonPath": "position"
+          },
+          {
+            "name": "tcin",
+            "jsonPath": "item.sku",
+            "required": true
+          },
+          {
+            "name": "name",
+            "jsonPath": "item.name",
+            "transforms": [
+              "decodeHtml"
+            ]
+          },
+          {
+            "name": "brand",
+            "jsonPath": "item.brand.name",
+            "transforms": [
+              "decodeHtml"
+            ]
+          },
+          {
+            "name": "brandUrl",
+            "jsonPath": "item.brand.url"
+          },
+          {
+            "name": "category",
+            "jsonPath": "item.category",
+            "transforms": [
+              "decodeHtml"
+            ]
+          },
+          {
+            "name": "image",
+            "jsonPath": "item.image"
+          },
+          {
+            "name": "price",
+            "jsonPath": "item.offers.price",
+            "transforms": [
+              "toNumber"
+            ]
+          },
+          {
+            "name": "priceText",
+            "jsonPath": "item.offers.price"
+          },
+          {
+            "name": "regularPrice",
+            "jsonPath": "item.offers.priceSpecification[0].price",
+            "transforms": [
+              "toNumber"
+            ]
+          },
+          {
+            "name": "currency",
+            "jsonPath": "item.offers.priceCurrency"
+          },
+          {
+            "name": "priceType",
+            "jsonPath": "item.offers.additionalType"
+          },
+          {
+            "name": "rating",
+            "jsonPath": "item.aggregateRating.ratingValue"
+          },
+          {
+            "name": "ratingCount",
+            "jsonPath": "item.aggregateRating.ratingCount"
+          },
+          {
+            "name": "url",
+            "jsonPath": "item.offers.url"
+          }
+        ]
+      }
+    ]
+  }
+}

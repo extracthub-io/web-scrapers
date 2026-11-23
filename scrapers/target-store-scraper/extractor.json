@@ -1,0 +1,412 @@
+{
+  "name": "Target - store page",
+  "description": "Target (target.com) store page: store id, name, address, county, coordinates, phone, status, opening message, time zone, building area, the next 7 days of store hours, department hours (pharmacy, Starbucks, ...), pickup and delivery options, store features and services, map link.",
+  "slug": "target-store",
+  "url": "https://www.target.com/sl/alameda/2829",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "category": "other",
+  "tags": [
+    "target",
+    "store",
+    "store locator",
+    "hours",
+    "retail",
+    "local"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "storeId",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\\\"store_id\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "name",
+        "selector": "[data-test=\"@store-locator/StoreInfo\"] h1",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "locationName",
+        "selector": "[data-test=\"breadcrumb-store-name\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "status",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "\\\"store_id\\\""
+          },
+          {
+            "between": [
+              "\\\"status\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "hoursMessage",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\\\"hours_message\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "street",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\\\"address_line1\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "city",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "\\\"mailing_address\\\""
+          },
+          {
+            "between": [
+              "\\\"city\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "county",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\\\"county\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "state",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "\\\"mailing_address\\\""
+          },
+          {
+            "between": [
+              "\\\"state\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "stateCode",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "\\\"mailing_address\\\""
+          },
+          {
+            "between": [
+              "\\\"region\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "postalCode",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "\\\"mailing_address\\\""
+          },
+          {
+            "between": [
+              "\\\"postal_code\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "phone",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\\\"main_voice_phone_number\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "latitude",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "\\\"geofence\\\""
+          },
+          {
+            "between": [
+              "\\\"latitude\\\":",
+              ","
+            ]
+          },
+          "compact",
+          "first",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "longitude",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "after": "\\\"geofence\\\""
+          },
+          {
+            "between": [
+              "\\\"longitude\\\":",
+              ","
+            ]
+          },
+          "compact",
+          "first",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "timeZone",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\\\"timezone_identifier\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first"
+        ]
+      },
+      {
+        "name": "buildingAreaSqFt",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          {
+            "between": [
+              "\\\"building_area\\\":\\\"",
+              "\\\""
+            ]
+          },
+          "compact",
+          "first",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "hours",
+        "selector": "[data-test=\"@store-locator/StoreDetailsPage/StoreHours/Title\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "date",
+              "selector": "span:nth-child(1)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "hours",
+              "selector": "span:nth-child(2)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "departmentHours",
+        "selector": "[data-test=\"@store-locator/StoreDetailsPage/StoreHours/Content\"] li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "div > span:nth-child(1)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "hours",
+              "selector": "div > span:nth-child(2)",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "fulfillment",
+        "selector": "[data-test=\"@store-locator/FulfillmentOptions\"] a[href]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "span[data-test$=\"-heading\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "description",
+              "selector": "span[data-test$=\"-text\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "features",
+        "selector": "[data-test=\"@store-locator/StoreFeatures/FeaturesLandingPageList\"] li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "span",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "mapUrl",
+        "selector": "a[data-test=\"@web/StaticMap/Link\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      }
+    ]
+  },
+  "waitForSelector": "[data-test=\"@store-locator/StoreFeatures/FeaturesLandingPageList\"] li"
+}

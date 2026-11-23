@@ -1,0 +1,72 @@
+{
+  "title": "coffee maker",
+  "resultsCount": 289,
+  "totalPages": 13,
+  "pageUrls": [
+    "https://www.target.com/s?searchTerm=coffee+maker",
+    "https://www.target.com/s?searchTerm=coffee+maker&Nao=24",
+    "https://www.target.com/s?searchTerm=coffee+maker&Nao=48"
+  ],
+  "breadcrumbs": [],
+  "categories": [],
+  "relatedSearches": [
+    "best coffee maker",
+    "gray coffee maker",
+    "small coffee maker",
+    "coffee maker deals",
+    "big coffee maker"
+  ],
+  "products": [
+    {
+      "position": 1,
+      "tcin": "91863920",
+      "name": "Mr. Coffee 12-Cup Programmable Coffee Maker Black",
+      "brand": "Mr. Coffee",
+      "brandUrl": "https://www.target.com/b/mr-coffee/-/N-5s76z",
+      "category": "Coffee Makers",
+      "image": "https://target.scene7.com/is/image/Target/GUEST_fd026130-c56b-41d3-9e88-992fcf06debf",
+      "price": 19.99,
+      "priceText": "19.99",
+      "regularPrice": 34.99,
+      "currency": "USD",
+      "priceType": "sale",
+      "rating": 4.3,
+      "ratingCount": 1060,
+      "url": "https://www.target.com/p/mr-coffee-12c-programmable-drip-coffee-maker-stainless-steel-finish/-/A-91863920"
+    },
+    {
+      "position": 2,
+      "tcin": "94482782",
+      "name": "bella 12 Cup Programmable Coffee Maker",
+      "brand": "bella",
+      "brandUrl": "https://www.target.com/b/bella/-/N-q643lexyks9",
+      "category": "Coffee Makers",
+      "image": "https://target.scene7.com/is/image/Target/GUEST_4b6332f2-65e3-4459-88df-222ff9939259",
+      "price": 23.99,
+      "priceText": "23.99",
+      "regularPrice": null,
+      "currency": "USD",
+      "priceType": "mixed_sale",
+      "rating": 4.4,
+      "ratingCount": 635,
+      "url": "https://www.target.com/p/bella-12-cup-programmable-coffee-maker/-/A-94482826"
+    },
+    {
+      "position": 3,
+      "tcin": "92038440",
+      "name": "Keurig K-Duo Hot & Iced Single-Serve & Carafe Coffee Maker Black: Electric Drip Coffee Pot, 72 oz Capacity",
+      "brand": "Keurig",
+      "brandUrl": "https://www.target.com/b/keurig/-/N-5uvm4",
+      "category": "Coffee Makers",
+      "image": "https://target.scene7.com/is/image/Target/GUEST_6d1fe7b0-7314-41e9-93d5-30713a1092cc",
+      "price": 129.99,
+      "priceText": "129.99",
+      "regularPrice": 189.99,
+      "currency": "USD",
+      "priceType": "sale",
+      "rating": 4.4,
+      "ratingCount": 2107,
+      "url": "https://www.target.com/p/keurig-k-duo-hot-38-iced-single-serve-38-carafe-coffee-maker-black/-/A-92038440"
+    }
+  ]
+}
