@@ -1,9 +1,17 @@
-# Web Scrapers: Amazon Scraper, eBay Scraper, Walmart Scraper, Etsy Scraper, AliExpress Scraper, Indeed Scraper, LinkedIn Jobs Scraper, Yelp Scraper, TripAdvisor Scraper, Best Buy Scraper, Target Scraper, Tokopedia Scraper, Booking.com Scraper, Airbnb Scraper, Realtor.com Scraper, Redfin Scraper, Yellow Pages Scraper, Craigslist Scraper, Google Search Scraper, Google News Scraper, Google Shopping Scraper, Bing Scraper, Google Maps Scraper, Google Play Scraper, App Store Scraper, GitHub Scraper, Hacker News Scraper, Reddit Scraper, Product Hunt Scraper, Stack Overflow Scraper, Rotten Tomatoes Scraper, Goodreads Scraper, Steam Scraper, Wikipedia Scraper, ESPN Scraper, Cricbuzz Scraper, Transfermarkt Scraper, Basketball-Reference Scraper, Yahoo Finance Scraper, Google Finance Scraper, Finviz Scraper, Trustpilot Scraper, Zillow Scraper, YouTube Scraper, YouTube Transcript Scraper & more (ready-to-use scraping API)
+# Web Scrapers (ready-to-use scraping API)
 
 A growing collection of **ready-to-use web scrapers** that turn web pages into clean JSON. Every scraper here
 is a published [ExtractHub](https://extracthub.io) extractor: send a URL, get structured data back. No
 browser, no proxies to rotate, no HTML parsing code to maintain. Use them from any language through the REST
 API, or let an **AI agent** (Claude, Cursor, any MCP client) call them for you.
+
+**Sites covered:** e-commerce (Amazon, eBay, Walmart, Etsy, AliExpress, Best Buy, Target, Tokopedia, Google
+Shopping, Steam); jobs (Indeed, LinkedIn Jobs); local and travel (Google Maps, Yelp, TripAdvisor, Booking.com,
+Airbnb, Yellow Pages, Craigslist); real estate (Zillow, Realtor.com, Redfin); search and news (Google Search,
+Bing, Google News, BBC News, Hacker News, Reddit); apps and developers (Google Play, App Store, GitHub, Product
+Hunt, Stack Overflow); media and reviews (YouTube, YouTube transcripts, Rotten Tomatoes, Goodreads, Trustpilot,
+Wikipedia); sports (ESPN, Cricbuzz, Transfermarkt, Basketball-Reference); finance (Yahoo Finance, Google
+Finance, Finviz, CoinMarketCap).
 
 ## Scrapers
 
@@ -20,6 +28,8 @@ API, or let an **AI agent** (Claude, Cursor, any MCP client) call them for you.
 | [YouTube Transcript Scraper](scrapers/youtube-transcript-scraper/) | full video transcript: timestamped caption segments (start, duration, text) | [@extracthub1/youtube-transcript](https://extracthub.io/extractor/@extracthub1/youtube-transcript) | $0.0035 |
 | [GitHub Repository Scraper](scrapers/github-repo-scraper/) | repo page: stars, forks, watchers, topics, license, commits, releases, open issues and PRs, latest commit | [@extracthub1/github-repo](https://extracthub.io/extractor/@extracthub1/github-repo) | $0.0025 |
 | [Google News Scraper](scrapers/google-news-scraper/) | articles of a Google News topic page (~200): title, article id, article link, source, source site, publish time, author, image | [@extracthub1/google-news](https://extracthub.io/extractor/@extracthub1/google-news) | $0.0025 |
+| [BBC News Section Scraper](scrapers/bbc-news-section-scraper/) | section or topic page: story blocks with name and link, stories with headline, link, summary, time label, topic and image | [@extracthub1/bbc-news-section](https://extracthub.io/extractor/@extracthub1/bbc-news-section) | $0.0025 |
+| [BBC News Article Scraper](scrapers/bbc-news-article-scraper/) | article: headline, summary, publish / update time, authors and roles, images with captions, body paragraphs and text, topics, related stories | [@extracthub1/bbc-news-article](https://extracthub.io/extractor/@extracthub1/bbc-news-article) | $0.0025 |
 | [Google Shopping Scraper](scrapers/google-shopping-scraper/) | products of a Google Shopping search, about 40 per page: title, price, original and typical price, discount, store, rating, review count, delivery, Google product ids, themed product groups, next page | [@extracthub1/google-shopping](https://extracthub.io/extractor/@extracthub1/google-shopping) | $0.0025 |
 | [Bing Search Scraper (SERP)](scrapers/bing-search-scraper/) | organic results of a Bing search: position, title, link, displayed URL, site name, snippet, date, plus result count, related searches, next page | [@extracthub1/bing-serp](https://extracthub.io/extractor/@extracthub1/bing-serp) | $0.0025 |
 | [Hacker News Scraper](scrapers/hacker-news-scraper/) | stories from the front page, newest, ask, show: title, link, points, author, time, comments, next page | [@extracthub1/hacker-news-stories](https://extracthub.io/extractor/@extracthub1/hacker-news-stories) | $0.0025 |
@@ -80,6 +90,8 @@ API, or let an **AI agent** (Claude, Cursor, any MCP client) call them for you.
 | [Google Finance Markets Scraper](scrapers/google-finance-markets-scraper/) | market overview: indexes, currencies, crypto and futures, equity sectors, most active / gainers / losers, upcoming earnings, IPOs, market news | [@extracthub1/google-finance-markets](https://extracthub.io/extractor/@extracthub1/google-finance-markets) | $0.0025 |
 | [Google Finance Earnings Scraper](scrapers/google-finance-earnings-scraper/) | earnings calendar: companies reporting yesterday to next week with time, fiscal period, EPS and revenue estimates | [@extracthub1/google-finance-earnings](https://extracthub.io/extractor/@extracthub1/google-finance-earnings) | $0.0025 |
 | [Finviz Quote Scraper](scrapers/finviz-quote-scraper/) | stock quote: price, change, after-hours price, sector, industry, exchange, the full snapshot table of 84 fundamentals (market cap, P/E, EPS, short float, analyst recommendation, target price), latest news headlines, company description | [@extracthub1/finviz-quote](https://extracthub.io/extractor/@extracthub1/finviz-quote) | $0.0025 |
+| [CoinMarketCap Listing Scraper](scrapers/coinmarketcap-listing-scraper/) | top cryptocurrencies, 100 per page: rank, name, symbol, price, 1h / 24h / 7d / 30d / 1y change, market cap, volume, dominance, supply, all-time high / low, plus global market stats | [@extracthub1/coinmarketcap-listing](https://extracthub.io/extractor/@extracthub1/coinmarketcap-listing) | $0.0025 |
+| [CoinMarketCap Coin Scraper](scrapers/coinmarketcap-coin-scraper/) | coin page: price, changes from 1h to 1y, market cap, fully diluted cap, volume (CEX / DEX), supply, highs and lows, all-time high / low with dates, tags, contracts, links, holders, CertiK rating | [@extracthub1/coinmarketcap-coin](https://extracthub.io/extractor/@extracthub1/coinmarketcap-coin) | $0.0025 |
 | [Quotes to Scrape Scraper](scrapers/quotes-to-scrape-scraper/) | quotes, authors, tags, pagination (practice site) | [@extracthub1/quotes-toscrape-list](https://extracthub.io/extractor/@extracthub1/quotes-toscrape-list) | $0.0005 |
 | [Books to Scrape Scraper](scrapers/books-to-scrape-scraper/) | book titles, prices, links, images (practice site) | [@extracthub1/books-to-scrape](https://extracthub.io/extractor/@extracthub1/books-to-scrape) | $0.0005 |
 

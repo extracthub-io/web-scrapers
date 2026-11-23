@@ -1,0 +1,209 @@
+{
+  "name": "BBC News - article",
+  "description": "One BBC News article (bbc.com/news/articles/<id>, also /future, /travel, /culture articles on the same layout): headline, summary, publish and update time, authors with their role / location line, article type, main image with caption and credit, all images with captions, body paragraphs and full text, subheadings, topic tags with links and the related stories block. Plain fetch through the proxy (JSON-LD + server-rendered article blocks).",
+  "slug": "bbc-news-article",
+  "url": "https://www.bbc.com/news/articles/cqe9k09j9jv4o",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "news",
+    "bbc",
+    "articles",
+    "media"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "headline",
+        "selector": "main [data-component=\"headline-block\"] h1, main h1",
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "summary",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "description"
+      },
+      {
+        "name": "articleType",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "[\"@type\"]"
+      },
+      {
+        "name": "datePublished",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "datePublished"
+      },
+      {
+        "name": "dateModified",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "dateModified"
+      },
+      {
+        "name": "timeLabel",
+        "selector": "main [data-testid=\"byline\"] time",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "authors",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "author[*].name"
+      },
+      {
+        "name": "authorRoles",
+        "selector": "main [data-testid=\"byline\"] [data-testid$=\"-role-location\"]",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "publisher",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "publisher.name"
+      },
+      {
+        "name": "image",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "image.url"
+      },
+      {
+        "name": "images",
+        "selector": "main [data-component=\"image-block\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "src",
+              "selector": "img[alt][srcset]",
+              "extract": "attributeValue",
+              "attributeName": "src",
+              "required": true
+            },
+            {
+              "name": "alt",
+              "selector": "img[alt][srcset]",
+              "extract": "attributeValue",
+              "attributeName": "alt"
+            },
+            {
+              "name": "caption",
+              "selector": "figcaption",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "credit",
+              "selector": "span[class*=\"CreditStyled\"]",
+              "transforms": [
+                "trim"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "subheadings",
+        "selector": "main [data-component=\"subheadline-block\"] h2",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": "main [data-component=\"text-block\"] p",
+        "isArray": true,
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "text",
+        "selector": "main [data-component=\"text-block\"] p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "joinWithSpace"
+        ]
+      },
+      {
+        "name": "topics",
+        "selector": "main [data-component=\"tag-list-block\"] [data-testid=\"anchor-inner-wrapper\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a[href]",
+              "transforms": [
+                "trim"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "relatedStories",
+        "selector": "main [data-component=\"links-block\"] [data-indexcard=\"true\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "headline",
+              "selector": "[data-testid=\"card-headline\"]",
+              "required": true,
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

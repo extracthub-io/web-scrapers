@@ -1,0 +1,345 @@
+{
+  "name": "CoinMarketCap - coin page",
+  "description": "Price and market data of one cryptocurrency from its CoinMarketCap page (coinmarketcap.com/currencies/<slug>/): name, symbol, rank, price, 1h / 24h / 7d / 30d / 60d / 90d / 1y / YTD change, market cap, fully diluted market cap, dominance, 24h / 7d / 30d volume (CEX / DEX split), circulating / total / max supply, 24h / 7d / 30d / 90d / 52-week high and low, all-time high and low with dates, launch date, tags, website / whitepaper / explorer / source code / social links, holder stats and the CertiK rating. Plain fetch of the embedded page data.",
+  "slug": "coinmarketcap-coin",
+  "url": "https://coinmarketcap.com/currencies/bitcoin/",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "crypto",
+    "cryptocurrency",
+    "coinmarketcap",
+    "bitcoin",
+    "prices"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "coin",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "required": true,
+        "jsonPath": "props.pageProps.detailRes.detail",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "id",
+              "jsonPath": "id",
+              "required": true
+            },
+            {
+              "name": "name",
+              "jsonPath": "name",
+              "required": true
+            },
+            {
+              "name": "symbol",
+              "jsonPath": "symbol"
+            },
+            {
+              "name": "slug",
+              "jsonPath": "slug"
+            },
+            {
+              "name": "category",
+              "jsonPath": "category"
+            },
+            {
+              "name": "status",
+              "jsonPath": "status"
+            },
+            {
+              "name": "rank",
+              "jsonPath": "statistics.rank"
+            },
+            {
+              "name": "price",
+              "jsonPath": "statistics.price",
+              "required": true
+            },
+            {
+              "name": "percentChange1h",
+              "jsonPath": "statistics.priceChangePercentage1h"
+            },
+            {
+              "name": "percentChange24h",
+              "jsonPath": "statistics.priceChangePercentage24h"
+            },
+            {
+              "name": "percentChange7d",
+              "jsonPath": "statistics.priceChangePercentage7d"
+            },
+            {
+              "name": "percentChange30d",
+              "jsonPath": "statistics.priceChangePercentage30d"
+            },
+            {
+              "name": "percentChange60d",
+              "jsonPath": "statistics.priceChangePercentage60d"
+            },
+            {
+              "name": "percentChange90d",
+              "jsonPath": "statistics.priceChangePercentage90d"
+            },
+            {
+              "name": "percentChange1y",
+              "jsonPath": "statistics.priceChangePercentage1y"
+            },
+            {
+              "name": "percentChangeYtd",
+              "jsonPath": "statistics.ytdPriceChangePercentage"
+            },
+            {
+              "name": "marketCap",
+              "jsonPath": "statistics.marketCap"
+            },
+            {
+              "name": "marketCapChange24h",
+              "jsonPath": "statistics.marketCapChangePercentage24h"
+            },
+            {
+              "name": "fullyDilutedMarketCap",
+              "jsonPath": "statistics.fullyDilutedMarketCap"
+            },
+            {
+              "name": "dominance",
+              "jsonPath": "statistics.marketCapDominance"
+            },
+            {
+              "name": "volume24h",
+              "jsonPath": "statistics.volume24h"
+            },
+            {
+              "name": "volume24hReported",
+              "jsonPath": "statistics.volume24hReported"
+            },
+            {
+              "name": "volumeChange24h",
+              "jsonPath": "volumeChangePercentage24h"
+            },
+            {
+              "name": "volume7d",
+              "jsonPath": "statistics.volume7d"
+            },
+            {
+              "name": "volume30d",
+              "jsonPath": "statistics.volume30d"
+            },
+            {
+              "name": "volumeRank",
+              "jsonPath": "statistics.volumeRank"
+            },
+            {
+              "name": "cexVolume24h",
+              "jsonPath": "cexVolume"
+            },
+            {
+              "name": "dexVolume24h",
+              "jsonPath": "dexVolume"
+            },
+            {
+              "name": "turnover",
+              "jsonPath": "statistics.turnover"
+            },
+            {
+              "name": "circulatingSupply",
+              "jsonPath": "statistics.circulatingSupply"
+            },
+            {
+              "name": "totalSupply",
+              "jsonPath": "statistics.totalSupply"
+            },
+            {
+              "name": "maxSupply",
+              "jsonPath": "statistics.maxSupply"
+            },
+            {
+              "name": "infiniteMaxSupply",
+              "jsonPath": "isInfiniteMaxSupply"
+            },
+            {
+              "name": "low24h",
+              "jsonPath": "statistics.low24h"
+            },
+            {
+              "name": "high24h",
+              "jsonPath": "statistics.high24h"
+            },
+            {
+              "name": "low7d",
+              "jsonPath": "statistics.low7d"
+            },
+            {
+              "name": "high7d",
+              "jsonPath": "statistics.high7d"
+            },
+            {
+              "name": "low30d",
+              "jsonPath": "statistics.low30d"
+            },
+            {
+              "name": "high30d",
+              "jsonPath": "statistics.high30d"
+            },
+            {
+              "name": "low90d",
+              "jsonPath": "statistics.low90d"
+            },
+            {
+              "name": "high90d",
+              "jsonPath": "statistics.high90d"
+            },
+            {
+              "name": "low52w",
+              "jsonPath": "statistics.low52w"
+            },
+            {
+              "name": "high52w",
+              "jsonPath": "statistics.high52w"
+            },
+            {
+              "name": "allTimeHigh",
+              "jsonPath": "statistics.highAllTime"
+            },
+            {
+              "name": "allTimeHighDate",
+              "jsonPath": "statistics.highAllTimeTimestamp"
+            },
+            {
+              "name": "allTimeHighChangePercent",
+              "jsonPath": "statistics.highAllTimeChangePercentage"
+            },
+            {
+              "name": "allTimeLow",
+              "jsonPath": "statistics.lowAllTime"
+            },
+            {
+              "name": "allTimeLowDate",
+              "jsonPath": "statistics.lowAllTimeTimestamp"
+            },
+            {
+              "name": "openYesterday",
+              "jsonPath": "statistics.openYesterday"
+            },
+            {
+              "name": "closeYesterday",
+              "jsonPath": "statistics.closeYesterday"
+            },
+            {
+              "name": "dateAdded",
+              "jsonPath": "dateAdded"
+            },
+            {
+              "name": "dateLaunched",
+              "jsonPath": "dateLaunched"
+            },
+            {
+              "name": "lastUpdated",
+              "jsonPath": "latestUpdateTime"
+            },
+            {
+              "name": "watchlistCount",
+              "jsonPath": "watchCount",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "tags",
+              "jsonPath": "tags[*].name"
+            },
+            {
+              "name": "platforms",
+              "jsonPath": "platforms[*]",
+              "subFields": [
+                {
+                  "name": "name",
+                  "jsonPath": "contractPlatform"
+                },
+                {
+                  "name": "contractAddress",
+                  "jsonPath": "contractAddress"
+                }
+              ]
+            },
+            {
+              "name": "website",
+              "jsonPath": "urls.website"
+            },
+            {
+              "name": "whitepaper",
+              "jsonPath": "urls.technical_doc"
+            },
+            {
+              "name": "explorers",
+              "jsonPath": "urls.explorer"
+            },
+            {
+              "name": "sourceCode",
+              "jsonPath": "urls.source_code"
+            },
+            {
+              "name": "reddit",
+              "jsonPath": "urls.reddit"
+            },
+            {
+              "name": "twitter",
+              "jsonPath": "urls.twitter"
+            },
+            {
+              "name": "chat",
+              "jsonPath": "urls.chat"
+            },
+            {
+              "name": "holderCount",
+              "jsonPath": "holders.holderCount"
+            },
+            {
+              "name": "dailyActiveAddresses",
+              "jsonPath": "holders.dailyActive"
+            },
+            {
+              "name": "topTenHolderRatio",
+              "jsonPath": "holders.topTenHolderRatio"
+            },
+            {
+              "name": "topHundredHolderRatio",
+              "jsonPath": "holders.topHundredHolderRatio"
+            },
+            {
+              "name": "ratings",
+              "jsonPath": "cryptoRating[*]",
+              "subFields": [
+                {
+                  "name": "provider",
+                  "jsonPath": "type"
+                },
+                {
+                  "name": "score",
+                  "jsonPath": "score"
+                },
+                {
+                  "name": "rating",
+                  "jsonPath": "rating"
+                },
+                {
+                  "name": "updatedAt",
+                  "jsonPath": "updateTime"
+                }
+              ]
+            },
+            {
+              "name": "similarCoins",
+              "jsonPath": "similarCoins[*].symbol"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

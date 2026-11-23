@@ -1,0 +1,243 @@
+{
+  "name": "CoinMarketCap - cryptocurrency listing",
+  "description": "Top cryptocurrencies by market cap from a CoinMarketCap listing page (home page and ?page=N): rank, name, symbol, slug, coin page link, price, 1h / 24h / 7d / 30d / 90d / 1y / YTD change, market cap, fully diluted market cap, 24h volume, dominance, circulating / total / max supply, 24h high / low, all-time high / low, plus the global market stats (total market cap, 24h volume, BTC / ETH dominance). 100 coins per page from the embedded page data (plain fetch).",
+  "slug": "coinmarketcap-listing",
+  "url": "https://coinmarketcap.com/",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "crypto",
+    "cryptocurrency",
+    "coinmarketcap",
+    "prices",
+    "market cap"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "page",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.initialPage"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "pageSize",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.pageSize"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "totalCoins",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.dehydratedState.queries[3].state.data.data.listing.totalCount"
+        ],
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "globalMetrics",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.globalMetrics",
+        "subFields": [
+          {
+            "name": "totalMarketCap",
+            "jsonPath": "marketCap"
+          },
+          {
+            "name": "totalMarketCapChange24h",
+            "jsonPath": "marketCapChange"
+          },
+          {
+            "name": "totalVolume24h",
+            "jsonPath": "totalVol"
+          },
+          {
+            "name": "totalVolumeChange24h",
+            "jsonPath": "totalVolChange"
+          },
+          {
+            "name": "btcDominance",
+            "jsonPath": "btcDominance"
+          },
+          {
+            "name": "ethDominance",
+            "jsonPath": "ethDominance"
+          },
+          {
+            "name": "activeCryptocurrencies",
+            "jsonPath": "numCryptocurrencies"
+          },
+          {
+            "name": "activeExchanges",
+            "jsonPath": "activeExchanges"
+          },
+          {
+            "name": "marketPairs",
+            "jsonPath": "numMarkets"
+          },
+          {
+            "name": "defiMarketCap",
+            "jsonPath": "defiMarketCap"
+          },
+          {
+            "name": "derivativesVolume24h",
+            "jsonPath": "derivativesVol"
+          },
+          {
+            "name": "stablecoinVolume24h",
+            "jsonPath": "stablecoinVol"
+          }
+        ]
+      },
+      {
+        "name": "coins",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "required": true,
+        "jsonPath": "props.dehydratedState.queries[3].state.data.data.listing.cryptoCurrencyList[*]",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "rank",
+              "jsonPath": "cmcRank",
+              "required": true
+            },
+            {
+              "name": "id",
+              "jsonPath": "id",
+              "required": true
+            },
+            {
+              "name": "name",
+              "jsonPath": "name",
+              "required": true
+            },
+            {
+              "name": "symbol",
+              "jsonPath": "symbol"
+            },
+            {
+              "name": "slug",
+              "jsonPath": "slug"
+            },
+            {
+              "name": "quoteCurrency",
+              "jsonPath": "quotes[2].name"
+            },
+            {
+              "name": "price",
+              "jsonPath": "quotes[2].price"
+            },
+            {
+              "name": "percentChange1h",
+              "jsonPath": "quotes[2].percentChange1h"
+            },
+            {
+              "name": "percentChange24h",
+              "jsonPath": "quotes[2].percentChange24h"
+            },
+            {
+              "name": "percentChange7d",
+              "jsonPath": "quotes[2].percentChange7d"
+            },
+            {
+              "name": "percentChange30d",
+              "jsonPath": "quotes[2].percentChange30d"
+            },
+            {
+              "name": "percentChange90d",
+              "jsonPath": "quotes[2].percentChange90d"
+            },
+            {
+              "name": "percentChange1y",
+              "jsonPath": "quotes[2].percentChange1y"
+            },
+            {
+              "name": "percentChangeYtd",
+              "jsonPath": "quotes[2].ytdPriceChangePercentage"
+            },
+            {
+              "name": "marketCap",
+              "jsonPath": "quotes[2].marketCap"
+            },
+            {
+              "name": "fullyDilutedMarketCap",
+              "jsonPath": "quotes[2].fullyDilluttedMarketCap"
+            },
+            {
+              "name": "volume24h",
+              "jsonPath": "quotes[2].volume24h"
+            },
+            {
+              "name": "volume7d",
+              "jsonPath": "quotes[2].volume7d"
+            },
+            {
+              "name": "dominance",
+              "jsonPath": "quotes[2].dominance"
+            },
+            {
+              "name": "circulatingSupply",
+              "jsonPath": "circulatingSupply"
+            },
+            {
+              "name": "totalSupply",
+              "jsonPath": "totalSupply"
+            },
+            {
+              "name": "maxSupply",
+              "jsonPath": "maxSupply"
+            },
+            {
+              "name": "high24h",
+              "jsonPath": "high24h"
+            },
+            {
+              "name": "low24h",
+              "jsonPath": "low24h"
+            },
+            {
+              "name": "allTimeHigh",
+              "jsonPath": "ath"
+            },
+            {
+              "name": "allTimeLow",
+              "jsonPath": "atl"
+            },
+            {
+              "name": "marketPairCount",
+              "jsonPath": "marketPairCount"
+            },
+            {
+              "name": "dateAdded",
+              "jsonPath": "dateAdded"
+            },
+            {
+              "name": "lastUpdated",
+              "jsonPath": "lastUpdated"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

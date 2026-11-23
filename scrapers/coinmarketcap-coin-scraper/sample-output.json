@@ -1,0 +1,106 @@
+{
+  "coin": {
+    "id": 1,
+    "name": "Bitcoin",
+    "symbol": "BTC",
+    "slug": "bitcoin",
+    "category": "coin",
+    "status": "active",
+    "rank": 1,
+    "price": 60673.498175087036,
+    "percentChange1h": -0.278349868083,
+    "percentChange24h": 1.228184875746,
+    "percentChange7d": -6.449308156752,
+    "percentChange30d": -24.924677870583,
+    "percentChange60d": -27.626630327227,
+    "percentChange90d": -23.944925507862,
+    "percentChange1y": -29.276442361975,
+    "percentChangeYtd": -31.6216,
+    "marketCap": 1220509181413.018,
+    "marketCapChange24h": 1.230685949811,
+    "fullyDilutedMarketCap": 1274143461676.83,
+    "dominance": 58.7995,
+    "volume24h": 26804452450.400402,
+    "volume24hReported": 172985219833.5888,
+    "volumeChange24h": -52.983022848903,
+    "volume7d": 309956758536.24524,
+    "volume30d": 1236405907090.0242,
+    "volumeRank": 2,
+    "cexVolume24h": 26615218263.250755,
+    "dexVolume24h": 82194527.16618532,
+    "turnover": 0.0219392,
+    "circulatingSupply": 20116018,
+    "totalSupply": 20116018,
+    "maxSupply": 21000000,
+    "infiniteMaxSupply": 0,
+    "low24h": 58660.47413820744,
+    "high24h": 61561.592887260216,
+    "low7d": 55149.56719448933,
+    "high7d": 65604.60005251018,
+    "low30d": 55149.56719448933,
+    "high30d": 81889.94681144843,
+    "low90d": 55149.56719448933,
+    "high90d": 87363.75676816357,
+    "low52w": 55149.56719448933,
+    "high52w": 97860.60380297744,
+    "allTimeHigh": 126198.06960343386,
+    "allTimeHighDate": "2025-10-06T18:59:00.000Z",
+    "allTimeHighChangePercent": -51.94,
+    "allTimeLow": 0.04864654,
+    "allTimeLowDate": "2010-07-14T19:24:00.000Z",
+    "openYesterday": 60094.09164696687,
+    "closeYesterday": 61161.90983475094,
+    "dateAdded": "2010-07-13T00:00:00.000Z",
+    "dateLaunched": "2010-07-13T00:00:00.000Z",
+    "lastUpdated": "2026-11-23T02:08:48.129Z",
+    "watchlistCount": 6435473,
+    "tags": [
+      "Mineable",
+      "PoW",
+      "SHA-256",
+      "Store Of Value",
+      "State Channel"
+    ],
+    "platforms": [],
+    "website": [
+      "https://bitcoin.org/"
+    ],
+    "whitepaper": [
+      "https://bitcoin.org/bitcoin.pdf"
+    ],
+    "explorers": [
+      "https://blockchain.info/",
+      "https://live.blockcypher.com/btc/",
+      "https://blockchair.com/bitcoin",
+      "https://explorer.viabtc.com/btc",
+      "https://www.okx.com/web3/explorer/btc"
+    ],
+    "sourceCode": [
+      "https://github.com/bitcoin/bitcoin"
+    ],
+    "reddit": [
+      "https://reddit.com/r/bitcoin"
+    ],
+    "twitter": [],
+    "chat": [],
+    "holderCount": 50708169,
+    "dailyActiveAddresses": 963625,
+    "topTenHolderRatio": 5.4,
+    "topHundredHolderRatio": 13.72,
+    "ratings": [
+      {
+        "provider": "CertiK",
+        "score": 97.53,
+        "rating": 4.9,
+        "updatedAt": "2026-11-22T00:00:00.000Z"
+      }
+    ],
+    "similarCoins": [
+      "ETH",
+      "SOL",
+      "XRP",
+      "LINK",
+      "ONDO"
+    ]
+  }
+}

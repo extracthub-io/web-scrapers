@@ -1,0 +1,82 @@
+{
+  "url": "https://www.bbc.com/news/articles/cqe9k09j9jv4o",
+  "headline": "San Francisco is enjoying an AI boom, but worries about a crash are growing",
+  "summary": "AI employees in the industry's epicentre - San Francisco - worry that the sector is overheated.",
+  "articleType": "ReportageNewsArticle",
+  "datePublished": "2026-11-23T00:08:00.937Z",
+  "dateModified": "2026-11-23T00:08:00.937Z",
+  "timeLabel": "2 hours ago",
+  "authors": [
+    "Zoe Corbyn"
+  ],
+  "authorRoles": [
+    "Technology reporter, San Francisco"
+  ],
+  "publisher": "BBC News",
+  "image": "https://ichef.bbci.co.uk/news/1024/branded_news/4d7f/live/712502a0-e2cd-11f1-99ed-7de3e5932968.jpg",
+  "images": [
+    {
+      "src": "https://ichef.bbci.co.uk/news/480/cpsprodpb/51ed/live/d01ee450-e2a6-11f1-8226-87dfa5049e9a.jpg.webp",
+      "alt": "San Francisco Travel Association The Bay Bridge and the San Francisco skyline",
+      "caption": "The city of San Francisco is the heart of the AI sector",
+      "credit": "San Francisco Travel Association"
+    },
+    {
+      "src": "https://ichef.bbci.co.uk/news/480/cpsprodpb/b47a/live/98419780-e2a6-11f1-8226-87dfa5049e9a.jpg.webp",
+      "alt": "Lauren Goldboss Lauren Goldboss and four dogs that she is walking",
+      "caption": "Lauren Goldboss walks dogs for AI workers",
+      "credit": "Lauren Goldboss"
+    },
+    {
+      "src": "https://ichef.bbci.co.uk/news/480/cpsprodpb/9a39/live/fa5cec20-5c9d-11f0-b8c6-458cd8075fd5.jpg.webp",
+      "alt": "A data centre in Georgia being built in a forest clearing with the flat land going off into the distance",
+      "caption": "Huge data centres are being built across the US to power AI",
+      "credit": null
+    }
+  ],
+  "subheadings": [],
+  "paragraphs": [
+    "Lauren Goldboss is busy. The owner of a small San Francisco dog-walking company, she has been hiring staff and buying vans.",
+    "Fuelling the growth is her new office dog-walking service Paw Perk, popular with some local AI start-ups.",
+    "Her business is an example of how the AI boom in San Francisco is benefiting other sectors.",
+    "The city saw an exodus of residents during the pandemic and its downtown was weakened by remote work, but it s now enjoying a rejuvenation, with AI being the major driver.",
+    "Leading AI firms OpenAI and Anthropic – which have been hiring top engineering talent, often on eye-popping salaries – are based here. Anthropic, the company behind the Claude chatbot, last week listed on New York's Nasdaq stock exchange."
+  ],
+  "text": "Lauren Goldboss is busy. The owner of a small San Francisco dog-walking company, she has been hiring staff and buying vans. Fuelling the growth is her new office dog-walking service Paw Perk, popular with some local AI start-ups. Her business is an example of how the AI boom in San Francisco is benefiting other sectors. …",
+  "topics": [
+    {
+      "name": "World of Business",
+      "url": "https://www.bbc.com/news/topics/c4gmdg9ne38t"
+    },
+    {
+      "name": "US economy",
+      "url": "https://www.bbc.com/news/topics/c1038wnxypvt"
+    },
+    {
+      "name": "Artificial intelligence",
+      "url": "https://www.bbc.com/news/topics/ce1qrvleleqt"
+    },
+    {
+      "name": "International Business",
+      "url": "https://www.bbc.com/news/topics/c4nrdv135zet"
+    },
+    {
+      "name": "San Francisco",
+      "url": "https://www.bbc.com/news/topics/cewrr8qxd9et"
+    }
+  ],
+  "relatedStories": [
+    {
+      "headline": "Simon Jack: Can Anthropic's record-breaking IPO stop the AI bubble bursting?",
+      "url": "https://www.bbc.co.uk/news/articles/cj4gnpzll020o"
+    },
+    {
+      "headline": "The rise and fall of Jensen Huang - how the tech superstar became mired in scandal",
+      "url": "https://www.bbc.co.uk/news/articles/cmze750zg0jeo"
+    },
+    {
+      "headline": "Wealthy AI workers send San Francisco house prices soaring",
+      "url": "https://www.bbc.co.uk/news/articles/c9q29j47v9ro"
+    }
+  ]
+}

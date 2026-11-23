@@ -1,0 +1,122 @@
+{
+  "name": "BBC News - section page",
+  "description": "Stories of a BBC News section or topic page (bbc.com/news/technology, /news/world, /business, /innovation, ...), grouped by the page's blocks (top stories, \"More Tech\", \"Watch\", ...): block name and link, then per story the headline, link, summary, time label, topic tag and image. Plain fetch through the proxy.",
+  "slug": "bbc-news-section",
+  "url": "https://www.bbc.com/news/technology",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "news",
+    "bbc",
+    "headlines",
+    "media"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "pageUrl",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": "main section[data-analytics-group=\"true\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "[data-testid=\"section-title-wrapper\"] h2",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "link",
+              "selector": "[data-testid=\"section-title-wrapper\"] a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "stories",
+              "selector": "[data-indexcard=\"true\"]",
+              "isArray": true,
+              "extract": "innerHTML",
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "headline",
+                    "selector": "[data-testid=\"card-headline\"], a h1",
+                    "required": true,
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "url",
+                    "selector": "a[href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      "toAbsoluteUrl"
+                    ]
+                  },
+                  {
+                    "name": "summary",
+                    "selector": "[data-testid=\"card-description\"], p",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "timeLabel",
+                    "selector": "[data-testid=\"card-metadata-lastupdated\"]",
+                    "transforms": [
+                      "trim"
+                    ]
+                  },
+                  {
+                    "name": "topic",
+                    "selector": "[data-testid=\"card-metadata-tag\"]",
+                    "transforms": [
+                      "trim"
+                    ]
+                  },
+                  {
+                    "name": "image",
+                    "selector": "img[alt][srcset]",
+                    "extract": "attributeValue",
+                    "attributeName": "src"
+                  },
+                  {
+                    "name": "imageAlt",
+                    "selector": "img[alt][srcset]",
+                    "extract": "attributeValue",
+                    "attributeName": "alt"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
