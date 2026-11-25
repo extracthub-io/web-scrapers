@@ -1,0 +1,226 @@
+{
+  "buildingId": "1002123433",
+  "name": "One City Block",
+  "url": "https://www.zillow.com/apartments/denver-co/one-city-block/5XqvWd/",
+  "fullAddress": "444 E 19th Ave, Denver, CO 80203",
+  "streetAddress": "444 E 19th Ave",
+  "city": "Denver",
+  "state": "CO",
+  "zipcode": "80203",
+  "neighborhood": "North Capitol Hill",
+  "county": "Denver County",
+  "latitude": 39.74553,
+  "longitude": -104.981573,
+  "phone": "(719) 470-2579",
+  "buildingType": "FOR_RENT",
+  "homeTypes": [
+    "apartment"
+  ],
+  "unitCount": 27,
+  "availableUnitCount": 27,
+  "buildingDetails": [
+    "302 units",
+    "4 stories",
+    "built in 2013"
+  ],
+  "specialOffer": "Limited Time Special: Receive 6 Weeks FREE! *Restrictions Apply",
+  "description": "Sustainable Luxury Living with Unmatched Rooftop Views in Denver\n\nPerfectly located in Denver's Uptown neighborhood, One City Block apartments epitomize sophisticated, chic, and sustainable urban living. With a prime location offering easy access to all that Downtown Denver has to offer, we feature modern studio, one-, and two-bedroom floor plans, each boasting beautifully designed interiors. One of our key focuses is providing a vibrant social atmosphere with four uniquely designed rooftop terraces, offering breathtaking views of the Denver skyline. Entertain guests in one of our outdoor gathering spaces, complete with artistic fire pits, community grills, or enjoy our game room featuring ping pong and pool tables. After a busy day, unwind by our lap pool and hot tub or break a sweat in our private yoga studio and fitness center. For our sports enthusiasts and bikers, we offer a full-size sports court, a bike repair shop, and heated bike storage. Plus, enjoy convenient access to hundreds of highly rated restaurants, bars, entertainment venues, and top employers! Qualified applicants must earn a minimum of 2x the monthly rent.",
+  "officeHours": [
+    "Mon - Fri: 10:00AM - 6:00PM",
+    "Sat: 10:00AM - 5:00PM",
+    "Sun: Closed"
+  ],
+  "pets": [
+    "Cats",
+    "Large dogs",
+    "Small dogs"
+  ],
+  "petPolicies": [
+    {
+      "petType": "cats",
+      "allowed": true,
+      "deposit": 300,
+      "monthlyFee": 35,
+      "oneTimeFee": null,
+      "maxWeight": null,
+      "comment": "Breed restrictions apply. Please reach out to our leasing office for full details on our pet policy. We're here to answer any questions!"
+    },
+    {
+      "petType": "dogs",
+      "allowed": true,
+      "deposit": 300,
+      "monthlyFee": 35,
+      "oneTimeFee": null,
+      "maxWeight": null,
+      "comment": "Breed restrictions apply. Please reach out to our leasing office for full details on our pet policy. We're here to answer any questions!"
+    }
+  ],
+  "amenities": [
+    "24-hour maintenance",
+    "Aerobic Facility",
+    "Balcony",
+    "Barbecue",
+    "Bike Repair Shop",
+    "Bike storage",
+    "Business center",
+    "Community Grills"
+  ],
+  "unitAmenities": [
+    "Dryer",
+    "Washer"
+  ],
+  "incomeToRent": "2x",
+  "walkScore": 96,
+  "transitScore": 78,
+  "bikeScore": 97,
+  "neighborhoodMedianRent": 1576,
+  "photoCount": 22,
+  "photos": [
+    {
+      "url": "https://photos.zillowstatic.com/fp/6f04cafb17c947fffc6e47aa61d0d6b2-o_a.webp",
+      "roomType": "Kitchen"
+    },
+    {
+      "url": "https://photos.zillowstatic.com/fp/53afbf6b4e64628fc2a18f47709cd1c9-o_a.webp",
+      "roomType": "Exterior"
+    },
+    {
+      "url": "https://photos.zillowstatic.com/fp/fdef1d26b08af3ab1caf2a6ea9098c92-o_a.webp",
+      "roomType": "Kitchen"
+    }
+  ],
+  "floorPlans": [
+    {
+      "name": "S1",
+      "beds": 0,
+      "baths": 1,
+      "sqft": 459,
+      "minPrice": 1366,
+      "maxPrice": 1491,
+      "availableFrom": 1795852800000,
+      "leaseTerm": "Available months 3,4,5,6,7,8,9,10,11,12,13,14,15",
+      "deposit": 250,
+      "units": [
+        {
+          "unitNumber": "Unit B334",
+          "price": 1366,
+          "sqft": 459,
+          "availableFrom": 1795852800000,
+          "zpid": "2088122001"
+        },
+        {
+          "unitNumber": "Unit D113",
+          "price": 1422,
+          "sqft": 459,
+          "availableFrom": 0,
+          "zpid": "2077796691"
+        },
+        {
+          "unitNumber": "Unit D117",
+          "price": 1481,
+          "sqft": 459,
+          "availableFrom": 1796716800000,
+          "zpid": "2078103563"
+        },
+        {
+          "unitNumber": "Unit D318",
+          "price": 1491,
+          "sqft": 459,
+          "availableFrom": 0,
+          "zpid": "2080437503"
+        }
+      ]
+    },
+    {
+      "name": "S3",
+      "beds": 0,
+      "baths": 1,
+      "sqft": 553,
+      "minPrice": 1487,
+      "maxPrice": 1541,
+      "availableFrom": 1793865600000,
+      "leaseTerm": "Available months 3,4,5,6,7,8,9,10,11,12,13,14,15",
+      "deposit": 250,
+      "units": [
+        {
+          "unitNumber": "Unit A305",
+          "price": 1525,
+          "sqft": 553,
+          "availableFrom": 1795248000000,
+          "zpid": "2067839646"
+        },
+        {
+          "unitNumber": "Unit C203",
+          "price": 1541,
+          "sqft": 553,
+          "availableFrom": 1796976000000,
+          "zpid": "2090541634"
+        },
+        {
+          "unitNumber": "Unit D212",
+          "price": 1487,
+          "sqft": 553,
+          "availableFrom": 1793865600000,
+          "zpid": "2077167728"
+        },
+        {
+          "unitNumber": "Unit D412",
+          "price": 1536,
+          "sqft": 553,
+          "availableFrom": 1796198400000,
+          "zpid": "2077014644"
+        }
+      ]
+    },
+    {
+      "name": "S5",
+      "beds": 0,
+      "baths": 1,
+      "sqft": 577,
+      "minPrice": 1541,
+      "maxPrice": 1541,
+      "availableFrom": 1799827200000,
+      "leaseTerm": "Available months 3,4,5,6,7,8,9,10,11,12,13,14,15",
+      "deposit": 250,
+      "units": [
+        {
+          "unitNumber": "Unit C104",
+          "price": 1541,
+          "sqft": 577,
+          "availableFrom": 1799827200000,
+          "zpid": "448194449"
+        }
+      ]
+    }
+  ],
+  "units": null,
+  "schools": [
+    {
+      "name": "Wyatt Academy",
+      "level": "ELEMENTARY",
+      "grades": "K-5",
+      "rating": 4,
+      "distance": 1.8,
+      "type": "CHARTER",
+      "link": "https://www.greatschools.org/colorado/denver/524-Wyatt-Academy/"
+    },
+    {
+      "name": "Whittier K-8 School",
+      "level": "PRE_K,ELEMENTARY,MIDDLE",
+      "grades": "PK-8",
+      "rating": 4,
+      "distance": 0.8,
+      "type": "PUBLIC",
+      "link": "https://www.greatschools.org/colorado/denver/506-Whittier-K-8-School/"
+    },
+    {
+      "name": "East High School",
+      "level": "HIGH",
+      "grades": "9-12",
+      "rating": 7,
+      "distance": 1.4,
+      "type": "PUBLIC",
+      "link": "https://www.greatschools.org/colorado/denver/429-East-High-School/"
+    }
+  ]
+}

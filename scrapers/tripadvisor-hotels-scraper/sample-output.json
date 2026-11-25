@@ -1,0 +1,53 @@
+{
+  "pageUrl": "https://www.tripadvisor.com/Hotels-g60763-New_York_City_New_York-Hotels.html",
+  "geoId": "60763",
+  "location": "New York City Hotels",
+  "hotels": [
+    {
+      "rank": 1,
+      "hotelId": "11854022",
+      "name": "Crowne Plaza HY36 Midtown Manhattan by IHG",
+      "url": "https://www.tripadvisor.com/Hotel_Review-g60763-d11854022-Reviews-Crowne_Plaza_HY36_Midtown_Manhattan_by_IHG-New_York_City_New_York.html",
+      "rating": 4.8,
+      "reviewCount": 2451,
+      "popularity": "#1 Best Value of 1,051 places to stay in New York City",
+      "priceFrom": 1074,
+      "priceText": "$1,074",
+      "travelersChoice": false,
+      "summary": "Centrally located hotel near Times Square, Hudson Yards, and the High Line. Features modern, clean rooms, fast wifi, and excellent dining options, including an on-site restaurant and bar. Highly praised for its friendly staff and 5-star service, making it ideal for sightseeing and first-time visitors.",
+      "reviewSnippet": " Great room , very comfortable bed, very close to the Penn Station (quick, easy walk if one is walking from station to the hotel), great on-site restaurant, excellent staff (lovely friendly hotel staff who are polit... ",
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/a0/c3/be/our-spacious-guest-rooms.jpg?w=400&h=-1&s=1"
+    },
+    {
+      "rank": 2,
+      "hotelId": "1938661",
+      "name": "ROW NYC",
+      "url": "https://www.tripadvisor.com/Hotel_Review-g60763-d1938661-Reviews-ROW_NYC-New_York_City_New_York.html",
+      "rating": 4.2,
+      "reviewCount": 469,
+      "popularity": "#2 Best Value of 1,051 places to stay in New York City",
+      "priceFrom": 265,
+      "priceText": "$265",
+      "travelersChoice": false,
+      "summary": "Modern hotel with a lively atmosphere, central location near Times Square and Broadway, and updated accommodations. Features great views, clean rooms, complimentary happy hour, and attentive service.",
+      "reviewSnippet": " Although we originally booked a standard room, we were pleasantly surprised with a complimentary upgrade to a spacious and exceptionally comfortable room that made our stay truly wonderful The hotel itself is luxu... ",
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/48/05/2b/caption.jpg?w=400&h=-1&s=1"
+    },
+    {
+      "rank": 3,
+      "hotelId": "23448880",
+      "name": "Motto by Hilton New York City Chelsea",
+      "url": "https://www.tripadvisor.com/Hotel_Review-g60763-d23448880-Reviews-Motto_by_Hilton_New_York_City_Chelsea-New_York_City_New_York.html",
+      "rating": 4.8,
+      "reviewCount": 2307,
+      "popularity": "#3 Best Value of 1,051 places to stay in New York City",
+      "priceFrom": 303,
+      "priceText": "$303",
+      "travelersChoice": false,
+      "summary": "Modern hotel in a prime location with stunning southern Manhattan views. Highly praised for its lively bar and restaurant offering exceptional food and ample seating. Guests love the clean, contemporary design, efficient service, and proximity to top NYC attractions and dining options.",
+      "reviewSnippet": " Imeisha was very kind and helpful The food and the restaurant was amazing The waitress very friendly The room was clean and with a nice view Big room, comfortable bed Best neighborhood in NYC I definitely recommen... ",
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/53/19/d2/exterior.jpg?w=400&h=-1&s=1"
+    }
+  ],
+  "nextPageUrl": "https://www.tripadvisor.com/Hotels-g60763-oa30-New_York_City_New_York-Hotels.html"
+}

@@ -1,0 +1,110 @@
+{
+  "restaurantId": "1236281",
+  "name": "Club A Steakhouse",
+  "rating": 4.7,
+  "reviewCount": 4743,
+  "ranking": "#18 of 13,936 Restaurants in New York City",
+  "rankPosition": 18,
+  "rankTotal": 13936,
+  "priceRange": "$$$$",
+  "cuisines": [
+    "Steakhouse",
+    "Seafood"
+  ],
+  "details": [
+    {
+      "label": "CUISINES",
+      "value": "Steakhouse, Seafood"
+    },
+    {
+      "label": "Meal types",
+      "value": "Dinner"
+    },
+    {
+      "label": "Special Diets",
+      "value": "Gluten free options"
+    }
+  ],
+  "features": [
+    "Accepts Credit Cards",
+    "American Express",
+    "Delivery",
+    "Discover",
+    "Free Wifi",
+    "Full Bar"
+  ],
+  "acceptsReservations": true,
+  "telephone": "+1 212-688-4190",
+  "menuUrl": null,
+  "streetAddress": "240 East 58th Street",
+  "city": "New York City",
+  "region": "New York",
+  "postalCode": "10022-2001",
+  "country": "US",
+  "latitude": 40.760056,
+  "longitude": -73.96558,
+  "openingHours": [
+    {
+      "day": "Sunday",
+      "opens": "17:00:00",
+      "closes": "21:30:00"
+    },
+    {
+      "day": "Tuesday",
+      "opens": "17:00:00",
+      "closes": "21:30:00"
+    },
+    {
+      "day": "Wednesday",
+      "opens": "17:00:00",
+      "closes": "21:30:00"
+    },
+    {
+      "day": "Thursday",
+      "opens": "17:00:00",
+      "closes": "21:30:00"
+    },
+    {
+      "day": "Friday",
+      "opens": "17:00:00",
+      "closes": "21:30:00"
+    },
+    {
+      "day": "Saturday",
+      "opens": "17:00:00",
+      "closes": "21:30:00"
+    }
+  ],
+  "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/5f/57/c3/dining-room.jpg?w=500&h=-1&s=1",
+  "breadcrumbs": [
+    "United States",
+    "New York (NY)",
+    "New York City",
+    "New York City Restaurants",
+    "Club A Steakhouse"
+  ],
+  "reviews": [
+    {
+      "position": 1,
+      "title": "Romantic atmosphere",
+      "text": "Want an over the top experience with a spouse-on a date-or with the entire family? Make reservations with the most fabulous Club A…come hungry! The steak is out of this world-the salad is full of flavor-you will be treated like royalty and they will top off your night with a trio dessert on the house! This is our special spot when in NY! It does not disappoint and is family owned! Bruno, the owner, will greet you as you come in!",
+      "rating": 5,
+      "url": "https://www.tripadvisor.com/ShowUserReviews-g60763-d1236281-r1086294625-Club_A_Steakhouse-New_York_City_New_York.html"
+    },
+    {
+      "position": 2,
+      "title": "Got to come here",
+      "text": "Location is walking distance from midtown. I’d give it 10 stars but they only let you give 5 star. Food was amazing had the beat salad great then the rib eye with all 4 dipping sauces it was perfectly cooked and tasted incredible. Old school NY I was here on business but a great date or couples night out. Eli was our waiter but everyone was great",
+      "rating": 5,
+      "url": "https://www.tripadvisor.com/ShowUserReviews-g60763-d1236281-r1085864246-Club_A_Steakhouse-New_York_City_New_York.html"
+    },
+    {
+      "position": 3,
+      "title": "Great Steakhouse!",
+      "text": "What a wonderful experience, one of the best steakhouses in NYC. The food, service and attention to detail are second to none. As a family we have celebrated many special occasions here and have never been disappointed. Congratulations to Mr Bruno, family and his staff. Always look forward to our next visit.",
+      "rating": 5,
+      "url": "https://www.tripadvisor.com/ShowUserReviews-g60763-d1236281-r1084852484-Club_A_Steakhouse-New_York_City_New_York.html"
+    }
+  ],
+  "url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d1236281-Reviews-Club_A_Steakhouse-New_York_City_New_York.html"
+}

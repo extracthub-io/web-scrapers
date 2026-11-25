@@ -1,0 +1,166 @@
+{
+  "name": "TripAdvisor - attractions list",
+  "description": "TripAdvisor things to do list of a city for one category (Attractions-g...-Activities-c..., e.g. Sights & Landmarks, Museums, Nature & Parks): the 30 ranked attractions on the page with attraction id, name, link, rating, review count, categories, ticket price, Travelers' Choice badge and a review snippet, plus the next page link.",
+  "slug": "tripadvisor-attractions",
+  "url": "https://www.tripadvisor.com/Attractions-g60763-Activities-c47-New_York_City_New_York.html",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "tripadvisor",
+    "travel",
+    "attractions",
+    "things to do",
+    "rating"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "geoId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "-g",
+              "-"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "title",
+        "selector": "h1",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "attractions",
+        "selector": "[data-automation=\"cardWrapper\"][data-tracking-title^=\"PoiFlexCard_attraction_\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "rank",
+              "selector": "header h3",
+              "transforms": [
+                {
+                  "before": "."
+                },
+                "toInteger"
+              ],
+              "required": true
+            },
+            {
+              "name": "attractionId",
+              "selector": "header a[href^=\"/Attraction_Review\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "-d",
+                    "-Reviews"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": "header h3",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": ". "
+                }
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "header a[href^=\"/Attraction_Review\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "[data-automation=\"bubbleRatingValue\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "[data-automation=\"bubbleReviewCount\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "categories",
+              "selector": ".dxkoL .alPVI > .biGQs",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "split": " • "
+                }
+              ]
+            },
+            {
+              "name": "ticketPrice",
+              "selector": ".dxkoL .SewaP",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "ticketText",
+              "selector": ".dxkoL .SewaP",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "travelersChoice",
+              "selector": "[data-automation^=\"travelersChoice-\"]",
+              "extract": "exists"
+            },
+            {
+              "name": "reviewSnippet",
+              "selector": "a[href^=\"/ShowUserReviews\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a[aria-label=\"Next page\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

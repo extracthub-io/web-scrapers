@@ -1,0 +1,210 @@
+{
+  "name": "The Guardian - article",
+  "description": "One Guardian article (theguardian.com/<section>/<yyyy>/<mon>/<dd>/<slug>): headline, standfirst, section label and link, published and modified time, dateline, byline with authors, roles and profile links, publisher, lead image with caption, keywords, subheadings, body paragraphs and full text. Plain fetch (NewsArticle JSON-LD, article meta tags and page markup).",
+  "slug": "guardian-article",
+  "url": "https://www.theguardian.com/technology/2026/nov/24/china-media-jensen-huang-nvidia-ceo",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "news",
+    "guardian",
+    "articles",
+    "journalism"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "headline",
+        "selector": "[data-gu-name=\"headline\"] h1",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "standfirst",
+        "selector": "[data-gu-name=\"standfirst\"] p",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "textSeparator": ""
+      },
+      {
+        "name": "label",
+        "selector": "a[data-link-name=\"article section\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "labelUrl",
+        "selector": "a[data-link-name=\"article section\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "section",
+        "selector": "meta[property=\"article:section\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "articleType",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0][\"@type\"]",
+          "[\"@type\"]"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "datePublished",
+        "selector": "meta[property=\"article:published_time\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "dateModified",
+        "selector": "meta[property=\"article:modified_time\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "dateline",
+        "selector": "[data-gu-name=\"dateline\"] summary",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "byline",
+        "selector": "[data-gu-name=\"byline\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "authors",
+        "selector": "[data-gu-name=\"byline\"] a[rel=\"author\"]",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "authorUrls",
+        "selector": "[data-gu-name=\"byline\"] a[rel=\"author\"][href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "publisher",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].publisher.name",
+          "publisher.name"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "isAccessibleForFree",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].isAccessibleForFree",
+          "isAccessibleForFree"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "[data-gu-name=\"media\"] picture img[src]",
+        "extract": "attributeValue",
+        "attributeName": "src"
+      },
+      {
+        "name": "imageAlt",
+        "selector": "[data-gu-name=\"media\"] picture img[alt]",
+        "extract": "attributeValue",
+        "attributeName": "alt"
+      },
+      {
+        "name": "imageCaption",
+        "selector": "[data-gu-name=\"media\"] figcaption",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "keywords",
+        "selector": "meta[property=\"article:tag\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          {
+            "split": ","
+          },
+          "trim",
+          "compact"
+        ]
+      },
+      {
+        "name": "subheadings",
+        "selector": "#maincontent .article-body-commercial-selector > h2",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": "#maincontent .article-body-commercial-selector > p",
+        "isArray": true,
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ],
+        "textSeparator": ""
+      },
+      {
+        "name": "text",
+        "selector": "#maincontent .article-body-commercial-selector > p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "joinWithSpace"
+        ],
+        "textSeparator": ""
+      }
+    ]
+  }
+}

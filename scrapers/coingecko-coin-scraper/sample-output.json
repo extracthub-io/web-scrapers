@@ -1,0 +1,166 @@
+{
+  "name": "Bitcoin",
+  "symbol": "BTC",
+  "apiId": "bitcoin",
+  "coinId": 1,
+  "rank": 1,
+  "image": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png?1696501400",
+  "priceUsd": 60906.76898736873,
+  "priceText": "$60,906.77",
+  "priceBtc": 0.9987377200315801,
+  "low24hUsd": 60358.062044641,
+  "high24hUsd": 64446.40320002376,
+  "change1hPercent": -0.311,
+  "change24hPercent": -0.31,
+  "change7dPercent": -5.49,
+  "change14dPercent": -18.619,
+  "change30dPercent": -24.461,
+  "change1yPercent": -29.54,
+  "marketCapUsd": 1225128335224.6755,
+  "statistics": [
+    {
+      "label": "Market Cap",
+      "value": "$1.225T",
+      "valueUsd": 1225128335224.6755,
+      "valueExact": null
+    },
+    {
+      "label": "Market Cap / FDV",
+      "value": "1",
+      "valueUsd": null,
+      "valueExact": null
+    },
+    {
+      "label": "Fully Diluted Valuation",
+      "value": "$1.225T",
+      "valueUsd": 1225129248749.5078,
+      "valueExact": null
+    },
+    {
+      "label": "24 Hour Trading Vol",
+      "value": "$38.679B",
+      "valueUsd": 38679324948.70799,
+      "valueExact": null
+    },
+    {
+      "label": "Perps 24h Open Interest",
+      "value": "$37.222B",
+      "valueUsd": 37221590383.15916,
+      "valueExact": null
+    },
+    {
+      "label": "OI / Market Cap",
+      "value": "3.04%",
+      "valueUsd": null,
+      "valueExact": null
+    },
+    {
+      "label": "Perps 8h Funding Rate",
+      "value": "0.0025%",
+      "valueUsd": null,
+      "valueExact": null
+    },
+    {
+      "label": "Perps / Spot 24h Vol",
+      "value": "23.9×",
+      "valueUsd": null,
+      "valueExact": null
+    },
+    {
+      "label": "Circulating Supply",
+      "value": "20.117M",
+      "valueUsd": null,
+      "valueExact": 20116503
+    },
+    {
+      "label": "Total Supply",
+      "value": "20.117M",
+      "valueUsd": null,
+      "valueExact": 20116518
+    },
+    {
+      "label": "Max Supply",
+      "value": "21M",
+      "valueUsd": null,
+      "valueExact": 21000000
+    },
+    {
+      "label": "Total Treasury Holding",
+      "value": "1,907,052",
+      "valueUsd": null,
+      "valueExact": null
+    }
+  ],
+  "allTimeHighUsd": 126080,
+  "allTimeHighDate": "Oct 06, 2025",
+  "allTimeHighChangePercent": -51.694,
+  "allTimeLowUsd": 67.81,
+  "allTimeLowDate": "Jul 05, 2013",
+  "allTimeLowChangePercent": 89715.488,
+  "historicalPrice": [
+    {
+      "label": "24h Range",
+      "value": "$60,358.06 – $64,446.40",
+      "dateText": null
+    },
+    {
+      "label": "7d Range",
+      "value": "$55,298.46 – $65,267.60",
+      "dateText": null
+    },
+    {
+      "label": "All-Time High",
+      "value": "$126,080 51.7%",
+      "dateText": "Oct 06, 2025 (about 1 year)"
+    },
+    {
+      "label": "All-Time Low",
+      "value": "$67.81 89715.5%",
+      "dateText": "Jul 05, 2013 (over 13 years)"
+    }
+  ],
+  "websites": [
+    "https://www.bitcoin.org",
+    "https://bitcoin.org/bitcoin.pdf"
+  ],
+  "explorers": [
+    "https://mempool.space/",
+    "https://platform.arkhamintelligence.com/explorer/token/bitcoin",
+    "https://blockchair.com/bitcoin/",
+    "https://btc.com/"
+  ],
+  "wallets": [
+    "https://gcko.io/ledger",
+    "https://gcko.io/trezor",
+    "https://electrum.org/",
+    "https://www.xdefi.io/",
+    "https://gcko.io/safepal"
+  ],
+  "community": [
+    "https://reddit.com/r/Bitcoin",
+    "https://twitter.com/bitcoin",
+    "https://www.facebook.com/134466763256650",
+    "https://bitcointalk.org/"
+  ],
+  "sourceCode": [
+    "https://github.com/bitcoin"
+  ],
+  "categories": [
+    "Bitcoin Ecosystem",
+    "Smart Contract Platform",
+    "Layer 1 (L1)",
+    "FTX Holdings",
+    "Proof of Work (PoW)",
+    "GMCI 30 Index",
+    "GMCI Index",
+    "Coinbase 50 Index"
+  ],
+  "description": [
+    "Bitcoin is the world's first decentralized cryptocurrency that enables peer-to-peer electronic cash transactions without intermediaries like banks or governments.",
+    "Bitcoin operates on a blockchain secured by proof-of-work mining and the SHA-256 cryptographic algorithm, making it virtually impossible to counterfeit or double-spend.",
+    "With a fixed supply cap of 21 million coins and programmatic halvings every four years, Bitcoin is designed as a deflationary digital asset often called \"digital gold.\"",
+    "Bitcoin has achieved mainstream adoption through spot ETF approvals, corporate treasury holdings, and acceptance by governments and institutions worldwide."
+  ],
+  "sentimentPositivePercent": 70,
+  "sentimentNegativePercent": 30
+}

@@ -1,0 +1,279 @@
+{
+  "zuid": "X1-ZUwjszfl8xs7bd_2avjk",
+  "screenName": "navrealestate",
+  "name": "NAV Real Estate",
+  "profileUrl": "https://www.zillow.com/profile/navrealestate",
+  "businessName": "NAV Real Estate",
+  "isTopAgent": true,
+  "photo": "https://photos.zillowstatic.com/fp/2cb723f18b7044c277ed5d227cd11212-h_l.jpg",
+  "rating": 5,
+  "reviewCount": 1207,
+  "businessAddress": {
+    "address1": "1777 S Harrison St Ste Sky Deck",
+    "address2": null,
+    "city": "Denver",
+    "state": "CO",
+    "postalCode": "80210"
+  },
+  "brokeragePhone": "(720) 379-3445",
+  "businessPhone": "(303) 661-7889",
+  "title": "Managing Director",
+  "description": "We are Zillow's #1 team in Colorado.",
+  "yearsInIndustry": 11,
+  "specialties": [
+    "Buyer's Agent",
+    "Listing Agent"
+  ],
+  "languages": [],
+  "websiteUrl": "http://www.navcolorado.com/",
+  "licenses": [
+    {
+      "number": "EC.100075983",
+      "state": "CO",
+      "status": "active",
+      "type": "agent",
+      "expiration": "2026-12-31"
+    },
+    {
+      "number": "1000660720",
+      "state": "CO",
+      "status": "disabled",
+      "type": "agent",
+      "expiration": "2026-12-31"
+    }
+  ],
+  "serviceAreas": [
+    {
+      "name": "Colorado Springs, CO",
+      "regionId": 4172,
+      "url": "https://www.zillow.com/colorado-springs-co/"
+    },
+    {
+      "name": "Englewood, CO",
+      "regionId": 4592,
+      "url": "https://www.zillow.com/englewood-co/"
+    },
+    {
+      "name": "Lakewood, CO",
+      "regionId": 5519,
+      "url": "https://www.zillow.com/lakewood-co/"
+    }
+  ],
+  "totalSales": 2476,
+  "recentSales": [
+    {
+      "zpid": 13269006,
+      "soldDate": "11/20/2026",
+      "price": 1475000,
+      "represented": "Seller",
+      "streetAddress": "187 Fox Ridge Drive",
+      "cityStateZip": "Evergreen, CO, 80439",
+      "bedrooms": 4,
+      "bathrooms": 7,
+      "livingArea": 5728,
+      "url": "https://www.zillow.com/homedetails/187-Fox-Ridge-Dr-Evergreen-CO-80439/13269006_zpid/"
+    },
+    {
+      "zpid": 249985404,
+      "soldDate": "11/16/2026",
+      "price": 585000,
+      "represented": "Seller",
+      "streetAddress": "5260 Lumos Lane",
+      "cityStateZip": "Castle Rock, CO, 80104",
+      "bedrooms": 5,
+      "bathrooms": 3,
+      "livingArea": 3335,
+      "url": "https://www.zillow.com/homedetails/5260-Lumos-Ln-Castle-Rock-CO-80104/249985404_zpid/"
+    },
+    {
+      "zpid": 121923652,
+      "soldDate": "11/16/2026",
+      "price": 505000,
+      "represented": "Buyer",
+      "streetAddress": "15865 Josephine Circle E",
+      "cityStateZip": "Thornton, CO, 80602",
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "livingArea": 3050,
+      "url": "https://www.zillow.com/homedetails/15865-Josephine-Cir-E-Thornton-CO-80602/121923652_zpid/"
+    }
+  ],
+  "forSaleCount": 34,
+  "forSaleListings": [
+    {
+      "zpid": 13349629,
+      "streetAddress": "3100 E Cherry Creek South Dr APT 704",
+      "city": "Denver",
+      "state": "CO",
+      "zipcode": "80209",
+      "price": 575000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "homeType": "condo",
+      "photo": "https://photos.zillowstatic.com/fp/088be3e5636bc8a3cb71bacc1773a596-a_a.jpg",
+      "url": "https://www.zillow.com/homedetails/3100-E-Cherry-Creek-South-Dr-APT-704-Denver-CO-80209/13349629_zpid/"
+    },
+    {
+      "zpid": 2054696982,
+      "streetAddress": "17297 Wilde Ave Unit 201",
+      "city": "Parker",
+      "state": "CO",
+      "zipcode": "80134",
+      "price": 349000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "homeType": "condo",
+      "photo": "https://photos.zillowstatic.com/fp/b42ba272d5c839dc02ddaa93093bb8e6-a_a.jpg",
+      "url": "https://www.zillow.com/homedetails/17297-Wilde-Ave-UNIT-201-Parker-CO-80134/2054696982_zpid/"
+    },
+    {
+      "zpid": 2053640175,
+      "streetAddress": "8996 Wolf Valley Dr",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "zipcode": "80924",
+      "price": 645000,
+      "bedrooms": 3,
+      "bathrooms": 4,
+      "homeType": "singleFamily",
+      "photo": "https://photos.zillowstatic.com/fp/f970aed2869d01b9e90445e4424a801b-a_a.jpg",
+      "url": "https://www.zillow.com/homedetails/8996-Wolf-Valley-Dr-Colorado-Springs-CO-80924/2053640175_zpid/"
+    }
+  ],
+  "forRentCount": 2,
+  "forRentListings": [
+    {
+      "zpid": 13046727,
+      "streetAddress": "9171 E Missouri Ave",
+      "city": "Denver",
+      "state": "CO",
+      "zipcode": "80247",
+      "price": 3399,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "homeType": "singleFamily",
+      "photo": "https://photos.zillowstatic.com/fp/b660638747a9f75f7d101d5c07702b71-a_a.jpg",
+      "url": "https://www.zillow.com/homedetails/9171-E-Missouri-Ave-Denver-CO-80247/13046727_zpid/"
+    },
+    {
+      "zpid": 2096502375,
+      "streetAddress": "5551 S Delaware St APT 2",
+      "city": "Littleton",
+      "state": "CO",
+      "zipcode": "80120",
+      "price": 1345,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "homeType": "apartment",
+      "photo": "https://photos.zillowstatic.com/fp/8ca341400ea6003689b13b535cbeec06-a_a.jpg",
+      "url": "https://www.zillow.com/homedetails/5551-S-Delaware-St-APT-2-Littleton-CO-80120/2096502375_zpid/"
+    }
+  ],
+  "teamName": "NAV Real Estate",
+  "teamMembers": [
+    {
+      "name": "Corey Iranfar",
+      "screenName": "ciranfar",
+      "rating": 5,
+      "reviewCount": 122,
+      "isTopAgent": true,
+      "photo": "https://photos.zillowstatic.com/fp/173faa8a0939e860f6db15d2cb091fbe-h_l.jpg"
+    },
+    {
+      "name": "Kyle Blanton",
+      "screenName": "kylenavcolorado",
+      "rating": 5,
+      "reviewCount": 89,
+      "isTopAgent": true,
+      "photo": "https://photos.zillowstatic.com/fp/7a3720a03e4ffd72758cc29d67aea9f2-h_l.jpg"
+    },
+    {
+      "name": "Bo Pollard",
+      "screenName": "PollardRealEstate",
+      "rating": 5,
+      "reviewCount": 69,
+      "isTopAgent": true,
+      "photo": "https://photos.zillowstatic.com/fp/47a8453950609d083e87793624f72dd0-h_l.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "reviewId": 9400935,
+      "rating": 5,
+      "date": "2026-11-15T18:42:00",
+      "comment": "Jess did an outstanding job assisting us in purchasing our home. He is friendly, responsive and always gave us great advice. We highly recommend him!",
+      "workDescription": "Bought a Single Family home in 2026 in Centennial, CO.",
+      "agentScreenName": "jessriley9",
+      "subRatings": [
+        {
+          "description": "Local knowledge",
+          "score": 5
+        },
+        {
+          "description": "Process expertise",
+          "score": 5
+        },
+        {
+          "description": "Responsiveness",
+          "score": 5
+        },
+        {
+          "description": "Negotiation skills",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "reviewId": 9394982,
+      "rating": 5,
+      "date": "2026-11-09T21:19:00",
+      "comment": "We honestly cannot say enough good things about Jess! After spending over a year searching for our first home, touring what felt like countless houses, we can confidently say that Jess was the best realtor we could have asked for.\n\nWhat sets Jess apart is that you can genuinely tell he cares about his clients as people, not just as another sale. Throughout our entire search, he never made us feel rushed or pressured. His priority was always helping us find the RIGHT home, not simply getting us into a house. He was honest with us, gave us his genuine opinions, and wasn’t afraid to point out potential concerns or things he noticed during showings. We always knew he had our best interests in mind, and that meant so much to us.\n\nThere was even a point when we were under contract on a home and, due to an unexpected family emergency, had to back out at the last minute. Jess was incredibly empathetic, understanding, and supportive during what was already a difficult time. He even went out of his way to send us flowers. That gesture really showed us the kind of person he is and how much he genuinely cares.\n\nAs first-time homebuyers, having someone we could completely trust made all the difference. We had toured homes with other realtors before meeting Jess, and the difference was night and day. We never had to question whether he was looking out for us because we knew he was.\n\nWe have finally found our perfect home, and we truly couldn’t have done it without him. If you’re looking for a realtor who is knowledgeable, honest, patient, compassionate, and genuinely invested in finding the right home for you, Jess is your person. We would recommend him a thousand times over!",
+      "workDescription": "Bought a Single Family home in 2026 in Platt park, Denver, CO.",
+      "agentScreenName": "jessriley9",
+      "subRatings": [
+        {
+          "description": "Local knowledge",
+          "score": 5
+        },
+        {
+          "description": "Process expertise",
+          "score": 5
+        },
+        {
+          "description": "Responsiveness",
+          "score": 5
+        },
+        {
+          "description": "Negotiation skills",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "reviewId": 9393523,
+      "rating": 5,
+      "date": "2026-11-08T16:39:00",
+      "comment": "Noe was a joy to work with, start to finish. He helped us sell our condo and then find and buy our new house, and we couldn't be happier. He's friendly, professional, and easy to talk to. He really listened to what we needed and what we liked, never pushed us, and always gave us good advice. He answered every question quickly and was super helpful at every step, even jumping in to sort out problems that came up during the inspection. He's also clearly knowledgeable, and he did a great job with the open houses and marketing. Along the way he became a good friend. My wife and I love our new place, and we'd strongly recommend Noe to anyone buying or selling.",
+      "workDescription": "Bought and sold a Single Family home in 2026 in Lone tree, CO.",
+      "agentScreenName": "noegonzalez222",
+      "subRatings": [
+        {
+          "description": "Local knowledge",
+          "score": 5
+        },
+        {
+          "description": "Process expertise",
+          "score": 5
+        },
+        {
+          "description": "Responsiveness",
+          "score": 5
+        },
+        {
+          "description": "Negotiation skills",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

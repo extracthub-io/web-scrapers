@@ -1,0 +1,472 @@
+{
+  "name": "CoinGecko - coin page",
+  "description": "Price and market data of one cryptocurrency from its CoinGecko page (coingecko.com/en/coins/<id>): name, symbol, rank, USD and BTC price, 24h range, 1h / 24h / 7d / 14d / 30d / 1y change, market cap, the statistics table (FDV, volume, supply rows), all-time high and low with dates, website / explorer / wallet / community / source code links, categories, description and community sentiment. Plain fetch.",
+  "slug": "coingecko-coin",
+  "url": "https://www.coingecko.com/en/coins/bitcoin",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "finance",
+  "tags": [
+    "crypto",
+    "cryptocurrency",
+    "coingecko",
+    "bitcoin",
+    "prices"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] h1 > div",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "symbol",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] h1 > span",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "before": " Price"
+          }
+        ]
+      },
+      {
+        "name": "apiId",
+        "selector": "button[data-info-type=\"api_id\"][data-info-value]",
+        "extract": "attributeValue",
+        "attributeName": "data-info-value"
+      },
+      {
+        "name": "coinId",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] [data-converter-target=\"price\"][data-coin-id]",
+        "extract": "attributeValue",
+        "attributeName": "data-coin-id",
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "rank",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] > div:first-child > span > div",
+        "extract": "textContent",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] img[src]",
+        "extract": "attributeValue",
+        "attributeName": "src",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "priceUsd",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] [data-converter-target=\"price\"][data-price-usd]",
+        "extract": "attributeValue",
+        "attributeName": "data-price-usd",
+        "transforms": [
+          "toNumber"
+        ],
+        "required": true
+      },
+      {
+        "name": "priceText",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] [data-converter-target=\"price\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "priceBtc",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] [data-converter-target=\"price\"][data-price-btc]",
+        "extract": "attributeValue",
+        "attributeName": "data-price-btc",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "low24hUsd",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] [data-price-json]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "data-price-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber",
+          {
+            "nth": 1
+          }
+        ]
+      },
+      {
+        "name": "high24hUsd",
+        "selector": "[data-coin-show-target=\"staticCoinPrice\"] [data-price-json]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "data-price-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber",
+          {
+            "nth": 2
+          }
+        ]
+      },
+      {
+        "name": "change1hPercent",
+        "selector": "#gecko-coin-page-price-change [data-attr=\"price_change_percentage_1h\"][data-json]",
+        "extract": "attributeValue",
+        "attributeName": "data-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "change24hPercent",
+        "selector": "#gecko-coin-page-price-change [data-attr=\"price_change_percentage_24h\"][data-json]",
+        "extract": "attributeValue",
+        "attributeName": "data-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "change7dPercent",
+        "selector": "#gecko-coin-page-price-change [data-attr=\"price_change_percentage_7d\"][data-json]",
+        "extract": "attributeValue",
+        "attributeName": "data-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "change14dPercent",
+        "selector": "#gecko-coin-page-price-change [data-attr=\"price_change_percentage_14d\"][data-json]",
+        "extract": "attributeValue",
+        "attributeName": "data-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "change30dPercent",
+        "selector": "#gecko-coin-page-price-change [data-attr=\"price_change_percentage_30d\"][data-json]",
+        "extract": "attributeValue",
+        "attributeName": "data-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "change1yPercent",
+        "selector": "#gecko-coin-page-price-change [data-attr=\"price_change_percentage_1y\"][data-json]",
+        "extract": "attributeValue",
+        "attributeName": "data-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "marketCapUsd",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody[x-data] > tr:first-child td [data-price-usd]",
+        "extract": "attributeValue",
+        "attributeName": "data-price-usd",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "statistics",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody[x-data] > tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "th",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "td",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "valueUsd",
+              "selector": "td [data-price-usd]",
+              "extract": "attributeValue",
+              "attributeName": "data-price-usd",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "valueExact",
+              "selector": "td span[data-tooltip-type=\"simple\"][data-tooltip]",
+              "extract": "attributeValue",
+              "attributeName": "data-tooltip",
+              "transforms": [
+                "nullIfEmpty",
+                "extractNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "allTimeHighUsd",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody:not([x-data]) > tr:nth-child(3) td [data-price-target=\"price\"]",
+        "extract": "textContent",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "allTimeHighDate",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody:not([x-data]) > tr:nth-child(3) th [data-tooltip]",
+        "extract": "attributeValue",
+        "attributeName": "data-tooltip",
+        "transforms": [
+          {
+            "before": " ("
+          }
+        ]
+      },
+      {
+        "name": "allTimeHighChangePercent",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody:not([x-data]) > tr:nth-child(3) td [data-json]",
+        "extract": "attributeValue",
+        "attributeName": "data-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "allTimeLowUsd",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody:not([x-data]) > tr:nth-child(4) td [data-price-target=\"price\"]",
+        "extract": "textContent",
+        "transforms": [
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "allTimeLowDate",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody:not([x-data]) > tr:nth-child(4) th [data-tooltip]",
+        "extract": "attributeValue",
+        "attributeName": "data-tooltip",
+        "transforms": [
+          {
+            "before": " ("
+          }
+        ]
+      },
+      {
+        "name": "allTimeLowChangePercent",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody:not([x-data]) > tr:nth-child(4) td [data-json]",
+        "extract": "attributeValue",
+        "attributeName": "data-json",
+        "transforms": [
+          {
+            "between": [
+              "\"usd\":",
+              ","
+            ]
+          },
+          "toNumber"
+        ]
+      },
+      {
+        "name": "historicalPrice",
+        "selector": "div[itemtype=\"https://schema.org/Table\"] tbody:not([x-data]) > tr",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "label",
+              "selector": "th",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "value",
+              "selector": "td",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "dateText",
+              "selector": "th [data-tooltip]",
+              "extract": "attributeValue",
+              "attributeName": "data-tooltip"
+            }
+          ]
+        }
+      },
+      {
+        "name": "websites",
+        "selector": "a[data-info-type=\"website\"][href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "explorers",
+        "selector": "a[data-info-type=\"explorers\"][href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "unique"
+        ]
+      },
+      {
+        "name": "wallets",
+        "selector": "a[data-info-type=\"wallets\"][href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "unique"
+        ]
+      },
+      {
+        "name": "community",
+        "selector": "a[data-info-type=\"community\"][href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "unique"
+        ]
+      },
+      {
+        "name": "sourceCode",
+        "selector": "a[data-info-type=\"source_code\"][href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "unique"
+        ]
+      },
+      {
+        "name": "categories",
+        "selector": "a[data-analytics-event=\"select_coin_category\"]",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "unique"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "[data-coin-show-target=\"contentContainer\"] p",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "sentimentPositivePercent",
+        "selector": "[data-coin-show-target=\"positiveSentiment\"]",
+        "extract": "textContent",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "sentimentNegativePercent",
+        "selector": "[data-coin-show-target=\"negativeSentiment\"]",
+        "extract": "textContent",
+        "transforms": [
+          "extractNumber"
+        ]
+      }
+    ]
+  }
+}

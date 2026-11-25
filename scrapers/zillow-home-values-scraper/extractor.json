@@ -1,0 +1,318 @@
+{
+  "name": "Zillow - home values (market overview)",
+  "description": "Zillow Home Value Index (typical home value) and its 1-year change, state / county / national comparison, for-sale inventory, new listings, median list and sale price, sale-to-list ratio, days to pending, average rent, monthly home value and rent history, and nearby regions with their home values, of a Zillow home values page (www.zillow.com/home-values/<regionId>/<region>/: city, ZIP code, neighborhood, county or state). Fetched through a US proxy without JavaScript.",
+  "slug": "zillow-home-values",
+  "url": "https://www.zillow.com/home-values/11093/denver-co/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "real-estate",
+  "tags": [
+    "zillow",
+    "real-estate",
+    "home-values",
+    "housing-market"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "regionId",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.zhviRegion.rid"
+        ],
+        "transforms": [
+          "toInteger"
+        ],
+        "required": true
+      },
+      {
+        "name": "regionName",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.zhviRegion.name"
+        ],
+        "required": true
+      },
+      {
+        "name": "regionType",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.zhviRegion.regionTypeName"
+        ]
+      },
+      {
+        "name": "state",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.faqSchemaProps.regionData.parentState.name"
+        ]
+      },
+      {
+        "name": "county",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.faqSchemaProps.regionData.parentCounty.name"
+        ]
+      },
+      {
+        "name": "homeValue",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.zhviLatest.dataValue"
+        ],
+        "transforms": [
+          "toInteger"
+        ],
+        "required": true
+      },
+      {
+        "name": "homeValueDate",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.zhviLatest.timePeriodEnd"
+        ]
+      },
+      {
+        "name": "homeValueChange1y",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.zhviLatest.zhviYoY"
+        ]
+      },
+      {
+        "name": "stateHomeValue",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.parentStateZhviLatest.dataValue"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "countyHomeValue",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.parentCountyZhviLatest.dataValue"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "nationalHomeValue",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.nationalZhviLatest.dataValue"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "forSaleInventory",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktListingLatest.forSaleInventory"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "newListings",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktListingLatest.newListings"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "medianListPrice",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktListingLatest.medianListPrice"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "medianDaysToPending",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktListingRange[0].medianDaysToPending"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "listingsDate",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktListingLatest.timePeriodEnd"
+        ]
+      },
+      {
+        "name": "medianSalePrice",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktSaleLatest.medianSalePrice"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "medianSaleToListRatio",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktSaleRange[0].medianSaleToList"
+        ]
+      },
+      {
+        "name": "soldAboveListShare",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktSaleRange[0].pctSoldAboveList"
+        ]
+      },
+      {
+        "name": "soldBelowListShare",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktSaleRange[0].pctSoldBelowList"
+        ]
+      },
+      {
+        "name": "salesDate",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.mrktSaleLatest.timePeriodEnd"
+        ]
+      },
+      {
+        "name": "averageRent",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.rentalMrktRange[0].zori"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "nationalAverageRent",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.odpMarketAnalytics.nationalZori[0].zori"
+        ],
+        "transforms": [
+          "toInteger"
+        ]
+      },
+      {
+        "name": "homeValueHistory",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.odpMarketAnalytics.zhviRange[*]",
+        "subFields": [
+          {
+            "name": "date",
+            "jsonPath": "timePeriodEnd",
+            "required": true
+          },
+          {
+            "name": "value",
+            "jsonPath": "dataValue",
+            "transforms": [
+              "toInteger"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rentHistory",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.odpMarketAnalytics.rentalMrktRange[*]",
+        "subFields": [
+          {
+            "name": "date",
+            "jsonPath": "timePeriodEnd",
+            "required": true
+          },
+          {
+            "name": "rent",
+            "jsonPath": "zori",
+            "transforms": [
+              "toInteger"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "nearbyRegions",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.neighborHoodRegionsResponse.neighborhoodWithZhviList[*]",
+        "subFields": [
+          {
+            "name": "regionId",
+            "jsonPath": "regionId",
+            "required": true
+          },
+          {
+            "name": "name",
+            "jsonPath": "regionName"
+          },
+          {
+            "name": "homeValue",
+            "jsonPath": "zhvi",
+            "transforms": [
+              "toInteger"
+            ]
+          },
+          {
+            "name": "url",
+            "jsonPath": "regionUrl",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "name": "CNN - article",
+  "description": "One CNN article (cnn.com / edition.cnn.com/<yyyy>/<mm>/<dd>/<section>/<slug>): headline, description, section and breadcrumb, read time, published and modified time, byline and authors with profile links, publisher, word count, lead image with caption, body paragraphs, subheadings and full text. Plain fetch through a US proxy (NewsArticle JSON-LD + page markup).",
+  "slug": "cnn-article",
+  "url": "https://edition.cnn.com/2026/11/24/tech/nvidia-board-jensen-huang",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "news",
+  "tags": [
+    "news",
+    "cnn",
+    "articles",
+    "journalism"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "headline",
+        "selector": "h1.headline__text",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "description",
+        "selector": "meta[name=\"description\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "section",
+        "selector": "meta[name=\"meta-section\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "breadcrumbs",
+        "selector": "[data-component-name=\"breadcrumb\"] a.breadcrumb__link",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "breadcrumbUrls",
+        "selector": "[data-component-name=\"breadcrumb\"] a.breadcrumb__link[href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "readTime",
+        "selector": "[data-component-name=\"breadcrumb\"] .breadcrumb__read-time",
+        "transforms": [
+          "trim"
+        ]
+      },
+      {
+        "name": "articleType",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0][\"@type\"]",
+          "[\"@type\"]"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "datePublished",
+        "selector": "meta[property=\"article:published_time\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "dateModified",
+        "selector": "meta[property=\"article:modified_time\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "byline",
+        "selector": "[data-component-name=\"byline\"] .byline__authors",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "authors",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "[0].author[*].name"
+      },
+      {
+        "name": "authorUrls",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "[0].author[*].url"
+      },
+      {
+        "name": "publisher",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].publisher.name",
+          "publisher.name"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "isAccessibleForFree",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].isAccessibleForFree",
+          "isAccessibleForFree"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "wordCount",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].wordCount",
+          "wordCount"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].image[0].contentUrl",
+          "image[0].contentUrl"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "imageCaption",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].image[0].caption",
+          "image[0].caption"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "keywords",
+        "selector": "meta[name=\"keywords\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          {
+            "split": ","
+          },
+          "trim",
+          "compact"
+        ]
+      },
+      {
+        "name": "subheadings",
+        "selector": ".article__content h2.subheader__headline",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": ".article__content p[data-component-name=\"paragraph\"]",
+        "isArray": true,
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ],
+        "textSeparator": ""
+      },
+      {
+        "name": "text",
+        "selector": ".article__content p[data-component-name=\"paragraph\"]",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "joinWithSpace"
+        ],
+        "textSeparator": ""
+      }
+    ]
+  }
+}

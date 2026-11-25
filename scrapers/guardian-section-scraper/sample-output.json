@@ -1,0 +1,135 @@
+{
+  "pageTitle": "Technology news, features and analysis from Guardian US | The Guardian",
+  "description": "Latest Technology news, comment and analysis from the Guardian, the world's leading liberal voice",
+  "canonicalUrl": "https://www.theguardian.com/us/technology",
+  "edition": "US",
+  "containers": [
+    {
+      "name": "Technology",
+      "id": null,
+      "link": "https://www.theguardian.com/technology/technology",
+      "stories": [
+        {
+          "position": 1,
+          "headline": "Chinese media hail Huang’s Nvidia return with warning over ‘witch-hunts’",
+          "kicker": "Nvidia",
+          "url": "https://www.theguardian.com/technology/2026/nov/24/china-media-jensen-huang-nvidia-ceo",
+          "trailText": "State-owned media outlet says reports about Huang’s affair with an alleged Chinese spy were ‘malicious’",
+          "publishedAt": "2026-11-24T14:45:03.000Z",
+          "timeLabel": "11h ago",
+          "cardType": "news",
+          "footerLabel": null,
+          "duration": null,
+          "image": "https://i.guim.co.uk/img/media/8abb1b7af3336437d7b77914b83f5a5515682536/1362_0_6830_5464/master/6830.jpg?width=465&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": "Jensen Huang gestures with his hand while speaking, wearing a black jacket",
+          "sublinks": [
+            {
+              "headline": "Schumer accuses Huang of violating US export control laws amid shipments of chips to China",
+              "kicker": "Nvidia",
+              "url": "https://www.theguardian.com/technology/2026/nov/24/nvidia-jensen-huang-congress"
+            },
+            {
+              "headline": "Trump made up to $15m on Nvidia stock after Huang’s return",
+              "kicker": "Nvidia",
+              "url": "https://www.theguardian.com/technology/2026/nov/24/donald-trump-nvidia-stock-jensen-huang-stock-market"
+            },
+            {
+              "headline": "Nvidia’s humiliated board should resign out of embarrassment",
+              "kicker": "Comment",
+              "url": "https://www.theguardian.com/technology/nils-pratley-on-finance/2026/nov/23/nvidia-board-jensen-huang-return"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "headline": "Meta launches Muse in UK – the AI agent that can do your Christmas shopping",
+          "kicker": "Meta",
+          "url": "https://www.theguardian.com/technology/2026/nov/24/meta-launches-muse-uk-ai-agent-do-christmas-shopping",
+          "trailText": null,
+          "publishedAt": "2026-11-24T14:36:32.000Z",
+          "timeLabel": "12h ago",
+          "cardType": "news",
+          "footerLabel": null,
+          "duration": null,
+          "image": "https://i.guim.co.uk/img/media/54771ca72dfba09d32535c72c90ff667400f9d2e/405_0_3242_2593/master/3242.jpg?width=120&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": "A commuter passes subway screens showing ads for a fluffy character holding a notebook",
+          "sublinks": []
+        }
+      ]
+    },
+    {
+      "name": "AI",
+      "id": "ai",
+      "link": "https://www.theguardian.com/technology/artificialintelligenceai",
+      "stories": [
+        {
+          "position": 1,
+          "headline": "Tech sell-off resumes as euphoria from Jensen Huang’s Nvidia return subsides",
+          "kicker": null,
+          "url": "https://www.theguardian.com/business/2026/nov/24/nvidia-stock-falls-jensen-huang",
+          "trailText": null,
+          "publishedAt": "2026-11-24T22:05:21.000Z",
+          "timeLabel": "4h ago",
+          "cardType": "news",
+          "footerLabel": null,
+          "duration": null,
+          "image": "https://i.guim.co.uk/img/media/ba0b7e2734b3f5675558eff081b376f8f83077b6/479_0_4801_3840/master/4801.jpg?width=465&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": "a man holds his face in his hand",
+          "sublinks": []
+        },
+        {
+          "position": 2,
+          "headline": "Mamdani questions AI economy as Jensen Huang returns to Nvidia – video",
+          "kicker": null,
+          "url": "https://www.theguardian.com/technology/video/2026/nov/24/mamdani-questions-ai-economy-as-jensen-huang-returns-to-nvidia-video",
+          "trailText": null,
+          "publishedAt": null,
+          "timeLabel": null,
+          "cardType": "media",
+          "footerLabel": "Video",
+          "duration": "1:19",
+          "image": "https://i.guim.co.uk/img/media/526ad4b151eda4ee611778e9331242738273d7c0/229_0_2281_1825/master/2281.jpg?width=465&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": "New York City mayor Zohran Mamdani weighed in on the corporate turbulence surrounding Nvidia and CEO Jensen Huang, saying he does not think working Americans 'signed up for their pensions being tied to the question of Huang’s fidelity to his marriage'",
+          "sublinks": []
+        }
+      ]
+    },
+    {
+      "name": "Features",
+      "id": "features",
+      "link": null,
+      "stories": [
+        {
+          "position": 1,
+          "headline": "You Can See Everything’s chaotic battle for the narrative about Elizabeth Holmes",
+          "kicker": null,
+          "url": "https://www.theguardian.com/culture/2026/nov/23/you-can-see-everythings-chaotic-battle-for-the-narrative-about-elizabeth-holmes",
+          "trailText": null,
+          "publishedAt": null,
+          "timeLabel": null,
+          "cardType": "feature",
+          "footerLabel": "Newsletter",
+          "duration": null,
+          "image": "https://i.guim.co.uk/img/media/f038709d75505048af7c1f3cfcffed56977664b8/63_0_1259_1007/master/1259.jpg?width=465&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": "A woman stands with arms outstretched inside a rig surrounded by numerous cameras",
+          "sublinks": []
+        },
+        {
+          "position": 2,
+          "headline": "Jimmy Kimmel on Jensen Huang’s return to Nvidia: ‘What a profoundly stupid time to be alive’",
+          "kicker": null,
+          "url": "https://www.theguardian.com/culture/2026/nov/24/jimmy-kimmel-jensen-huang-nvidia-trump",
+          "trailText": null,
+          "publishedAt": "2026-11-24T15:51:00.000Z",
+          "timeLabel": "10h ago",
+          "cardType": "feature",
+          "footerLabel": null,
+          "duration": null,
+          "image": "https://i.guim.co.uk/img/media/31ee47f00dd0d27f6edca7bf2f8666aaac03673e/274_0_1311_1050/master/1311.jpg?width=465&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": "Man in suit speaking with hand gestured, a city backdrop behind him",
+          "sublinks": []
+        }
+      ]
+    }
+  ]
+}

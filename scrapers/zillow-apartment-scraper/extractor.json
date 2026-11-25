@@ -1,0 +1,480 @@
+{
+  "name": "Zillow - apartment building (rental)",
+  "description": "Building name, address, coordinates, leasing office phone, unit counts, special offer, description, office hours, pet policies, amenities, walk / transit / bike scores, photos, floor plans with price range and available units, and assigned schools of a Zillow apartment building page (www.zillow.com/apartments/<city>/<name>/<id>/). Fetched through a US proxy without JavaScript.",
+  "slug": "zillow-apartment",
+  "url": "https://www.zillow.com/apartments/denver-co/one-city-block/5XqvWd/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "real-estate",
+  "tags": [
+    "zillow",
+    "real-estate",
+    "apartments",
+    "rentals"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "buildingId",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.lotId"
+        ],
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.buildingName"
+        ],
+        "required": true
+      },
+      {
+        "name": "url",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.bdpUrl"
+        ],
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "fullAddress",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.fullAddress"
+        ]
+      },
+      {
+        "name": "streetAddress",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.streetAddress"
+        ]
+      },
+      {
+        "name": "city",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.city"
+        ]
+      },
+      {
+        "name": "state",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.state"
+        ]
+      },
+      {
+        "name": "zipcode",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.zipcode"
+        ]
+      },
+      {
+        "name": "neighborhood",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.neighborhood"
+        ]
+      },
+      {
+        "name": "county",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.county"
+        ]
+      },
+      {
+        "name": "latitude",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.latitude"
+        ]
+      },
+      {
+        "name": "longitude",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.longitude"
+        ]
+      },
+      {
+        "name": "phone",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.buildingPhoneNumber"
+        ]
+      },
+      {
+        "name": "buildingType",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.buildingType"
+        ]
+      },
+      {
+        "name": "homeTypes",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.homeTypes"
+        ]
+      },
+      {
+        "name": "unitCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.rentalUnitsSummary.unitCount"
+        ]
+      },
+      {
+        "name": "availableUnitCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.rentalUnitsSummary.availableUnitCount"
+        ]
+      },
+      {
+        "name": "buildingDetails",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.amenitySummary.buildingDetails"
+        ]
+      },
+      {
+        "name": "specialOffer",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.specialOffers[0].description"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.description"
+        ]
+      },
+      {
+        "name": "officeHours",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.amenityDetails.hours"
+        ]
+      },
+      {
+        "name": "pets",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.amenityDetails.pets"
+        ]
+      },
+      {
+        "name": "petPolicies",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.componentProps.initialReduxState.gdp.building.detailedPetPolicy.petPolicies[*]",
+        "subFields": [
+          {
+            "name": "petType",
+            "jsonPath": "petType",
+            "required": true
+          },
+          {
+            "name": "allowed",
+            "jsonPath": "allowed"
+          },
+          {
+            "name": "deposit",
+            "jsonPath": "deposit"
+          },
+          {
+            "name": "monthlyFee",
+            "jsonPath": "monthlyFee"
+          },
+          {
+            "name": "oneTimeFee",
+            "jsonPath": "oneTimeFee"
+          },
+          {
+            "name": "maxWeight",
+            "jsonPath": "maxWeightAllowed"
+          },
+          {
+            "name": "comment",
+            "jsonPath": "comment"
+          }
+        ]
+      },
+      {
+        "name": "amenities",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.amenityDetails.customAmenities.rawAmenities"
+        ]
+      },
+      {
+        "name": "unitAmenities",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.commonUnitAmenities"
+        ]
+      },
+      {
+        "name": "incomeToRent",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.screeningCriteria.incomeToRent"
+        ]
+      },
+      {
+        "name": "walkScore",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.walkScore.walkscore"
+        ]
+      },
+      {
+        "name": "transitScore",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.transitScore.transit_score"
+        ]
+      },
+      {
+        "name": "bikeScore",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.bikeScore.bikescore"
+        ]
+      },
+      {
+        "name": "neighborhoodMedianRent",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.marketTrendsSummary.medianRent"
+        ]
+      },
+      {
+        "name": "photoCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.componentProps.initialReduxState.gdp.building.photoCount"
+        ]
+      },
+      {
+        "name": "photos",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.componentProps.initialReduxState.gdp.building.galleryPhotos[*]",
+        "subFields": [
+          {
+            "name": "url",
+            "jsonPath": "mixedSources.webp[1].url",
+            "required": true
+          },
+          {
+            "name": "roomType",
+            "jsonPath": "roomType"
+          }
+        ]
+      },
+      {
+        "name": "floorPlans",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.componentProps.initialReduxState.gdp.building.floorPlans[*]",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "jsonPath": "name"
+            },
+            {
+              "name": "beds",
+              "jsonPath": "beds"
+            },
+            {
+              "name": "baths",
+              "jsonPath": "baths"
+            },
+            {
+              "name": "sqft",
+              "jsonPath": "sqft"
+            },
+            {
+              "name": "minPrice",
+              "jsonPath": "minPrice",
+              "required": true
+            },
+            {
+              "name": "maxPrice",
+              "jsonPath": "maxPrice"
+            },
+            {
+              "name": "availableFrom",
+              "jsonPath": "availableFrom",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "leaseTerm",
+              "jsonPath": "leaseTerm"
+            },
+            {
+              "name": "deposit",
+              "jsonPath": "depositsAndFees"
+            },
+            {
+              "name": "units",
+              "jsonPath": "units[*]",
+              "subFields": [
+                {
+                  "name": "unitNumber",
+                  "jsonPath": "unitNumber",
+                  "required": true
+                },
+                {
+                  "name": "price",
+                  "jsonPath": "price"
+                },
+                {
+                  "name": "sqft",
+                  "jsonPath": "sqft"
+                },
+                {
+                  "name": "availableFrom",
+                  "jsonPath": "availableFrom",
+                  "transforms": [
+                    "toNumber"
+                  ]
+                },
+                {
+                  "name": "zpid",
+                  "jsonPath": "zpid"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "units",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.componentProps.initialReduxState.gdp.building.ungroupedUnits[*]",
+        "subFields": [
+          {
+            "name": "unitNumber",
+            "jsonPath": "unitNumber",
+            "required": true
+          },
+          {
+            "name": "beds",
+            "jsonPath": "beds"
+          },
+          {
+            "name": "baths",
+            "jsonPath": "baths"
+          },
+          {
+            "name": "sqft",
+            "jsonPath": "sqft"
+          },
+          {
+            "name": "price",
+            "jsonPath": "price"
+          },
+          {
+            "name": "availableFrom",
+            "jsonPath": "availableFrom",
+            "transforms": [
+              "toNumber"
+            ]
+          },
+          {
+            "name": "zpid",
+            "jsonPath": "zpid"
+          }
+        ]
+      },
+      {
+        "name": "schools",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.componentProps.initialReduxState.gdp.building.assignedSchools[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "level",
+            "jsonPath": "level"
+          },
+          {
+            "name": "grades",
+            "jsonPath": "grades"
+          },
+          {
+            "name": "rating",
+            "jsonPath": "rating"
+          },
+          {
+            "name": "distance",
+            "jsonPath": "distance"
+          },
+          {
+            "name": "type",
+            "jsonPath": "type"
+          },
+          {
+            "name": "link",
+            "jsonPath": "link"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "name": "TripAdvisor - restaurants list",
+  "description": "TripAdvisor restaurants list of a city (Restaurants-g...): the 30 ranked restaurants on the page with restaurant id, name, link, rating, review count, price range, cuisines, phone, address, coordinates, opening hours, menu link and image, plus the next page link. Sponsored cards are not included.",
+  "slug": "tripadvisor-restaurants",
+  "url": "https://www.tripadvisor.com/Restaurants-g60763-New_York_City_New_York.html",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "tripadvisor",
+    "travel",
+    "restaurants",
+    "restaurant list",
+    "rating"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "geoId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "-g",
+              "-"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "location",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*].name",
+        "transforms": [
+          {
+            "nth": -1
+          }
+        ]
+      },
+      {
+        "name": "restaurants",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*]",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "rank",
+              "jsonPath": "position",
+              "required": true
+            },
+            {
+              "name": "restaurantId",
+              "jsonPath": "item.url",
+              "transforms": [
+                {
+                  "between": [
+                    "-d",
+                    "-Reviews"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "jsonPath": "item.name",
+              "transforms": [
+                "decodeHtml"
+              ]
+            },
+            {
+              "name": "url",
+              "jsonPath": "item.url",
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "m"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "rating",
+              "jsonPath": "item.aggregateRating.ratingValue",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "jsonPath": "item.aggregateRating.reviewCount"
+            },
+            {
+              "name": "priceRange",
+              "jsonPath": "item.priceRange"
+            },
+            {
+              "name": "cuisines",
+              "jsonPath": "item.servesCuisine"
+            },
+            {
+              "name": "telephone",
+              "jsonPath": "item.telephone"
+            },
+            {
+              "name": "address",
+              "jsonPath": "item.address.streetAddress",
+              "transforms": [
+                "decodeHtml"
+              ]
+            },
+            {
+              "name": "postalCode",
+              "jsonPath": "item.address.postalCode"
+            },
+            {
+              "name": "latitude",
+              "jsonPath": "item.geo.latitude"
+            },
+            {
+              "name": "longitude",
+              "jsonPath": "item.geo.longitude"
+            },
+            {
+              "name": "acceptsReservations",
+              "jsonPath": "item.acceptsReservations"
+            },
+            {
+              "name": "menuUrl",
+              "jsonPath": "item.hasMenu"
+            },
+            {
+              "name": "image",
+              "jsonPath": "item.image[0]"
+            },
+            {
+              "name": "openingHours",
+              "jsonPath": "item.openingHoursSpecification[*]",
+              "subFields": [
+                {
+                  "name": "day",
+                  "jsonPath": "dayOfWeek"
+                },
+                {
+                  "name": "opens",
+                  "jsonPath": "opens"
+                },
+                {
+                  "name": "closes",
+                  "jsonPath": "closes"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a[aria-label=\"Next page\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

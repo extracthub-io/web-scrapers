@@ -1,0 +1,97 @@
+{
+  "pageUrl": "https://www.tripadvisor.com/Restaurants-g60763-New_York_City_New_York.html",
+  "geoId": "60763",
+  "location": "New York City Restaurants",
+  "restaurants": [
+    {
+      "rank": 1,
+      "restaurantId": "478965",
+      "name": "Gallaghers Steakhouse",
+      "url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d478965-Reviews-Gallaghers_Steakhouse-New_York_City_New_York.html",
+      "rating": 4.4,
+      "reviewCount": 6284,
+      "priceRange": "$$$$",
+      "cuisines": "Steakhouse, Seafood",
+      "telephone": "+1 212-586-5000",
+      "address": "228 W 52nd St, New York City, NY 10019-5802",
+      "postalCode": "10019-5802",
+      "latitude": 40.762848,
+      "longitude": -73.98386,
+      "acceptsReservations": true,
+      "menuUrl": "https://www.gallaghersnysteakhouse.com/menu.php",
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/23/e7/a4/gallaghers-new-york-steakhouse.jpg",
+      "openingHours": [
+        {
+          "day": "Sunday",
+          "opens": "11:45:00",
+          "closes": "22:00:00"
+        },
+        {
+          "day": "Monday",
+          "opens": "11:45:00",
+          "closes": "22:00:00"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "restaurantId": "543689",
+      "name": "Tony's Di Napoli",
+      "url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d543689-Reviews-Tony_s_Di_Napoli-New_York_City_New_York.html",
+      "rating": 4.4,
+      "reviewCount": 6839,
+      "priceRange": "$$ - $$$",
+      "cuisines": "Italian, Steakhouse",
+      "telephone": "+1 212-221-0100",
+      "address": "147 West 43rd Street, New York City, NY 10036",
+      "postalCode": "10036",
+      "latitude": 40.756397,
+      "longitude": -73.98545,
+      "acceptsReservations": true,
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/82/59/32/20171212-113937-largejpg.jpg",
+      "openingHours": [
+        {
+          "day": "Sunday",
+          "opens": "11:30:00",
+          "closes": "22:00:00"
+        },
+        {
+          "day": "Monday",
+          "opens": "11:30:00",
+          "closes": "22:00:00"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "restaurantId": "522569",
+      "name": "Bubba Gump Shrimp Co.",
+      "url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d522569-Reviews-Bubba_Gump_Shrimp_Co-New_York_City_New_York.html",
+      "rating": 4.2,
+      "reviewCount": 15429,
+      "priceRange": "$$ - $$$",
+      "cuisines": "American, Seafood",
+      "telephone": "+1 212-391-7100",
+      "address": "1501 Broadway Times Square, New York City, NY 10036",
+      "postalCode": "10036",
+      "latitude": 40.757282,
+      "longitude": -73.98634,
+      "acceptsReservations": true,
+      "menuUrl": "https://www.bubbagump.com/location/bubba-gump-new-york-ny/#menus",
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/39/52/7e/new-york-dining-room.jpg",
+      "openingHours": [
+        {
+          "day": "Sunday",
+          "opens": "10:00:00",
+          "closes": "23:00:00"
+        },
+        {
+          "day": "Monday",
+          "opens": "10:00:00",
+          "closes": "23:00:00"
+        }
+      ]
+    }
+  ],
+  "nextPageUrl": "https://www.tripadvisor.com/Restaurants-g60763-oa30-New_York_City_New_York.html"
+}

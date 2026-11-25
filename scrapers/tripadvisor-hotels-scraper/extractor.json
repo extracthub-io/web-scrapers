@@ -1,0 +1,186 @@
+{
+  "name": "TripAdvisor - hotels list",
+  "description": "TripAdvisor hotels list of a city (Hotels-g...): the ranked hotels on the page with hotel id, name, link, rating, review count, popularity rank text, lowest shown price, review snippet, plus the next page link. Sponsored cards are skipped.",
+  "slug": "tripadvisor-hotels",
+  "url": "https://www.tripadvisor.com/Hotels-g60763-New_York_City_New_York-Hotels.html",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "tripadvisor",
+    "travel",
+    "hotels",
+    "hotel list",
+    "rating"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageUrl",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "geoId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "-g",
+              "-"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "location",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*].name",
+        "transforms": [
+          {
+            "nth": -1
+          }
+        ]
+      },
+      {
+        "name": "hotels",
+        "selector": "[data-test-target=\"hotels-main-list\"] [data-automation^=\"non-plus-hotel-offer-\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "rank",
+              "selector": "[data-automation=\"hotel-card-title\"] h3",
+              "transforms": [
+                {
+                  "before": "."
+                },
+                "toInteger"
+              ],
+              "required": true
+            },
+            {
+              "name": "hotelId",
+              "selector": "[data-automation=\"hotel-card-title\"] a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "-d",
+                    "-Reviews"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": "[data-automation=\"hotel-card-title\"] h3",
+              "transforms": [
+                {
+                  "after": ". "
+                },
+                "trim"
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "[data-automation=\"hotel-card-title\"] a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "spAttributionToken"
+                  ]
+                },
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "[data-automation=\"bubbleRatingValue\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "[data-automation=\"bubbleReviewCount\"]",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "popularity",
+              "selector": "[data-test-target=\"hotels-popularity-index\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "priceFrom",
+              "selector": ".STaaL .OgHoE",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "priceText",
+              "selector": ".STaaL .OgHoE",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "travelersChoice",
+              "selector": "[data-automation^=\"travelersChoice-\"]",
+              "extract": "exists"
+            },
+            {
+              "name": "summary",
+              "selector": "[data-test-target=\"gai-summary-card\"] a span",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "reviewSnippet",
+              "selector": "[data-test-target=\"review-snippet\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "between": [
+                    "\"",
+                    "\""
+                  ]
+                },
+                "trim"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "nextPageUrl",
+        "selector": "a[aria-label=\"Next page\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      }
+    ]
+  }
+}

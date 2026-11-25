@@ -1,0 +1,66 @@
+{
+  "name": "Zillow - mortgage rates (Zillow Home Loans)",
+  "description": "Today's mortgage rates of Zillow Home Loans (www.zillow.com/mortgage-rates/): rate, APR, points and fees, loan type and term for each loan product (30-year fixed, FHA, VA, 20-, 15- and 10-year fixed, jumbo), with the time the rates are valid from. Fetched through a US proxy without JavaScript.",
+  "slug": "zillow-mortgage-rates",
+  "url": "https://www.zillow.com/mortgage-rates/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "finance",
+  "tags": [
+    "zillow",
+    "mortgage",
+    "mortgage-rates",
+    "finance"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "loans",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "rate",
+            "jsonPath": "interestRate.value",
+            "required": true
+          },
+          {
+            "name": "apr",
+            "jsonPath": "annualPercentageRate"
+          },
+          {
+            "name": "loanType",
+            "jsonPath": "loanType"
+          },
+          {
+            "name": "loanTerm",
+            "jsonPath": "loanTerm"
+          },
+          {
+            "name": "pointsAndFees",
+            "jsonPath": "feesAndCommissionsSpecification"
+          },
+          {
+            "name": "validFrom",
+            "jsonPath": "offers.validFrom"
+          },
+          {
+            "name": "validThrough",
+            "jsonPath": "offers.validThrough"
+          }
+        ]
+      }
+    ]
+  }
+}

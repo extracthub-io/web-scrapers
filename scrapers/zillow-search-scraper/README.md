@@ -10,13 +10,20 @@ listing URLs.
 
 ## Input
 
-A Zillow "for sale" search page for a city, ZIP code or neighborhood:
+A Zillow "for sale" search page for a city, ZIP code or neighborhood, e.g. `https://www.zillow.com/denver-co/`.
+Rentals and recently sold searches of the same place work too:
 
 ```
-https://www.zillow.com/denver-co/
-https://www.zillow.com/denver-co/2_p/          page 2
+https://www.zillow.com/denver-co/2_p/            page 2
 https://www.zillow.com/homes/for_sale/10001_rb/  ZIP code
+https://www.zillow.com/denver-co/rentals/        for rent
+https://www.zillow.com/denver-co/sold/           recently sold
 ```
+
+On a rentals search, apartment buildings come as `ApartmentComplex` items: `item.url` is the building page (input
+for the [Zillow Apartment Scraper](../zillow-apartment-scraper/)) and `item.offers[]` holds the lowest rent per
+bedroom count (`name` such as `1 Bedroom`, `lowPrice`). On a sold search, `item.offers.price` is the sale price
+and `availability` is `https://schema.org/SoldOut`.
 
 ## Output
 

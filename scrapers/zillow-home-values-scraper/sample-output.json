@@ -1,0 +1,109 @@
+{
+  "regionId": 11093,
+  "regionName": "Denver",
+  "regionType": "city",
+  "state": "Colorado",
+  "county": "Denver County",
+  "homeValue": 517745,
+  "homeValueDate": "2026-10-31",
+  "homeValueChange1y": -0.0208553839309078,
+  "stateHomeValue": 524797,
+  "countyHomeValue": 524677,
+  "nationalHomeValue": 364288,
+  "forSaleInventory": 4202,
+  "newListings": 920,
+  "medianListPrice": 518333,
+  "medianDaysToPending": 34,
+  "listingsDate": "2026-10-31",
+  "medianSalePrice": 568666,
+  "medianSaleToListRatio": 0.9911290511290511,
+  "soldAboveListShare": 0.22982379611099668,
+  "soldBelowListShare": 0.551036406172896,
+  "salesDate": "2026-09-30",
+  "averageRent": 1835,
+  "nationalAverageRent": 1913,
+  "homeValueHistory": [
+    {
+      "date": "2026-10-31",
+      "value": 517745
+    },
+    {
+      "date": "2026-09-30",
+      "value": 518274
+    },
+    {
+      "date": "2026-08-31",
+      "value": 517560
+    }
+  ],
+  "rentHistory": [
+    {
+      "date": "2026-10-31",
+      "rent": 1835
+    },
+    {
+      "date": "2026-09-30",
+      "rent": 1846
+    },
+    {
+      "date": "2026-08-31",
+      "rent": 1852
+    }
+  ],
+  "nearbyRegions": [
+    {
+      "regionId": 275564,
+      "name": "Central Park",
+      "homeValue": 744934,
+      "url": "https://www.zillow.com/central-park-denver-co/"
+    },
+    {
+      "regionId": 342737,
+      "name": "North Aurora",
+      "homeValue": 382821,
+      "url": "https://www.zillow.com/north-aurora-aurora-co/"
+    },
+    {
+      "regionId": 268657,
+      "name": "East Colfax",
+      "homeValue": 388719,
+      "url": "https://www.zillow.com/east-colfax-denver-co/"
+    },
+    {
+      "regionId": 342738,
+      "name": "Morris Heights",
+      "homeValue": 411781,
+      "url": "https://www.zillow.com/morris-heights-aurora-co/"
+    },
+    {
+      "regionId": 342769,
+      "name": "Delmar Parkway",
+      "homeValue": 359429,
+      "url": "https://www.zillow.com/delmar-parkway-aurora-co/"
+    },
+    {
+      "regionId": 268703,
+      "name": "North Park Hill",
+      "homeValue": 638657,
+      "url": "https://www.zillow.com/north-park-hill-denver-co/"
+    },
+    {
+      "regionId": 268704,
+      "name": "Northeast Park Hill",
+      "homeValue": 432291,
+      "url": "https://www.zillow.com/northeast-park-hill-denver-co/"
+    },
+    {
+      "regionId": 417796,
+      "name": "Fitzsimons",
+      "homeValue": null,
+      "url": "https://www.zillow.com/fitzsimons-aurora-co/"
+    },
+    {
+      "regionId": 6018,
+      "name": "Montbello",
+      "homeValue": 413775,
+      "url": "https://www.zillow.com/montbello-denver-co/"
+    }
+  ]
+}

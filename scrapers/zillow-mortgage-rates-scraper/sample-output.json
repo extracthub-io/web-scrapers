@@ -1,0 +1,94 @@
+{
+  "loans": [
+    {
+      "name": "30-Year Fixed Mortgage",
+      "rate": 7.25,
+      "apr": 7.454,
+      "loanType": "Conventional Fixed",
+      "loanTerm": "P30Y",
+      "pointsAndFees": "1.999 points; $5,497.25",
+      "validFrom": "2026-11-24T23:16:14.095-07:00",
+      "validThrough": "2026-11-25T23:16:14.095-07:00"
+    },
+    {
+      "name": "30-Year FHA Mortgage",
+      "rate": 7,
+      "apr": 7.736,
+      "loanType": "FHA Fixed",
+      "loanTerm": "P30Y",
+      "pointsAndFees": "1.876 points; $5,159.00",
+      "validFrom": "2026-11-24T23:16:14.095-07:00",
+      "validThrough": "2026-11-25T23:16:14.095-07:00"
+    },
+    {
+      "name": "30-Year VA Mortgage",
+      "rate": 7,
+      "apr": 7.295,
+      "loanType": "VA Fixed",
+      "loanTerm": "P30Y",
+      "pointsAndFees": "1.672 points; $4,598.00",
+      "validFrom": "2026-11-24T23:16:14.095-07:00",
+      "validThrough": "2026-11-25T23:16:14.095-07:00"
+    },
+    {
+      "name": "20-Year Fixed Mortgage",
+      "rate": 7.125,
+      "apr": 7.372,
+      "loanType": "Conventional Fixed",
+      "loanTerm": "P20Y",
+      "pointsAndFees": "1.877 points; $5,161.75",
+      "validFrom": "2026-11-24T23:16:14.095-07:00",
+      "validThrough": "2026-11-25T23:16:14.095-07:00"
+    },
+    {
+      "name": "15-Year Fixed Mortgage",
+      "rate": 6.625,
+      "apr": 6.915,
+      "loanType": "Conventional Fixed",
+      "loanTerm": "P15Y",
+      "pointsAndFees": "1.802 points; $4,955.50",
+      "validFrom": "2026-11-24T23:16:14.095-07:00",
+      "validThrough": "2026-11-25T23:16:14.095-07:00"
+    },
+    {
+      "name": "25-Year FHA Mortgage",
+      "rate": 7,
+      "apr": 7.807,
+      "loanType": "FHA Fixed",
+      "loanTerm": "P25Y",
+      "pointsAndFees": "1.876 points; $5,159.00",
+      "validFrom": "2026-11-24T23:16:14.095-07:00",
+      "validThrough": "2026-11-25T23:16:14.095-07:00"
+    },
+    {
+      "name": "20-Year FHA Mortgage",
+      "rate": 7,
+      "apr": 7.912,
+      "loanType": "FHA Fixed",
+      "loanTerm": "P20Y",
+      "pointsAndFees": "1.876 points; $5,159.00",
+      "validFrom": "2026-11-24T23:16:14.096-07:00",
+      "validThrough": "2026-11-25T23:16:14.096-07:00"
+    },
+    {
+      "name": "10-Year Fixed Mortgage",
+      "rate": 6.375,
+      "apr": 6.796,
+      "loanType": "Conventional Fixed",
+      "loanTerm": "P10Y",
+      "pointsAndFees": "1.864 points; $5,126.00",
+      "validFrom": "2026-11-24T23:16:14.096-07:00",
+      "validThrough": "2026-11-25T23:16:14.096-07:00"
+    },
+    {
+      "name": "30-Year Jumbo Mortgage",
+      "rate": 6.75,
+      "apr": 6.913,
+      "loanType": "Jumbo Fixed",
+      "loanTerm": "P30Y",
+      "pointsAndFees": "1.648 points; $15,656.00",
+      "validFrom": "2026-11-24T23:16:14.096-07:00",
+      "validThrough": "2026-11-25T23:16:14.096-07:00"
+    }
+  ]
+}

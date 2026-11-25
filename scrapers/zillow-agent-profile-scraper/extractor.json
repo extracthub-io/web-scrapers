@@ -1,0 +1,497 @@
+{
+  "name": "Zillow - real estate agent profile",
+  "description": "A Zillow agent or team profile (www.zillow.com/profile/<screen name>): name, brokerage, business address and brokerage / business phone, rating and review count, title, description, years in industry, specialties, licenses, service areas, total and recent sales, for-sale and for-rent listings, team members and recent reviews (without reviewer names). Fetched through a US proxy without JavaScript.",
+  "slug": "zillow-agent-profile",
+  "url": "https://www.zillow.com/profile/navrealestate",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "real-estate",
+  "tags": [
+    "zillow",
+    "real-estate",
+    "agents",
+    "realtors"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "zuid",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.encodedZuid"
+        ],
+        "required": true
+      },
+      {
+        "name": "screenName",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.screenName"
+        ]
+      },
+      {
+        "name": "name",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.name"
+        ],
+        "required": true
+      },
+      {
+        "name": "profileUrl",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.currentUrl"
+        ]
+      },
+      {
+        "name": "businessName",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.businessName"
+        ]
+      },
+      {
+        "name": "isTopAgent",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.isTopAgent"
+        ]
+      },
+      {
+        "name": "photo",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.profilePhotoSrc"
+        ]
+      },
+      {
+        "name": "rating",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.ratings.average"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.ratings.count"
+        ]
+      },
+      {
+        "name": "businessAddress",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.businessAddress"
+        ]
+      },
+      {
+        "name": "brokeragePhone",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.phoneNumbers.brokerage"
+        ]
+      },
+      {
+        "name": "businessPhone",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayUser.phoneNumbers.business"
+        ]
+      },
+      {
+        "name": "title",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.getToKnowMe.title"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.getToKnowMe.description"
+        ],
+        "transforms": [
+          "removeHtmlTags",
+          "decodeHtml",
+          "trim"
+        ]
+      },
+      {
+        "name": "yearsInIndustry",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.getToKnowMe.yearsInIndustry"
+        ]
+      },
+      {
+        "name": "specialties",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.getToKnowMe.specialties"
+        ]
+      },
+      {
+        "name": "languages",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.getToKnowMe.languages"
+        ]
+      },
+      {
+        "name": "websiteUrl",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.getToKnowMe.websiteUrl"
+        ]
+      },
+      {
+        "name": "licenses",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.agentLicenses[*]",
+        "subFields": [
+          {
+            "name": "number",
+            "jsonPath": "text",
+            "required": true
+          },
+          {
+            "name": "state",
+            "jsonPath": "state"
+          },
+          {
+            "name": "status",
+            "jsonPath": "status"
+          },
+          {
+            "name": "type",
+            "jsonPath": "license_type"
+          },
+          {
+            "name": "expiration",
+            "jsonPath": "expiration"
+          }
+        ]
+      },
+      {
+        "name": "serviceAreas",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.serviceAreas[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "text",
+            "required": true
+          },
+          {
+            "name": "regionId",
+            "jsonPath": "regionId"
+          },
+          {
+            "name": "url",
+            "jsonPath": "url",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "totalSales",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.pastSales.total"
+        ]
+      },
+      {
+        "name": "recentSales",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.pastSales.past_sales[*]",
+        "subFields": [
+          {
+            "name": "zpid",
+            "jsonPath": "zpid",
+            "required": true
+          },
+          {
+            "name": "soldDate",
+            "jsonPath": "sold_date"
+          },
+          {
+            "name": "price",
+            "jsonPath": "price",
+            "transforms": [
+              "extractPrice"
+            ]
+          },
+          {
+            "name": "represented",
+            "jsonPath": "represented"
+          },
+          {
+            "name": "streetAddress",
+            "jsonPath": "street_address"
+          },
+          {
+            "name": "cityStateZip",
+            "jsonPath": "city_state_zipcode"
+          },
+          {
+            "name": "bedrooms",
+            "jsonPath": "bedrooms"
+          },
+          {
+            "name": "bathrooms",
+            "jsonPath": "bathrooms"
+          },
+          {
+            "name": "livingArea",
+            "jsonPath": "livingAreaValue"
+          },
+          {
+            "name": "url",
+            "jsonPath": "home_details_url",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "forSaleCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.forSaleListings.listing_count"
+        ]
+      },
+      {
+        "name": "forSaleListings",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.forSaleListings.listings[*]",
+        "subFields": [
+          {
+            "name": "zpid",
+            "jsonPath": "zpid",
+            "required": true
+          },
+          {
+            "name": "streetAddress",
+            "jsonPath": "address.line1"
+          },
+          {
+            "name": "city",
+            "jsonPath": "address.city"
+          },
+          {
+            "name": "state",
+            "jsonPath": "address.stateOrProvince"
+          },
+          {
+            "name": "zipcode",
+            "jsonPath": "address.postalCode"
+          },
+          {
+            "name": "price",
+            "jsonPath": "price"
+          },
+          {
+            "name": "bedrooms",
+            "jsonPath": "bedrooms"
+          },
+          {
+            "name": "bathrooms",
+            "jsonPath": "bathrooms"
+          },
+          {
+            "name": "homeType",
+            "jsonPath": "home_type"
+          },
+          {
+            "name": "photo",
+            "jsonPath": "primary_photo_url"
+          },
+          {
+            "name": "url",
+            "jsonPath": "listing_url",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "forRentCount",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.forRentListings.listing_count"
+        ]
+      },
+      {
+        "name": "forRentListings",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.forRentListings.listings[*]",
+        "subFields": [
+          {
+            "name": "zpid",
+            "jsonPath": "zpid",
+            "required": true
+          },
+          {
+            "name": "streetAddress",
+            "jsonPath": "address.line1"
+          },
+          {
+            "name": "city",
+            "jsonPath": "address.city"
+          },
+          {
+            "name": "state",
+            "jsonPath": "address.stateOrProvince"
+          },
+          {
+            "name": "zipcode",
+            "jsonPath": "address.postalCode"
+          },
+          {
+            "name": "price",
+            "jsonPath": "price"
+          },
+          {
+            "name": "bedrooms",
+            "jsonPath": "bedrooms"
+          },
+          {
+            "name": "bathrooms",
+            "jsonPath": "bathrooms"
+          },
+          {
+            "name": "homeType",
+            "jsonPath": "home_type"
+          },
+          {
+            "name": "photo",
+            "jsonPath": "primary_photo_url"
+          },
+          {
+            "name": "url",
+            "jsonPath": "listing_url",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "teamName",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.teamDisplayInformation.teamLeadInfo.teamName"
+        ]
+      },
+      {
+        "name": "teamMembers",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.teamDisplayInformation.teamLeadInfo.children[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "screenName",
+            "jsonPath": "screenName"
+          },
+          {
+            "name": "rating",
+            "jsonPath": "ratings.average"
+          },
+          {
+            "name": "reviewCount",
+            "jsonPath": "ratings.count"
+          },
+          {
+            "name": "isTopAgent",
+            "jsonPath": "isTopAgent"
+          },
+          {
+            "name": "photo",
+            "jsonPath": "profilePhotoUrl"
+          }
+        ]
+      },
+      {
+        "name": "reviews",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.reviewsData.reviews[*]",
+        "subFields": [
+          {
+            "name": "reviewId",
+            "jsonPath": "reviewId",
+            "required": true
+          },
+          {
+            "name": "rating",
+            "jsonPath": "rating"
+          },
+          {
+            "name": "date",
+            "jsonPath": "createDate"
+          },
+          {
+            "name": "comment",
+            "jsonPath": "reviewComment"
+          },
+          {
+            "name": "workDescription",
+            "jsonPath": "workDescription"
+          },
+          {
+            "name": "agentScreenName",
+            "jsonPath": "reviewee.screenName"
+          },
+          {
+            "name": "subRatings",
+            "jsonPath": "subRatings"
+          }
+        ]
+      }
+    ]
+  }
+}

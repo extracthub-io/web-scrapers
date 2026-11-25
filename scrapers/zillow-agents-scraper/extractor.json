@@ -1,0 +1,110 @@
+{
+  "name": "Zillow - real estate agents directory",
+  "description": "Real estate agents and teams of a Zillow agent directory page (www.zillow.com/professionals/real-estate-agent-reviews/<city-state>/): name, profile URL, photo, top agent and team tags, price range, sales in the last 12 months and in the area, rating and review count, plus the number of agents found. Fetched through a US proxy without JavaScript.",
+  "slug": "zillow-agents",
+  "url": "https://www.zillow.com/professionals/real-estate-agent-reviews/denver-co/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "real-estate",
+  "tags": [
+    "zillow",
+    "real-estate",
+    "agents",
+    "realtors"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "sourceType": "html",
+    "fields": [
+      {
+        "name": "location",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayData.agentDirectoryFinderDisplay.searchResults.urlLocation"
+        ]
+      },
+      {
+        "name": "resultsFound",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayData.agentDirectoryFinderDisplay.searchResults.resultsFound"
+        ]
+      },
+      {
+        "name": "currentPage",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "props.pageProps.displayData.agentDirectoryFinderDisplay.searchResults.currentPage"
+        ]
+      },
+      {
+        "name": "agents",
+        "selector": "script#__NEXT_DATA__",
+        "extract": "jsonContent",
+        "jsonPath": "props.pageProps.displayData.agentDirectoryFinderDisplay.searchResults.results.resultsCards[*]",
+        "includePosition": true,
+        "required": true,
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "cardTitle",
+            "required": true
+          },
+          {
+            "name": "profileUrl",
+            "jsonPath": "cardActionLink"
+          },
+          {
+            "name": "zuid",
+            "jsonPath": "encodedZuid",
+            "required": true
+          },
+          {
+            "name": "photo",
+            "jsonPath": "imageUrl"
+          },
+          {
+            "name": "isTopAgent",
+            "jsonPath": "isTopAgent"
+          },
+          {
+            "name": "tags",
+            "jsonPath": "tags[*].text"
+          },
+          {
+            "name": "priceRange",
+            "jsonPath": "profileData[0].formattedData"
+          },
+          {
+            "name": "salesLast12Months",
+            "jsonPath": "profileData[1].formattedData",
+            "transforms": [
+              "toInteger"
+            ]
+          },
+          {
+            "name": "salesInArea",
+            "jsonPath": "profileData[2].formattedData",
+            "transforms": [
+              "toInteger"
+            ]
+          },
+          {
+            "name": "rating",
+            "jsonPath": "reviewInformation.reviewAverage"
+          },
+          {
+            "name": "reviewCount",
+            "jsonPath": "reviewInformation.reviewCount"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "name": "AP News - article",
+  "description": "One AP News article (apnews.com/article/...): headline, summary, section, type, published and modified dates, byline and authors with profile links, publisher, lead image with caption, keywords, subheadings, body paragraphs and full text. Plain fetch (JSON-LD NewsArticle + page markup).",
+  "slug": "apnews-article",
+  "url": "https://apnews.com/article/grok-lawsuit-elon-musk-ai-abuse-images-452cc64e7169a55868f797982d0e8238",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "news",
+  "tags": [
+    "news",
+    "apnews",
+    "articles",
+    "journalism"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "headline",
+        "selector": "h1.Page-headline",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "summary",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].description",
+          "description"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "section",
+        "selector": ".Page-breadcrumbs a",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "sectionUrl",
+        "selector": ".Page-breadcrumbs a[href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "articleType",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0][\"@type\"]",
+          "[\"@type\"]"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "datePublished",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].datePublished",
+          "datePublished"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "dateModified",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].dateModified",
+          "dateModified"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "byline",
+        "selector": ".Page-byline .Page-authors",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "authors",
+        "selector": ".Page-byline .Page-authors a",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "authorUrls",
+        "selector": ".Page-byline .Page-authors a[href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "publisher",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].publisher.name",
+          "publisher.name"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].image[0].url",
+          "image[0].url",
+          "[0].image.url"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "imageCaption",
+        "selector": ".Page-lead figcaption.Figure-caption p",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "textSeparator": ""
+      },
+      {
+        "name": "keywords",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPaths": [
+          "[0].keywords",
+          "keywords"
+        ],
+        "transforms": [
+          "coalesce"
+        ]
+      },
+      {
+        "name": "subheadings",
+        "selector": ".RichTextStoryBody > h2",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": ".RichTextStoryBody > p",
+        "isArray": true,
+        "extract": "textContent",
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ],
+        "textSeparator": ""
+      },
+      {
+        "name": "text",
+        "selector": ".RichTextStoryBody > p",
+        "isArray": true,
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "joinWithSpace"
+        ],
+        "textSeparator": ""
+      }
+    ]
+  }
+}

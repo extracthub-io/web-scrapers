@@ -1,0 +1,87 @@
+{
+  "location": "Denver CO",
+  "resultsFound": 17643,
+  "currentPage": 1,
+  "agents": [
+    {
+      "position": 1,
+      "name": "8z Real Estate",
+      "profileUrl": "https://www.zillow.com/profile/8zRealEstate",
+      "zuid": "X1-ZUvsryxjoqm9s9_85kue",
+      "photo": "https://photos.zillowstatic.com/fp/44effcd6f69339f2dddcd62a024f1abb-h_l.jpg",
+      "isTopAgent": false,
+      "tags": [
+        "TEAM"
+      ],
+      "priceRange": "$17K - $8.8M",
+      "salesLast12Months": 907,
+      "salesInArea": 2119,
+      "rating": 5,
+      "reviewCount": 5618
+    },
+    {
+      "position": 2,
+      "name": "Dave Ness",
+      "profileUrl": "https://www.zillow.com/profile/DaveNessRealtor",
+      "zuid": "X1-ZUyuq8wldphs09_77v72",
+      "photo": "https://photos.zillowstatic.com/fp/0833ae7097dc76983d4361a68ab47592-h_l.jpg",
+      "isTopAgent": true,
+      "tags": [
+        "TEAM"
+      ],
+      "priceRange": "$12K - $4.4M",
+      "salesLast12Months": 769,
+      "salesInArea": 1520,
+      "rating": 5,
+      "reviewCount": 2380
+    },
+    {
+      "position": 3,
+      "name": "NAV Real Estate",
+      "profileUrl": "https://www.zillow.com/profile/navrealestate",
+      "zuid": "X1-ZUwjszfl8xs7bd_2avjk",
+      "photo": "https://photos.zillowstatic.com/fp/2cb723f18b7044c277ed5d227cd11212-h_l.jpg",
+      "isTopAgent": true,
+      "tags": [
+        "TEAM"
+      ],
+      "priceRange": "$22K - $6.5M",
+      "salesLast12Months": 371,
+      "salesInArea": 850,
+      "rating": 5,
+      "reviewCount": 1207
+    },
+    {
+      "position": 4,
+      "name": "Wisdom Real Estate Top Reviewed",
+      "profileUrl": "https://www.zillow.com/profile/wisdomrealestate",
+      "zuid": "X1-ZUyyerlzc8p3bd_17jmc",
+      "photo": "https://photos.zillowstatic.com/fp/4ca7cbf616e733d2b195b1898b5c2215-h_l.jpg",
+      "isTopAgent": true,
+      "tags": [
+        "TEAM"
+      ],
+      "priceRange": "$39K - $3.7M",
+      "salesLast12Months": 111,
+      "salesInArea": 627,
+      "rating": 5,
+      "reviewCount": 936
+    },
+    {
+      "position": 5,
+      "name": "Be1 Team",
+      "profileUrl": "https://www.zillow.com/profile/CompassBe1Team",
+      "zuid": "X1-ZU1302ogsbxlq89_agge9",
+      "photo": "https://photos.zillowstatic.com/fp/846a84fe6c8d9d9af261e329f454798d-h_l.jpg",
+      "isTopAgent": true,
+      "tags": [
+        "TEAM"
+      ],
+      "priceRange": "$43K - $5.8M",
+      "salesLast12Months": 943,
+      "salesInArea": 898,
+      "rating": 5,
+      "reviewCount": 1253
+    }
+  ]
+}

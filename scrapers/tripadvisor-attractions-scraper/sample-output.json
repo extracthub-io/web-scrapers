@@ -1,0 +1,59 @@
+{
+  "pageUrl": "https://www.tripadvisor.com/Attractions-g60763-Activities-c47-New_York_City_New_York.html",
+  "geoId": "60763",
+  "title": "THE 10 BEST New York City Sights & Historical Landmarks",
+  "attractions": [
+    {
+      "rank": 1,
+      "attractionId": "105127",
+      "name": "Central Park",
+      "url": "https://www.tripadvisor.com/Attraction_Review-g60763-d105127-Reviews-Central_Park-New_York_City_New_York.html",
+      "rating": 4.7,
+      "reviewCount": 134505,
+      "categories": [
+        "Points of Interest & Landmarks",
+        "Parks"
+      ],
+      "neighborhood": "Central Park",
+      "ticketPrice": null,
+      "ticketText": null,
+      "travelersChoice": true,
+      "reviewSnippet": "From scenic bridges and grand fountains to serene ponds, statues , and winding trails, this park is full of surprises..."
+    },
+    {
+      "rank": 2,
+      "attractionId": "1687489",
+      "name": "The National 9/11 Memorial & Museum",
+      "url": "https://www.tripadvisor.com/Attraction_Review-g60763-d1687489-Reviews-The_National_9_11_Memorial_Museum-New_York_City_New_York.html",
+      "rating": 4.7,
+      "reviewCount": 99244,
+      "categories": [
+        "Historic Sites",
+        "Specialty Museums"
+      ],
+      "neighborhood": "Financial District",
+      "ticketPrice": 36,
+      "ticketText": "Admission tickets from $36",
+      "travelersChoice": true,
+      "reviewSnippet": "The museum is exceptionally well organized, with powerful exhibits, personal stories, photographs, and artifacts that..."
+    },
+    {
+      "rank": 3,
+      "attractionId": "105125",
+      "name": "The Metropolitan Museum of Art",
+      "url": "https://www.tripadvisor.com/Attraction_Review-g60763-d105125-Reviews-The_Metropolitan_Museum_of_Art-New_York_City_New_York.html",
+      "rating": 4.8,
+      "reviewCount": 55587,
+      "categories": [
+        "Points of Interest & Landmarks",
+        "Art Museums"
+      ],
+      "neighborhood": "Central Park",
+      "ticketPrice": 51,
+      "ticketText": "Admission tickets from $51",
+      "travelersChoice": true,
+      "reviewSnippet": "The Metropolitan Museum of Art is a must-visit in NYC! Incredible collections, stunning exhibits , and a beautiful set..."
+    }
+  ],
+  "nextPageUrl": "https://www.tripadvisor.com/Attractions-g60763-Activities-c47-oa30-New_York_City_New_York.html"
+}

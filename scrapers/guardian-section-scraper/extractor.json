@@ -1,0 +1,217 @@
+{
+  "name": "The Guardian - section page",
+  "description": "Stories of a Guardian section or topic front (theguardian.com/technology, /world, /business, /us-news, ...), grouped by the page's containers (Technology, AI, Features, Opinion & analysis, Reviews, ...): container name, id and link, then per story the position, headline, kicker, link, trail text, published time, media type and duration (video / audio cards), image and alt text, and the sub-links under lead stories. Plain fetch through the proxy.",
+  "slug": "guardian-section",
+  "url": "https://www.theguardian.com/technology",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "news",
+    "guardian",
+    "headlines",
+    "news-list"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "meta[name=\"description\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "canonicalUrl",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "edition",
+        "selector": "gu-island[name=\"RelativeTime\"][props]",
+        "extract": "attributeValue",
+        "attributeName": "props",
+        "transforms": [
+          {
+            "between": [
+              "\"editionId\":\"",
+              "\""
+            ]
+          }
+        ]
+      },
+      {
+        "name": "containers",
+        "selector": "main section[data-container-level]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "h2",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "id",
+              "selector": "[data-show-hide-button]",
+              "extract": "attributeValue",
+              "attributeName": "data-show-hide-button"
+            },
+            {
+              "name": "link",
+              "selector": "a[data-link-name=\"section heading\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "stories",
+              "selector": "[id^=\"container-\"] > ul > li",
+              "isArray": true,
+              "extract": "innerHTML",
+              "includePosition": true,
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "headline",
+                    "selector": "h3.card-headline .headline-text",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "kicker",
+                    "selector": "h3.card-headline > div",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "url",
+                    "selector": "a[aria-label][href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      "toAbsoluteUrl"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "trailText",
+                    "selector": "span > div > div",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  },
+                  {
+                    "name": "publishedAt",
+                    "selector": "footer time[datetime]",
+                    "extract": "attributeValue",
+                    "attributeName": "datetime"
+                  },
+                  {
+                    "name": "timeLabel",
+                    "selector": "footer time[datetime]",
+                    "transforms": [
+                      "trim"
+                    ]
+                  },
+                  {
+                    "name": "cardType",
+                    "selector": "a[aria-label][data-link-name]",
+                    "extract": "attributeValue",
+                    "attributeName": "data-link-name",
+                    "transforms": [
+                      {
+                        "before": " |"
+                      },
+                      "trim"
+                    ]
+                  },
+                  {
+                    "name": "footerLabel",
+                    "selector": "footer > div > span:first-child",
+                    "transforms": [
+                      "trim"
+                    ]
+                  },
+                  {
+                    "name": "duration",
+                    "selector": "footer > div > span:nth-child(2)",
+                    "transforms": [
+                      "trim"
+                    ]
+                  },
+                  {
+                    "name": "image",
+                    "selector": "picture img[src]",
+                    "extract": "attributeValue",
+                    "attributeName": "src"
+                  },
+                  {
+                    "name": "imageAlt",
+                    "selector": "picture img[alt]",
+                    "extract": "attributeValue",
+                    "attributeName": "alt"
+                  },
+                  {
+                    "name": "sublinks",
+                    "selector": "div[style=\"padding:0\"] ul.sublinks > li",
+                    "isArray": true,
+                    "extract": "innerHTML",
+                    "subExtractor": {
+                      "fields": [
+                        {
+                          "name": "headline",
+                          "selector": ".headline-text",
+                          "transforms": [
+                            "normalizeWhitespace"
+                          ],
+                          "required": true
+                        },
+                        {
+                          "name": "kicker",
+                          "selector": "h3 > div",
+                          "transforms": [
+                            "normalizeWhitespace"
+                          ]
+                        },
+                        {
+                          "name": "url",
+                          "selector": "a[href]",
+                          "extract": "attributeValue",
+                          "attributeName": "href",
+                          "transforms": [
+                            "toAbsoluteUrl"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

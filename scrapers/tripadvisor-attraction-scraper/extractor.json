@@ -1,0 +1,252 @@
+{
+  "name": "TripAdvisor - attraction page",
+  "description": "TripAdvisor attraction page (Attraction_Review, things to do): attraction id, name, rating, review count, ranking, description, opening hours, phone, website, address, coordinates, image, breadcrumbs and the latest reviews (title, text, rating, written date, tour reviewed, link; no reviewer names).",
+  "slug": "tripadvisor-attraction",
+  "url": "https://www.tripadvisor.com/Attraction_Review-g60763-d104365-Reviews-Empire_State_Building-New_York_City_New_York.html",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": false,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "tripadvisor",
+    "travel",
+    "attraction",
+    "things to do",
+    "reviews"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "attractionId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "-d",
+              "-Reviews"
+            ]
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "h1[data-test-target=\"mainH1\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "rating",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "aggregateRating.ratingValue",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "aggregateRating.reviewCount",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "ranking",
+        "selector": "[data-automation=\"WebPresentation_PoiOverviewWeb\"] a[href^=\"/Attractions-g\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "rankPosition",
+        "selector": "[data-automation=\"WebPresentation_PoiOverviewWeb\"] a[href^=\"/Attractions-g\"]",
+        "transforms": [
+          {
+            "between": [
+              "#",
+              " of"
+            ]
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "rankTotal",
+        "selector": "[data-automation=\"WebPresentation_PoiOverviewWeb\"] a[href^=\"/Attractions-g\"]",
+        "transforms": [
+          {
+            "between": [
+              "of ",
+              " "
+            ]
+          },
+          "toInteger"
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "[data-automation=\"attractionsAboutContent\"]",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "openingHours",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "openingHours"
+      },
+      {
+        "name": "telephone",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "telephone"
+      },
+      {
+        "name": "website",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "sameAs"
+      },
+      {
+        "name": "streetAddress",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.streetAddress",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "city",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.addressLocality"
+      },
+      {
+        "name": "region",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.addressRegion"
+      },
+      {
+        "name": "postalCode",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.postalCode"
+      },
+      {
+        "name": "country",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "address.addressCountry"
+      },
+      {
+        "name": "latitude",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "geo.latitude"
+      },
+      {
+        "name": "longitude",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "geo.longitude"
+      },
+      {
+        "name": "image",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "image"
+      },
+      {
+        "name": "breadcrumbs",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*].name"
+      },
+      {
+        "name": "reviews",
+        "selector": "[data-automation=\"reviewCard\"]",
+        "extract": "innerHTML",
+        "isArray": true,
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "title",
+              "selector": "[data-test-target=\"review-title\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "text",
+              "selector": "div[style*=\"line-clamp\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "svg title",
+              "transforms": [
+                {
+                  "before": " of"
+                },
+                "toNumber"
+              ]
+            },
+            {
+              "name": "writtenDate",
+              "selector": ".BNelO",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "Written "
+                }
+              ]
+            },
+            {
+              "name": "reviewOf",
+              "selector": "a[href^=\"/AttractionProductReview\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "after": "Review of: "
+                }
+              ]
+            },
+            {
+              "name": "url",
+              "selector": "[data-test-target=\"review-title\"] a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "required": true
+      }
+    ]
+  }
+}
