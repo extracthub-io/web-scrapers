@@ -1,0 +1,496 @@
+{
+  "name": "Google Maps - place reviews",
+  "description": "Reviews of a Google Maps place (www.google.com/maps/place/...): the first reviews of the place's Reviews tab in Google's \"Most relevant\" order, with review id, author, rating, date, full text, language, detail ratings, photos and the owner's reply; plus the place name, average rating, review count, rating distribution and review topics. Renders the page in a browser (JavaScript tier). Pairs with @extracthub1/google-maps-search and @extracthub1/google-maps-place: feed the same placeUrl here.",
+  "slug": "google-maps-reviews",
+  "visibility": "public",
+  "url": "https://www.google.com/maps/place/data=!4m4!3m3!1s0x8644ca6bc309e81b:0x1f1a903bbb66839!9m1!1b1?hl=en&gl=us",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "google-maps",
+    "reviews",
+    "local-business",
+    "maps",
+    "ratings"
+  ],
+  "browserActions": [
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf"
+      },
+      "timeout_s": 15,
+      "on_error": "skip"
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 2
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "div.jftiEf button.w8nwRe.kyuRq"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 1
+    }
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "div[role=\"main\"][aria-label]",
+        "extract": "attributeValue",
+        "attributeName": "aria-label",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ],
+        "required": true
+      },
+      {
+        "name": "rating",
+        "selector": "div.jANrlb div.fontDisplayLarge",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "reviewCount",
+        "selector": [
+          "div.jANrlb div.fontBodySmall",
+          "div.jANrlb button.GQjSyb"
+        ],
+        "combineStrategy": "first",
+        "transforms": [
+          "extractNumber"
+        ]
+      },
+      {
+        "name": "ratingDistribution",
+        "isArray": false,
+        "subFields": [
+          {
+            "name": "stars5",
+            "selector": "tr.BHOKXe:nth-child(1)[aria-label]",
+            "extract": "attributeValue",
+            "attributeName": "aria-label",
+            "transforms": [
+              {
+                "after": ","
+              },
+              "extractNumber"
+            ]
+          },
+          {
+            "name": "stars4",
+            "selector": "tr.BHOKXe:nth-child(2)[aria-label]",
+            "extract": "attributeValue",
+            "attributeName": "aria-label",
+            "transforms": [
+              {
+                "after": ","
+              },
+              "extractNumber"
+            ]
+          },
+          {
+            "name": "stars3",
+            "selector": "tr.BHOKXe:nth-child(3)[aria-label]",
+            "extract": "attributeValue",
+            "attributeName": "aria-label",
+            "transforms": [
+              {
+                "after": ","
+              },
+              "extractNumber"
+            ]
+          },
+          {
+            "name": "stars2",
+            "selector": "tr.BHOKXe:nth-child(4)[aria-label]",
+            "extract": "attributeValue",
+            "attributeName": "aria-label",
+            "transforms": [
+              {
+                "after": ","
+              },
+              "extractNumber"
+            ]
+          },
+          {
+            "name": "stars1",
+            "selector": "tr.BHOKXe:nth-child(5)[aria-label]",
+            "extract": "attributeValue",
+            "attributeName": "aria-label",
+            "transforms": [
+              {
+                "after": ","
+              },
+              "extractNumber"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "topics",
+        "selector": "button.y8MoVd[data-index]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "span.K7m1mb",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "mentions",
+              "selector": "span.Pu1GXb",
+              "transforms": [
+                "extractNumber"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "reviews",
+        "selector": "div.jftiEf[data-review-id]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "reviewId",
+              "selector": "div[data-review-id]",
+              "extract": "attributeValue",
+              "attributeName": "data-review-id",
+              "required": true
+            },
+            {
+              "name": "author",
+              "selector": "div.d4r55",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "authorInfo",
+              "selector": "div.RfnDt",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": [
+                "span.fzvQIb",
+                "div.DU9Pgb"
+              ],
+              "combineStrategy": "first",
+              "extract": "innerHTML",
+              "allowedAttributes": [
+                "aria-label"
+              ],
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "date",
+              "selector": [
+                "span.rsqaWe",
+                "span.xRkPPb"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "split": " on "
+                },
+                "first"
+              ]
+            },
+            {
+              "name": "source",
+              "selector": "span.qmhsmd",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "text",
+              "selector": "div.MyEned span.wiI7pd",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "language",
+              "selector": "div.MyEned[lang]",
+              "extract": "attributeValue",
+              "attributeName": "lang"
+            },
+            {
+              "name": "details",
+              "selector": "div.PBK6be",
+              "isArray": true,
+              "transforms": [
+                "normalizeWhitespace",
+                "compact"
+              ]
+            },
+            {
+              "name": "photos",
+              "selector": "button.Tya61d[style]",
+              "isArray": true,
+              "extract": "attributeValue",
+              "attributeName": "style",
+              "transforms": [
+                {
+                  "between": [
+                    "url(\"",
+                    "\""
+                  ]
+                },
+                "compact"
+              ]
+            },
+            {
+              "name": "ownerReply",
+              "selector": "div.CDe7pd div.wiI7pd",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "ownerReplyDate",
+              "selector": "div.CDe7pd span.DZSIDd",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

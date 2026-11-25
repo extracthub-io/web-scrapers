@@ -1,0 +1,79 @@
+{
+  "name": "Epoch Coffee",
+  "rating": 4.5,
+  "reviewCount": 2547,
+  "ratingDistribution": {
+    "stars5": 1789,
+    "stars4": 463,
+    "stars3": 150,
+    "stars2": 58,
+    "stars1": 87
+  },
+  "topics": [
+    {
+      "name": "laptop-friendly",
+      "mentions": 42
+    },
+    {
+      "name": "outdoor seating",
+      "mentions": 71
+    },
+    {
+      "name": "iced mojo",
+      "mentions": 10
+    },
+    {
+      "name": "study spot",
+      "mentions": 22
+    }
+  ],
+  "reviews": [
+    {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pCb1RXbEpVVkpyWkhWd1RrNUNibGgxWkZkclZtYxAB",
+      "author": "K. J.",
+      "authorInfo": "Local Guide · 165 reviews · 705 photos",
+      "rating": 3,
+      "date": "4 weeks ago",
+      "source": null,
+      "text": "The coffee is decent and cheaper than Starbucks, and the Wi-Fi makes it a solid place to get work done. The shop features prominent LGBTQ+ decor and messaging, creating a very specific atmosphere. I personally prefer a more neutral cafe environment that focuses strictly on the coffee, but it is a practical spot for working and I would still go back.",
+      "language": "en",
+      "details": [
+        "Food: 1",
+        "Service: 2",
+        "Atmosphere: 3",
+        "Noise level Moderate noise",
+        "Group size 2 people",
+        "Seating type Indoor dining area, Outdoor patio / terrace, Counter seating"
+      ],
+      "photos": [
+        "https://lh3.googleusercontent.com/grass-cs/AABkmLe1Fh5v0Q0ukrGKESDfJRmTuzGAfj7JPmtnh1c6sddFB5wDxl6VGkHh42lUQr-Eqxx1QKmsvoRfMuG_FaVHhX9td6b34qOtgBdyKwimHYCLs6Z_eU1fd6-y9MjnbbDV-tEcS3ER523pXhNP=w300-h225-p-k-no",
+        "https://lh3.googleusercontent.com/grass-cs/AABkmLf_PWZkf6D3-ep8DKv0iUlHlG_sF5wZEXXOxt-OA8KY7n-8SjXSEIriv7-IcstQh9YcKWmST5yQCk6J0O4Mky2jc8J1Cfj6-svuy2kiEbW14iThbSVi9NwTfQgAJauZeJZVZG4kjtSlORPt=w300-h225-p-k-no"
+      ],
+      "ownerReply": null,
+      "ownerReplyDate": null
+    },
+    {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tkNVkxcEVTbk5rT1doQldIQXpOWFkxZGxJd2JFRRAB",
+      "author": "R. X.",
+      "authorInfo": "5 reviews · 14 photos",
+      "rating": 5,
+      "date": "3 months ago",
+      "source": null,
+      "text": "I stopped by Epoch Coffee and had a relaxed experience. The place had a casual, lived-in atmosphere, with plenty of people working, reading, or meeting friends. My coffee tasted fresh and was served without a long wait. The staff were polite, although they seemed busy during my visit. Finding an open seat took a few minutes, but I eventually found a comfortable spot. It can get a little noisy, so it may not be ideal for a quiet meeting. Overall, it was a nice place to enjoy coffee and spend some time.",
+      "language": "en",
+      "details": [
+        "Order type Dine in",
+        "Meal type Breakfast",
+        "Food: 4",
+        "Service: 5",
+        "Atmosphere: 5"
+      ],
+      "photos": [
+        "https://lh3.googleusercontent.com/grass-cs/AABkmLfKJ09EeEIy20u3-ygve3V4Dqkze4jlpwdB3tD03VlZUDuTgwKcPLuPIk0jX8gXy1rQKIKDPxCB7fQXsLdlK1pRP_YR3OyIstsZzvvU1aiDroDZo3Ju8Qt3s9ztNkl7TeuSMsx3xhg8hZ0=w300-h450-p-k-no",
+        "https://lh3.googleusercontent.com/grass-cs/AABkmLfvYpiSSMy6x_sO42noFcT3VWRFagq2G3PitGAT4ngQLmPOlmLyw2vfhawOfHsn8r14-qcGA0d9k3GYKXdii7EjS3QxOkZtQ89deCe33qSUYU92FvMCt_be3hl6ppFLifjMPuUKCk9TaGYW=w300-h225-p-k-no"
+      ],
+      "ownerReply": null,
+      "ownerReplyDate": null
+    }
+  ]
+}

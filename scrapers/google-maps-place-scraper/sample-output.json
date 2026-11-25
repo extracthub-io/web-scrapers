@@ -43,7 +43,10 @@
   "description": "Cool, vibrant small-chain cafe featuring nibbles, tea & carefully brewed espresso drinks.",
   "placeId": "ChIJG-gJw2vKRIYROWi2uwOp8QE",
   "cid": "0x8644ca6bc309e81b:0x1f1a903bbb66839",
+  "placeReviewsUrl": "https://www.google.com/maps/place/data=!4m4!3m3!1s0x8644ca6bc309e81b:0x1f1a903bbb66839!9m1!1b1?hl=en&gl=us",
+  "placePhotosUrl": "https://www.google.com/maps/place/data=!4m3!3m2!1s0x8644ca6bc309e81b:0x1f1a903bbb66839!10e5?hl=en&gl=us",
   "kgmid": "/g/1v76_180",
+  "kgmidUrl": "https://www.google.com/search?kgmid=%2Fg%2F1v76_180",
   "latitude": 30.3186037,
   "longitude": -97.7245402
 }

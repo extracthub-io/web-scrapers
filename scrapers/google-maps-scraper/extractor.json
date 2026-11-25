@@ -1,6 +1,6 @@
 {
   "name": "Google Maps - places search",
-  "description": "Places from a Google Maps search (www.google.com/maps/search/<query>): name, Google Maps place URL, place ID, coordinates, rating, review count, category, address, opening-hours status, phone, website and hotel price, with their position in the results. Renders the page in a browser (JavaScript tier); returns the first batch of results Google Maps loads (about 20).",
+  "description": "Places from a Google Maps search (www.google.com/maps/search/<query>): name, Google Maps place URL, place ID, coordinates, rating, review count, category, address, opening-hours status, phone, website and hotel price, with their position in the results. Renders the page in a browser (JavaScript tier); returns the first batch of results Google Maps loads (about 20). Each place also has its reviews link and photos link, ready for @extracthub1/google-maps-reviews and @extracthub1/google-maps-photos.",
   "slug": "google-maps-search",
   "visibility": "public",
   "url": "https://www.google.com/maps/search/plumbers+in+denver+co?hl=en&gl=us",
@@ -48,7 +48,9 @@
               "selector": "a.hfpxzc",
               "extract": "attributeValue",
               "attributeName": "aria-label",
-              "transforms": ["normalizeWhitespace"],
+              "transforms": [
+                "normalizeWhitespace"
+              ],
               "required": true
             },
             {
@@ -56,94 +58,207 @@
               "selector": "a.hfpxzc",
               "extract": "attributeValue",
               "attributeName": "href",
-              "transforms": ["toAbsoluteUrl"]
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
             },
             {
               "name": "placeId",
               "selector": "a.hfpxzc",
               "extract": "attributeValue",
               "attributeName": "href",
-              "transforms": [{ "between": ["!19s", "!"] }, { "before": "?" }]
+              "transforms": [
+                {
+                  "between": [
+                    "!19s",
+                    "!"
+                  ]
+                },
+                {
+                  "before": "?"
+                }
+              ]
             },
             {
               "name": "cid",
               "selector": "a.hfpxzc",
               "extract": "attributeValue",
               "attributeName": "href",
-              "transforms": [{ "between": ["!1s", "!"] }]
+              "transforms": [
+                {
+                  "between": [
+                    "!1s",
+                    "!"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "placeReviewsUrl",
+              "selector": "a.hfpxzc",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "!1s",
+                    "!"
+                  ]
+                },
+                {
+                  "template": {
+                    "text": "https://www.google.com/maps/place/data=!4m4!3m3!1s{value}!9m1!1b1?hl=en&gl=us",
+                    "encode": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "placePhotosUrl",
+              "selector": "a.hfpxzc",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "!1s",
+                    "!"
+                  ]
+                },
+                {
+                  "template": {
+                    "text": "https://www.google.com/maps/place/data=!4m3!3m2!1s{value}!10e5?hl=en&gl=us",
+                    "encode": false
+                  }
+                }
+              ]
             },
             {
               "name": "latitude",
               "selector": "a.hfpxzc",
               "extract": "attributeValue",
               "attributeName": "href",
-              "transforms": [{ "between": ["!3d", "!"] }, "toNumber"]
+              "transforms": [
+                {
+                  "between": [
+                    "!3d",
+                    "!"
+                  ]
+                },
+                "toNumber"
+              ]
             },
             {
               "name": "longitude",
               "selector": "a.hfpxzc",
               "extract": "attributeValue",
               "attributeName": "href",
-              "transforms": [{ "between": ["!4d", "!"] }, "toNumber"]
+              "transforms": [
+                {
+                  "between": [
+                    "!4d",
+                    "!"
+                  ]
+                },
+                "toNumber"
+              ]
             },
             {
               "name": "rating",
               "selector": "span.MW4etd",
-              "transforms": ["toNumber"]
+              "transforms": [
+                "toNumber"
+              ]
             },
             {
               "name": "reviewCount",
               "selector": "span.UY7F9",
-              "transforms": ["extractNumber"]
+              "transforms": [
+                "extractNumber"
+              ]
             },
             {
               "name": "category",
               "selector": "div.W4Efsd > div.W4Efsd:first-child > span:first-child > span",
-              "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
             },
             {
               "name": "address",
               "selector": "div.W4Efsd > div.W4Efsd:first-child > span:not(:first-child) > span:not([aria-hidden]):not(.google-symbols)",
-              "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
             },
             {
               "name": "openStatus",
               "selector": "div.W4Efsd > div.W4Efsd > span:first-child > span > span",
               "isArray": true,
-              "transforms": ["joinWithSpace", "normalizeWhitespace", "nullIfEmpty"]
+              "transforms": [
+                "joinWithSpace",
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
             },
             {
               "name": "phone",
               "selector": "span.UsdlK",
-              "transforms": ["normalizeWhitespace"]
+              "transforms": [
+                "normalizeWhitespace"
+              ]
             },
             {
               "name": "website",
               "selector": "a[data-value=\"Website\"]",
               "extract": "attributeValue",
               "attributeName": "href",
-              "transforms": [{ "removeQueryParams": ["utm_*", "fbclid", "gclid"] }]
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "utm_*",
+                    "fbclid",
+                    "gclid"
+                  ]
+                }
+              ]
             },
             {
               "name": "price",
               "selector": "div.wcldff",
-              "transforms": ["normalizeWhitespace", "nullIfEmpty"]
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
             },
             {
               "name": "priceCurrency",
               "selector": "div.wcldff",
-              "transforms": ["normalizeWhitespace", { "before": " " }]
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "before": " "
+                }
+              ]
             },
             {
               "name": "priceAmount",
               "selector": "div.wcldff",
-              "transforms": ["normalizeWhitespace", "parseCompactNumber"]
+              "transforms": [
+                "normalizeWhitespace",
+                "parseCompactNumber"
+              ]
             },
             {
               "name": "amenities",
               "selector": "span.gSamH",
               "isArray": true,
-              "transforms": ["normalizeWhitespace", "compact"]
+              "transforms": [
+                "normalizeWhitespace",
+                "compact"
+              ]
             }
           ]
         }

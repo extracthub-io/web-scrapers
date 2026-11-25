@@ -1,0 +1,204 @@
+{
+  "name": "Booking.com - hotel reviews",
+  "description": "Guest reviews from a Booking.com property page (booking.com/hotel/<cc>/<name>.html), as shown in its review list: the first 10 reviews (Most relevant) with guest first name, country, room, nights, stay month, traveler type, review date, title, score, liked / disliked text and the start of the property reply; plus hotel id, name, overall review score and review count.",
+  "slug": "booking-hotel-reviews",
+  "visibility": "public",
+  "url": "https://www.booking.com/hotel/us/hyatt-place-new-york-city-times-square.html",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": true,
+  "category": "travel",
+  "tags": [
+    "booking.com",
+    "travel",
+    "hotel",
+    "reviews",
+    "guest reviews"
+  ],
+  "browserActions": [
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "#onetrust-accept-btn-handler"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "[data-testid=\"Property-Header-Nav-Tab-Trigger-reviews\"]"
+      },
+      "timeout_s": 15,
+      "on_error": "skip"
+    },
+    {
+      "type": "click",
+      "selector": {
+        "type": "css",
+        "value": "[data-testid=\"Property-Header-Nav-Tab-Trigger-reviews\"]"
+      },
+      "on_error": "skip"
+    },
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "[data-testid=\"review-card\"]"
+      },
+      "timeout_s": 15,
+      "on_error": "skip"
+    }
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "hotelId",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "b_hotel_id: '",
+              "'"
+            ]
+          },
+          "compact",
+          "first"
+        ],
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "name",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "reviewScore",
+        "selector": "[data-testid=\"reviews-tab-score-header\"] [aria-hidden=\"true\"]",
+        "transforms": [
+          "toNumber"
+        ],
+        "required": true
+      },
+      {
+        "name": "reviewCount",
+        "selector": "[data-testid=\"reviews-tab-score-header\"] [aria-hidden=\"true\"] div",
+        "isArray": true,
+        "transforms": [
+          {
+            "before": " review"
+          },
+          "extractNumber",
+          "compact",
+          "last"
+        ]
+      },
+      {
+        "name": "reviews",
+        "selector": "[data-testid=\"review-card\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "guestName",
+              "selector": "[data-testid=\"review-avatar\"] h4",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "guestCountry",
+              "selector": "[data-testid=\"review-avatar\"] span",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "roomType",
+              "selector": "[data-testid=\"review-room-name\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "nights",
+              "selector": "[data-testid=\"review-num-nights\"]",
+              "transforms": [
+                "extractNumber"
+              ]
+            },
+            {
+              "name": "stayMonth",
+              "selector": "[data-testid=\"review-stay-date\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "travelerType",
+              "selector": "[data-testid=\"review-traveler-type\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "reviewDate",
+              "selector": "[data-testid=\"review-date\"]",
+              "transforms": [
+                {
+                  "after": "Reviewed:"
+                },
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "title",
+              "selector": "[data-testid=\"review-title\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "score",
+              "selector": "[data-testid=\"review-score\"] [aria-hidden=\"true\"]",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "liked",
+              "selector": "[data-testid=\"review-positive-text\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "disliked",
+              "selector": "[data-testid=\"review-negative-text\"]",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            },
+            {
+              "name": "propertyReply",
+              "selector": "[data-testid=\"review-partner-reply\"] div > div > span:not([aria-hidden])",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

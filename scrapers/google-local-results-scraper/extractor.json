@@ -49,6 +49,20 @@
               ]
             },
             {
+              "name": "kgmidUrl",
+              "selector": "div[id^=\"pv-\"]",
+              "extract": "attributeValue",
+              "attributeName": "id",
+              "transforms": [
+                {
+                  "after": "pv-"
+                },
+                {
+                  "template": "https://www.google.com/search?kgmid={value}"
+                }
+              ]
+            },
+            {
               "name": "rating",
               "selector": "span.yi40Hd",
               "transforms": [

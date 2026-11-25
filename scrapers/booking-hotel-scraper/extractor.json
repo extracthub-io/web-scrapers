@@ -1,6 +1,6 @@
 {
   "name": "Booking.com - hotel page",
-  "description": "Booking.com property page (booking.com/hotel/<cc>/<name>.html): hotel id, name, star class, review score, score word, reviews count, review subscores (cleanliness, comfort, location...), location score, address, coordinates, description, most popular facilities, house rules (check-in, check-out, cancellation, pets...), main image.",
+  "description": "Booking.com property page (booking.com/hotel/<cc>/<name>.html): hotel id, city id (ufi), country code, name, star class, review score, score word, reviews count, review subscores (cleanliness, comfort, location...), location score, address, coordinates, description, most popular facilities, house rules (check-in, check-out, cancellation, pets...), main image.",
   "slug": "booking-hotel",
   "url": "https://www.booking.com/hotel/id/novotel-bali-ngurah-rai-airport-opening-june-2016.html",
   "method": "GET",
@@ -34,6 +34,36 @@
           "first"
         ],
         "required": true
+      },
+      {
+        "name": "ufi",
+        "selector": "script:not([src])",
+        "isArray": true,
+        "transforms": [
+          {
+            "between": [
+              "b_ufi : '",
+              "'"
+            ]
+          },
+          "compact",
+          "first",
+          "toNumber"
+        ]
+      },
+      {
+        "name": "countryCode",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "url",
+        "transforms": [
+          {
+            "between": [
+              "/hotel/",
+              "/"
+            ]
+          }
+        ]
       },
       {
         "name": "name",

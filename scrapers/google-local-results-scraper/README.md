@@ -27,7 +27,8 @@ fields below read English text such as "years in business"). For page 2, 3, ... 
 | `places[]` | array | places in the order Google lists them |
 | `places[].position` | number | rank on this page (1 = first) |
 | `places[].name` | string | business name |
-| `places[].kgmid` | string \| null | Google knowledge-graph ID, e.g. `/g/1tfw3jh7`. The `/g/` (or `/m/` for older IDs) prefix is part of the ID; open the business panel with `https://www.google.com/search?kgmid=/g/1tfw3jh7` |
+| `places[].kgmid` | string \| null | Google knowledge-graph ID, e.g. `/g/1tfw3jh7`. The `/g/` (or `/m/` for older IDs) prefix is part of the ID; open the business panel with `kgmidUrl` |
+| `places[].kgmidUrl` | string \| null | the Google business panel, e.g. `https://www.google.com/search?kgmid=%2Fg%2F1tfw3jh7`; `null` for ads |
 | `places[].rating` | number \| null | average star rating (1 to 5) |
 | `places[].reviewCount` | number \| null | number of reviews, as Google rounds it (`3.9K` → `3900`) |
 | `places[].category` | string \| null | main category, e.g. `Plumber`, `Coffee shop` |
@@ -79,6 +80,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
   fails with HTTP 422 `required_fields_missing` and is still charged. Batches retry it once.
 - **Results are from a US location** (`proxyCountry: US`). Always name the city or area in the query.
 - **Sponsored places** were not seen in the test pages; if Google shows them, they may appear in the list.
+
+## Versions
+
+- **1.1.0:** adds `kgmidUrl`. No breaking changes.
+- **1.0.0:** first release.
 
 ## Files
 

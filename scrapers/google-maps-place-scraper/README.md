@@ -20,7 +20,7 @@ Add `hl=en&gl=us` to get English labels and US number formats (without `gl=us`, 
 `+1 720-670-6361` and addresses end with `, United States`).
 
 A Maps search URL that opens one place directly (`/maps/search/<name and address>`) also works, but then
-`placeId`, `cid`, `kgmid`, `latitude` and `longitude` are `null`: they are read from the place URL.
+`placeId`, `cid`, `kgmid`, the links built from them, `latitude` and `longitude` are `null`: they are read from the place URL.
 
 ## Output
 
@@ -41,7 +41,10 @@ A Maps search URL that opens one place directly (`/maps/search/<name and address
 | `description` | string \| null | Google's short description of the place |
 | `placeId` | string \| null | Google place ID (`ChIJ...`), usable with the Google Places API |
 | `cid` | string \| null | Google Maps feature ID, e.g. `0x876c7951ce5b075d:0x5224a0bd2f50c28a` |
-| `kgmid` | string \| null | Google knowledge-graph ID, e.g. `/g/1tfw3jh7`. The `/g/` (or `/m/` for older IDs) prefix is part of the ID; open the business panel with `https://www.google.com/search?kgmid=/g/1tfw3jh7` |
+| `placeReviewsUrl` | string \| null | the place on its Reviews tab, input for the [Google Maps Reviews Scraper](../google-maps-reviews-scraper/) |
+| `placePhotosUrl` | string \| null | the place's photo gallery, input for the [Google Maps Photos Scraper](../google-maps-photos-scraper/) |
+| `kgmid` | string \| null | Google knowledge-graph ID, e.g. `/g/1tfw3jh7`. The `/g/` (or `/m/` for older IDs) prefix is part of the ID; open the business panel with `kgmidUrl` |
+| `kgmidUrl` | string \| null | the Google business panel, e.g. `https://www.google.com/search?kgmid=%2Fg%2F1tfw3jh7` |
 | `latitude`, `longitude` | number \| null | coordinates of the place |
 | `topReviews[]` | array | the (up to 3) reviews shown on the place page: `author`, `rating` (1 to 5), `date` (relative, e.g. `2 months ago`), `text` (Google cuts long ones with `…`) |
 
@@ -75,6 +78,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
   the language of `hl`.
 - **Reviews are personal data:** reviewer names and texts belong to their authors. Process them only where
   you have a right to.
+
+## Versions
+
+- **1.1.0:** adds `placeReviewsUrl`, `placePhotosUrl` and `kgmidUrl`. No breaking changes.
+- **1.0.0:** first release.
 
 ## Files
 

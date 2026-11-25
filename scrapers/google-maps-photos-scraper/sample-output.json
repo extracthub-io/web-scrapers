@@ -1,0 +1,26 @@
+{
+  "name": "Epoch Coffee",
+  "photos": [
+    {
+      "position": 1,
+      "image": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QVVCY_NGn1pn0h7dKLWo-vP2FS8jqWog6dIhET3OuMrLsl3s9MhQWYBssbQheIpVvhZhYkRgnpXlp0SW5xs--6lN1Kw-Qsl9HwQBrno9mbQLTQTNt1IPNQljy5zkFoSMWDgjDa=w203-h152-k-no",
+      "imageBase": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QVVCY_NGn1pn0h7dKLWo-vP2FS8jqWog6dIhET3OuMrLsl3s9MhQWYBssbQheIpVvhZhYkRgnpXlp0SW5xs--6lN1Kw-Qsl9HwQBrno9mbQLTQTNt1IPNQljy5zkFoSMWDgjDa",
+      "isVideo": false,
+      "videoDuration": null
+    },
+    {
+      "position": 2,
+      "image": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TJcY_IcsToREoWIvmCSe6oC9u8t0n1SAVf1AuMUTuNpAQBRyrV0Ne6ZX1EQtvxXCmP3tyAtBt40xZIonNh9GRsHi7wvn2vQAYv4excs_ywFnkforH7xubdAzEf5_CYBpGivN7WEA=w203-h114-k-no",
+      "imageBase": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TJcY_IcsToREoWIvmCSe6oC9u8t0n1SAVf1AuMUTuNpAQBRyrV0Ne6ZX1EQtvxXCmP3tyAtBt40xZIonNh9GRsHi7wvn2vQAYv4excs_ywFnkforH7xubdAzEf5_CYBpGivN7WEA",
+      "isVideo": true,
+      "videoDuration": "0:09"
+    },
+    {
+      "position": 3,
+      "image": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S9japdVbT-zTyl1z65-sJA_WUf20WaeAta2NIzw51VEj0TlnlYChEQcscwO8RmNS2MCutsLfeNLh5KwdHOrYW24oqnn448xdv7YxfEZe98zaGBKB6ezf9xFzpVow42JB6P1ncgwAh0OR0=w203-h152-k-no",
+      "imageBase": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S9japdVbT-zTyl1z65-sJA_WUf20WaeAta2NIzw51VEj0TlnlYChEQcscwO8RmNS2MCutsLfeNLh5KwdHOrYW24oqnn448xdv7YxfEZe98zaGBKB6ezf9xFzpVow42JB6P1ncgwAh0OR0",
+      "isVideo": false,
+      "videoDuration": null
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "hotelId": "5218600",
+  "name": "Hyatt Place New York City - Times Square",
+  "reviewScore": 7.8,
+  "reviewCount": 16309,
+  "reviews": [
+    {
+      "guestName": "K.",
+      "guestCountry": "United Kingdom",
+      "roomType": "Standard King Room with Sofa Bed",
+      "nights": 2,
+      "stayMonth": "November 2026",
+      "travelerType": "Couple",
+      "reviewDate": "November 24, 2026",
+      "title": "Great for the price. Would use again",
+      "score": 9,
+      "liked": "Location great, staff very helpful, room allocated as requested . Main bed super comfy, very good value",
+      "disliked": "Sofa bed was fine for one night - not a great mattress. Breakfast was ok - decent choice but not great quality however it was complimentary so hard to complain",
+      "propertyReply": null
+    },
+    {
+      "guestName": "V.",
+      "guestCountry": "Brazil",
+      "roomType": "Standard King Room",
+      "nights": 4,
+      "stayMonth": "November 2026",
+      "travelerType": "Solo traveler",
+      "reviewDate": "November 23, 2026",
+      "title": "I expected more from Hyatt brand",
+      "score": 7,
+      "liked": "The location is very good . The room is clean",
+      "disliked": "The shower is terrible ! Almost no water .. to wash my long hair took 30 minutes !!!",
+      "propertyReply": null
+    },
+    {
+      "guestName": "A.",
+      "guestCountry": "Turkey",
+      "roomType": "King Room with City View",
+      "nights": 7,
+      "stayMonth": "November 2026",
+      "travelerType": "Couple",
+      "reviewDate": "November 21, 2026",
+      "title": "A comfortable, clean and safe environment in a very central location",
+      "score": 9,
+      "liked": "The location was excellent, very central but also far from any noise and noisy crowds. The breakfast was abundant yet needs to improve variety and include more charcuterie and fresh tomatoes etc. The tea, coffee and juice selection was brilliant though. Every floor has a water and ice dispenser which was very convenient.",
+      "disliked": "The breakfast variety was limited. The amount was abundant and enough for the whole of the hotel guests but during our 1 week stay we would have appreciated a different menu and more charcuterie products.",
+      "propertyReply": "Dear A., Thank you for taking the time to share your..."
+    }
+  ]
+}

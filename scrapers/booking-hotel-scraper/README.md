@@ -4,7 +4,8 @@ Turn a Booking.com property page into JSON: hotel id, name, star class, guest re
 reviews count, review subscores (cleanliness, comfort, facilities, location, staff, value for money, free WiFi),
 location score, address, coordinates, description, most popular facilities, check-in and check-out times, house
 rules and the main photo. Good for hotel research, competitor monitoring and travel apps. Property links come
-from the [Booking.com Search Scraper](../booking-search-scraper/).
+from the [Booking.com Search Scraper](../booking-search-scraper/); for the guest reviews of a property use the
+[Booking.com Reviews Scraper](../booking-hotel-reviews-scraper/).
 
 **Catalog:** [extracthub.io/extractor/@extracthub1/booking-hotel](https://extracthub.io/extractor/@extracthub1/booking-hotel)
 **Extractor id:** `@extracthub1/booking-hotel@1` · **Price:** $0.0025 per page
@@ -24,6 +25,8 @@ e.g. `https://www.booking.com/hotel/id/novotel-bali-ngurah-rai-airport-opening-j
 | Field | Type | Description |
 |---|---|---|
 | `hotelId` | string | Booking.com property id, e.g. `1527745` |
+| `ufi` | number \| null | Booking.com id of the city or area, e.g. `-2683839` |
+| `countryCode` | string | country code from the hotel link, e.g. `id` |
 | `name` | string | e.g. `Novotel Bali Ngurah Rai Airport` |
 | `stars` | number \| null | star class, e.g. `4` (`0` or `null` when not rated) |
 | `reviewScore` | number \| null | guest review score (1 to 10), e.g. `8.7` |

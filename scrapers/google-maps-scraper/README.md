@@ -28,6 +28,8 @@ Write the query with `+` for spaces, e.g. `plumbers+in+denver+co` or `coffee+sho
 | `places[].placeUrl` | string \| null | Google Maps link to the place |
 | `places[].placeId` | string \| null | Google place ID, e.g. `ChIJXQdbzlF5bIcRisJQL72gJFI` (works with the Google Places API and `https://www.google.com/maps/place/?q=place_id:<id>`) |
 | `places[].cid` | string \| null | Google Maps feature ID, e.g. `0x876c7951ce5b075d:0x5224a0bd2f50c28a` |
+| `places[].placeReviewsUrl` | string \| null | the place on its Reviews tab, input for the [Google Maps Reviews Scraper](../google-maps-reviews-scraper/) |
+| `places[].placePhotosUrl` | string \| null | the place's photo gallery, input for the [Google Maps Photos Scraper](../google-maps-photos-scraper/) |
 | `places[].latitude` | number \| null | latitude of the place |
 | `places[].longitude` | number \| null | longitude of the place |
 | `places[].rating` | number \| null | average star rating (1 to 5) |
@@ -76,8 +78,23 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 - **Results are from a US location** (`proxyCountry: US`). "Near me" queries are relative to that location,
   so always name the city or area in the query.
 
+## Pipelines
+
+The links feed the next extractor directly, e.g. an ExtractHub pipeline search → reviews:
+
+```json
+"steps": [
+  { "extractor_id": "@extracthub1/google-maps-search@1", "url_output_field": "places[].placeReviewsUrl" },
+  { "extractor_id": "@extracthub1/google-maps-reviews@1" }
+]
+```
+
+Use `places[].placePhotosUrl` with `@extracthub1/google-maps-photos@1` for photos, or `places[].placeUrl` with
+`@extracthub1/google-maps-place@1` for the details. Each place found is one more call of the next step.
+
 ## Versions
 
+- **1.2.0:** adds `placeReviewsUrl` and `placePhotosUrl`. No breaking changes.
 - **1.1.0:** adds `placeId`, `cid`, `latitude`, `longitude`, `priceCurrency` and `priceAmount`; removes
   tracking parameters from `website`. No breaking changes: callers on `@1` get it automatically.
 - **1.0.0:** first release.

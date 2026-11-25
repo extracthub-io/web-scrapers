@@ -1,6 +1,6 @@
 {
   "name": "Google Maps - place details",
-  "description": "Details of a Google Maps place page (www.google.com/maps/place/...): name, category, rating, review count, full address, phone, website, Plus Code, opening status and weekly hours, description, place ID, coordinates and the top reviews shown on the page. Renders the page in a browser (JavaScript tier). Pairs with @extracthub1/google-maps-search: feed its placeUrl here.",
+  "description": "Details of a Google Maps place page (www.google.com/maps/place/...): name, category, rating, review count, full address, phone, website, Plus Code, opening status and weekly hours, description, place ID, coordinates and the top reviews shown on the page. Renders the page in a browser (JavaScript tier). Pairs with @extracthub1/google-maps-search: feed its placeUrl here. Also returns the place's reviews and photos links (for @extracthub1/google-maps-reviews and @extracthub1/google-maps-photos) and its Google business panel link (kgmidUrl).",
   "slug": "google-maps-place",
   "visibility": "public",
   "url": "https://www.google.com/maps/place/Epoch+Coffee/data=!4m7!3m6!1s0x8644ca6bc309e81b:0x1f1a903bbb66839!8m2!3d30.3186037!4d-97.7245402!16s%2Fg%2F1v76_180!19sChIJG-gJw2vKRIYROWi2uwOp8QE?hl=en&gl=us",
@@ -209,6 +209,48 @@
         ]
       },
       {
+        "name": "placeReviewsUrl",
+        "selector": "link[href^=\"/maps/preview/place\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "%211s",
+              "%21"
+            ]
+          },
+          "decodeUri",
+          {
+            "template": {
+              "text": "https://www.google.com/maps/place/data=!4m4!3m3!1s{value}!9m1!1b1?hl=en&gl=us",
+              "encode": false
+            }
+          }
+        ]
+      },
+      {
+        "name": "placePhotosUrl",
+        "selector": "link[href^=\"/maps/preview/place\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "%211s",
+              "%21"
+            ]
+          },
+          "decodeUri",
+          {
+            "template": {
+              "text": "https://www.google.com/maps/place/data=!4m3!3m2!1s{value}!10e5?hl=en&gl=us",
+              "encode": false
+            }
+          }
+        ]
+      },
+      {
         "name": "kgmid",
         "selector": "link[href^=\"/maps/preview/place\"]",
         "extract": "attributeValue",
@@ -221,6 +263,24 @@
             ]
           },
           "decodeUri"
+        ]
+      },
+      {
+        "name": "kgmidUrl",
+        "selector": "link[href^=\"/maps/preview/place\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "%214s",
+              "%21"
+            ]
+          },
+          "decodeUri",
+          {
+            "template": "https://www.google.com/search?kgmid={value}"
+          }
         ]
       },
       {

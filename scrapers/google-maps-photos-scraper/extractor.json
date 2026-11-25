@@ -1,0 +1,112 @@
+{
+  "name": "Google Maps - place photos",
+  "description": "Photos of a Google Maps place: the photos and videos of the place's photo gallery (the 10 that Google shows without sign-in) with image link, resizable base link, video duration and position, plus the place name. Input: the place's gallery link built from its cid (www.google.com/maps/place/data=!4m3!3m2!1s<cid>!10e5). Renders the page in a browser (JavaScript tier). Pairs with @extracthub1/google-maps-search and @extracthub1/google-maps-place, which return the cid.",
+  "slug": "google-maps-photos",
+  "visibility": "public",
+  "url": "https://www.google.com/maps/place/data=!4m3!3m2!1s0x8644ca6bc309e81b:0x1f1a903bbb66839!10e5?hl=en&gl=us",
+  "method": "GET",
+  "useProxy": true,
+  "renderJavascript": true,
+  "proxyCountry": "US",
+  "category": "travel",
+  "tags": [
+    "google-maps",
+    "photos",
+    "images",
+    "local-business",
+    "maps"
+  ],
+  "browserActions": [
+    {
+      "type": "wait_for_element",
+      "selector": {
+        "type": "css",
+        "value": "a[data-photo-index] div[role=\"img\"][style*=\"background-image\"]"
+      },
+      "timeout_s": 15,
+      "on_error": "skip"
+    },
+    {
+      "type": "wait",
+      "wait_time_s": 2
+    }
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "name",
+        "selector": "div[role=\"main\"][aria-label]",
+        "extract": "attributeValue",
+        "attributeName": "aria-label",
+        "transforms": [
+          {
+            "after": "Photos of "
+          },
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "photos",
+        "selector": "a[data-photo-index]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "image",
+              "selector": "div[role=\"img\"][style]",
+              "extract": "attributeValue",
+              "attributeName": "style",
+              "transforms": [
+                {
+                  "between": [
+                    "url(\"",
+                    "\""
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "imageBase",
+              "selector": "div[role=\"img\"][style]",
+              "extract": "attributeValue",
+              "attributeName": "style",
+              "transforms": [
+                {
+                  "between": [
+                    "url(\"",
+                    "\""
+                  ]
+                },
+                {
+                  "before": {
+                    "text": "=",
+                    "last": true
+                  }
+                }
+              ]
+            },
+            {
+              "name": "isVideo",
+              "selector": "div.bKP3Ce",
+              "extract": "exists"
+            },
+            {
+              "name": "videoDuration",
+              "selector": "div.bKP3Ce",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
