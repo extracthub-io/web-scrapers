@@ -1,0 +1,32 @@
+{
+  "query": "paris",
+  "results": [
+    {
+      "type": "GEO",
+      "category": "Destinations",
+      "locationId": 187147,
+      "name": "Paris, Ile-de-France, France",
+      "url": "https://www.tripadvisor.com/Tourism-g187147-Paris_Ile_de_France-Vacations.html",
+      "latitude": 48.857037,
+      "longitude": 2.349401
+    },
+    {
+      "type": "ATTRACTION",
+      "category": "Attractions",
+      "locationId": 188679,
+      "name": "Cathedrale Notre-Dame de Paris, Paris, Ile-de-France, France",
+      "url": "https://www.tripadvisor.com/Attraction_Review-g187147-d188679-Reviews-Cathedrale_Notre_Dame_de_Paris-Paris_Ile_de_France.html",
+      "latitude": 48.853,
+      "longitude": 2.3498
+    },
+    {
+      "type": "HOTEL",
+      "category": "Hotels",
+      "locationId": 197985,
+      "name": "Pullman Paris Tour Eiffel, Paris, Ile-de-France, France",
+      "url": "https://www.tripadvisor.com/Hotel_Review-g187147-d197985-Reviews-Pullman_Paris_Tour_Eiffel-Paris_Ile_de_France.html",
+      "latitude": 48.855743,
+      "longitude": 2.292935
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "TripAdvisor Search Autocomplete",
+  "description": "TripAdvisor search suggestions for a query (TypeAheadJson): up to 10 or more matching destinations, hotels, restaurants and attractions with type, location id, full name with location, coordinates and TripAdvisor link. Optional filter by type (geo, hotel, eat, attr).",
+  "slug": "tripadvisor-autocomplete",
+  "visibility": "public",
+  "url": "https://www.tripadvisor.com/TypeAheadJson?action=API&query=paris&max=10",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "travel",
+  "tags": ["tripadvisor", "autocomplete", "search", "travel", "hotels", "restaurants", "attractions", "json"],
+  "extractorConfig": {
+    "version": "v1.0",
+    "sourceType": "json",
+    "fields": [
+      { "name": "query", "jsonPath": "query.query", "required": true },
+      { "name": "types", "jsonPath": "query.types" },
+      {
+        "name": "results",
+        "jsonPath": "results[*]",
+        "subFields": [
+          { "name": "type", "jsonPath": "type", "required": true },
+          { "name": "category", "jsonPath": "title" },
+          { "name": "locationId", "jsonPath": "value", "required": true },
+          { "name": "name", "jsonPath": "name", "required": true },
+          { "name": "url", "jsonPath": "url", "transforms": ["toAbsoluteUrl"] },
+          { "name": "latitude", "jsonPath": "coords", "transforms": [{ "before": "," }, "toNumber"] },
+          { "name": "longitude", "jsonPath": "coords", "transforms": [{ "after": "," }, "toNumber"] }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "name": "TripAdvisor Destination",
+  "description": "TripAdvisor destination page (Tourism-g...) of a city, region or country: geo id, name, review and photo counts, location breadcrumbs, links to its hotels, restaurants, things to do and forum lists, the top things to do, hotels and restaurants with rating and review count, the themed tours and experiences and the best cities to visit (regions and countries).",
+  "slug": "tripadvisor-destination",
+  "visibility": "public",
+  "url": "https://www.tripadvisor.com/Tourism-g14782503-Yogyakarta_Yogyakarta_Region_Java-Vacations.html",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "travel",
+  "tags": [
+    "tripadvisor",
+    "destination",
+    "tourism",
+    "travel",
+    "city guide",
+    "things to do",
+    "hotels",
+    "restaurants"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "geoId",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "between": [
+              "Tourism-g",
+              "-"
+            ]
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "name",
+        "selector": "h1[data-test-target=\"main_h1\"]",
+        "extract": "textContent",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "reviewCount",
+        "selector": "meta[name=\"description\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          {
+            "between": [
+              "Tripadvisor has ",
+              " reviews"
+            ]
+          },
+          "extractPrice"
+        ]
+      },
+      {
+        "name": "photoCount",
+        "selector": "button[aria-label=\"See all photos\"]",
+        "extract": "textContent",
+        "transforms": [
+          "extractPrice",
+          "compact",
+          "first"
+        ],
+        "isArray": true
+      },
+      {
+        "name": "image",
+        "selector": "meta[property=\"og:image\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "breadcrumbs",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "itemListElement[*]",
+        "subFields": [
+          {
+            "name": "name",
+            "jsonPath": "name",
+            "required": true
+          },
+          {
+            "name": "url",
+            "jsonPath": "item"
+          }
+        ]
+      },
+      {
+        "name": "thingsToDoUrl",
+        "selector": "a[href^=\"/Attractions-g\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "hotelsUrl",
+        "selector": "a[href^=\"/Hotels-g\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "restaurantsUrl",
+        "selector": "a[href^=\"/Restaurants-g\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "forumUrl",
+        "selector": "a[href^=\"/ShowForum-g\"]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "thingsToDo",
+        "selector": "ul.DSinh > li",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "locationId",
+              "selector": "a[href^=\"/Attraction_Review-g\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "-d",
+                    "-"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": "[data-automation=\"cardHeaderTitle\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"/Attraction_Review-g\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "[data-automation=\"bubbleRatingValue\"]",
+              "extract": "textContent",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "[data-automation=\"bubbleReviewCount\"]",
+              "extract": "textContent",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "category",
+              "selector": ".NpnFf .ZNjnF",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "hotels",
+        "selector": "ul.DSinh > li",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "locationId",
+              "selector": "a[href^=\"/Hotel_Review-g\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "-d",
+                    "-"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": "[data-automation=\"cardHeaderTitle\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"/Hotel_Review-g\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "[data-automation=\"bubbleRatingValue\"]",
+              "extract": "textContent",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "[data-automation=\"bubbleReviewCount\"]",
+              "extract": "textContent",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "travelersChoice",
+              "selector": "[data-automation^=\"travelersChoice\"]",
+              "extract": "exists"
+            }
+          ]
+        }
+      },
+      {
+        "name": "restaurants",
+        "selector": "ul.DSinh > li",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "locationId",
+              "selector": "a[href^=\"/Restaurant_Review-g\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "-d",
+                    "-"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": "[data-automation=\"cardHeaderTitle\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"/Restaurant_Review-g\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "rating",
+              "selector": "[data-automation=\"bubbleRatingValue\"]",
+              "extract": "textContent",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "reviewCount",
+              "selector": "[data-automation=\"bubbleReviewCount\"]",
+              "extract": "textContent",
+              "transforms": [
+                "extractPrice"
+              ]
+            },
+            {
+              "name": "priceRange",
+              "selector": ".NpnFf span[aria-label]",
+              "extract": "textContent",
+              "transforms": [
+                "trim"
+              ]
+            },
+            {
+              "name": "cuisines",
+              "selector": ".NpnFf .ZNjnF",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace",
+                {
+                  "split": "•"
+                },
+                "last"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "experiences",
+        "selector": ".kEOWl > div",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "theme",
+              "selector": "h3",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "items",
+              "selector": "li",
+              "extract": "innerHTML",
+              "isArray": true,
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "name",
+                    "selector": "a[href] .OgHoE",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "url",
+                    "selector": "a[href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      "toAbsoluteUrl"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "rating",
+                    "selector": "[data-automation=\"bubbleRatingValue\"]",
+                    "extract": "textContent",
+                    "transforms": [
+                      "toNumber"
+                    ]
+                  },
+                  {
+                    "name": "reviewCount",
+                    "selector": "[data-automation=\"bubbleReviewCount\"]",
+                    "extract": "textContent",
+                    "transforms": [
+                      "extractPrice"
+                    ]
+                  },
+                  {
+                    "name": "price",
+                    "selector": ".xENVe",
+                    "extract": "textContent",
+                    "transforms": [
+                      {
+                        "after": "from "
+                      },
+                      "extractPrice"
+                    ]
+                  },
+                  {
+                    "name": "priceText",
+                    "selector": ".xENVe",
+                    "extract": "textContent",
+                    "transforms": [
+                      "normalizeWhitespace"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "destinations",
+        "selector": "[data-test-target=\"geo-recommendations\"] li",
+        "extract": "innerHTML",
+        "isArray": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "geoId",
+              "selector": "a[href^=\"/Tourism-g\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "between": [
+                    "Tourism-g",
+                    "-"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "name",
+              "selector": "a[href^=\"/Tourism-g\"]",
+              "extract": "textContent",
+              "transforms": [
+                "normalizeWhitespace"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"/Tourism-g\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "required": true
+      }
+    ]
+  }
+}
