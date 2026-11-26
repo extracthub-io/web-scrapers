@@ -1,6 +1,6 @@
 {
   "name": "BBC News - article",
-  "description": "One BBC News article (bbc.com/news/articles/<id>, also /future, /travel, /culture articles on the same layout): headline, summary, publish and update time, authors with their role / location line, article type, main image with caption and credit, all images with captions, body paragraphs and full text, subheadings, topic tags with links and the related stories block. Plain fetch through the proxy (JSON-LD + server-rendered article blocks).",
+  "description": "One BBC News article (bbc.com/news/articles/<id>, also /future, /travel, /culture articles on the same layout): headline, summary, publish and update time, authors with their role / location line, article type, main image with caption and credit, all images with captions, body paragraphs and full text, subheadings, topic tags with links and the related stories block. Plain fetch through the proxy (JSON-LD + server-rendered article blocks). Also returns the whole body as Markdown (content), with the subheadings in place between the paragraphs.",
   "slug": "bbc-news-article",
   "url": "https://www.bbc.com/news/articles/cqe9k09j9jv4o",
   "method": "GET",
@@ -149,6 +149,30 @@
         "transforms": [
           "normalizeWhitespace",
           "joinWithSpace"
+        ]
+      },
+      {
+        "name": "content",
+        "selector": "main article",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "iframe",
+          "style",
+          "noscript"
+        ],
+        "transforms": [
+          {
+            "removeElements": [
+              "[data-component=\"headline-block\"]",
+              "[data-component=\"byline-block\"]",
+              "[data-component=\"ad-slot\"]",
+              "[data-component=\"links-block\"]",
+              "[data-component=\"tag-list-block\"]",
+              "img[src*=\"grey-placeholder\"]"
+            ]
+          },
+          "toMarkdown"
         ]
       },
       {

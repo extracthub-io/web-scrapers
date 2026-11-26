@@ -42,8 +42,9 @@ from the [Guardian Section Scraper](../guardian-section-scraper/).
 | `subheadings` | string[] | `h2` subheadings in the body, may be empty |
 | `paragraphs` | string[] | body paragraphs in order (required) |
 | `text` | string | the paragraphs joined with spaces |
+| `content` | string | the whole body as Markdown in reading order: `## subheadings` in place between the paragraphs, lists, links, bold / italics and in-body images; "Read more" rich links, newsletter sign-up boxes and the sign-in gate removed. Use it when the order of subheadings and paragraphs matters |
 
-Full example: [sample-output.json](sample-output.json) (the article above; `paragraphs` and `text` shortened).
+Full example: [sample-output.json](sample-output.json) (the article above; `paragraphs`, `text` and `content` shortened).
 
 ## Quick start
 
@@ -74,6 +75,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 - **Live blogs and interactive pages** (`/live/`, `/ng-interactive/`) use other layouts and were not tested.
 - **Not included:** comments (loaded in the browser) and the related / most viewed rails.
 - **Tested** on three articles: a technology news story, an agency world story and a long feature with subheadings.
+
+## Versions
+
+- **1.1.0:** adds `content` (the body as Markdown). No breaking changes: callers on `@1` get it automatically.
+- **1.0.0:** first release.
 
 ## Files
 

@@ -1,6 +1,6 @@
 {
   "name": "AP News - article",
-  "description": "One AP News article (apnews.com/article/...): headline, summary, section, type, published and modified dates, byline and authors with profile links, publisher, lead image with caption, keywords, subheadings, body paragraphs and full text. Plain fetch (JSON-LD NewsArticle + page markup).",
+  "description": "One AP News article (apnews.com/article/...): headline, summary, section, type, published and modified dates, byline and authors with profile links, publisher, lead image with caption, keywords, subheadings, body paragraphs and full text. Plain fetch (JSON-LD NewsArticle + page markup). Also returns the whole body as Markdown (content), with the subheadings in place between the paragraphs.",
   "slug": "apnews-article",
   "url": "https://apnews.com/article/grok-lawsuit-elon-musk-ai-abuse-images-452cc64e7169a55868f797982d0e8238",
   "method": "GET",
@@ -205,6 +205,29 @@
           "joinWithSpace"
         ],
         "textSeparator": ""
+      },
+      {
+        "name": "content",
+        "selector": ".RichTextStoryBody",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "iframe",
+          "style",
+          "noscript"
+        ],
+        "transforms": [
+          {
+            "removeElements": [
+              ".Enhancement",
+              ".HTMLModuleEnhancement",
+              ".FreeStar",
+              ".fs-feed-ad",
+              "bsp-nativo-ad"
+            ]
+          },
+          "toMarkdown"
+        ]
       }
     ]
   }

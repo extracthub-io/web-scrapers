@@ -38,8 +38,9 @@ e.g. `https://apnews.com/article/grok-lawsuit-elon-musk-ai-abuse-images-452cc64e
 | `subheadings` | string[] | `h2` subheadings in the body, may be empty |
 | `paragraphs` | string[] | body paragraphs in order (required) |
 | `text` | string | the paragraphs joined with spaces |
+| `content` | string | the whole body as Markdown in reading order: `## subheadings` in place between the paragraphs, lists, links, bold / italics and in-body images; "Related Stories" boxes, "Read More" embeds and ads removed. Use it when the order of subheadings and paragraphs matters |
 
-Full example: [sample-output.json](sample-output.json) (the article above; `paragraphs` and `text` shortened).
+Full example: [sample-output.json](sample-output.json) (the article above; `paragraphs`, `text` and `content` shortened).
 
 ## Quick start
 
@@ -66,6 +67,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 - **Authors** are AP journalists as credited on the page (upper case as AP shows them in the byline).
 - **Not included:** comments (loaded in the browser by a third-party widget) and the related-stories rail.
 - **Tested** on three articles: a U.S. news story, a markets story and a science story.
+
+## Versions
+
+- **1.1.0:** adds `content` (the body as Markdown). No breaking changes: callers on `@1` get it automatically.
+- **1.0.0:** first release.
 
 ## Files
 

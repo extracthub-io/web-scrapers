@@ -1,6 +1,6 @@
 {
   "name": "CNN - article",
-  "description": "One CNN article (cnn.com / edition.cnn.com/<yyyy>/<mm>/<dd>/<section>/<slug>): headline, description, section and breadcrumb, read time, published and modified time, byline and authors with profile links, publisher, word count, lead image with caption, body paragraphs, subheadings and full text. Plain fetch through a US proxy (NewsArticle JSON-LD + page markup).",
+  "description": "One CNN article (cnn.com / edition.cnn.com/<yyyy>/<mm>/<dd>/<section>/<slug>): headline, description, section and breadcrumb, read time, published and modified time, byline and authors with profile links, publisher, word count, lead image with caption, body paragraphs, subheadings and full text. Plain fetch through a US proxy (NewsArticle JSON-LD + page markup). Also returns the whole body as Markdown (content), with the subheadings in place between the paragraphs.",
   "slug": "cnn-article",
   "url": "https://edition.cnn.com/2026/11/24/tech/nvidia-board-jensen-huang",
   "method": "GET",
@@ -188,7 +188,7 @@
       },
       {
         "name": "subheadings",
-        "selector": ".article__content h2.subheader__headline",
+        "selector": ".article__content h2[data-component-name=\"subheader\"], .article__content h2.subheader__headline",
         "isArray": true,
         "transforms": [
           "normalizeWhitespace",
@@ -216,6 +216,28 @@
           "joinWithSpace"
         ],
         "textSeparator": ""
+      },
+      {
+        "name": "content",
+        "selector": ".article__content",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "iframe",
+          "style",
+          "noscript"
+        ],
+        "transforms": [
+          {
+            "removeElements": [
+              "[data-component-name=\"related-content\"]",
+              ".ad-slot",
+              ".ad-feedback-link-container",
+              ".ad-slot-dynamic"
+            ]
+          },
+          "toMarkdown"
+        ]
       }
     ]
   }

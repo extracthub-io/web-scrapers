@@ -38,10 +38,11 @@ crash are growing).
 | `subheadings` | string[] | crossheads in the body, often empty |
 | `paragraphs` | string[] | body paragraphs in order |
 | `text` | string | all paragraphs joined with a space |
+| `content` | string | the whole body as Markdown in reading order: `## subheadings` in place between the paragraphs, lists, links, bold / italics and in-body images; the headline, byline, ads, "Related" link boxes and topic tags removed. Use it when the order of subheadings and paragraphs matters |
 | `topics[]` | array | topic tags: `name` (e.g. `Artificial intelligence`), `url` |
 | `relatedStories[]` | array | "Related" block: `headline`, `url` |
 
-Full example: [sample-output.json](sample-output.json) (the article above; paragraphs shortened to 5 of 34, text cut,
+Full example: [sample-output.json](sample-output.json) (the article above; paragraphs shortened to 5 of 34, `content` to the first blocks, text cut,
 related stories to 3 of 7).
 
 ## Quick start
@@ -68,6 +69,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 - **Live pages** (`/news/live/...`) and video pages use other layouts and are not covered.
 - **Tested** on three /news/articles pages (technology, climate, business), with 1 to 3 authors, 23 to 40
   paragraphs.
+
+## Versions
+
+- **1.1.0:** adds `content` (the body as Markdown). No breaking changes: callers on `@1` get it automatically.
+- **1.0.0:** first release.
 
 ## Files
 

@@ -44,8 +44,9 @@ section pages such as `https://edition.cnn.com/business/tech`.
 | `subheadings` | string[] | `h2` subheadings in the body, may be empty |
 | `paragraphs` | string[] | body paragraphs in order (required) |
 | `text` | string | the paragraphs joined with spaces |
+| `content` | string | the whole body as Markdown in reading order: `## subheadings` in place between the paragraphs, lists, links, bold / italics and in-body images; "Related article" boxes and ads removed. Use it when the order of subheadings and paragraphs matters |
 
-Full example: [sample-output.json](sample-output.json) (the article above; `paragraphs` and `text` shortened).
+Full example: [sample-output.json](sample-output.json) (the article above; `paragraphs`, `text` and `content` shortened).
 
 ## Quick start
 
@@ -75,6 +76,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 - **Agency stories** (Associated Press, Reuters) have the agency in `byline` and no `authors`.
 - **Video pages and live updates** (`/video/`, `/live-news/`) use other layouts and were not tested.
 - **Tested** on four articles: two technology stories (one AP), a business story and a feature.
+
+## Versions
+
+- **1.1.0:** adds `content` (the body as Markdown). `subheadings` now also finds CNN's current subheader markup (it was empty on such articles). No breaking changes: callers on `@1` get it automatically.
+- **1.0.0:** first release.
 
 ## Files
 

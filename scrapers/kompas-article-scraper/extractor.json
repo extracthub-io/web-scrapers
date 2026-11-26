@@ -1,0 +1,253 @@
+{
+  "name": "Kompas.com - article",
+  "description": "One Kompas.com article (www.kompas.com/<channel>/read/<yyyy>/<mm>/<dd>/<id>/<slug> and <channel>.kompas.com/read/..., best with ?page=all): headline, description, section and subsection, breadcrumb, published and modified time, author with profile link and job title, editor, dateline, content type, word and page count, lead image with caption, tags, subheadings, body paragraphs, full text and the 'Baca juga' related links. Plain fetch through an Indonesian proxy (NewsArticle JSON-LD, content_* meta tags and page markup). Also returns the whole body as Markdown (content), with the subheadings in place between the paragraphs.",
+  "slug": "kompas-article",
+  "url": "https://www.kompas.com/tren/read/2026/11/26/070000865/fenomena-laut-langka-guncang-panama-ekspor-minyak-ikan-anjlok-88-persen?page=all",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "ID",
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "news",
+    "kompas",
+    "indonesia",
+    "articles"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "headline",
+        "selector": "h1.read__title",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "description",
+        "selector": "meta[name=\"description\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "section",
+        "selector": "meta[name=\"content_category\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "subsection",
+        "selector": "meta[name=\"content_subcategory\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "breadcrumb",
+        "selector": ".breadcrumb__link",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "articleType",
+        "selector": "meta[name=\"content_type\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "datePublished",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "datePublished"
+      },
+      {
+        "name": "dateModified",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "dateModified"
+      },
+      {
+        "name": "dateLabel",
+        "selector": ".read__time",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "author",
+        "selector": "meta[name=\"content_author\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "authorUrl",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "author.url"
+      },
+      {
+        "name": "authorJobTitle",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "transforms": [
+          "trim"
+        ],
+        "jsonPath": "author.jobTitle"
+      },
+      {
+        "name": "editor",
+        "selector": "meta[name=\"content_editor\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "publisher",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "publisher.name"
+      },
+      {
+        "name": "dateline",
+        "selector": ".read__content > .clearfix > p:first-child > strong",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "wordCount",
+        "selector": "meta[name=\"content_total_words\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "pageCount",
+        "selector": "meta[name=\"content_total_pages\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "currentPage",
+        "selector": "meta[name=\"content_current_page\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "image",
+        "selector": "meta[property=\"og:image\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "imageCaption",
+        "selector": ".cover-photo .photo__caption",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "excludeTags": [
+          "span"
+        ]
+      },
+      {
+        "name": "tags",
+        "selector": ".tagsCloud-tag li a",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "subheadings",
+        "selector": ".read__content h2",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": ".read__content > .clearfix > p",
+        "isArray": true,
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          {
+            "dropIfStartsWith": "Baca juga"
+          }
+        ]
+      },
+      {
+        "name": "text",
+        "selector": ".read__content > .clearfix > p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          {
+            "dropIfStartsWith": "Baca juga"
+          },
+          "joinWithSpace"
+        ]
+      },
+      {
+        "name": "content",
+        "selector": ".read__content > .clearfix",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "iframe",
+          "style",
+          "i"
+        ],
+        "transforms": [
+          {
+            "removeElements": "p:has(a.inner-link-baca-juga)"
+          },
+          "toMarkdown"
+        ]
+      },
+      {
+        "name": "relatedTitles",
+        "selector": ".read__content a[href*=\"source=bacajuga\"]",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "relatedUrls",
+        "selector": ".read__content a[href*=\"source=bacajuga\"]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          {
+            "removeQueryParams": [
+              "source"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "name": "Detik.com - article",
+  "description": "One detik.com article (news.detik.com, finance.detik.com, sport.detik.com, ... /d-<id>/<slug>): article id, headline, description, author, channel label, breadcrumb, publish and update time, dateline city, lead image with caption, tags, subheadings, body paragraphs (all pages of multi-page stories) and full text. Plain fetch through an Indonesian proxy (NewsArticle JSON-LD, dtk meta tags and page markup). Also returns the whole body as Markdown (content), with the subheadings in place between the paragraphs.",
+  "slug": "detik-article",
+  "url": "https://news.detik.com/berita/d-8770435/dalih-sakit-hati-di-balik-rumah-warga-bekasi-dilalap-api",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "ID",
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "news",
+    "detik",
+    "indonesia",
+    "articles"
+  ],
+  "visibility": "public",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "articleId",
+        "selector": "meta[name=\"dtk:articleid\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "headline",
+        "selector": "article.detail h1.detail__title",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "description",
+        "selector": "meta[name=\"description\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "author",
+        "selector": "meta[name=\"dtk:author\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "byline",
+        "selector": "article.detail .detail__author",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "channel",
+        "selector": "article.detail .detail__author .detail__label",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "breadcrumb",
+        "selector": ".page__breadcrumb a",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "articleType",
+        "selector": "meta[name=\"dtk:contenttype\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "datePublished",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "datePublished"
+      },
+      {
+        "name": "dateModified",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "dateModified"
+      },
+      {
+        "name": "dateLabel",
+        "selector": "article.detail .detail__date",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "publisher",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "publisher.name"
+      },
+      {
+        "name": "dateline",
+        "selector": ".detail__body-text strong.itp__article_city",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "image.url"
+      },
+      {
+        "name": "imageCaption",
+        "selector": "article.detail .detail__media figcaption",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "tags",
+        "selector": ".detail__body-tag a.nav__item",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "pageCount",
+        "selector": "meta[name=\"dtk:pagesize\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content",
+        "transforms": [
+          "toNumber"
+        ]
+      },
+      {
+        "name": "subheadings",
+        "selector": ".detail__body-text h2",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": ".detail__body-text > section > p, .detail__body-text > p",
+        "isArray": true,
+        "required": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          {
+            "dropIfStartsWith": [
+              "Simak juga",
+              "Baca juga"
+            ]
+          }
+        ],
+        "textSeparator": ""
+      },
+      {
+        "name": "text",
+        "selector": ".detail__body-text > section > p, .detail__body-text > p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          {
+            "dropIfStartsWith": [
+              "Simak juga",
+              "Baca juga"
+            ]
+          },
+          "joinWithSpace"
+        ],
+        "textSeparator": ""
+      },
+      {
+        "name": "content",
+        "selector": ".detail__body-text",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "iframe",
+          "style",
+          "noscript",
+          "social-actions"
+        ],
+        "transforms": [
+          {
+            "removeElements": [
+              ".noncontent",
+              ".parallaxindetail",
+              ".para_caption",
+              "#box-simplified",
+              ".detail__body-tag",
+              "h2 > br",
+              "p:empty",
+              "div[style*=\"border-top\"]"
+            ]
+          },
+          "toMarkdown"
+        ]
+      }
+    ]
+  }
+}

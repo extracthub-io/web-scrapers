@@ -1,6 +1,6 @@
 {
   "name": "The Guardian - article",
-  "description": "One Guardian article (theguardian.com/<section>/<yyyy>/<mon>/<dd>/<slug>): headline, standfirst, section label and link, published and modified time, dateline, byline with authors, roles and profile links, publisher, lead image with caption, keywords, subheadings, body paragraphs and full text. Plain fetch (NewsArticle JSON-LD, article meta tags and page markup).",
+  "description": "One Guardian article (theguardian.com/<section>/<yyyy>/<mon>/<dd>/<slug>): headline, standfirst, section label and link, published and modified time, dateline, byline with authors, roles and profile links, publisher, lead image with caption, keywords, subheadings, body paragraphs and full text. Plain fetch (NewsArticle JSON-LD, article meta tags and page markup). Also returns the whole body as Markdown (content), with the subheadings in place between the paragraphs.",
   "slug": "guardian-article",
   "url": "https://www.theguardian.com/technology/2026/nov/24/china-media-jensen-huang-nvidia-ceo",
   "method": "GET",
@@ -204,6 +204,31 @@
           "joinWithSpace"
         ],
         "textSeparator": ""
+      },
+      {
+        "name": "content",
+        "selector": "#maincontent .article-body-commercial-selector",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "iframe",
+          "style",
+          "noscript"
+        ],
+        "transforms": [
+          {
+            "removeElements": [
+              "figure[data-spacefinder-role=\"richLink\"]",
+              "gu-island[name=\"RichLinkComponent\"]",
+              "gu-island[name=\"EmailSignUpWrapper\"]",
+              "a[href^=\"#EmailSignup\"]",
+              "p[id^=\"EmailSignup-skip-link\"]",
+              "gu-island[name=\"SlotBodyEnd\"]",
+              "#sign-in-gate"
+            ]
+          },
+          "toMarkdown"
+        ]
       }
     ]
   }
