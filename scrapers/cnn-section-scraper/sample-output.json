@@ -1,0 +1,71 @@
+{
+  "pageTitle": "Health",
+  "description": "View the latest health news and explore articles on fitness, diet, nutrition, parenting, relationships, medicine, diseases and healthy living at CNN Health.",
+  "url": "https://www.cnn.com/health",
+  "sections": [
+    {
+      "name": "Life, But Better",
+      "url": "https://edition.cnn.com/interactive/life-but-better/",
+      "active": false
+    },
+    {
+      "name": "Fitness",
+      "url": "https://edition.cnn.com/health/life-but-better/fitness",
+      "active": false
+    },
+    {
+      "name": "Food",
+      "url": "http://edition.cnn.com/health/life-but-better/food",
+      "active": false
+    },
+    {
+      "name": "Sleep",
+      "url": "https://edition.cnn.com/health/life-but-better/sleep",
+      "active": false
+    },
+    {
+      "name": "Mindfulness",
+      "url": "https://edition.cnn.com/health/life-but-better/mindfulness",
+      "active": false
+    },
+    {
+      "name": "Relationships",
+      "url": "https://edition.cnn.com/health/life-but-better/relationships",
+      "active": false
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "After she awoke from a coma, she had a message for her children: You need the surgery next",
+      "url": "https://edition.cnn.com/2026/11/26/health/family-health-history-loeys-dietz",
+      "type": "article",
+      "image": "https://media.cnn.com/api/v1/images/stellar/prod/back-row-from-left-charles-gavin-madison-bottom-from-left-hadley-vold-annette-kirstin-michela.JPG?c=original",
+      "imageCredit": "Northwestern Medicine"
+    },
+    {
+      "position": 2,
+      "headline": "The government says Iowa detonation results exceeded expectations. Now what?",
+      "url": "https://edition.cnn.com/2026/11/25/us/iowa-lead-detonation-what-next",
+      "type": "article",
+      "image": "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2306835116.jpg?c=original",
+      "imageCredit": "Scott Olson/Getty Images"
+    },
+    {
+      "position": 3,
+      "headline": "The CDC stays quiet on flu as an early season catches many Americans off-guard",
+      "url": "https://edition.cnn.com/2026/11/24/health/flu-season-vaccines-cdc",
+      "type": "article",
+      "image": "https://media.cnn.com/api/v1/images/stellar/prod/c-ap26244726811722.jpg?c=original",
+      "imageCredit": "Lindsey Wasson/AP/File"
+    },
+    {
+      "position": 4,
+      "headline": "Should 40-year-old non-smokers get lung cancer screenings?",
+      "url": "https://edition.cnn.com/2026/11/20/health/video/lung-cancer-screening-digvid",
+      "type": "video",
+      "image": "https://media.cnn.com/api/v1/images/stellar/prod/lung-screen-thumb-1.jpg?c=original",
+      "imageCredit": "CNN"
+    }
+  ]
+}

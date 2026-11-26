@@ -3,7 +3,7 @@
 Turn a CNN article into JSON: headline, description, section and breadcrumb, read time, published and modified
 time, byline and authors with their CNN profile links, publisher, word count, lead image with caption, body
 paragraphs, subheadings and the full text. Good for news monitoring, media research, archives and feeding articles
-to AI models.
+to AI models. Article links come from the [CNN Section Scraper](../cnn-section-scraper/) (home page and sections).
 
 **Catalog:** [extracthub.io/extractor/@extracthub1/cnn-article](https://extracthub.io/extractor/@extracthub1/cnn-article)
 **Extractor id:** `@extracthub1/cnn-article@1` · **Price:** $0.0025 per page
