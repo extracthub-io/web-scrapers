@@ -1,0 +1,58 @@
+{
+  "pageTitle": "Berita Trending Hari Ini - Kompas.com",
+  "url": "https://www.kompas.com/tren",
+  "sections": [
+    {
+      "name": "News",
+      "url": "https://news.kompas.com"
+    },
+    {
+      "name": "Kolom",
+      "url": "https://kolom.kompas.com"
+    },
+    {
+      "name": "Event",
+      "url": "https://event.kompas.com"
+    },
+    {
+      "name": "Jagat Literasi",
+      "url": "https://jagatliterasi.kompas.com"
+    },
+    {
+      "name": "Cahaya",
+      "url": "https://cahaya.kompas.com"
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Desember 2026 Penuh Libur? Cek Tanggal Merah dan Long Weekend 4 Hari",
+      "url": "https://video.kompas.com/watch/1970478/desember-2026-penuh-libur-cek-tanggal-merah-dan-long-weekend-4-hari",
+      "summary": null,
+      "label": "Video",
+      "dateLabel": "27/11/2026, 05:00 WIB",
+      "image": "https://assets-studiohub.kompas.com/video2019/73f614858444241bddf143/4f7ecd966ac569caa5590e86b02e513b/t_4f7ecd966ac569caa5590e86b02e513b.jpg",
+      "imageLazy": null
+    },
+    {
+      "position": 2,
+      "headline": "Harga BBM Malaysia Turun 4 Kali Berturut-turut, Lebih Murah Dibandingkan Indonesia",
+      "url": "https://www.kompas.com/tren/read/2026/11/26/210000665/harga-bbm-malaysia-turun-4-kali-berturut-turut-lebih-murah-dibandingkan",
+      "summary": null,
+      "label": "TREN",
+      "dateLabel": "26/11/2026, 21:00 WIB",
+      "image": "https://asset.kompas.com/crops/mh6LYfy8bIWGNRQTxDCRe22yv14=/0x0:1200x800/355x237/data/photo/2025/06/07/6843c10313376.jpg",
+      "imageLazy": null
+    },
+    {
+      "position": 3,
+      "headline": "Begini Jumlah Soal, Durasi Tes, dan Passing Grade SKD CPNS 2026",
+      "url": "https://www.kompas.com/tren/read/2026/11/26/203000465/begini-jumlah-soal-durasi-tes-dan-passing-grade-skd-cpns-2026",
+      "summary": null,
+      "label": "TREN",
+      "dateLabel": "26/11/2026, 20:30 WIB",
+      "image": "https://asset.kompas.com/crops/yy9hwLP0PQVxdRl2yR6KHxIe5_4=/0x133:1600x1200/355x237/data/photo/2023/11/09/654c846419321.jpg",
+      "imageLazy": null
+    }
+  ]
+}

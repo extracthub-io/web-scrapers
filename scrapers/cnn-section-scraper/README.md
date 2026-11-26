@@ -18,7 +18,7 @@ https://edition.cnn.com/<section>
 https://edition.cnn.com/<section>/<subsection>/<page>
 ```
 
-e.g. `https://edition.cnn.com/health`. Tested on the home page, `/health`, `/health/life-but-better/food`,
+e.g. `https://edition.cnn.com/health`. The home page works too; it also has its own [CNN Home Scraper](../cnn-home-scraper/). Tested on the home page, `/health`, `/health/life-but-better/food`,
 `/entertainment`, `/world`, `/world/asia`, `/business/tech`, `/politics`, `/science`, `/travel`, `/style` and
 `/sport`.
 

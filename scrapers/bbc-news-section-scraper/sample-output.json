@@ -3,35 +3,77 @@
   "pageUrl": "https://www.bbc.com/technology",
   "sections": [
     {
+      "name": "Home",
+      "url": "https://www.bbc.com/",
+      "active": false
+    },
+    {
+      "name": "News",
+      "url": "https://www.bbc.com/news",
+      "active": false
+    },
+    {
+      "name": "Sport",
+      "url": "https://www.bbc.com/sport",
+      "active": false
+    },
+    {
+      "name": "Business",
+      "url": "https://www.bbc.com/business",
+      "active": false
+    },
+    {
+      "name": "Technology",
+      "url": "https://www.bbc.com/technology",
+      "active": true
+    }
+  ],
+  "subsections": [
+    {
+      "name": "Watch Documentaries",
+      "url": "https://www.bbc.com/video/docs/category/technology"
+    },
+    {
+      "name": "Artificial Intelligence",
+      "url": "https://www.bbc.com/technology/artificial-intelligence"
+    },
+    {
+      "name": "Intelligence Revolution",
+      "url": "https://www.bbc.com/technology/intelligence-revolution"
+    },
+    {
+      "name": "AI v the Mind",
+      "url": "https://www.bbc.com/technology/ai-v-the-mind"
+    },
+    {
+      "name": "Tech Now",
+      "url": "https://www.bbc.com/technology/tech-now"
+    }
+  ],
+  "blocks": [
+    {
       "name": null,
       "link": null,
       "stories": [
         {
-          "headline": "San Francisco is enjoying an AI boom, but worries about a crash are growing",
-          "url": "https://www.bbc.com/news/articles/cqe9k09j9jv4o",
-          "summary": "AI employees in the industry's epicentre - San Francisco - worry that the sector is overheated.",
-          "timeLabel": "2 hrs ago",
-          "topic": "Business",
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/4d7f/live/712502a0-e2cd-11f1-99ed-7de3e5932968.jpg.webp",
-          "imageAlt": "An AI logo"
-        },
-        {
-          "headline": "In a year of AI solving maths problems, an Anthropic worker says he may have cracked the biggest",
-          "url": "https://www.bbc.com/news/articles/c6pqr2g7w059o",
-          "summary": "A mathematician at Anthropic says he used an AI to prove the famed Riemann hypothesis, though verification will take some time.",
-          "timeLabel": "2 days ago",
+          "position": 1,
+          "headline": "Musk's plan to send a million SpaceX data satellites into space approved",
+          "url": "https://www.bbc.com/news/articles/cwp836l8n1jgo",
+          "summary": "The Starmind constellation aims to be the most cost and energy-efficient way to meet the growing demand for AI computing power.",
+          "timeLabel": "13 hrs ago",
           "topic": "Technology",
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/78a0/live/a0688a80-e531-11f1-99b6-a35a62fa4264.jpg.webp",
-          "imageAlt": "Anthropic's name on a video billboard in Times Square, New York, with a background of dark colors swirling around it."
+          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/5383/live/4c315c90-e968-11f1-a094-5fdc692f3e33.jpg.webp",
+          "imageAlt": "SpaceX Starship Ship 42 is caught in the arms of the launch tower as it returns from flight on November 14, 2026 in Starbase, Texas."
         },
         {
-          "headline": "Trump threatens ban on US firms building AI data centres overseas",
-          "url": "https://www.bbc.com/news/articles/cmde1lw9y54ko",
-          "summary": "The US president provided little detail on the potential policy, saying others in his team were hearing about it for the first time.",
+          "position": 2,
+          "headline": "Nine quick fixes for family tech problems this holiday season",
+          "url": "https://www.bbc.com/future/article/20261125-nine-tech-problems-to-solve-for-your-parents-this-thanksgiving",
+          "summary": "Home for the holidays? These steps will help you solve technology problems your family might be having and prevent crises before they happen. They'll make your life better too.",
           "timeLabel": "2 days ago",
-          "topic": "Business",
-          "image": null,
-          "imageAlt": null
+          "topic": "Future",
+          "image": "https://ichef.bbci.co.uk/images/ic/480x270/p0pprsvt.jpg.webp",
+          "imageAlt": "A person in a pink jumper holding a food platter stacked with laptops, phones, cables and a TV remote control (Credit: BBC/ Serenity Strull/ Getty Images)"
         }
       ]
     },
@@ -40,6 +82,7 @@
       "link": "https://www.bbc.com/future/tags/keeping-tabs",
       "stories": [
         {
+          "position": 1,
           "headline": "Black Friday ‘deals’ can be a rip off. Here’s how to spot bogus bargains",
           "url": "https://www.bbc.com/future/article/20261119-the-black-friday-deals-that-rip-you-off",
           "summary": "Online 'deals' can often not be as good as they first seem and actually cost you more. But there are some easy ways to spot slippery pricing.",
@@ -49,6 +92,7 @@
           "imageAlt": "A shopping trolley holding sale signs is pushed through the screen of a smartphone by a person's index finger gently touching the handle (Credit: BBC/ Serenity Strull/ Getty Images)"
         },
         {
+          "position": 2,
           "headline": "The AI bubble could expose your deepest secrets",
           "url": "https://www.bbc.com/future/article/20261029-the-ai-bubble-could-expose-your-deepest-secrets",
           "summary": "Character.ai's collapse uncovers a little-discussed risk of AI: when tech companies go bankrupt, they can sell your private data.",
@@ -56,153 +100,6 @@
           "topic": null,
           "image": "https://ichef.bbci.co.uk/images/ic/480x270/p0pk68jx.jpg.webp",
           "imageAlt": "The hands of two people exchanging wads of cash for a phone with a password lock (Credit: BBC/ Serenity Strull/ Getty Images)"
-        }
-      ]
-    },
-    {
-      "name": "Technology of Business",
-      "link": "https://www.bbc.com/business/technology-of-business",
-      "stories": [
-        {
-          "headline": "Should AI be judging our credit worthiness?",
-          "url": "https://www.bbc.com/news/articles/c6d94pzk9vleo",
-          "summary": "Would AI be a good judge of whether you should get a mortgage, car loan or mobile phone contract?",
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/5352/live/663fec10-d765-11f1-93e1-3b657b665bcf.jpg.webp",
-          "imageAlt": "Sophie Hope selfie. She has long blonde hair and is wearing a grey top."
-        },
-        {
-          "headline": "Europe plans to catch the next computer chip wave",
-          "url": "https://www.bbc.com/news/articles/cqglwjd450k0o",
-          "summary": "Europe hopes to be a leader in a new generation of computer chips which use light to process data.",
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/c96b/live/b14b3a60-d9c8-11f1-93e1-3b657b665bcf.jpg.webp",
-          "imageAlt": "A frame holds a circular disc, or wafer, with around 60 gold photonic chips on it."
-        },
-        {
-          "headline": "Heat pumps: How much heat does your home really need?",
-          "url": "https://www.bbc.com/news/articles/cqy43zk3kk04o",
-          "summary": "Knowing how much heat your home loses is important before installing a new heating system.",
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/d187/live/503bbbd0-d902-11f1-93e1-3b657b665bcf.jpg.webp",
-          "imageAlt": "Two workers lift a heat pump into position on the outside wall of a house."
-        }
-      ]
-    },
-    {
-      "name": "Listen",
-      "link": null,
-      "stories": [
-        {
-          "headline": "How will we know if AI becomes conscious?",
-          "url": "https://www.bbc.com/audio/play/m0035ck6",
-          "summary": "Philosopher Jeff Sebo explains why we should take the subject of AI welfare seriously.",
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/images/ic/480x270/p0pnlh2b.jpg.webp",
-          "imageAlt": "The Interface, How will we know if AI becomes conscious?"
-        }
-      ]
-    },
-    {
-      "name": "Watch",
-      "link": null,
-      "stories": [
-        {
-          "headline": "Watch: How a server outage took down Microsoft Teams and Outlook",
-          "url": null,
-          "summary": null,
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/e30a/live/54c2fe10-df57-11f1-a701-fddedf244c16.jpg.webp",
-          "imageAlt": "Split-screen showing a close-up of reporter Shiona McCallum on the left, and a phone with the Microsoft logo on the right"
-        },
-        {
-          "headline": "Can China repeat its EV success with robotaxis?",
-          "url": null,
-          "summary": null,
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/images/ic/480x270/p0pf85vm.jpg.webp",
-          "imageAlt": "China's robotaxis"
-        },
-        {
-          "headline": "What happened overnight with the Microsoft global outage?",
-          "url": null,
-          "summary": null,
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/cf55/live/6c53e480-df49-11f1-b441-2b33b063138f.jpg.webp",
-          "imageAlt": "BBC journalist sat at a desk with a laptop. She is wearing a green top and holding a small microphone."
-        }
-      ]
-    },
-    {
-      "name": "In case you missed it",
-      "link": null,
-      "stories": [
-        {
-          "headline": "A world-first use of a fitness tracker is helping unlock the deadly mysteries of horse's hearts",
-          "url": "https://www.bbc.com/future/article/20261116-horseracing-is-haunted-by-sudden-death-but-now-ai-is-helping-unlock-cardiac-mysteries",
-          "summary": "Equine hearts are remarkably powerful. In racing, wearable tech and AI are now coming together to confront some of the biggest challenges in cardiac health.",
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/images/ic/480x270/p0pnsq5d.jpg.webp",
-          "imageAlt": "Men horseracing jumping over a barrier (Credit: Abbie Kyte/ Focusonracing.com)"
-        },
-        {
-          "headline": "Humans cause most accidents. Is Grand Theft Auto the key to safer roads?",
-          "url": "https://www.bbc.com/future/article/20261110-grand-theft-auto-video-games-are-being-harnessed-to-make-real-roads-safer",
-          "summary": "Smashing and crashing their way around the fictional cities of Grand Theft Auto is all part of the fun for players. But researchers have other ideas.",
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/images/ic/480x270/p0pmbyh0.jpg.webp",
-          "imageAlt": "City traffic speeds past billboards displaying adverts for Grand Theft Auto VI (Credit: Getty Images)"
-        },
-        {
-          "headline": "See how China finally slowed its ballooning emissions right down",
-          "url": "https://www.bbc.com/future/article/20261106-china-is-finally-slowing-its-ballooning-emissions",
-          "summary": "The growth of China's emissions may have virtually stopped as it races ahead with its rapid rollout of renewables. Five charts show how it reached this milestone and what lies ahead.",
-          "timeLabel": null,
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/images/ic/480x270/p0plnhn6.jpg.webp",
-          "imageAlt": null
-        }
-      ]
-    },
-    {
-      "name": "More Tech",
-      "link": null,
-      "stories": [
-        {
-          "headline": "Staff at viral Welsh cake business visited by Hollywood star suffer racist abuse",
-          "url": "https://www.bbc.com/news/articles/c6lym288l1v9o",
-          "summary": "Adam El Tagoury calls out \"disgusting comments\" made about his Cardiff Bakehouse staff on TikTok.",
-          "timeLabel": "5 hrs ago",
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/ed5e/live/58996090-e4e0-11f1-9cc5-e9713e77fd78.jpg.webp",
-          "imageAlt": "Two women and a man smile at the camera. The woman on the left has short black hair and is wearing a white turtle neck and a navy blazer. The man in the middle is wearing a green apron and a black hoodie. The woman on the right is wearing a striped apron, grey t-shirt and a hair net and a black cap."
-        },
-        {
-          "headline": "The real people finding their work copied and stolen by AI characters",
-          "url": "https://www.bbc.com/news/articles/cm7527kp4qrpo",
-          "summary": "Musicians, comedians and dancers are among those finding their videos cloned with AI generated characters.",
-          "timeLabel": "21 hrs ago",
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/ddf0/live/25e92f10-e4f7-11f1-99a1-253766e7ad8b.jpg.webp",
-          "imageAlt": "Sophie Lloyd, who has long blonde hair, smiles and wears a black top playing a purple guitar a in the left-hand image. In the right hand image, AI generated guitarist Mila Vasari, who has long brown hair, has the same smile and plays the same guitar. A green \"AI-Generated\" label sits over the image of Mila Vasari inside a blue BBC Verify frame"
-        },
-        {
-          "headline": "What to do if your child is being stalked online",
-          "url": "https://www.bbc.com/news/articles/c674pejp1110o",
-          "summary": "From fake profiles to unwanted contact, specialists explain the signs parents should take seriously.",
-          "timeLabel": "1 day ago",
-          "topic": null,
-          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/6755/live/028a3f80-e1de-11f1-911e-f985fea51b18.jpg.webp",
-          "imageAlt": "A stock image showing a teenage boy with brown hair wearing a black T-shirt sitting upright in his bed, looking at the phone in his left hand. The room is dark with a dim orange light coming through the blinds, casting an unusual shadow on the wall behind him."
         }
       ]
     }

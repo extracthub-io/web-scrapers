@@ -1,6 +1,6 @@
 {
   "name": "The Guardian - section page",
-  "description": "Stories of a Guardian section or topic front (theguardian.com/technology, /world, /business, /us-news, ...), grouped by the page's containers (Technology, AI, Features, Opinion & analysis, Reviews, ...): container name, id and link, then per story the position, headline, kicker, link, trail text, published time, media type and duration (video / audio cards), image and alt text, and the sub-links under lead stories. Plain fetch through the proxy.",
+  "description": "Stories of a Guardian section or topic front (theguardian.com/technology, /world, /business, /us-news, ...), grouped by the page's containers (Technology, AI, Features, Opinion & analysis, Reviews, ...): container name, id and link, then per story the position, headline, kicker, link, trail text, published time, media type and duration (video / audio cards), image and alt text, and the sub-links under lead stories. Plain fetch through the proxy. Also returns the navigation bar: the main sections (News, Opinion, Sport, Culture, Lifestyle) and the subsections bar (UK, US politics, World, ...).",
   "slug": "guardian-section",
   "url": "https://www.theguardian.com/technology",
   "method": "GET",
@@ -46,6 +46,54 @@
             "between": [
               "\"editionId\":\"",
               "\""
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sections",
+        "isArray": true,
+        "subFields": [
+          {
+            "name": "name",
+            "selector": "a[data-link-name^=\"header : titlepiece : nav : primary\"]",
+            "isArray": true,
+            "transforms": [
+              "normalizeWhitespace"
+            ]
+          },
+          {
+            "name": "url",
+            "selector": "a[data-link-name^=\"header : titlepiece : nav : primary\"][href]",
+            "isArray": true,
+            "extract": "attributeValue",
+            "attributeName": "href",
+            "transforms": [
+              "toAbsoluteUrl"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "subsections",
+        "isArray": true,
+        "subFields": [
+          {
+            "name": "name",
+            "selector": "a[data-link-name^=\"header : subnav\"], a[data-link-name^=\"header : custom subnav\"]",
+            "isArray": true,
+            "transforms": [
+              "normalizeWhitespace"
+            ]
+          },
+          {
+            "name": "url",
+            "selector": "a[data-link-name^=\"header : subnav\"][href], a[data-link-name^=\"header : custom subnav\"][href]",
+            "isArray": true,
+            "extract": "attributeValue",
+            "attributeName": "href",
+            "transforms": [
+              "toAbsoluteUrl"
             ]
           }
         ]

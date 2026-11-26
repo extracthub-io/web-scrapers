@@ -1,0 +1,204 @@
+{
+  "name": "BBC - home and News index",
+  "description": "Stories of the BBC home page (bbc.com) and the BBC News index (bbc.com/news), grouped by the page blocks (top stories, \"Only from the BBC\", \"More to explore\", \"Most read\", ...): block name and link, then per story the headline, link, summary, time label, topic tag and image; plus the navigation bar: main sections (Home, News, Sport, Business, ...) with the current one marked, and the subsections of the second bar (News: US & Canada, UK, Africa, ...). Plain fetch through a US proxy.",
+  "slug": "bbc-news-home",
+  "visibility": "public",
+  "url": "https://www.bbc.com/news",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "bbc",
+    "news",
+    "homepage",
+    "headlines",
+    "sections"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "pageUrl",
+        "selector": "head link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": "[data-testid=\"level1-navigation-container\"] li[data-testid=\"mainNavigationItemStyled\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a[data-testid^=\"mainNavigationLink\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[data-testid^=\"mainNavigationLink\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "active",
+              "selector": "a[data-testid=\"mainNavigationLink-active\"]",
+              "extract": "exists"
+            }
+          ]
+        }
+      },
+      {
+        "name": "subsections",
+        "selector": "[data-testid=\"level2-navigation-container\"] li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a[data-testid^=\"subNavigationLink\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[data-testid^=\"subNavigationLink\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "blocks",
+        "selector": "main [data-analytics-group=\"true\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "[data-testid=\"section-title-wrapper\"] h2",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "link",
+              "selector": "[data-testid=\"section-title-wrapper\"] a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            },
+            {
+              "name": "stories",
+              "selector": "[data-indexcard=\"true\"]",
+              "isArray": true,
+              "extract": "innerHTML",
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "headline",
+                    "selector": [
+                      "[data-testid=\"card-headline\"]",
+                      "a[href] h3",
+                      "a[href] h1",
+                      "a[href] h2"
+                    ],
+                    "combineStrategy": "first",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "url",
+                    "selector": "a[href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      "toAbsoluteUrl"
+                    ]
+                  },
+                  {
+                    "name": "summary",
+                    "selector": [
+                      "[data-testid=\"card-description\"]",
+                      "p"
+                    ],
+                    "combineStrategy": "first",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "timeLabel",
+                    "selector": "[data-testid=\"card-metadata-lastupdated\"]",
+                    "transforms": [
+                      "trim",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "topic",
+                    "selector": "[data-testid=\"card-metadata-tag\"]",
+                    "transforms": [
+                      "trim",
+                      "nullIfEmpty"
+                    ]
+                  },
+                  {
+                    "name": "image",
+                    "selector": "img[alt][srcset]",
+                    "extract": "attributeValue",
+                    "attributeName": "src"
+                  },
+                  {
+                    "name": "imageAlt",
+                    "selector": "img[alt][srcset]",
+                    "extract": "attributeValue",
+                    "attributeName": "alt"
+                  }
+                ]
+              },
+              "includePosition": true,
+              "required": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "Detik.com - news index (latest news)",
-  "description": "The latest-news index of a detik.com channel (news.detik.com/indeks, finance.detik.com/indeks, ...): per story the position, headline, link, image, publish time (Unix and WIB label) and relative time, plus the page title, current page and next-page link. Plain fetch through an Indonesian proxy.",
+  "description": "The latest-news index of a detik.com channel (news.detik.com/indeks, finance.detik.com/indeks, ...): per story the position, headline, link, image, publish time (Unix and WIB label) and relative time, plus the page title, current page and next-page link. Plain fetch through an Indonesian proxy. Also returns the sections of the channel navigation bar (Berita, Jabodetabek, Internasional, ...).",
   "slug": "detik-index",
   "url": "https://news.detik.com/indeks",
   "method": "GET",
@@ -46,6 +46,32 @@
         "transforms": [
           "toAbsoluteUrl"
         ]
+      },
+      {
+        "name": "sections",
+        "selector": ".navbar-first li.nav__item",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"http\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "required": true
+            }
+          ]
+        }
       },
       {
         "name": "stories",

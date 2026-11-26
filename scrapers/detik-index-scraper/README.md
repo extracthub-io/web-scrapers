@@ -27,6 +27,7 @@ e.g. `https://news.detik.com/indeks` (detikNews, page 1). Also tested on `?page=
 | `canonicalUrl` | string | e.g. `https://news.detik.com/indeks` |
 | `currentPage` | number | the active page of the pagination, e.g. `1` |
 | `nextPageUrl` | string \| null | e.g. `https://news.detik.com/indeks?page=2`; `null` on the last page |
+| `sections[]` | array | the channel navigation bar: `{ name, url }`, e.g. on detikNews: Home, Berita, Jabodetabek, Internasional, Hukum, detikX, Kolom, ... |
 | `stories[]` | array | the stories of the page in order, usually 20 (required) |
 | `stories[].position` | number | 1-based position on the page |
 | `stories[].headline` | string | e.g. `Dalih Sakit Hati di Balik Rumah Warga Bekasi Dilalap Api` |
@@ -67,6 +68,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 - **Image host:** detik serves the same picture from `akcdn.detik.net.id` or `awsimages.detik.net.id` depending on
   the fetch, so image URLs can differ between two calls.
 - Article details (author, body text, tags) come from the [Detik.com Article Scraper](../detik-article-scraper/).
+
+## Versions
+
+- **1.1.0:** adds `sections` (navigation bar). No breaking changes.
+- **1.0.0:** first release.
 
 ## Files
 

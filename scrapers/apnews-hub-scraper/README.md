@@ -27,6 +27,7 @@ e.g. `https://apnews.com/hub/technology` (Technology). Other hubs work the same 
 | `pageTitle` | string | the page `<title>` |
 | `description` | string | meta description of the hub |
 | `canonicalUrl` | string | e.g. `https://apnews.com/technology` |
+| `sections[]` | array | the navigation bar: `{ name, url }` (World, U.S., Politics, Sports, Entertainment, Business, Science, ... and AP's own links such as Newsletters, Standards, My Account) |
 | `stories[]` | array | every story card on the page, in page order (required) |
 | `stories[].position` | number | 1-based position on the page |
 | `stories[].headline` | string | (required) |
@@ -67,6 +68,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 - **Changes all the time:** the story list differs from one request to the next; the catalog preview and the
   sample come from the same fetch.
 - **Tested** on the Technology, Artificial Intelligence and Science hubs.
+
+## Versions
+
+- **1.1.0:** adds `sections` (navigation bar). No breaking changes.
+- **1.0.0:** first release.
 
 ## Files
 

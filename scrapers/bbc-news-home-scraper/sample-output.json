@@ -1,0 +1,202 @@
+{
+  "pageTitle": "BBC News - Breaking news, video and the latest top stories from the U.S. and around the world",
+  "pageUrl": "https://www.bbc.com/news",
+  "sections": [
+    {
+      "name": "Home",
+      "url": "https://www.bbc.com/",
+      "active": false
+    },
+    {
+      "name": "News",
+      "url": "https://www.bbc.com/news",
+      "active": true
+    },
+    {
+      "name": "Sport",
+      "url": "https://www.bbc.com/sport",
+      "active": false
+    },
+    {
+      "name": "Business",
+      "url": "https://www.bbc.com/business",
+      "active": false
+    },
+    {
+      "name": "Technology",
+      "url": "https://www.bbc.com/technology",
+      "active": false
+    },
+    {
+      "name": "Health",
+      "url": "https://www.bbc.com/health",
+      "active": false
+    },
+    {
+      "name": "Culture",
+      "url": "https://www.bbc.com/culture",
+      "active": false
+    },
+    {
+      "name": "Arts",
+      "url": "https://www.bbc.com/arts",
+      "active": false
+    },
+    {
+      "name": "Travel",
+      "url": "https://www.bbc.com/travel",
+      "active": false
+    },
+    {
+      "name": "Earth",
+      "url": "https://www.bbc.com/future-planet",
+      "active": false
+    },
+    {
+      "name": "Audio",
+      "url": "https://www.bbc.com/audio",
+      "active": false
+    },
+    {
+      "name": "Video",
+      "url": "https://www.bbc.com/video",
+      "active": false
+    },
+    {
+      "name": "Live",
+      "url": "https://www.bbc.com/live",
+      "active": false
+    },
+    {
+      "name": "Documentaries",
+      "url": "https://www.bbc.com/video/docs",
+      "active": false
+    }
+  ],
+  "subsections": [
+    {
+      "name": "US & Canada",
+      "url": "https://www.bbc.com/news/us-canada"
+    },
+    {
+      "name": "UK",
+      "url": "https://www.bbc.com/news/uk"
+    },
+    {
+      "name": "Africa",
+      "url": "https://www.bbc.com/news/world/africa"
+    },
+    {
+      "name": "Asia",
+      "url": "https://www.bbc.com/news/world/asia"
+    },
+    {
+      "name": "Australia",
+      "url": "https://www.bbc.com/news/world/australia"
+    },
+    {
+      "name": "Europe",
+      "url": "https://www.bbc.com/news/world/europe"
+    },
+    {
+      "name": "Latin America",
+      "url": "https://www.bbc.com/news/world/latin_america"
+    },
+    {
+      "name": "Middle East",
+      "url": "https://www.bbc.com/news/world/middle_east"
+    },
+    {
+      "name": "In Pictures",
+      "url": "https://www.bbc.com/news/in_pictures"
+    },
+    {
+      "name": "BBC InDepth",
+      "url": "https://www.bbc.com/news/bbcindepth"
+    },
+    {
+      "name": "BBC Verify",
+      "url": "https://www.bbc.com/news/bbcverify"
+    }
+  ],
+  "blocks": [
+    {
+      "name": null,
+      "link": null,
+      "stories": [
+        {
+          "position": 1,
+          "headline": "Major US storms snarl air travel as more than 800,000 left in the dark on Thanksgiving holiday",
+          "url": "https://www.bbc.com/news/live/ck782zj6dnwet",
+          "summary": "As the holiday weekend begins, both US coasts are experiencing severe weather, with some areas seeing wind gusts topping 70mph, downed trees, heavy rain and flooding.",
+          "timeLabel": null,
+          "topic": null,
+          "image": "https://ichef.bbci.co.uk/ace/standard/480/cpsprodpb/2e67/live/322e6640-e9da-11f1-99b6-a35a62fa4264.jpg.webp",
+          "imageAlt": "A woman in a rain poncho walks in the rain in New York."
+        },
+        {
+          "position": 2,
+          "headline": "Watch: Roofs torn off and streets under water as severe weather hits US",
+          "url": "https://www.bbc.com/news/videos/cq808d704m22o",
+          "summary": "Hundreds of thousands have been affected by storms in the country as the Thanksgiving holiday weekend begins.",
+          "timeLabel": "3 hrs ago",
+          "topic": "US & Canada",
+          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/e81d/live/7ff7f4c0-e9cd-11f1-99a1-253766e7ad8b.jpg.webp",
+          "imageAlt": "Two people wade through waist-high flood water on a street."
+        }
+      ]
+    },
+    {
+      "name": null,
+      "link": null,
+      "stories": [
+        {
+          "position": 1,
+          "headline": "Pregnant US inmate escapes in prison vehicle after medical appointment",
+          "url": "https://www.bbc.com/news/articles/c9m2jke85xzxo",
+          "summary": null,
+          "timeLabel": null,
+          "topic": null,
+          "image": null,
+          "imageAlt": null
+        },
+        {
+          "position": 2,
+          "headline": "Gérard Depardieu to stand trial for alleged rape of actress in 2018, court rules",
+          "url": "https://www.bbc.com/news/articles/cmlyd76kyx44o",
+          "summary": null,
+          "timeLabel": null,
+          "topic": null,
+          "image": null,
+          "imageAlt": null
+        }
+      ]
+    },
+    {
+      "name": "More to explore",
+      "link": null,
+      "stories": [
+        {
+          "position": 1,
+          "headline": "Desperate appeals from women on death row in Iran after protests",
+          "url": "https://www.bbc.com/news/articles/cm8x0ve4yd7wo",
+          "summary": "Female protesters and dissidents are being sentenced to death in numbers not seen for decades, a rights group says.",
+          "timeLabel": "16 hrs ago",
+          "topic": "Middle East",
+          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/9ca2/live/a7b62ec0-e27d-11f1-bd1e-f9c53347c5a6.jpg.webp",
+          "imageAlt": "Romina and Taraneh Rahimi pictured together before their arrest. Romina is on the left and and has bare shoulders and blonde highlights in her dark hair, while Taraneh is wearing a purple top and has long, dark hair. Both are smiling."
+        },
+        {
+          "position": 2,
+          "headline": "The US pastor who wants to see women's right to vote overturned",
+          "url": "https://www.bbc.com/news/articles/cwe89jyz4012o",
+          "summary": "The movement to repeal women's right to vote has gained traction amongst some very conservative Christians.",
+          "timeLabel": "22 hrs ago",
+          "topic": "US & Canada",
+          "image": "https://ichef.bbci.co.uk/news/480/cpsprodpb/ce47/live/503203d0-e995-11f1-99b6-a35a62fa4264.jpg.webp",
+          "imageAlt": "US pastor Doug Wilson who is an alder man in his 60's with white hair and a beard speaking in a studio into a microphone with a black background"
+        }
+      ]
+    }
+  ]
+}

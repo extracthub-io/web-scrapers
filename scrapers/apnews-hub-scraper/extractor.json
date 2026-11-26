@@ -1,6 +1,6 @@
 {
   "name": "AP News - hub page",
-  "description": "Stories listed on an AP News hub (topic / section) page (apnews.com/hub/<topic>): position, headline, link, summary, published and updated time, authors, image and comment count, plus the page title, description and canonical URL. Plain fetch.",
+  "description": "Stories listed on an AP News hub (topic / section) page (apnews.com/hub/<topic>): position, headline, link, summary, published and updated time, authors, image and comment count, plus the page title, description and canonical URL, and the sections of the navigation bar (World, U.S., Politics, Sports, ...). Plain fetch.",
   "slug": "apnews-hub",
   "url": "https://apnews.com/hub/technology",
   "method": "GET",
@@ -45,6 +45,35 @@
         "selector": "link[rel=\"canonical\"][href]",
         "extract": "attributeValue",
         "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": ".Page-header.desktop-header .MainNavigation-items > .MainNavigation-items-item:not([data-morebutton])",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a.AnClick-MainNav",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.AnClick-MainNav[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            }
+          ]
+        }
       },
       {
         "name": "stories",

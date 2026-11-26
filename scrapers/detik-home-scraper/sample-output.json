@@ -1,0 +1,55 @@
+{
+  "pageTitle": "detikcom - Informasi Berita Terkini dan Terbaru Hari Ini",
+  "url": "https://www.detik.com",
+  "sections": [
+    {
+      "name": "detikNews",
+      "url": "https://news.detik.com/"
+    },
+    {
+      "name": "detikFinance",
+      "url": "https://finance.detik.com/"
+    },
+    {
+      "name": "detikHot",
+      "url": "https://hot.detik.com/"
+    },
+    {
+      "name": "detikInet",
+      "url": "https://inet.detik.com/"
+    },
+    {
+      "name": "detikSport",
+      "url": "https://sport.detik.com/"
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Prabowo: Ada Kapolri Baru Buzzer Hilang, Keracunan MBG Sangat Berkurang",
+      "url": "https://news.detik.com/berita/d-8771534/prabowo-ada-kapolri-baru-buzzer-hilang-keracunan-mbg-sangat-berkurang",
+      "publishedAtUnix": null,
+      "publishedAtLabel": null,
+      "timeAgo": null,
+      "image": "https://akcdn.detik.net.id/visual/2026/11/26/presiden-prabowo-subianto-memberi-sambutan-puncak-peringatan-hari-guru-nasional-2026-di-sentul-bogor-youtube-setpres-1795690311030_169.png?w=250&q=90"
+    },
+    {
+      "position": 2,
+      "headline": "Listyo Sigit Tolak ke Sidang Etik, Begini Aturan Mainnya",
+      "url": "https://news.detik.com/berita/d-8770765/listyo-sigit-tolak-ke-sidang-etik-begini-aturan-mainnya",
+      "publishedAtUnix": null,
+      "publishedAtLabel": null,
+      "timeAgo": null,
+      "image": "https://akcdn.detik.net.id/visual/2026/08/21/kapolri-jenderal-listyo-sigit-prabowo-1787317979008_169.jpeg?w=250&q=90"
+    },
+    {
+      "position": 3,
+      "headline": "25 Dokter Spesialis Dikerahkan Periksa Kesehatan Cawapres Amran dan Sugiono",
+      "url": "https://news.detik.com/berita/d-8770344/25-dokter-spesialis-dikerahkan-periksa-kesehatan-cawapres-amran-dan-sugiono",
+      "publishedAtUnix": null,
+      "publishedAtLabel": null,
+      "timeAgo": null,
+      "image": "https://akcdn.detik.net.id/visual/2026/11/26/jumpa-pers-di-rspad-jelang-tes-kesehatan-cawapres-amran-dan-sugiono-taufikdetikcom-1795654578021_169.jpeg?w=250&q=90"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "name": "detik.com - home page",
+  "description": "Stories of the detik.com portal home page (www.detik.com): headline, link, publish time (Unix and WIB label), relative time and image in page order, plus the page title and link and the sections of the navigation bar (detikNews, detikFinance, detikHot, detikInet, detikSport, ... and the regional channels). Pairs with @extracthub1/detik-section and @extracthub1/detik-article.",
+  "slug": "detik-home",
+  "visibility": "public",
+  "url": "https://www.detik.com/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "ID",
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "detik",
+    "news",
+    "indonesia",
+    "homepage",
+    "headlines"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": ".navbar-first li.nav__item",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"http\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "stories",
+        "selector": "article",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "headline",
+              "selector": ".media__title a",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": ".media__title a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "required": true
+            },
+            {
+              "name": "publishedAtUnix",
+              "selector": ".media__date span[d-time]",
+              "extract": "attributeValue",
+              "attributeName": "d-time",
+              "transforms": [
+                "toNumber"
+              ]
+            },
+            {
+              "name": "publishedAtLabel",
+              "selector": ".media__date span[title]",
+              "extract": "attributeValue",
+              "attributeName": "title"
+            },
+            {
+              "name": "timeAgo",
+              "selector": ".media__date span",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": ".media__image img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

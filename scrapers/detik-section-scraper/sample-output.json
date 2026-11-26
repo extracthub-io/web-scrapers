@@ -1,0 +1,55 @@
+{
+  "pageTitle": "Berita peristiwa dan politik terbaru di Indonesia dan luar negeri",
+  "url": "https://news.detik.com/berita",
+  "sections": [
+    {
+      "name": "Home",
+      "url": "https://news.detik.com/"
+    },
+    {
+      "name": "Berita",
+      "url": "https://news.detik.com/berita"
+    },
+    {
+      "name": "Jabodetabek",
+      "url": "https://news.detik.com/jabodetabek"
+    },
+    {
+      "name": "Internasional",
+      "url": "https://news.detik.com/internasional"
+    },
+    {
+      "name": "Hukum",
+      "url": "https://news.detik.com/hukum"
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Polisi Selidiki Motif Pembakaran Rumah di Bekasi, Rekaman CCTV Diamankan",
+      "url": "https://news.detik.com/berita/d-8768804/polisi-selidiki-motif-pembakaran-rumah-di-bekasi-rekaman-cctv-diamankan",
+      "publishedAtUnix": null,
+      "publishedAtLabel": null,
+      "timeAgo": null,
+      "image": "https://akcdn.detik.net.id/visual/2026/11/24/rumah-warga-di-bekasi-kebakaran-1795498753964_169.jpeg?w=250&q=90"
+    },
+    {
+      "position": 2,
+      "headline": "Kata Mereka Usai Prabowo Usulkan Amran dan Sugiono Jadi Cawapres",
+      "url": "https://news.detik.com/berita/d-8768573/kata-mereka-usai-prabowo-usulkan-amran-dan-sugiono-jadi-cawapres",
+      "publishedAtUnix": null,
+      "publishedAtLabel": null,
+      "timeAgo": null,
+      "image": "https://akcdn.detik.net.id/visual/2026/11/24/kolase-andi-amran-sugiono-1795494680205_169.png?w=250&q=90"
+    },
+    {
+      "position": 3,
+      "headline": "Bandar Pemasok Kampung Ambon Samarkan Ganja Rp 2,5 M Pakai Durian-Ikan Asin",
+      "url": "https://news.detik.com/berita/d-8768789/bandar-pemasok-kampung-ambon-samarkan-ganja-rp-2-5-m-pakai-durian-ikan-asin",
+      "publishedAtUnix": null,
+      "publishedAtLabel": null,
+      "timeAgo": null,
+      "image": "https://akcdn.detik.net.id/visual/2026/11/25/polres-jakbar-menangkap-bandar-pemasok-ganja-ke-kampung-ambon-1795571955222_169.jpeg?w=250&q=90"
+    }
+  ]
+}

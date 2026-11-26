@@ -1,0 +1,143 @@
+{
+  "pageTitle": "Latest news, sport and opinion from the Guardian",
+  "description": "Latest international news, sport and comment from the Guardian",
+  "canonicalUrl": "https://www.theguardian.com",
+  "edition": "US",
+  "sections": [
+    {
+      "name": "News",
+      "url": "https://www.theguardian.com/"
+    },
+    {
+      "name": "Opinion",
+      "url": "https://www.theguardian.com/commentisfree"
+    },
+    {
+      "name": "Sport",
+      "url": "https://www.theguardian.com/sport"
+    },
+    {
+      "name": "Culture",
+      "url": "https://www.theguardian.com/culture"
+    },
+    {
+      "name": "Lifestyle",
+      "url": "https://www.theguardian.com/lifeandstyle"
+    }
+  ],
+  "subsections": [
+    {
+      "name": "World",
+      "url": "https://www.theguardian.com/world"
+    },
+    {
+      "name": "US politics",
+      "url": "https://www.theguardian.com/us-news/us-politics"
+    },
+    {
+      "name": "UK",
+      "url": "https://www.theguardian.com/uk-news"
+    },
+    {
+      "name": "Climate crisis",
+      "url": "https://www.theguardian.com/environment/climate-crisis"
+    },
+    {
+      "name": "Middle East",
+      "url": "https://www.theguardian.com/world/middleeast"
+    }
+  ],
+  "containers": [
+    {
+      "name": "News",
+      "id": "news",
+      "link": null,
+      "stories": [
+        {
+          "position": 1,
+          "headline": "Israeli strikes kill 16 schoolchildren so far this month, Gaza ministry says",
+          "kicker": "Gaza",
+          "url": "https://www.theguardian.com/world/2026/nov/26/gaza-ministry-schoolchildren-killed-this-month-israel-strikes",
+          "trailText": "Statement follows death of sisters, aged 15 and 13, in airstrike on residential apartment in Gaza City",
+          "publishedAt": "2026-11-26T20:33:07.000Z",
+          "timeLabel": "2h ago",
+          "cardType": "news",
+          "footerLabel": null,
+          "duration": null,
+          "image": "https://i.guim.co.uk/img/media/fb6f93363b44e1d9e8b27377c45da23d0f007ce4/215_0_5200_4160/master/5200.jpg?width=465&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": "Mourners gather around the covered bodies of a family killed in an airstrike in Gaza",
+          "sublinks": [
+            {
+              "headline": "Israel ‘officially sanctions’ torture of Palestinian prisoners to extract confessions, report concludes",
+              "kicker": "Israel",
+              "url": "https://www.theguardian.com/world/2026/nov/26/israel-officially-sanctions-torture-palestinian-prisoners-confessions-report"
+            },
+            {
+              "headline": "UN sacked Palestinian staff on back of unproven Israeli allegations, tribunal rules",
+              "kicker": "Exclusive",
+              "url": "https://www.theguardian.com/world/2026/nov/25/un-sacked-palestinian-staff-on-back-of-unproven-israel-allegations"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "headline": "Faulty electrical goods returned to UK supermarkets ending up on Ghana ‘megadump’",
+          "kicker": "Waste",
+          "url": "https://www.theguardian.com/environment/2026/nov/26/ghana-waste-tip-faulty-electrical-goods-uk-supermarkets-returns",
+          "trailText": "Mountains of household items are burned and stripped down at the tip by workers without protection such as masks, investigation alleges",
+          "publishedAt": "2026-11-26T12:00:34.000Z",
+          "timeLabel": "11h ago",
+          "cardType": "news",
+          "footerLabel": null,
+          "duration": null,
+          "image": "https://i.guim.co.uk/img/media/5269afc18fe7a74f964e972bc30bf72931eb04e1/0_321_1350_759/1350.jpg?width=465&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": null,
+          "sublinks": []
+        }
+      ]
+    },
+    {
+      "name": "In focus",
+      "id": "in-focus",
+      "link": null,
+      "stories": [
+        {
+          "position": 1,
+          "headline": "Nathan Fielder v Elizabeth Holmes: You Can See Everything (Spoilers)",
+          "kicker": "The Close Up",
+          "url": "https://www.theguardian.com/culture/video/2026/nov/26/nathan-fielder-v-elizabeth-holmes-you-can-see-everything-spoilers-the-close-up",
+          "trailText": "In Nathan Fielder and Lance Oppenheim’s new documentary, Theranos founder Elizabeth Holmes and the film-makers fight over who is the hero and who is the villain. Carys and Lanre dig into the film’s w…",
+          "publishedAt": null,
+          "timeLabel": null,
+          "cardType": "media",
+          "footerLabel": "Video",
+          "duration": "42:28",
+          "image": "https://i.guim.co.uk/img/media/bb6a942650e2aa653f618cee595494042f15ee16/0_0_1920_1080/1920.jpg?width=465&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": null,
+          "sublinks": [
+            {
+              "headline": "You Can See Everything overtly riffs on Vertigo. But how big is its debt to Kiarostami’s Close-Up?",
+              "kicker": "Film",
+              "url": "https://www.theguardian.com/film/2026/nov/26/you-can-see-everything-vertigo-kiarostami-close-up"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "headline": "‘Trucks on fire and drones overhead’: the Russians risking the long road to Crimea",
+          "kicker": "Russia",
+          "url": "https://www.theguardian.com/world/2026/nov/26/russians-long-road-to-crimea-ukraine-drones",
+          "trailText": null,
+          "publishedAt": "2026-11-26T14:00:36.000Z",
+          "timeLabel": "9h ago",
+          "cardType": "feature",
+          "footerLabel": null,
+          "duration": null,
+          "image": "https://i.guim.co.uk/img/media/caa6b50ad0225c64ea0f7a68008e0f3dbf969d34/157_0_755_604/master/755.jpg?width=120&dpr=1&s=none&crop=5%3A4",
+          "imageAlt": "A burning truck on the side of a highway",
+          "sublinks": []
+        }
+      ]
+    }
+  ]
+}

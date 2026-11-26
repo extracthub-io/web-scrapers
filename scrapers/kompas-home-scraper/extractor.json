@@ -1,0 +1,156 @@
+{
+  "name": "Kompas.com - home page",
+  "description": "Stories of the Kompas.com home page (www.kompas.com): headline, link, label, date and image in page order, plus the page title and link and the sections of the navigation bar (News, Kolom, Tekno, Otomotif, Bola, Lifestyle, Tren, Money, ...). Pairs with @extracthub1/kompas-section and @extracthub1/kompas-article.",
+  "slug": "kompas-home",
+  "visibility": "public",
+  "url": "https://www.kompas.com/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "ID",
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "kompas",
+    "news",
+    "indonesia",
+    "homepage",
+    "headlines"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": "li.nav__item",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a.nav__link",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.nav__link[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "source"
+                  ]
+                }
+              ],
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "stories",
+        "selector": ".articleItem, .articleHL-item, .trenLatest__item, .article__grid",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "headline",
+              "selector": [
+                ".articleTitle",
+                ".trenLatest__title",
+                ".article__title"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href*=\"kompas.com/\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                {
+                  "removeQueryParams": [
+                    "source"
+                  ]
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "summary",
+              "selector": ".article__lead",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "label",
+              "selector": [
+                ".articlePost-subtitle",
+                ".tren__subtitle",
+                ".article__subtitle"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "dateLabel",
+              "selector": [
+                ".articlePost-date",
+                ".tren__date",
+                ".article__date"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            },
+            {
+              "name": "imageLazy",
+              "selector": "img[data-src]",
+              "extract": "attributeValue",
+              "attributeName": "data-src"
+            }
+          ]
+        },
+        "required": true
+      }
+    ]
+  }
+}

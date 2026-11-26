@@ -1,10 +1,12 @@
 {
   "name": "BBC News - section page",
-  "description": "Stories of a BBC News section or topic page (bbc.com/news/technology, /news/world, /business, /innovation, ...), grouped by the page's blocks (top stories, \"More Tech\", \"Watch\", ...): block name and link, then per story the headline, link, summary, time label, topic tag and image. Plain fetch through the proxy.",
+  "description": "Stories of a BBC section or topic page (bbc.com/news/technology, /news/world, /business, /culture, /innovation, ...), grouped by the page blocks: block name and link, then per story the headline, link, summary, time label, topic tag and image; plus the navigation bar: main sections (Home, News, Sport, Business, ...) with the current one marked, and the subsections of the section (e.g. Technology: Artificial Intelligence, AI v the Mind, ...). Plain fetch through a US proxy.",
   "slug": "bbc-news-section",
+  "visibility": "public",
   "url": "https://www.bbc.com/news/technology",
   "method": "GET",
   "useProxy": true,
+  "proxyCountry": "US",
   "renderJavascript": false,
   "category": "news",
   "tags": [
@@ -13,9 +15,8 @@
     "headlines",
     "media"
   ],
-  "visibility": "public",
   "extractorConfig": {
-    "sourceType": "html",
+    "version": "v1.0",
     "fields": [
       {
         "name": "pageTitle",
@@ -32,7 +33,70 @@
       },
       {
         "name": "sections",
-        "selector": "main section[data-analytics-group=\"true\"]",
+        "selector": "[data-testid=\"level1-navigation-container\"] li[data-testid=\"mainNavigationItemStyled\"]",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a[data-testid^=\"mainNavigationLink\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[data-testid^=\"mainNavigationLink\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "active",
+              "selector": "a[data-testid=\"mainNavigationLink-active\"]",
+              "extract": "exists"
+            }
+          ]
+        }
+      },
+      {
+        "name": "subsections",
+        "selector": "[data-testid=\"level2-navigation-container\"] li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a[data-testid^=\"subNavigationLink\"]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[data-testid^=\"subNavigationLink\"][href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "blocks",
+        "selector": "main [data-analytics-group=\"true\"]",
         "isArray": true,
         "extract": "innerHTML",
         "required": true,
@@ -42,7 +106,8 @@
               "name": "name",
               "selector": "[data-testid=\"section-title-wrapper\"] h2",
               "transforms": [
-                "normalizeWhitespace"
+                "normalizeWhitespace",
+                "nullIfEmpty"
               ]
             },
             {
@@ -63,11 +128,18 @@
                 "fields": [
                   {
                     "name": "headline",
-                    "selector": "[data-testid=\"card-headline\"], a h1",
-                    "required": true,
+                    "selector": [
+                      "[data-testid=\"card-headline\"]",
+                      "a[href] h3",
+                      "a[href] h1",
+                      "a[href] h2"
+                    ],
+                    "combineStrategy": "first",
                     "transforms": [
-                      "normalizeWhitespace"
-                    ]
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ],
+                    "required": true
                   },
                   {
                     "name": "url",
@@ -80,23 +152,30 @@
                   },
                   {
                     "name": "summary",
-                    "selector": "[data-testid=\"card-description\"], p",
+                    "selector": [
+                      "[data-testid=\"card-description\"]",
+                      "p"
+                    ],
+                    "combineStrategy": "first",
                     "transforms": [
-                      "normalizeWhitespace"
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
                     ]
                   },
                   {
                     "name": "timeLabel",
                     "selector": "[data-testid=\"card-metadata-lastupdated\"]",
                     "transforms": [
-                      "trim"
+                      "trim",
+                      "nullIfEmpty"
                     ]
                   },
                   {
                     "name": "topic",
                     "selector": "[data-testid=\"card-metadata-tag\"]",
                     "transforms": [
-                      "trim"
+                      "trim",
+                      "nullIfEmpty"
                     ]
                   },
                   {
@@ -112,7 +191,9 @@
                     "attributeName": "alt"
                   }
                 ]
-              }
+              },
+              "includePosition": true,
+              "required": true
             }
           ]
         }

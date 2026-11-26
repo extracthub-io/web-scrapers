@@ -1,0 +1,133 @@
+{
+  "name": "CNN - home page",
+  "description": "Stories listed on the CNN home page (edition.cnn.com): headline, link, type (article, video, gallery, live story), image and image credit, in page order; plus the page title, description and link, and the main sections of the navigation bar (US, World, Politics, Business, Health, ...). Pairs with @extracthub1/cnn-section and @extracthub1/cnn-article.",
+  "slug": "cnn-home",
+  "visibility": "public",
+  "url": "https://edition.cnn.com/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "cnn",
+    "news",
+    "homepage",
+    "headlines"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace",
+          {
+            "before": {
+              "text": " | CNN",
+              "last": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "selector": "meta[name=\"description\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": ".header__nav-container > .header__nav-item",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a.header__nav-item-link",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.header__nav-item-link[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "active",
+              "selector": "a.header__nav-item-link--active",
+              "extract": "exists"
+            }
+          ]
+        }
+      },
+      {
+        "name": "stories",
+        "selector": ".card.container__item:not(.card--sponsored)",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "headline",
+              "selector": ".container__headline-text",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a.container__link[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "type",
+              "selector": "a.container__link[data-link-type]",
+              "extract": "attributeValue",
+              "attributeName": "data-link-type"
+            },
+            {
+              "name": "image",
+              "selector": ".image[data-url]",
+              "extract": "attributeValue",
+              "attributeName": "data-url"
+            },
+            {
+              "name": "imageCredit",
+              "selector": ".image__credit",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

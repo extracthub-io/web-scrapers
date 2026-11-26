@@ -1,0 +1,68 @@
+{
+  "pageTitle": "Associated Press News: Breaking News, Latest Headlines and Videos | AP News",
+  "description": "Read the latest headlines, breaking news, and videos at APNews.com, the definitive source for independent journalism from every corner of the globe.",
+  "canonicalUrl": "https://apnews.com/",
+  "sections": [
+    {
+      "name": "World",
+      "url": "https://apnews.com/world-news"
+    },
+    {
+      "name": "U.S.",
+      "url": "https://apnews.com/us-news"
+    },
+    {
+      "name": "Politics",
+      "url": "https://apnews.com/politics"
+    },
+    {
+      "name": "Sports",
+      "url": "https://apnews.com/sports"
+    },
+    {
+      "name": "Entertainment",
+      "url": "https://apnews.com/entertainment"
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Lions and Bears kick off NFL’s Thanksgiving Day tripleheader, playing for first place in NFC North",
+      "url": "https://apnews.com/article/lions-bears-preview-0c7a7c3af52565184ce9c4226e1d2cdb",
+      "summary": null,
+      "publishedAtMs": 1795647402000,
+      "updatedAtMs": 1795647402000,
+      "authors": [],
+      "authorUrls": [],
+      "image": "https://dims.apnews.com/dims4/default/c72cd75/2147483647/strip/true/crop/2495x1664+0+0/resize/599x399!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Fe2%2F64%2F9a97ddc14daed47974dcee3e6758%2F26420…",
+      "imageAlt": "Detroit Lions wide receiver Amon-Ra St. Brown (14) celebrates after scoring a touchdown in the first half against the Tampa Bay Buccaneers during an NFL football game in Detroit, Sunday, Nov. 22, 202…",
+      "commentCount": null
+    },
+    {
+      "position": 2,
+      "headline": "Cowboys really need back-to-back wins this time with rival Eagles visiting on Thanksgiving",
+      "url": "https://apnews.com/article/cowboys-eagles-preview-ebf1027581fe54c68632f4c326652231",
+      "summary": null,
+      "publishedAtMs": 1795646847000,
+      "updatedAtMs": 1795646847000,
+      "authors": [],
+      "authorUrls": [],
+      "image": "https://dims.apnews.com/dims4/default/77a7a01/2147483647/strip/true/crop/3991x2660+0+0/resize/599x399!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Fd9%2F36%2F5e9cd7ba914da4c26d5d65facee4%2Ff64b3…",
+      "imageAlt": "Dallas Cowboys wide receiver CeeDee Lamb (88) celebrates his touchdown during the first half of an NFL football game against the Tennessee Titans in Arlington, Texas, Sunday, Nov. 22, 2026. (AP Photo…",
+      "commentCount": null
+    },
+    {
+      "position": 3,
+      "headline": "Allen and Mahomes renew their thrilling rivalry as the Bills host the Chiefs on Thanksgiving night",
+      "url": "https://apnews.com/article/chiefs-bills-preview-allen-mahomes-c080f475ccd0b95cee6c43192b65c745",
+      "summary": null,
+      "publishedAtMs": 1795647808000,
+      "updatedAtMs": 1795647808000,
+      "authors": [],
+      "authorUrls": [],
+      "image": "https://dims.apnews.com/dims4/default/36cc46a/2147483647/strip/true/crop/2688x1792+0+0/resize/599x399!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F36%2F2b%2Fe4f9df12b775a6cbc29366621345%2Fdf2f1…",
+      "imageAlt": "Buffalo Bills quarterback Josh Allen (17) warms up before an NFL football game against the Miami Dolphins in Orchard Park, N.Y., Sunday, Nov. 22, 2026. (AP Photo/Jeffrey T. Barnes)",
+      "commentCount": null
+    }
+  ]
+}

@@ -27,6 +27,8 @@ e.g. `https://www.theguardian.com/technology` (Technology). Also tested on `/wor
 | `description` | string | the front's meta description |
 | `canonicalUrl` | string | canonical URL of the edition served, e.g. `https://www.theguardian.com/us/technology` |
 | `edition` | string \| null | edition the page was rendered for, e.g. `US` (`UK`, `AU`, `EUR`, `INT`) |
+| `sections[]` | array | main navigation: `{ name, url }`: News, Opinion, Sport, Culture, Lifestyle |
+| `subsections[]` | array | the subsections bar under it: `{ name, url }`, e.g. UK, US politics, World, Climate crisis, Tech ... (differs per edition and page) |
 | `containers[]` | array | the story containers of the page, in page order (required) |
 | `containers[].name` | string | container title, e.g. `Technology`, `AI`, `Opinion & analysis` |
 | `containers[].id` | string \| null | container id, e.g. `ai`; `null` for the first container |
@@ -78,6 +80,11 @@ More: [REST API guide](../../docs/api.md) · [AI agent guide](../../docs/ai-agen
 - **Markup:** cards are read by stable hooks (`section[data-container-level]`, `h3.card-headline`, `data-link-name`);
   the sub-link list is scoped by an inline style attribute and is the most fragile part.
 - **Content changes all the time:** the front is updated many times a day, so two calls rarely match.
+
+## Versions
+
+- **1.1.0:** adds `sections` and `subsections` (navigation). No breaking changes.
+- **1.0.0:** first release.
 
 ## Files
 

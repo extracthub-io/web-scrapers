@@ -1,0 +1,58 @@
+{
+  "pageTitle": "Berita Terkini Hari Ini, Kabar Akurat Terpercaya - Kompas.com",
+  "url": "https://www.kompas.com",
+  "sections": [
+    {
+      "name": "News",
+      "url": "https://news.kompas.com"
+    },
+    {
+      "name": "Kolom",
+      "url": "https://kolom.kompas.com"
+    },
+    {
+      "name": "Event",
+      "url": "https://event.kompas.com"
+    },
+    {
+      "name": "Jagat Literasi",
+      "url": "https://jagatliterasi.kompas.com"
+    },
+    {
+      "name": "Cahaya",
+      "url": "https://cahaya.kompas.com"
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Permukaan Jakarta Makin Turun, Apartemen dan Industri Diminta Tak Pakai Air Tanah",
+      "url": "https://megapolitan.kompas.com/read/2026/11/26/23255621/permukaan-jakarta-makin-turun-apartemen-dan-industri-diminta-tak-pakai",
+      "summary": null,
+      "label": "Headline",
+      "dateLabel": null,
+      "image": "https://asset.kompas.com/crops/8t2q0OMIxliv4W07gj0eBlE0yQ0=/0x0:612x408/740x400/data/photo/2023/07/11/64ad52dbd0efc.jpeg",
+      "imageLazy": null
+    },
+    {
+      "position": 2,
+      "headline": "Cemas Berujung Dekap Bayi Sampai Meninggal, Perempuan di Surabaya Dituntut 8,5 Tahun Bui",
+      "url": "https://surabaya.kompas.com/read/2026/11/26/231428178/cemas-berujung-dekap-bayi-sampai-meninggal-perempuan-di-surabaya-dituntut",
+      "summary": null,
+      "label": "Regional",
+      "dateLabel": null,
+      "image": "https://asset.kompas.com/crops/9u4d0sz0KL6plEVYTzx6WC5x2Ik=/17x118:509x446/740x400/data/photo/2026/11/26/6b0802b675c8b.jpg",
+      "imageLazy": null
+    },
+    {
+      "position": 3,
+      "headline": "Sampah Sempat Menumpuk di 5 TPS Depok Berhari-hari Imbas TPA Cipayung Longsor",
+      "url": "https://megapolitan.kompas.com/read/2026/11/26/22322841/sampah-sempat-menumpuk-di-5-tps-depok-berhari-hari-imbas-tpa-cipayung",
+      "summary": null,
+      "label": "News",
+      "dateLabel": null,
+      "image": "https://asset.kompas.com/crops/v3wkPBKp1S-y40deBRZzcDAzOoo=/0x0:0x0/740x400/data/photo/2026/11/26/6b08501b289d6.jpg",
+      "imageLazy": null
+    }
+  ]
+}
