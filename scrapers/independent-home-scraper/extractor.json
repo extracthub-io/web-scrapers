@@ -1,0 +1,124 @@
+{
+  "name": "The Independent - home page",
+  "description": "Stories of The Independent home page (www.independent.co.uk): headline, link, label and image in page order, plus the page title and link and the navigation sections (News, Sports, Culture, Lifestyle, Money, Travel, Health & Science). Plain fetch through a UK proxy. Pairs with @extracthub1/independent-section and @extracthub1/independent-article.",
+  "slug": "independent-home",
+  "visibility": "public",
+  "url": "https://www.independent.co.uk/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "GB",
+  "renderJavascript": false,
+  "category": "news",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": "nav[aria-label=\"Sections\"] ol[data-button-nav=\"nav-menu\"] > li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href^=\"/\"], a[href^=\"http\"]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "stories",
+        "selector": "article",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "headline",
+              "selector": [
+                "a.card-link h2",
+                "h2",
+                "h3"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": [
+                "a.card-link[href]",
+                "a[href]"
+              ],
+              "combineStrategy": "first",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "label",
+              "selector": [
+                "footer span",
+                ".slot-primary p"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "tags": [
+    "independent",
+    "news",
+    "uk",
+    "headlines",
+    "homepage"
+  ]
+}

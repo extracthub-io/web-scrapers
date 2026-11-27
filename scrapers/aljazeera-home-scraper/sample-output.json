@@ -1,0 +1,95 @@
+{
+  "pageTitle": "Breaking News, World News and Video from Al Jazeera",
+  "url": "https://www.aljazeera.com",
+  "sections": [
+    {
+      "name": "News",
+      "url": "https://www.aljazeera.com/news/",
+      "subsections": [
+        {
+          "name": "Middle East",
+          "url": "https://www.aljazeera.com/middle-east/"
+        },
+        {
+          "name": "Africa",
+          "url": "https://www.aljazeera.com/africa/"
+        },
+        {
+          "name": "Asia",
+          "url": "https://www.aljazeera.com/asia/"
+        }
+      ]
+    },
+    {
+      "name": "Explained",
+      "url": "https://www.aljazeera.com/tag/explainer/",
+      "subsections": []
+    },
+    {
+      "name": "Sport",
+      "url": "https://www.aljazeera.com/sports",
+      "subsections": []
+    },
+    {
+      "name": "Opinion",
+      "url": "https://www.aljazeera.com/opinion/",
+      "subsections": []
+    },
+    {
+      "name": "Video",
+      "url": "https://www.aljazeera.com/videos/",
+      "subsections": []
+    }
+  ],
+  "subsections": [
+    {
+      "name": "US-Israel war on Iran",
+      "url": "https://www.aljazeera.com/news/liveblog/2026/11/26/iran-war-live-explosion-rocks-sanaa-missiles-intercepted-over-riyadh"
+    },
+    {
+      "name": "Yemen conflict",
+      "url": "https://www.aljazeera.com/tag/houthis/"
+    },
+    {
+      "name": "Middle East",
+      "url": "https://www.aljazeera.com/middle-east/"
+    },
+    {
+      "name": "Africa",
+      "url": "https://www.aljazeera.com/africa/"
+    },
+    {
+      "name": "Asia",
+      "url": "https://www.aljazeera.com/asia/"
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Iran denies carrying out drone attack that killed two Italians in Kuwait",
+      "url": "https://www.aljazeera.com/news/liveblog/2026/11/26/iran-war-live-explosion-rocks-sanaa-missiles-intercepted-over-riyadh",
+      "summary": null,
+      "label": null,
+      "dateLabel": null,
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/AFP__20260928__C9JJ9XN__v3__HighRes__IranUsIsraelWar-1794903144.jpg?resize=770%2C513&quality=80"
+    },
+    {
+      "position": 2,
+      "headline": "Can Trump continue with Iran war despite funding restrictions?",
+      "url": "https://www.aljazeera.com/news/2026/11/26/can-trump-continue-with-iran-war-despite-funding-restrictions",
+      "summary": "A Congress budget bill could serve as a pressure tactic on Trump to end the war but could also trigger a shutdown.",
+      "label": "EXPLAINER",
+      "dateLabel": null,
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/reuters_6b04df4d-1795481421.jpg?resize=770%2C513&quality=80"
+    },
+    {
+      "position": 3,
+      "headline": "Can Trump continue with Iran war despite funding restrictions?",
+      "url": "https://www.aljazeera.com/news/2026/11/26/can-trump-continue-with-iran-war-despite-funding-restrictions",
+      "summary": "A Congress budget bill could serve as a pressure tactic on Trump to end the war but could also trigger a shutdown.",
+      "label": "EXPLAINER",
+      "dateLabel": null,
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/reuters_6b04df4d-1795481421.jpg?resize=770%2C513&quality=80"
+    }
+  ]
+}

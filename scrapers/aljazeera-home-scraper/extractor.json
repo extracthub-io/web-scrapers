@@ -1,0 +1,202 @@
+{
+  "name": "Al Jazeera - home page",
+  "description": "Stories of the Al Jazeera English home page (www.aljazeera.com): headline, link, summary, label, date and image in page order, plus the page title and link the navigation bar sections with their submenus and the secondary bar (trending topics and regions) as subsections (News: Middle East, Africa, Asia, US & Canada, ...; Features, Economy, Opinion, Video, ...). Plain fetch. Pairs with @extracthub1/aljazeera-section and @extracthub1/aljazeera-article.",
+  "slug": "aljazeera-home",
+  "visibility": "public",
+  "url": "https://www.aljazeera.com/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "aljazeera",
+    "news",
+    "homepage",
+    "headlines"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": ".site-header__navigation ul.header-menu > li.menu__item",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "subsections",
+              "selector": "ul.menu__submenu > li.menu__item",
+              "isArray": true,
+              "extract": "innerHTML",
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "name",
+                    "selector": "a",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "url",
+                    "selector": "a[href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      "toAbsoluteUrl"
+                    ],
+                    "required": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "subsections",
+        "selector": "ul.navigation-bar__menu > li",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": "a",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": "a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "stories",
+        "selector": "article",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "headline",
+              "selector": [
+                ".article-card__title",
+                ".gc__title",
+                ".article-trending__title-link > span:not(.screen-reader-text)",
+                "h3",
+                "h2"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": [
+                "a.u-clickable-card__link[href]",
+                "a[href]"
+              ],
+              "combineStrategy": "first",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "summary",
+              "selector": ".article-card__excerpt",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "label",
+              "selector": [
+                ".post-label__text",
+                ".article-card__label"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "dateLabel",
+              "selector": ".date-simple span[aria-hidden]",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "image",
+              "selector": "img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src",
+              "transforms": [
+                "toAbsoluteUrl"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

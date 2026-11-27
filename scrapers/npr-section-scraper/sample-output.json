@@ -1,0 +1,99 @@
+{
+  "pageTitle": "News: U.S. and World News Headlines : NPR",
+  "url": "https://www.npr.org/sections/news/",
+  "sections": [
+    {
+      "name": "Home",
+      "url": "https://www.npr.org/",
+      "subsections": []
+    },
+    {
+      "name": "News",
+      "url": "https://www.npr.org/sections/news/",
+      "subsections": [
+        {
+          "name": "National",
+          "url": "https://www.npr.org/sections/national/"
+        },
+        {
+          "name": "World",
+          "url": "https://www.npr.org/sections/world/"
+        },
+        {
+          "name": "Politics",
+          "url": "https://www.npr.org/sections/politics/"
+        }
+      ]
+    },
+    {
+      "name": "Culture",
+      "url": "https://www.npr.org/sections/culture/",
+      "subsections": [
+        {
+          "name": "Books",
+          "url": "https://www.npr.org/books/"
+        },
+        {
+          "name": "Movies",
+          "url": "https://www.npr.org/sections/movies/"
+        },
+        {
+          "name": "Television",
+          "url": "https://www.npr.org/sections/television/"
+        }
+      ]
+    },
+    {
+      "name": "Music",
+      "url": "https://www.npr.org/music/",
+      "subsections": [
+        {
+          "name": "Tiny Desk",
+          "url": "https://www.npr.org/series/tiny-desk-concerts/"
+        },
+        {
+          "name": "New Music Friday",
+          "url": "https://www.npr.org/sections/allsongs/606254804/new-music-friday"
+        },
+        {
+          "name": "All Songs Considered",
+          "url": "https://www.npr.org/sections/allsongs/"
+        }
+      ]
+    },
+    {
+      "name": "Podcasts & Shows",
+      "url": "https://www.npr.org/podcasts-and-shows/",
+      "subsections": []
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Why there’s oil on Persian Gulf beaches; France’s November celebration",
+      "url": "https://www.npr.org/2026/11/26/nx-s1-6054148/why-theres-oil-on-persian-gulf-beaches-frances-november-celebration",
+      "label": "State of the World from NPR",
+      "teaser": "November 26, 2026 • Iran’s Revolutionary Guard Corps has been attacking oil tankers in the Persian Gulf at a record pace. They say they’re hitting several tankers a day, despite U.S. military efforts…",
+      "date": "2026-11-26",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/4072x2291+0+212/resize/800/quality/85/format/webp/?url=https%3A%2F%2Fnpr-production-npr.s3.us-east-1.amazonaws.com%2Fbrightspot%2Fde%2F42%…"
+    },
+    {
+      "position": 2,
+      "headline": "Congo Ebola outbreak reaches 12,000 cases as some responders evacuate",
+      "url": "https://www.npr.org/2026/11/26/g-s1-155957/congo-ebola-responders",
+      "label": "World",
+      "teaser": "November 26, 2026 • As the fast-moving outbreak continues to spread in eastern Congo, fighting between rebels and the army is disrupting efforts to contain the spread of the disease.",
+      "date": "2026-11-26",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/5760x3240+0+300/resize/800/quality/85/format/webp/?url=https%3A%2F%2Fnpr-production-npr.s3.us-east-1.amazonaws.com%2Fbrightspot%2F5c%2Fce%…"
+    },
+    {
+      "position": 3,
+      "headline": "North Korea's Kim vows to build more nuclear weapons after ignoring Trump's overture",
+      "url": "https://www.npr.org/2026/11/26/g-s1-155955/north-korea-kim-nuclear-weapons-trump",
+      "label": "World",
+      "teaser": "November 26, 2026 • Leader Kim Jong Un reportedly visited facilities that produce nuclear ingredients and called for building more nuclear weapons to cope with threats from the U.S. and South Korea.",
+      "date": "2026-11-26",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/2965x1668+0+149/resize/800/quality/85/format/webp/?url=https%3A%2F%2Fnpr-production-npr.s3.us-east-1.amazonaws.com%2Fbrightspot%2F54%2Fca%…"
+    }
+  ]
+}

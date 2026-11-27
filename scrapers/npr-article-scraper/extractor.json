@@ -1,0 +1,141 @@
+{
+  "name": "NPR - article",
+  "slug": "npr-article",
+  "visibility": "public",
+  "description": "An NPR story (www.npr.org/2026/11/26/...): headline, section label, published and modified time, authors with profile links, lead image, subheadings, paragraphs, the full text and the whole body as Markdown (subheadings in place, ads, caption toggles and share buttons removed). Plain fetch.",
+  "url": "https://www.npr.org/2026/11/26/nx-s1-6044602/michael-twitty-thanksgiving-food-culinary-history",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "news",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "required": true
+      },
+      {
+        "name": "headline",
+        "selector": ".storytitle h1",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "description",
+        "selector": "meta[name=\"description\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "section",
+        "selector": "article.story h3.slug",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "datePublished",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "datePublished"
+      },
+      {
+        "name": "dateModified",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "dateModified"
+      },
+      {
+        "name": "authors",
+        "selector": ".byline__name a",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "authorUrls",
+        "selector": ".byline__name a[href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "image",
+        "selector": "meta[property=\"og:image\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "subheadings",
+        "selector": "#storytext > h3, #storytext > h2",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": "#storytext > p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ],
+        "required": true
+      },
+      {
+        "name": "text",
+        "selector": "#storytext > p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "joinWithSpace"
+        ]
+      },
+      {
+        "name": "content",
+        "selector": "#storytext",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "style",
+          "iframe",
+          "noscript",
+          "svg"
+        ],
+        "transforms": [
+          {
+            "removeElements": [
+              "aside",
+              ".toggle-caption",
+              ".hide-caption",
+              ".share-tools",
+              ".mid-story-recommendations-mount-piano",
+              ".anti-fraud-message",
+              "button"
+            ]
+          },
+          "toMarkdown"
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "npr",
+    "news",
+    "article",
+    "full text"
+  ]
+}

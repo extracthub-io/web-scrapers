@@ -1,0 +1,172 @@
+{
+  "name": "NPR - home page",
+  "description": "Stories of the NPR home page (www.npr.org): headline, link, label, teaser, date and image in page order, plus the page title and link and the navigation sections with their subsections (News: National, World, Politics, Business, Health, Science, Climate, Race; Culture; Music; Podcasts & Shows). Plain fetch. Pairs with @extracthub1/npr-section and @extracthub1/npr-article.",
+  "slug": "npr-home",
+  "visibility": "public",
+  "url": "https://www.npr.org/",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "news",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "pageTitle",
+        "selector": "head title",
+        "transforms": [
+          "normalizeWhitespace"
+        ]
+      },
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href"
+      },
+      {
+        "name": "sections",
+        "selector": ".menu--main li.menu__item",
+        "isArray": true,
+        "extract": "innerHTML",
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "name",
+              "selector": ".menu__item-inner > a",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": ".menu__item-inner > a[href]",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "subsections",
+              "selector": "ul.submenu > li.submenu__item",
+              "isArray": true,
+              "extract": "innerHTML",
+              "subExtractor": {
+                "fields": [
+                  {
+                    "name": "name",
+                    "selector": "a",
+                    "transforms": [
+                      "normalizeWhitespace",
+                      "nullIfEmpty"
+                    ],
+                    "required": true
+                  },
+                  {
+                    "name": "url",
+                    "selector": "a[href]",
+                    "extract": "attributeValue",
+                    "attributeName": "href",
+                    "transforms": [
+                      "toAbsoluteUrl"
+                    ],
+                    "required": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "stories",
+        "selector": "article.c-promo-card, article.item",
+        "isArray": true,
+        "extract": "innerHTML",
+        "includePosition": true,
+        "required": true,
+        "subExtractor": {
+          "fields": [
+            {
+              "name": "headline",
+              "selector": [
+                ".c-promo-card__title a",
+                "h2.title a"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ],
+              "required": true
+            },
+            {
+              "name": "url",
+              "selector": [
+                ".c-promo-card__title a[href]",
+                "h2.title a[href]"
+              ],
+              "combineStrategy": "first",
+              "extract": "attributeValue",
+              "attributeName": "href",
+              "transforms": [
+                "toAbsoluteUrl"
+              ],
+              "required": true
+            },
+            {
+              "name": "label",
+              "selector": [
+                ".c-promo-card__eyebrow",
+                "h3.slug"
+              ],
+              "combineStrategy": "first",
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "teaser",
+              "selector": [
+                ".c-promo-card__teaser",
+                "p.teaser"
+              ],
+              "combineStrategy": "first",
+              "excludeTags": [
+                "time"
+              ],
+              "transforms": [
+                "normalizeWhitespace",
+                "nullIfEmpty"
+              ]
+            },
+            {
+              "name": "date",
+              "selector": "time[datetime]",
+              "extract": "attributeValue",
+              "attributeName": "datetime"
+            },
+            {
+              "name": "image",
+              "selector": "img[src]",
+              "extract": "attributeValue",
+              "attributeName": "src"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "tags": [
+    "npr",
+    "news",
+    "headlines",
+    "homepage"
+  ]
+}

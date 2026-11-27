@@ -1,0 +1,152 @@
+{
+  "name": "Al Jazeera - article",
+  "description": "An Al Jazeera English article (www.aljazeera.com/news/2026/...): headline, standfirst, label, section and topic tags, published and modified time, authors with profile links, lead image, subheadings, paragraphs, the full text and the whole body as Markdown (subheadings in place, \"Recommended Stories\" boxes and ads removed). Plain fetch.",
+  "slug": "aljazeera-article",
+  "visibility": "public",
+  "url": "https://www.aljazeera.com/news/2026/11/26/can-trump-continue-with-iran-war-despite-funding-restrictions",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "US",
+  "renderJavascript": false,
+  "category": "news",
+  "tags": [
+    "aljazeera",
+    "news",
+    "article",
+    "full text"
+  ],
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "required": true
+      },
+      {
+        "name": "headline",
+        "selector": "header.article-header h1",
+        "transforms": [
+          "normalizeWhitespace"
+        ],
+        "required": true
+      },
+      {
+        "name": "standfirst",
+        "selector": ".article__subhead",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "label",
+        "selector": "header.article-header .post-label__text",
+        "transforms": [
+          "normalizeWhitespace",
+          "nullIfEmpty"
+        ]
+      },
+      {
+        "name": "topics",
+        "selector": "header.article-header .topics a",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "datePublished",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "datePublished"
+      },
+      {
+        "name": "dateModified",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "dateModified"
+      },
+      {
+        "name": "authors",
+        "selector": ".article-info .contributors-list a",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "authorUrls",
+        "selector": ".article-info .contributors-list a[href]",
+        "isArray": true,
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "transforms": [
+          "toAbsoluteUrl"
+        ]
+      },
+      {
+        "name": "image",
+        "selector": "meta[property=\"og:image\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "subheadings",
+        "selector": ".wysiwyg > h2",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": ".wysiwyg > p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ],
+        "required": true
+      },
+      {
+        "name": "text",
+        "selector": ".wysiwyg > p",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "joinWithSpace"
+        ]
+      },
+      {
+        "name": "content",
+        "selector": ".wysiwyg",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "iframe",
+          "style",
+          "noscript"
+        ],
+        "transforms": [
+          {
+            "removeElements": [
+              "section.more-on",
+              ".in-article-ads",
+              ".ads",
+              ".screen-reader-text",
+              ".container--ads"
+            ]
+          },
+          "toMarkdown"
+        ]
+      }
+    ]
+  }
+}

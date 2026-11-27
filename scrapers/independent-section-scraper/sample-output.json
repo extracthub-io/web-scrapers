@@ -1,0 +1,49 @@
+{
+  "pageTitle": "World | The Independent",
+  "url": "https://www.independent.co.uk/news/world",
+  "sections": [
+    {
+      "name": "News",
+      "url": "https://www.independent.co.uk/"
+    },
+    {
+      "name": "Membership",
+      "url": "https://www.independent.co.uk/independentpremium"
+    },
+    {
+      "name": "Sport",
+      "url": "https://www.independent.co.uk/sport"
+    },
+    {
+      "name": "Voices",
+      "url": "https://www.independent.co.uk/voices"
+    },
+    {
+      "name": "Culture",
+      "url": "https://www.independent.co.uk/arts-entertainment"
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Ukraine live: Trump tells Putin to end military aggression in Europe",
+      "url": "https://www.independent.co.uk/news/world/europe/russia-ukraine-war-live-putin-drones-nuclear-weapons-casualties-b3091880.html",
+      "label": "Live",
+      "image": "https://static.independent.co.uk/2026/11/22/17/2026-11-22T164503Z_1518491131_RC2TQOAP0QH9_RTRMADP_3_USA-TRUMP-PUTIN.JPG?quality=75&width=640&crop=3%3A2%2Csmart&trim=109%2C0%2C109%2C0&auto=webp"
+    },
+    {
+      "position": 2,
+      "headline": "Trump shares the Europe request he made to Putin during China talks",
+      "url": "https://www.independent.co.uk/news/world/europe/trump-putin-russia-ukraine-war-b3092350.html",
+      "label": null,
+      "image": "https://static.independent.co.uk/2026/11/26/17/2026-11-26T162433Z_1015617438_RC2TQOANQQ5V_RTRMADP_3_UKRAINE-CRISIS-TRUMP.JPG?quality=75&width=640&crop=3%3A2%2Csmart&trim=77%2C0%2C141%2C0&auto=webp"
+    },
+    {
+      "position": 3,
+      "headline": "Kushner’s claims about Europe, Putin and Ukraine are staggering",
+      "url": "https://www.independent.co.uk/news/world/europe/jared-kushner-ukraine-russia-war-trump-b3092082.html",
+      "label": null,
+      "image": null
+    }
+  ]
+}

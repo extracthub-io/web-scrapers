@@ -1,0 +1,149 @@
+{
+  "name": "The Independent - article",
+  "slug": "independent-article",
+  "visibility": "public",
+  "description": "An article of The Independent (www.independent.co.uk/news/...-b3092020.html): headline, standfirst, section, published and modified time, authors with profile links, lead image, subheadings, paragraphs, the full text and the whole body as Markdown (membership prompts, recommendations and ads removed). Plain fetch through a UK proxy.",
+  "url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-thanksgiving-journalist-attack-truth-social-b3092020.html",
+  "method": "GET",
+  "useProxy": true,
+  "proxyCountry": "GB",
+  "renderJavascript": false,
+  "category": "news",
+  "extractorConfig": {
+    "version": "v1.0",
+    "fields": [
+      {
+        "name": "url",
+        "selector": "link[rel=\"canonical\"][href]",
+        "extract": "attributeValue",
+        "attributeName": "href",
+        "required": true
+      },
+      {
+        "name": "headline",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "headline",
+        "transforms": [
+          "decodeHtml"
+        ],
+        "required": true
+      },
+      {
+        "name": "standfirst",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "description",
+        "transforms": [
+          "decodeHtml"
+        ]
+      },
+      {
+        "name": "section",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "articleSection"
+      },
+      {
+        "name": "datePublished",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "datePublished"
+      },
+      {
+        "name": "dateModified",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "dateModified"
+      },
+      {
+        "name": "author",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "author.name"
+      },
+      {
+        "name": "authorUrl",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "author.url"
+      },
+      {
+        "name": "isAccessibleForFree",
+        "selector": "script[type=\"application/ld+json\"]",
+        "extract": "jsonContent",
+        "jsonPath": "isAccessibleForFree"
+      },
+      {
+        "name": "image",
+        "selector": "meta[property=\"og:image\"][content]",
+        "extract": "attributeValue",
+        "attributeName": "content"
+      },
+      {
+        "name": "subheadings",
+        "selector": "#main h2",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ]
+      },
+      {
+        "name": "paragraphs",
+        "selector": "#main p:not([class])",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact"
+        ],
+        "required": true
+      },
+      {
+        "name": "text",
+        "selector": "#main p:not([class])",
+        "isArray": true,
+        "transforms": [
+          "normalizeWhitespace",
+          "compact",
+          "joinWithSpace"
+        ]
+      },
+      {
+        "name": "content",
+        "selector": "#main",
+        "extract": "innerHTML",
+        "excludeTags": [
+          "script",
+          "style",
+          "iframe",
+          "noscript",
+          "svg"
+        ],
+        "transforms": [
+          {
+            "removeElements": [
+              "[id^=\"mos-\"]",
+              "[id^=\"bookmark-modal\"]",
+              "#deeper-dive-container",
+              "[id^=\"taboola\"]",
+              "#register-wall-mount",
+              "#comments-area",
+              "[data-component]",
+              "figure button",
+              "aside"
+            ]
+          },
+          "toMarkdown"
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "independent",
+    "news",
+    "uk",
+    "article",
+    "full text"
+  ]
+}

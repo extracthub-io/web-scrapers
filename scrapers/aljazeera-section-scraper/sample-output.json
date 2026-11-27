@@ -1,0 +1,95 @@
+{
+  "pageTitle": "News | Today's latest from Al Jazeera",
+  "url": "https://www.aljazeera.com/news/",
+  "sections": [
+    {
+      "name": "News",
+      "url": "https://www.aljazeera.com/news/",
+      "subsections": [
+        {
+          "name": "Middle East",
+          "url": "https://www.aljazeera.com/middle-east/"
+        },
+        {
+          "name": "Africa",
+          "url": "https://www.aljazeera.com/africa/"
+        },
+        {
+          "name": "Asia",
+          "url": "https://www.aljazeera.com/asia/"
+        }
+      ]
+    },
+    {
+      "name": "Explained",
+      "url": "https://www.aljazeera.com/tag/explainer/",
+      "subsections": []
+    },
+    {
+      "name": "Sport",
+      "url": "https://www.aljazeera.com/sports",
+      "subsections": []
+    },
+    {
+      "name": "Opinion",
+      "url": "https://www.aljazeera.com/opinion/",
+      "subsections": []
+    },
+    {
+      "name": "Video",
+      "url": "https://www.aljazeera.com/videos/",
+      "subsections": []
+    }
+  ],
+  "subsections": [
+    {
+      "name": "US-Israel war on Iran",
+      "url": "https://www.aljazeera.com/news/liveblog/2026/11/26/iran-war-live-explosion-rocks-sanaa-missiles-intercepted-over-riyadh"
+    },
+    {
+      "name": "Yemen conflict",
+      "url": "https://www.aljazeera.com/tag/houthis/"
+    },
+    {
+      "name": "Middle East",
+      "url": "https://www.aljazeera.com/middle-east/"
+    },
+    {
+      "name": "Africa",
+      "url": "https://www.aljazeera.com/africa/"
+    },
+    {
+      "name": "Asia",
+      "url": "https://www.aljazeera.com/asia/"
+    }
+  ],
+  "stories": [
+    {
+      "position": 1,
+      "headline": "Iran denies carrying out drone attack that killed two Italians in Kuwait",
+      "url": "https://www.aljazeera.com/news/liveblog/2026/11/26/iran-war-live-explosion-rocks-sanaa-missiles-intercepted-over-riyadh",
+      "summary": "In a call with his Kuwait counterpart, Iran’s Foreign Minister rejects claim Tehran was behind the attack.",
+      "label": "Live updates",
+      "dateLabel": "26 Nov 2026",
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/AFP__20260928__C9JJ9XN__v3__HighRes__IranUsIsraelWar-1794903144.jpg?resize=770%2C513&quality=80"
+    },
+    {
+      "position": 2,
+      "headline": "Musk pledges two SpaceX shares for every US child",
+      "url": "https://www.aljazeera.com/economy/2026/11/26/musk-pledges-two-spacex-shares-for-every-us-child",
+      "summary": null,
+      "label": null,
+      "dateLabel": "26 Nov 2026",
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/reuters_6aecd5a7-1793906087.jpg?resize=770%2C513&quality=80"
+    },
+    {
+      "position": 3,
+      "headline": "Attack on Saudi’s Jazan refinery kills one person, disrupts operations",
+      "url": "https://www.aljazeera.com/news/2026/11/26/attack-on-saudi-aramcos-jazan-refinery-kills-worker-disrupts-operations",
+      "summary": null,
+      "label": null,
+      "dateLabel": "26 Nov 2026",
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/ap_6b089a77b51e8-1795725943.jpg?resize=770%2C513&quality=80"
+    }
+  ]
+}
